@@ -1,0 +1,1 @@
+exports.badgeClass = require('material-ui/Badge').default;

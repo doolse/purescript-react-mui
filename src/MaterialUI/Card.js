@@ -1,0 +1,1 @@
+exports.cardClass = require('material-ui/Card').default;

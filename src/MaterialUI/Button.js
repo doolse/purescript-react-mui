@@ -1,0 +1,1 @@
+exports.buttonClass = require('material-ui/Button').default;

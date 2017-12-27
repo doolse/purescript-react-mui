@@ -1,0 +1,1 @@
+exports.menuClass = require('material-ui/Menu').default;
