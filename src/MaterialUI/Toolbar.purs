@@ -1,25 +1,37 @@
 module MaterialUI.Toolbar where
 
+import Prelude
 import React (ReactClass, ReactElement, createElement)
-import MaterialUI.Optional (class Optional)
-
+import MaterialUI.PropTypes (StandardPropsExt)
+import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
 
 foreign import toolbarClass :: forall props. ReactClass props
 
-type ToolbarProps r = {
 
+type ToolbarProps r= Record  (
 
   | r
-}
+) 
 
-type ToolbarPropsO = (
+type ToolbarPropsExt r= StandardPropsExt  (
   disableGutters :: Boolean
+  | r
+) 
 
-)
+type ToolbarPropsO = ToolbarPropsExt  (
+
+) 
+
+
+disableGutters :: forall r. Boolean -> IProp (disableGutters :: Boolean | r)
+disableGutters = mkProp "disableGutters"
 
 toolbarU :: forall props. props -> Array ReactElement -> ReactElement
 toolbarU = createElement toolbarClass
 
-toolbar' :: forall o. Optional o ToolbarPropsO => ToolbarProps o -> Array ReactElement -> ReactElement
-toolbar' = toolbarU
+toolbar' :: Array (IProp ToolbarPropsO) -> Array ReactElement -> ReactElement
+toolbar' = mkPropRecord >>> toolbarU
+
+toolbar_ :: Array ReactElement -> ReactElement
+toolbar_ = toolbarU {}
 

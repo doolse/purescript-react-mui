@@ -1,0 +1,1 @@
+exports.circularProgressClass = require('material-ui/Progress').CircularProgress;

@@ -1,0 +1,1 @@
+exports.tableHeadClass = require('material-ui/Table').TableHead;

@@ -1,0 +1,1 @@
+exports.tableRowClass = require('material-ui/Table').TableRow;

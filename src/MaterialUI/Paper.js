@@ -1,0 +1,1 @@
+exports.paperClass = require('material-ui/Paper').default;

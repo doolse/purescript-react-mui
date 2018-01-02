@@ -1,0 +1,1 @@
+exports.tableCellClass = require('material-ui/Table').TableCell;
