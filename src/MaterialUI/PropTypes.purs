@@ -1,15 +1,28 @@
 module MaterialUI.PropTypes where
 
+import Prelude
+
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Uncurried (mkEffFn1)
-import Prelude
+import React (ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type StandardPropsExt r = (
   className :: String,
+  classes :: Untyped,
   style :: Styles
   | r
 )
+
+foreign import data ReactType :: Type
+foreign import data ReactNode :: Type
+
+class IsReactNode a
+class IsReactType a
+
+instance reactTypeString :: IsReactType String
+instance reactElemNode :: IsReactNode ReactElement
+instance reactStringNode :: IsReactNode String
 
 foreign import data EventHandler :: Type -> Type
 

@@ -6,8 +6,10 @@ exports.mkPropRecord = function (arr) {
   return out;
 }
 
-exports.mkPropF = function (k,v) {
-  var obj = {};
-  obj[k] = v;
-  return obj;
+exports.mkPropF = function (k) {
+  return function (v) {
+    var obj = {};
+    obj[k] = v;
+    return obj;    
+  }
 }

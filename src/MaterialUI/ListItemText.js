@@ -1,0 +1,1 @@
+exports.listItemTextClass = require('material-ui/List').ListItemText;

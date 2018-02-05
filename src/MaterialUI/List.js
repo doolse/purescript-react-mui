@@ -1,0 +1,1 @@
+exports.listClass = require('material-ui/List').default;

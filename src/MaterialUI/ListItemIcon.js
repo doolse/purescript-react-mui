@@ -1,0 +1,1 @@
+exports.listItemIconClass = require('material-ui/List').ListItemIcon;
