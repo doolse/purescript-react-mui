@@ -11,17 +11,21 @@ import DOM.HTML.Window (document)
 import DOM.Node.NonElementParentNode (getElementById)
 import DOM.Node.Types (Element, ElementId(..), documentToNonElementParentNode)
 import Data.Maybe (fromJust)
-import MaterialUI.AppBar (appBar')
-import MaterialUI.Button (button')
-import MaterialUI.Paper (paper')
-import MaterialUI.PropTypes (colors, handle, textStyles, ut)
-import MaterialUI.Table (table')
-import MaterialUI.TableBody (tableBody')
-import MaterialUI.TableCell (tableCell')
-import MaterialUI.TableHead (tableHead')
-import MaterialUI.TableRow (tableRow')
-import MaterialUI.Toolbar (toolbar')
-import MaterialUI.Typography (typography')
+import MaterialUI.AppBar (appBar, position, static)
+import MaterialUI.Button (button, raised)
+import MaterialUI.ButtonBase (onClick)
+import MaterialUI.Color (inherit, primary)
+import MaterialUI.Paper (elevation, paper)
+import MaterialUI.PropTypes (handle)
+import MaterialUI.Properties (color, variant)
+import MaterialUI.Table (table_)
+import MaterialUI.TableBody (tableBody_)
+import MaterialUI.TableCell (tableCell_)
+import MaterialUI.TableHead (tableHead_)
+import MaterialUI.TableRow (tableRow_)
+import MaterialUI.TextStyle (display1, display3)
+import MaterialUI.Toolbar (toolbar_)
+import MaterialUI.Typography (typography)
 import Partial.Unsafe (unsafePartial)
 import React (ReactElement)
 import React.DOM as D
@@ -33,28 +37,28 @@ main = void (elm' >>= render ui)
   where
   ui :: ReactElement
   ui = D.div' [
-        appBar' {position:ut "static"} [
-            toolbar' {} [ typography' {"type": textStyles.display3, color:colors.inherit} [ D.text "EQUELLA"] ]
+        appBar [position static] [
+            toolbar_ [ typography [variant display3, color inherit] [ D.text "EQUELLA"] ]
         ],
-        paper' {elevation:4.0} [
-          typography' {"type": textStyles.display1, color:colors.accent} [ D.text "Latest Release"],
-          table' {} [
-            tableHead' {} [
-              tableRow' {} [
-                tableCell' {} [D.text "Type"],
-                tableCell' {} [D.text "Issue #"],
-                tableCell' {} [D.text "Description"]
+        paper [elevation 4] [
+          typography [ variant display1, color primary] [ D.text "Latest Release"],
+          table_ [
+            tableHead_ [
+              tableRow_ [
+                tableCell_ [D.text "Type"],
+                tableCell_ [D.text "Issue #"],
+                tableCell_ [D.text "Description"]
               ]
             ],
-            tableBody' {} [
-              tableRow' {} [
-                tableCell' {} [D.text "Bug"],
-                tableCell' {} [D.text "545"],
-                tableCell' {} [D.text "Some sweet bugs"]
+            tableBody_  [
+              tableRow_  [
+                tableCell_ [D.text "Bug"],
+                tableCell_ [D.text "545"],
+                tableCell_ [D.text "Some sweet bugs"]
               ]
             ]
           ],
-          button' {onClick: handle $ (log <<< unsafeCoerce), raised:true, color:colors.primary } [D.text "dsf"]
+          button [ onClick $ handle $ (log <<< unsafeCoerce), variant raised, color primary ] [D.text "dsf"]
         ]
     ]
 
