@@ -1,5 +1,5 @@
 {
-  "name": "purescript-material-ui",
+  "name": "purescript-react-mui",
   "ignore": [
     "**/.*",
     "node_modules",
