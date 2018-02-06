@@ -1,0 +1,1 @@
+exports.listItemSecondaryActionClass = require('material-ui/List').ListItemSecondaryAction;

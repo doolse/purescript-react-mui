@@ -1,0 +1,1 @@
+exports.checkboxClass = require('material-ui/Checkbox').default;

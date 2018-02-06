@@ -4,6 +4,7 @@ module MaterialUI.ListItemText where
 
 import Prelude
 import React (ReactClass, ReactElement, createElement)
+import Data.Function (applyFlipped)
 import MaterialUI.PropTypes (StandardPropsExt, ReactNode, class IsReactNode)
 import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
 import Unsafe.Coerce (unsafeCoerce)
@@ -39,9 +40,6 @@ secondary = mkProp "secondary" <<< (unsafeCoerce :: a -> ReactNode)
 listItemTextU :: forall props. props -> Array ReactElement -> ReactElement
 listItemTextU = createElement listItemTextClass
 
-listItemText :: Array (IProp ListItemTextProps) -> Array ReactElement -> ReactElement
-listItemText = mkPropRecord >>> listItemTextU
-
-listItemText_ :: Array ReactElement -> ReactElement
-listItemText_ = listItemTextU {}
+listItemText :: Array (IProp ListItemTextProps) -> ReactElement
+listItemText = mkPropRecord >>> listItemTextU >>> applyFlipped []
 
