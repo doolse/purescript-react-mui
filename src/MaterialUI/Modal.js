@@ -1,0 +1,1 @@
+exports.modalClass = require('material-ui/Modal').default;

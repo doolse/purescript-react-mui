@@ -4,9 +4,9 @@ module MaterialUI.ButtonBase where
 
 import Prelude
 import React (ReactClass, ReactElement, createElement)
-import MaterialUI.PropTypes (Untyped, StandardPropsExt, EventHandler, class IsReactType, ReactType)
-import MaterialUI.Properties (mkProp, mkPropRecord, IProp)
-import Prelude (Unit)
+import MaterialUI.Event (Event)
+import MaterialUI.PropTypes (Untyped, StandardPropsExt, EventHandler, ReactType, class IsReactType)
+import MaterialUI.Properties (mkPropRecord, IProp, mkProp)
 import Unsafe.Coerce (unsafeCoerce)
 
 foreign import buttonBaseClass :: forall props. ReactClass props
@@ -20,7 +20,7 @@ type ButtonBasePropsExt r = StandardPropsExt (
   focusRipple :: Boolean,
   keyboardFocusedClassName :: String,
   onKeyboardFocus :: Untyped {-React.FocusEventHandler-},
-  onClick :: EventHandler (Unit)
+  onClick :: EventHandler Event
   | r
 ) 
 
@@ -47,7 +47,7 @@ keyboardFocusedClassName = mkProp "keyboardFocusedClassName"
 onKeyboardFocus :: forall r. Untyped -> IProp (onKeyboardFocus :: Untyped | r)
 onKeyboardFocus = mkProp "onKeyboardFocus"
 
-onClick :: forall r. EventHandler (Unit) -> IProp (onClick :: EventHandler (Unit) | r)
+onClick :: forall r. EventHandler Event -> IProp (onClick :: EventHandler Event | r)
 onClick = mkProp "onClick"
 
 buttonBaseU :: forall props. props -> Array ReactElement -> ReactElement

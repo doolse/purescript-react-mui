@@ -4,7 +4,8 @@ module MaterialUI.Drawer where
 
 import Prelude
 import React (ReactClass, ReactElement, createElement)
-import MaterialUI.PropTypes (StandardPropsExt, Untyped)
+import MaterialUI.Modal (ModalPropsExt)
+import MaterialUI.PropTypes (Untyped)
 import MaterialUI.Properties (mkProp, IProp, mkPropRecord, class IsProp)
 
 foreign import drawerClass :: forall props. ReactClass props
@@ -15,7 +16,7 @@ derive newtype instance isPropAnchor :: IsProp Anchor
 newtype Variant = Variant String
 derive newtype instance isPropVariant :: IsProp Variant
 
-type DrawerPropsExt r = StandardPropsExt (
+type DrawerPropsExt r = ModalPropsExt (
   anchor :: Anchor,
   elevation :: Int,
   "ModalProps" :: Untyped {-Identifier:Partial-},

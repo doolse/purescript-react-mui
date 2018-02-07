@@ -4,8 +4,9 @@ module MaterialUI.List where
 
 import Prelude
 import React (ReactClass, ReactElement, createElement)
-import MaterialUI.PropTypes (StandardPropsExt, Untyped, ReactType, class IsReactType)
+import MaterialUI.PropTypes (StandardPropsExt, ReactType, class IsReactType)
 import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
+import React (ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 foreign import listClass :: forall props. ReactClass props
@@ -15,7 +16,7 @@ type ListPropsExt r = StandardPropsExt (
   component :: ReactType,
   dense :: Boolean,
   disablePadding :: Boolean,
-  subheader :: Untyped {-React.ReactElement-}
+  subheader :: ReactElement
   | r
 ) 
 
@@ -30,7 +31,7 @@ dense = mkProp "dense"
 disablePadding :: forall r. Boolean -> IProp (disablePadding :: Boolean | r)
 disablePadding = mkProp "disablePadding"
 
-subheader :: forall r. Untyped -> IProp (subheader :: Untyped | r)
+subheader :: forall r. ReactElement -> IProp (subheader :: ReactElement | r)
 subheader = mkProp "subheader"
 
 listU :: forall props. props -> Array ReactElement -> ReactElement

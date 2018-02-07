@@ -4,20 +4,23 @@ module MaterialUI.Chip where
 
 import Prelude
 import React (ReactClass, ReactElement, createElement)
-import MaterialUI.PropTypes (ReactNode, StandardPropsExt, Untyped, class IsReactNode, class IsReactType, ReactType)
-import MaterialUI.Properties (mkPropRecord, mkProp, IProp)
+import Data.Function (applyFlipped)
+import MaterialUI.Event (Event)
+import MaterialUI.PropTypes (ReactNode, StandardPropsExt, class IsReactType, EventHandler, class IsReactNode, ReactType)
+import MaterialUI.Properties (mkPropRecord, IProp, mkProp)
+import React (ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 foreign import chipClass :: forall props. ReactClass props
 
 
 type ChipPropsExt r = StandardPropsExt (
-  avatar :: Untyped {-React.ReactElement-},
+  avatar :: ReactElement,
   component :: ReactType,
-  deleteIcon :: Untyped {-React.ReactElement-},
+  deleteIcon :: ReactElement,
   label :: ReactNode,
-  onDelete :: Untyped {-React.EventHandler-},
-  onKeyDown :: Untyped {-React.EventHandler-}
+  onDelete :: EventHandler Event,
+  onKeyDown :: EventHandler Event
   | r
 ) 
 
@@ -26,27 +29,24 @@ type ChipProps = ChipPropsExt (
 ) 
 
 
-avatar :: forall r. Untyped -> IProp (avatar :: Untyped | r)
+avatar :: forall r. ReactElement -> IProp (avatar :: ReactElement | r)
 avatar = mkProp "avatar"
 
-deleteIcon :: forall r. Untyped -> IProp (deleteIcon :: Untyped | r)
+deleteIcon :: forall r. ReactElement -> IProp (deleteIcon :: ReactElement | r)
 deleteIcon = mkProp "deleteIcon"
 
 label :: forall r a. IsReactNode a => a -> IProp (label :: ReactNode | r)
 label = mkProp "label" <<< (unsafeCoerce :: a -> ReactNode)
 
-onDelete :: forall r. Untyped -> IProp (onDelete :: Untyped | r)
+onDelete :: forall r. EventHandler Event -> IProp (onDelete :: EventHandler Event | r)
 onDelete = mkProp "onDelete"
 
-onKeyDown :: forall r. Untyped -> IProp (onKeyDown :: Untyped | r)
+onKeyDown :: forall r. EventHandler Event -> IProp (onKeyDown :: EventHandler Event | r)
 onKeyDown = mkProp "onKeyDown"
 
 chipU :: forall props. props -> Array ReactElement -> ReactElement
 chipU = createElement chipClass
 
-chip :: Array (IProp ChipProps) -> Array ReactElement -> ReactElement
-chip = mkPropRecord >>> chipU
-
-chip_ :: Array ReactElement -> ReactElement
-chip_ = chipU {}
+chip :: Array (IProp ChipProps) -> ReactElement
+chip = mkPropRecord >>> chipU >>> applyFlipped []
 

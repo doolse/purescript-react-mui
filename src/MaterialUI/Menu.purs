@@ -4,13 +4,14 @@ module MaterialUI.Menu where
 
 import Prelude
 import React (ReactClass, ReactElement, createElement)
-import MaterialUI.PropTypes (StandardPropsExt, Untyped)
+import MaterialUI.Popover (PopoverPropsExt)
+import MaterialUI.PropTypes (Untyped)
 import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
 
 foreign import menuClass :: forall props. ReactClass props
 
 
-type MenuPropsExt r = StandardPropsExt (
+type MenuPropsExt r = PopoverPropsExt (
   anchorEl :: Untyped {-Identifier:HTMLElement-},
   "MenuListProps" :: Untyped {-Identifier:MenuListProps-},
   transitionDuration :: Untyped {-Identifier:TransitionDuration-}

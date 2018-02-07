@@ -4,14 +4,15 @@ module MaterialUI.ListItem where
 
 import Prelude
 import React (ReactClass, ReactElement, createElement)
-import MaterialUI.PropTypes (StandardPropsExt, ReactType, class IsReactType)
+import MaterialUI.ButtonBase (ButtonBasePropsExt)
+import MaterialUI.PropTypes (ReactType, class IsReactType)
 import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
 import Unsafe.Coerce (unsafeCoerce)
 
 foreign import listItemClass :: forall props. ReactClass props
 
 
-type ListItemPropsExt r = StandardPropsExt (
+type ListItemPropsExt r = ButtonBasePropsExt (
   button :: Boolean,
   component :: ReactType,
   dense :: Boolean,
