@@ -1,7 +1,9 @@
 const ws = require('material-ui/styles').withStyles;
 
-exports.withStyles = function (styleFunc) {
-  return ws(styleFunc, {withTheme:true});
+exports.withStyles = function () {
+  return function (styleFunc) {
+    return ws(styleFunc, {withTheme:true});
+  }
 }
 
 exports.mediaQuery = function (name) {
