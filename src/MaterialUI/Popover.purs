@@ -26,7 +26,7 @@ type PopoverPropsExt r = ModalPropsExt (
   role :: String,
   transformOrigin :: Untyped {-Identifier:PopoverOrigin-},
   transition :: ReactType,
-  transitionDuration :: Untyped {-Identifier:TransitionDuration-}
+  transitionDuration :: Untyped {-UNION[unknownType:IndexedAccessType,'auto']-}
   | r
 ) 
 

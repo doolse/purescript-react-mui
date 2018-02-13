@@ -13,8 +13,8 @@ foreign import menuClass :: forall props. ReactClass props
 
 type MenuPropsExt r = PopoverPropsExt (
   anchorEl :: Untyped {-Identifier:HTMLElement-},
-  "MenuListProps" :: Untyped {-Identifier:MenuListProps-},
-  transitionDuration :: Untyped {-Identifier:TransitionDuration-}
+  "MenuListProps" :: Untyped {-Identifier:Partial-},
+  transitionDuration :: Untyped {-UNION[unknownType:IndexedAccessType,'auto']-}
   | r
 ) 
 

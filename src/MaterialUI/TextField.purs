@@ -5,7 +5,7 @@ module MaterialUI.TextField where
 import Prelude
 import React (ReactClass, ReactElement, createElement)
 import MaterialUI.PropTypes (Untyped, StandardPropsExt, ReactNode, class IsReactNode)
-import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
+import MaterialUI.Properties (IProp, mkProp, mkPropRecord)
 import Unsafe.Coerce (unsafeCoerce)
 
 foreign import textFieldClass :: forall props. ReactClass props
@@ -17,13 +17,13 @@ type TextFieldPropsExt r = StandardPropsExt (
   defaultValue :: Untyped {-UNION["String","Number"]-},
   disabled :: Boolean,
   error :: Boolean,
-  "FormHelperTextProps" :: Untyped {-Identifier:FormHelperTextProps-},
+  "FormHelperTextProps" :: Untyped {-Identifier:Partial-},
   fullWidth :: Boolean,
   helperText :: ReactNode,
   helperTextClassName :: String,
   id :: String,
-  "InputLabelProps" :: Untyped {-Identifier:InputLabelProps-},
-  "InputProps" :: Untyped {-Identifier:InputProps-},
+  "InputLabelProps" :: Untyped {-Identifier:Partial-},
+  "InputProps" :: Untyped {-Identifier:Partial-},
   inputProps :: Untyped {-unknownType:IndexedAccessType-},
   inputRef :: Untyped {-React.Ref-},
   label :: ReactNode,
@@ -37,7 +37,7 @@ type TextFieldPropsExt r = StandardPropsExt (
   rows :: Untyped {-UNION["String","Number"]-},
   rowsMax :: Untyped {-UNION["String","Number"]-},
   select :: Boolean,
-  "SelectProps" :: Untyped {-Identifier:SelectProps-},
+  "SelectProps" :: Untyped {-Identifier:Partial-},
   type :: String,
   value :: Untyped {-UNION[Identifier:Array,"String","Number"]-}
   | r

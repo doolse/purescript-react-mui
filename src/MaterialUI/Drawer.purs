@@ -24,7 +24,7 @@ type DrawerPropsExt r = ModalPropsExt (
   "PaperProps" :: Untyped {-Identifier:Partial-},
   "SlideProps" :: Untyped {-Identifier:Partial-},
   theme :: Untyped {-Identifier:Theme-},
-  transitionDuration :: Untyped {-Identifier:TransitionDuration-},
+  transitionDuration :: Untyped {-unknownType:IndexedAccessType-},
   variant :: Variant
   | r
 ) 

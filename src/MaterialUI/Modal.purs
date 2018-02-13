@@ -14,7 +14,7 @@ foreign import modalClass :: forall props. ReactClass props
 
 type ModalPropsExt r = StandardPropsExt (
   "BackdropComponent" :: ReactType,
-  "BackdropProps" :: Untyped {-Identifier:BackdropProps-},
+  "BackdropProps" :: Untyped {-Identifier:Partial-},
   disableAutoFocus :: Boolean,
   disableBackdropClick :: Boolean,
   disableEnforceFocus :: Boolean,

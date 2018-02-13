@@ -45,6 +45,9 @@ determinate = Variant "determinate"
 indeterminate :: Variant
 indeterminate = Variant "indeterminate"
 
+static :: Variant
+static = Variant "static"
+
 max :: forall r. Int -> IProp (max :: Int | r)
 max = mkProp "max"
 
