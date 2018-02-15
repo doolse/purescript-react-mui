@@ -13,9 +13,13 @@ type Theme = {
   palette :: {
     common :: {
       white :: String
+    },
+    text :: {
+      secondary :: String
     }
   },
   typography :: {
-    fontFamily :: String
+    fontFamily :: String,
+    pxToRem :: Int -> String
   }
 }

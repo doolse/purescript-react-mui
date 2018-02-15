@@ -1,0 +1,1 @@
+exports.expansionPanelDetailsClass = require('material-ui/ExpansionPanel').ExpansionPanelDetails;

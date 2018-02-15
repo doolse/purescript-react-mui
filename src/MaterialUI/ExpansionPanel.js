@@ -1,0 +1,1 @@
+exports.expansionPanelClass = require('material-ui/ExpansionPanel').default;
