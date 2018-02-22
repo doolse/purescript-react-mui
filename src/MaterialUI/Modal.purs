@@ -5,8 +5,8 @@ module MaterialUI.Modal where
 import Prelude
 import React (ReactClass, ReactElement, createElement)
 import MaterialUI.Event (Event)
-import MaterialUI.PropTypes (Untyped, StandardPropsExt, EventHandler, ReactType, class IsReactType)
-import MaterialUI.Properties (mkPropRecord, IProp, mkProp)
+import MaterialUI.PropTypes (Untyped, StandardPropsExt, class IsReactType, ReactType, EventHandler)
+import MaterialUI.Properties (mkPropRecord, mkProp, IProp)
 import Unsafe.Coerce (unsafeCoerce)
 
 foreign import modalClass :: forall props. ReactClass props
@@ -38,8 +38,8 @@ type ModalProps = ModalPropsExt (
 backdropComponent :: forall r a. IsReactType a => a -> IProp ("BackdropComponent" :: ReactType | r)
 backdropComponent = mkProp "BackdropComponent" <<< (unsafeCoerce :: a -> ReactType)
 
-backdropProps :: forall r. Untyped -> IProp ("BackdropProps" :: Untyped | r)
-backdropProps = mkProp "BackdropProps"
+backdropProps :: forall r a. a -> IProp ("BackdropProps" :: Untyped | r)
+backdropProps = mkProp "BackdropProps" <<< (unsafeCoerce :: a -> Untyped)
 
 disableAutoFocus :: forall r. Boolean -> IProp (disableAutoFocus :: Boolean | r)
 disableAutoFocus = mkProp "disableAutoFocus"
@@ -62,8 +62,8 @@ hideBackdrop = mkProp "hideBackdrop"
 keepMounted :: forall r. Boolean -> IProp (keepMounted :: Boolean | r)
 keepMounted = mkProp "keepMounted"
 
-manager :: forall r. Untyped -> IProp (manager :: Untyped | r)
-manager = mkProp "manager"
+manager :: forall r a. a -> IProp (manager :: Untyped | r)
+manager = mkProp "manager" <<< (unsafeCoerce :: a -> Untyped)
 
 onBackdropClick :: forall r. EventHandler Event -> IProp (onBackdropClick :: EventHandler Event | r)
 onBackdropClick = mkProp "onBackdropClick"

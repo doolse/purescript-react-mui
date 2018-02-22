@@ -4,8 +4,8 @@ module MaterialUI.TableCell where
 
 import Prelude
 import React (ReactClass, ReactElement, createElement)
-import MaterialUI.PropTypes (StandardPropsExt, Untyped, ReactType, class IsReactType)
-import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
+import MaterialUI.PropTypes (Untyped, StandardPropsExt, class IsReactType, ReactType)
+import MaterialUI.Properties (IProp, mkPropRecord, mkProp)
 import Unsafe.Coerce (unsafeCoerce)
 
 foreign import tableCellClass :: forall props. ReactClass props
@@ -28,11 +28,11 @@ type TableCellProps = TableCellPropsExt (
 numeric :: forall r. Boolean -> IProp (numeric :: Boolean | r)
 numeric = mkProp "numeric"
 
-padding :: forall r. Untyped -> IProp (padding :: Untyped | r)
-padding = mkProp "padding"
+padding :: forall r a. a -> IProp (padding :: Untyped | r)
+padding = mkProp "padding" <<< (unsafeCoerce :: a -> Untyped)
 
-sortDirection :: forall r. Untyped -> IProp (sortDirection :: Untyped | r)
-sortDirection = mkProp "sortDirection"
+sortDirection :: forall r a. a -> IProp (sortDirection :: Untyped | r)
+sortDirection = mkProp "sortDirection" <<< (unsafeCoerce :: a -> Untyped)
 
 tableCellU :: forall props. props -> Array ReactElement -> ReactElement
 tableCellU = createElement tableCellClass

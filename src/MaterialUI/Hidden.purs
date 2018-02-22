@@ -6,6 +6,7 @@ import Prelude
 import React (ReactClass, ReactElement, createElement)
 import MaterialUI.PropTypes (StandardPropsExt, Untyped)
 import MaterialUI.Properties (mkProp, IProp, mkPropRecord, class IsProp)
+import Unsafe.Coerce (unsafeCoerce)
 
 foreign import hiddenClass :: forall props. ReactClass props
 
@@ -42,8 +43,8 @@ css = Implementation "css"
 implementation :: forall r. Implementation -> IProp (implementation :: Implementation | r)
 implementation = mkProp "implementation"
 
-initialWidth :: forall r. Untyped -> IProp (initialWidth :: Untyped | r)
-initialWidth = mkProp "initialWidth"
+initialWidth :: forall r a. a -> IProp (initialWidth :: Untyped | r)
+initialWidth = mkProp "initialWidth" <<< (unsafeCoerce :: a -> Untyped)
 
 lgDown :: forall r. Boolean -> IProp (lgDown :: Boolean | r)
 lgDown = mkProp "lgDown"
@@ -57,8 +58,8 @@ mdDown = mkProp "mdDown"
 mdUp :: forall r. Boolean -> IProp (mdUp :: Boolean | r)
 mdUp = mkProp "mdUp"
 
-only :: forall r. Untyped -> IProp (only :: Untyped | r)
-only = mkProp "only"
+only :: forall r a. a -> IProp (only :: Untyped | r)
+only = mkProp "only" <<< (unsafeCoerce :: a -> Untyped)
 
 smDown :: forall r. Boolean -> IProp (smDown :: Boolean | r)
 smDown = mkProp "smDown"

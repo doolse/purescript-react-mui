@@ -4,8 +4,8 @@ module MaterialUI.SwitchBase where
 
 import Prelude
 import React (ReactClass, ReactElement, createElement)
-import MaterialUI.PropTypes (Untyped, StandardPropsExt, ReactNode, class IsReactNode)
-import MaterialUI.Properties (mkPropRecord, IProp, mkProp)
+import MaterialUI.PropTypes (StandardPropsExt, Untyped, ReactNode, class IsReactNode)
+import MaterialUI.Properties (mkProp, mkPropRecord, IProp)
 import Unsafe.Coerce (unsafeCoerce)
 
 
@@ -34,8 +34,8 @@ type SwitchBaseProps = SwitchBasePropsExt (
 ) 
 
 
-checked :: forall r. Untyped -> IProp (checked :: Untyped | r)
-checked = mkProp "checked"
+checked :: forall r a. a -> IProp (checked :: Untyped | r)
+checked = mkProp "checked" <<< (unsafeCoerce :: a -> Untyped)
 
 checkedClassName :: forall r. String -> IProp (checkedClassName :: String | r)
 checkedClassName = mkProp "checkedClassName"
@@ -64,14 +64,14 @@ indeterminate = mkProp "indeterminate"
 indeterminateIcon :: forall r a. IsReactNode a => a -> IProp (indeterminateIcon :: ReactNode | r)
 indeterminateIcon = mkProp "indeterminateIcon" <<< (unsafeCoerce :: a -> ReactNode)
 
-inputRef :: forall r. Untyped -> IProp (inputRef :: Untyped | r)
-inputRef = mkProp "inputRef"
+inputRef :: forall r a. a -> IProp (inputRef :: Untyped | r)
+inputRef = mkProp "inputRef" <<< (unsafeCoerce :: a -> Untyped)
 
 name :: forall r. String -> IProp (name :: String | r)
 name = mkProp "name"
 
-onChange :: forall r. Untyped -> IProp (onChange :: Untyped | r)
-onChange = mkProp "onChange"
+onChange :: forall r a. a -> IProp (onChange :: Untyped | r)
+onChange = mkProp "onChange" <<< (unsafeCoerce :: a -> Untyped)
 
 tabIndex :: forall r. Int -> IProp (tabIndex :: Int | r)
 tabIndex = mkProp "tabIndex"

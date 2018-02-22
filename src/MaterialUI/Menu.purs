@@ -7,6 +7,7 @@ import React (ReactClass, ReactElement, createElement)
 import MaterialUI.Popover (PopoverPropsExt)
 import MaterialUI.PropTypes (Untyped)
 import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
+import Unsafe.Coerce (unsafeCoerce)
 
 foreign import menuClass :: forall props. ReactClass props
 
@@ -23,14 +24,14 @@ type MenuProps = MenuPropsExt (
 ) 
 
 
-anchorEl :: forall r. Untyped -> IProp (anchorEl :: Untyped | r)
-anchorEl = mkProp "anchorEl"
+anchorEl :: forall r a. a -> IProp (anchorEl :: Untyped | r)
+anchorEl = mkProp "anchorEl" <<< (unsafeCoerce :: a -> Untyped)
 
-menuListProps :: forall r. Untyped -> IProp ("MenuListProps" :: Untyped | r)
-menuListProps = mkProp "MenuListProps"
+menuListProps :: forall r a. a -> IProp ("MenuListProps" :: Untyped | r)
+menuListProps = mkProp "MenuListProps" <<< (unsafeCoerce :: a -> Untyped)
 
-transitionDuration :: forall r. Untyped -> IProp (transitionDuration :: Untyped | r)
-transitionDuration = mkProp "transitionDuration"
+transitionDuration :: forall r a. a -> IProp (transitionDuration :: Untyped | r)
+transitionDuration = mkProp "transitionDuration" <<< (unsafeCoerce :: a -> Untyped)
 
 menuU :: forall props. props -> Array ReactElement -> ReactElement
 menuU = createElement menuClass

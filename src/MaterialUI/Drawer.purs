@@ -6,7 +6,8 @@ import Prelude
 import React (ReactClass, ReactElement, createElement)
 import MaterialUI.Modal (ModalPropsExt)
 import MaterialUI.PropTypes (Untyped)
-import MaterialUI.Properties (mkProp, IProp, mkPropRecord, class IsProp)
+import MaterialUI.Properties (class IsProp, mkProp, IProp, mkPropRecord)
+import Unsafe.Coerce (unsafeCoerce)
 
 foreign import drawerClass :: forall props. ReactClass props
 
@@ -60,23 +61,23 @@ anchor = mkProp "anchor"
 elevation :: forall r. Int -> IProp (elevation :: Int | r)
 elevation = mkProp "elevation"
 
-modalProps :: forall r. Untyped -> IProp ("ModalProps" :: Untyped | r)
-modalProps = mkProp "ModalProps"
+modalProps :: forall r a. a -> IProp ("ModalProps" :: Untyped | r)
+modalProps = mkProp "ModalProps" <<< (unsafeCoerce :: a -> Untyped)
 
 open :: forall r. Boolean -> IProp (open :: Boolean | r)
 open = mkProp "open"
 
-paperProps :: forall r. Untyped -> IProp ("PaperProps" :: Untyped | r)
-paperProps = mkProp "PaperProps"
+paperProps :: forall r a. a -> IProp ("PaperProps" :: Untyped | r)
+paperProps = mkProp "PaperProps" <<< (unsafeCoerce :: a -> Untyped)
 
-slideProps :: forall r. Untyped -> IProp ("SlideProps" :: Untyped | r)
-slideProps = mkProp "SlideProps"
+slideProps :: forall r a. a -> IProp ("SlideProps" :: Untyped | r)
+slideProps = mkProp "SlideProps" <<< (unsafeCoerce :: a -> Untyped)
 
-theme :: forall r. Untyped -> IProp (theme :: Untyped | r)
-theme = mkProp "theme"
+theme :: forall r a. a -> IProp (theme :: Untyped | r)
+theme = mkProp "theme" <<< (unsafeCoerce :: a -> Untyped)
 
-transitionDuration :: forall r. Untyped -> IProp (transitionDuration :: Untyped | r)
-transitionDuration = mkProp "transitionDuration"
+transitionDuration :: forall r a. a -> IProp (transitionDuration :: Untyped | r)
+transitionDuration = mkProp "transitionDuration" <<< (unsafeCoerce :: a -> Untyped)
 
 drawerU :: forall props. props -> Array ReactElement -> ReactElement
 drawerU = createElement drawerClass

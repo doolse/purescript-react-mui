@@ -5,8 +5,8 @@ module MaterialUI.ButtonBase where
 import Prelude
 import React (ReactClass, ReactElement, createElement)
 import MaterialUI.Event (Event)
-import MaterialUI.PropTypes (Untyped, StandardPropsExt, EventHandler, ReactType, class IsReactType)
-import MaterialUI.Properties (mkPropRecord, IProp, mkProp)
+import MaterialUI.PropTypes (Untyped, StandardPropsExt, class IsReactType, ReactType, EventHandler)
+import MaterialUI.Properties (mkPropRecord, mkProp, IProp)
 import Unsafe.Coerce (unsafeCoerce)
 
 foreign import buttonBaseClass :: forall props. ReactClass props
@@ -29,8 +29,8 @@ type ButtonBaseProps = ButtonBasePropsExt (
 ) 
 
 
-buttonRef :: forall r. Untyped -> IProp (buttonRef :: Untyped | r)
-buttonRef = mkProp "buttonRef"
+buttonRef :: forall r a. a -> IProp (buttonRef :: Untyped | r)
+buttonRef = mkProp "buttonRef" <<< (unsafeCoerce :: a -> Untyped)
 
 centerRipple :: forall r. Boolean -> IProp (centerRipple :: Boolean | r)
 centerRipple = mkProp "centerRipple"
@@ -44,8 +44,8 @@ focusRipple = mkProp "focusRipple"
 keyboardFocusedClassName :: forall r. String -> IProp (keyboardFocusedClassName :: String | r)
 keyboardFocusedClassName = mkProp "keyboardFocusedClassName"
 
-onKeyboardFocus :: forall r. Untyped -> IProp (onKeyboardFocus :: Untyped | r)
-onKeyboardFocus = mkProp "onKeyboardFocus"
+onKeyboardFocus :: forall r a. a -> IProp (onKeyboardFocus :: Untyped | r)
+onKeyboardFocus = mkProp "onKeyboardFocus" <<< (unsafeCoerce :: a -> Untyped)
 
 onClick :: forall r. EventHandler Event -> IProp (onClick :: EventHandler Event | r)
 onClick = mkProp "onClick"

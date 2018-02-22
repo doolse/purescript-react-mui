@@ -33,8 +33,8 @@ alt = mkProp "alt"
 childrenClassName :: forall r. String -> IProp (childrenClassName :: String | r)
 childrenClassName = mkProp "childrenClassName"
 
-imgProps :: forall r. Untyped -> IProp (imgProps :: Untyped | r)
-imgProps = mkProp "imgProps"
+imgProps :: forall r a. a -> IProp (imgProps :: Untyped | r)
+imgProps = mkProp "imgProps" <<< (unsafeCoerce :: a -> Untyped)
 
 sizes :: forall r. String -> IProp (sizes :: String | r)
 sizes = mkProp "sizes"

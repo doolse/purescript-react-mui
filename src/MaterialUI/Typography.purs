@@ -5,8 +5,8 @@ module MaterialUI.Typography where
 import Prelude
 import React (ReactClass, ReactElement, createElement)
 import MaterialUI.Color (class IsColor)
-import MaterialUI.PropTypes (StandardPropsExt, Untyped, ReactType, class IsReactType)
-import MaterialUI.Properties (mkProp, mkPropRecord, class IsProp, IProp)
+import MaterialUI.PropTypes (Untyped, StandardPropsExt, class IsReactType, ReactType)
+import MaterialUI.Properties (class IsProp, IProp, mkProp, mkPropRecord)
 import MaterialUI.TextStyle (TextStyle)
 import Unsafe.Coerce (unsafeCoerce)
 
@@ -37,14 +37,14 @@ textSecondary = TypographyColor "textSecondary"
 error :: TypographyColor
 error = TypographyColor "error"
 
-align :: forall r. Untyped -> IProp (align :: Untyped | r)
-align = mkProp "align"
+align :: forall r a. a -> IProp (align :: Untyped | r)
+align = mkProp "align" <<< (unsafeCoerce :: a -> Untyped)
 
 gutterBottom :: forall r. Boolean -> IProp (gutterBottom :: Boolean | r)
 gutterBottom = mkProp "gutterBottom"
 
-headlineMapping :: forall r. Untyped -> IProp (headlineMapping :: Untyped | r)
-headlineMapping = mkProp "headlineMapping"
+headlineMapping :: forall r a. a -> IProp (headlineMapping :: Untyped | r)
+headlineMapping = mkProp "headlineMapping" <<< (unsafeCoerce :: a -> Untyped)
 
 noWrap :: forall r. Boolean -> IProp (noWrap :: Boolean | r)
 noWrap = mkProp "noWrap"

@@ -5,8 +5,8 @@ module MaterialUI.Popover where
 import Prelude
 import React (ReactClass, ReactElement, createElement)
 import MaterialUI.Modal (ModalPropsExt)
-import MaterialUI.PropTypes (Untyped, ReactType, class IsReactType)
-import MaterialUI.Properties (IProp, mkProp, mkPropRecord)
+import MaterialUI.PropTypes (Untyped, class IsReactType, ReactType)
+import MaterialUI.Properties (IProp, mkPropRecord, mkProp)
 import Unsafe.Coerce (unsafeCoerce)
 
 foreign import popoverClass :: forall props. ReactClass props
@@ -35,26 +35,26 @@ type PopoverProps = PopoverPropsExt (
 ) 
 
 
-action :: forall r. Untyped -> IProp (action :: Untyped | r)
-action = mkProp "action"
+action :: forall r a. a -> IProp (action :: Untyped | r)
+action = mkProp "action" <<< (unsafeCoerce :: a -> Untyped)
 
-anchorEl :: forall r. Untyped -> IProp (anchorEl :: Untyped | r)
-anchorEl = mkProp "anchorEl"
+anchorEl :: forall r a. a -> IProp (anchorEl :: Untyped | r)
+anchorEl = mkProp "anchorEl" <<< (unsafeCoerce :: a -> Untyped)
 
-anchorOrigin :: forall r. Untyped -> IProp (anchorOrigin :: Untyped | r)
-anchorOrigin = mkProp "anchorOrigin"
+anchorOrigin :: forall r a. a -> IProp (anchorOrigin :: Untyped | r)
+anchorOrigin = mkProp "anchorOrigin" <<< (unsafeCoerce :: a -> Untyped)
 
-anchorPosition :: forall r. Untyped -> IProp (anchorPosition :: Untyped | r)
-anchorPosition = mkProp "anchorPosition"
+anchorPosition :: forall r a. a -> IProp (anchorPosition :: Untyped | r)
+anchorPosition = mkProp "anchorPosition" <<< (unsafeCoerce :: a -> Untyped)
 
-anchorReference :: forall r. Untyped -> IProp (anchorReference :: Untyped | r)
-anchorReference = mkProp "anchorReference"
+anchorReference :: forall r a. a -> IProp (anchorReference :: Untyped | r)
+anchorReference = mkProp "anchorReference" <<< (unsafeCoerce :: a -> Untyped)
 
 elevation :: forall r. Int -> IProp (elevation :: Int | r)
 elevation = mkProp "elevation"
 
-getContentAnchorEl :: forall r. Untyped -> IProp (getContentAnchorEl :: Untyped | r)
-getContentAnchorEl = mkProp "getContentAnchorEl"
+getContentAnchorEl :: forall r a. a -> IProp (getContentAnchorEl :: Untyped | r)
+getContentAnchorEl = mkProp "getContentAnchorEl" <<< (unsafeCoerce :: a -> Untyped)
 
 marginThreshold :: forall r. Int -> IProp (marginThreshold :: Int | r)
 marginThreshold = mkProp "marginThreshold"
@@ -62,20 +62,20 @@ marginThreshold = mkProp "marginThreshold"
 modal :: forall r. Boolean -> IProp (modal :: Boolean | r)
 modal = mkProp "modal"
 
-paperProps :: forall r. Untyped -> IProp ("PaperProps" :: Untyped | r)
-paperProps = mkProp "PaperProps"
+paperProps :: forall r a. a -> IProp ("PaperProps" :: Untyped | r)
+paperProps = mkProp "PaperProps" <<< (unsafeCoerce :: a -> Untyped)
 
 role :: forall r. String -> IProp (role :: String | r)
 role = mkProp "role"
 
-transformOrigin :: forall r. Untyped -> IProp (transformOrigin :: Untyped | r)
-transformOrigin = mkProp "transformOrigin"
+transformOrigin :: forall r a. a -> IProp (transformOrigin :: Untyped | r)
+transformOrigin = mkProp "transformOrigin" <<< (unsafeCoerce :: a -> Untyped)
 
 transition :: forall r a. IsReactType a => a -> IProp (transition :: ReactType | r)
 transition = mkProp "transition" <<< (unsafeCoerce :: a -> ReactType)
 
-transitionDuration :: forall r. Untyped -> IProp (transitionDuration :: Untyped | r)
-transitionDuration = mkProp "transitionDuration"
+transitionDuration :: forall r a. a -> IProp (transitionDuration :: Untyped | r)
+transitionDuration = mkProp "transitionDuration" <<< (unsafeCoerce :: a -> Untyped)
 
 popoverU :: forall props. props -> Array ReactElement -> ReactElement
 popoverU = createElement popoverClass

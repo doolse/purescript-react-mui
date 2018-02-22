@@ -7,6 +7,7 @@ import React (ReactClass, ReactElement, createElement)
 import MaterialUI.Paper (PaperPropsExt)
 import MaterialUI.PropTypes (Untyped)
 import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
+import Unsafe.Coerce (unsafeCoerce)
 
 foreign import expansionPanelClass :: forall props. ReactClass props
 
@@ -25,8 +26,8 @@ type ExpansionPanelProps = ExpansionPanelPropsExt (
 ) 
 
 
-collapseProps :: forall r. Untyped -> IProp ("CollapseProps" :: Untyped | r)
-collapseProps = mkProp "CollapseProps"
+collapseProps :: forall r a. a -> IProp ("CollapseProps" :: Untyped | r)
+collapseProps = mkProp "CollapseProps" <<< (unsafeCoerce :: a -> Untyped)
 
 defaultExpanded :: forall r. Boolean -> IProp (defaultExpanded :: Boolean | r)
 defaultExpanded = mkProp "defaultExpanded"
@@ -37,8 +38,8 @@ disabled = mkProp "disabled"
 expanded :: forall r. Boolean -> IProp (expanded :: Boolean | r)
 expanded = mkProp "expanded"
 
-onChange :: forall r. Untyped -> IProp (onChange :: Untyped | r)
-onChange = mkProp "onChange"
+onChange :: forall r a. a -> IProp (onChange :: Untyped | r)
+onChange = mkProp "onChange" <<< (unsafeCoerce :: a -> Untyped)
 
 expansionPanelU :: forall props. props -> Array ReactElement -> ReactElement
 expansionPanelU = createElement expansionPanelClass

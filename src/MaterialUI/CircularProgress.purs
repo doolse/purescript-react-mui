@@ -6,6 +6,7 @@ import Prelude
 import React (ReactClass, ReactElement, createElement)
 import MaterialUI.PropTypes (StandardPropsExt, Untyped)
 import MaterialUI.Properties (mkProp, IProp, mkPropRecord, class IsProp)
+import Unsafe.Coerce (unsafeCoerce)
 
 foreign import circularProgressClass :: forall props. ReactClass props
 
@@ -54,8 +55,8 @@ max = mkProp "max"
 min :: forall r. Int -> IProp (min :: Int | r)
 min = mkProp "min"
 
-size :: forall r. Untyped -> IProp (size :: Untyped | r)
-size = mkProp "size"
+size :: forall r a. a -> IProp (size :: Untyped | r)
+size = mkProp "size" <<< (unsafeCoerce :: a -> Untyped)
 
 thickness :: forall r. Int -> IProp (thickness :: Int | r)
 thickness = mkProp "thickness"

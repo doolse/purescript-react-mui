@@ -4,8 +4,8 @@ module MaterialUI.TextField where
 
 import Prelude
 import React (ReactClass, ReactElement, createElement)
-import MaterialUI.PropTypes (Untyped, StandardPropsExt, ReactNode, class IsReactNode)
-import MaterialUI.Properties (IProp, mkProp, mkPropRecord)
+import MaterialUI.PropTypes (Untyped, StandardPropsExt, class IsReactNode, ReactNode)
+import MaterialUI.Properties (IProp, mkPropRecord, mkProp)
 import Unsafe.Coerce (unsafeCoerce)
 
 foreign import textFieldClass :: forall props. ReactClass props
@@ -54,8 +54,8 @@ autoComplete = mkProp "autoComplete"
 autoFocus :: forall r. Boolean -> IProp (autoFocus :: Boolean | r)
 autoFocus = mkProp "autoFocus"
 
-defaultValue :: forall r. Untyped -> IProp (defaultValue :: Untyped | r)
-defaultValue = mkProp "defaultValue"
+defaultValue :: forall r a. a -> IProp (defaultValue :: Untyped | r)
+defaultValue = mkProp "defaultValue" <<< (unsafeCoerce :: a -> Untyped)
 
 disabled :: forall r. Boolean -> IProp (disabled :: Boolean | r)
 disabled = mkProp "disabled"
@@ -63,8 +63,8 @@ disabled = mkProp "disabled"
 error :: forall r. Boolean -> IProp (error :: Boolean | r)
 error = mkProp "error"
 
-formHelperTextProps :: forall r. Untyped -> IProp ("FormHelperTextProps" :: Untyped | r)
-formHelperTextProps = mkProp "FormHelperTextProps"
+formHelperTextProps :: forall r a. a -> IProp ("FormHelperTextProps" :: Untyped | r)
+formHelperTextProps = mkProp "FormHelperTextProps" <<< (unsafeCoerce :: a -> Untyped)
 
 fullWidth :: forall r. Boolean -> IProp (fullWidth :: Boolean | r)
 fullWidth = mkProp "fullWidth"
@@ -78,14 +78,14 @@ helperTextClassName = mkProp "helperTextClassName"
 id :: forall r. String -> IProp (id :: String | r)
 id = mkProp "id"
 
-inputLabelProps :: forall r. Untyped -> IProp ("InputLabelProps" :: Untyped | r)
-inputLabelProps = mkProp "InputLabelProps"
+inputLabelProps :: forall r a. a -> IProp ("InputLabelProps" :: Untyped | r)
+inputLabelProps = mkProp "InputLabelProps" <<< (unsafeCoerce :: a -> Untyped)
 
-inputProps :: forall r. Untyped -> IProp ("InputProps" :: Untyped | r)
-inputProps = mkProp "InputProps"
+inputProps :: forall r a. a -> IProp ("InputProps" :: Untyped | r)
+inputProps = mkProp "InputProps" <<< (unsafeCoerce :: a -> Untyped)
 
-inputRef :: forall r. Untyped -> IProp (inputRef :: Untyped | r)
-inputRef = mkProp "inputRef"
+inputRef :: forall r a. a -> IProp (inputRef :: Untyped | r)
+inputRef = mkProp "inputRef" <<< (unsafeCoerce :: a -> Untyped)
 
 label :: forall r a. IsReactNode a => a -> IProp (label :: ReactNode | r)
 label = mkProp "label" <<< (unsafeCoerce :: a -> ReactNode)
@@ -93,8 +93,8 @@ label = mkProp "label" <<< (unsafeCoerce :: a -> ReactNode)
 labelClassName :: forall r. String -> IProp (labelClassName :: String | r)
 labelClassName = mkProp "labelClassName"
 
-margin :: forall r. Untyped -> IProp (margin :: Untyped | r)
-margin = mkProp "margin"
+margin :: forall r a. a -> IProp (margin :: Untyped | r)
+margin = mkProp "margin" <<< (unsafeCoerce :: a -> Untyped)
 
 multiline :: forall r. Boolean -> IProp (multiline :: Boolean | r)
 multiline = mkProp "multiline"
@@ -102,8 +102,8 @@ multiline = mkProp "multiline"
 name :: forall r. String -> IProp (name :: String | r)
 name = mkProp "name"
 
-onChange :: forall r. Untyped -> IProp (onChange :: Untyped | r)
-onChange = mkProp "onChange"
+onChange :: forall r a. a -> IProp (onChange :: Untyped | r)
+onChange = mkProp "onChange" <<< (unsafeCoerce :: a -> Untyped)
 
 placeholder :: forall r. String -> IProp (placeholder :: String | r)
 placeholder = mkProp "placeholder"
@@ -111,20 +111,20 @@ placeholder = mkProp "placeholder"
 required :: forall r. Boolean -> IProp (required :: Boolean | r)
 required = mkProp "required"
 
-rows :: forall r. Untyped -> IProp (rows :: Untyped | r)
-rows = mkProp "rows"
+rows :: forall r a. a -> IProp (rows :: Untyped | r)
+rows = mkProp "rows" <<< (unsafeCoerce :: a -> Untyped)
 
-rowsMax :: forall r. Untyped -> IProp (rowsMax :: Untyped | r)
-rowsMax = mkProp "rowsMax"
+rowsMax :: forall r a. a -> IProp (rowsMax :: Untyped | r)
+rowsMax = mkProp "rowsMax" <<< (unsafeCoerce :: a -> Untyped)
 
 select :: forall r. Boolean -> IProp (select :: Boolean | r)
 select = mkProp "select"
 
-selectProps :: forall r. Untyped -> IProp ("SelectProps" :: Untyped | r)
-selectProps = mkProp "SelectProps"
+selectProps :: forall r a. a -> IProp ("SelectProps" :: Untyped | r)
+selectProps = mkProp "SelectProps" <<< (unsafeCoerce :: a -> Untyped)
 
-value :: forall r. Untyped -> IProp (value :: Untyped | r)
-value = mkProp "value"
+value :: forall r a. a -> IProp (value :: Untyped | r)
+value = mkProp "value" <<< (unsafeCoerce :: a -> Untyped)
 
 textFieldU :: forall props. props -> Array ReactElement -> ReactElement
 textFieldU = createElement textFieldClass
