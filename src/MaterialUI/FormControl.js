@@ -1,0 +1,1 @@
+exports.formControlClass = require('material-ui/Form').FormControl;

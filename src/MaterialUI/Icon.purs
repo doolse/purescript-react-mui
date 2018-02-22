@@ -14,7 +14,8 @@ newtype IconColor = IconColor String
 derive newtype instance isPropIconColor :: IsProp IconColor
 instance iconColorIsColor :: IsColor IconColor
 type IconPropsExt r = StandardPropsExt (
-  color :: IconColor
+  color :: IconColor,
+  fontSize :: Boolean
   | r
 ) 
 
@@ -31,6 +32,8 @@ disabled = IconColor "disabled"
 error :: IconColor
 error = IconColor "error"
 
+fontSize :: forall r. Boolean -> IProp (fontSize :: Boolean | r)
+fontSize = mkProp "fontSize"
 
 iconU :: forall props. props -> Array ReactElement -> ReactElement
 iconU = createElement iconClass

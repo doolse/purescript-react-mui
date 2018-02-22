@@ -1,0 +1,1 @@
+exports.radioGroupClass = require('material-ui/Radio').RadioGroup;

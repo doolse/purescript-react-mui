@@ -1,0 +1,1 @@
+exports.formHelperTextClass = require('material-ui/Form').FormHelperText;

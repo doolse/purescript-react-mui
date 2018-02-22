@@ -1,0 +1,1 @@
+exports.radioClass = require('material-ui/Radio').default;

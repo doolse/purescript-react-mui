@@ -4,6 +4,7 @@ module MaterialUI.Switch where
 
 import Prelude
 import React (ReactClass, ReactElement, createElement)
+import Data.Function (applyFlipped)
 import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
 import MaterialUI.SwitchBase (SwitchBasePropsExt)
 
@@ -24,9 +25,6 @@ type SwitchProps = SwitchPropsExt (
 switchU :: forall props. props -> Array ReactElement -> ReactElement
 switchU = createElement switchClass
 
-switch :: Array (IProp SwitchProps) -> Array ReactElement -> ReactElement
-switch = mkPropRecord >>> switchU
-
-switch_ :: Array ReactElement -> ReactElement
-switch_ = switchU {}
+switch :: Array (IProp SwitchProps) -> ReactElement
+switch = mkPropRecord >>> switchU >>> applyFlipped []
 

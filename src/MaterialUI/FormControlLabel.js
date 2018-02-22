@@ -1,0 +1,1 @@
+exports.formControlLabelClass = require('material-ui/Form').FormControlLabel;
