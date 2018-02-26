@@ -4,8 +4,9 @@ module MaterialUI.TextField where
 
 import Prelude
 import React (ReactClass, ReactElement, createElement)
-import MaterialUI.PropTypes (Untyped, StandardPropsExt, class IsReactNode, ReactNode)
-import MaterialUI.Properties (IProp, mkPropRecord, mkProp)
+import Data.Function (applyFlipped)
+import MaterialUI.PropTypes (Untyped, class IsReactNode, ReactNode, StandardPropsExt)
+import MaterialUI.Properties (mkProp, mkPropRecord, IProp)
 import Unsafe.Coerce (unsafeCoerce)
 
 foreign import textFieldClass :: forall props. ReactClass props
@@ -129,9 +130,6 @@ value = mkProp "value" <<< (unsafeCoerce :: a -> Untyped)
 textFieldU :: forall props. props -> Array ReactElement -> ReactElement
 textFieldU = createElement textFieldClass
 
-textField :: Array (IProp TextFieldProps) -> Array ReactElement -> ReactElement
-textField = mkPropRecord >>> textFieldU
-
-textField_ :: Array ReactElement -> ReactElement
-textField_ = textFieldU {}
+textField :: Array (IProp TextFieldProps) -> ReactElement
+textField = mkPropRecord >>> textFieldU >>> applyFlipped []
 
