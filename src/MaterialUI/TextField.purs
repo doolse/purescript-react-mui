@@ -18,14 +18,12 @@ type TextFieldPropsExt r = StandardPropsExt (
   "FormHelperTextProps" :: Untyped {-Identifier:Partial-},
   fullWidth :: Boolean,
   helperText :: ReactNode,
-  helperTextClassName :: String,
   id :: String,
   "InputLabelProps" :: Untyped {-Identifier:Partial-},
   "InputProps" :: Untyped {-Identifier:Partial-},
   inputProps :: Untyped {-unknownType:IndexedAccessType-},
   inputRef :: Untyped {-React.Ref-},
   label :: ReactNode,
-  labelClassName :: String,
   margin :: Untyped {-PropTypes.Margin-},
   multiline :: Boolean,
   name :: String,
@@ -70,9 +68,6 @@ fullWidth = mkProp "fullWidth"
 helperText :: forall r a. IsReactNode a => a -> IProp (helperText :: ReactNode | r)
 helperText = mkProp "helperText" <<< (unsafeCoerce :: a -> ReactNode)
 
-helperTextClassName :: forall r. String -> IProp (helperTextClassName :: String | r)
-helperTextClassName = mkProp "helperTextClassName"
-
 id :: forall r. String -> IProp (id :: String | r)
 id = mkProp "id"
 
@@ -87,9 +82,6 @@ inputRef = mkProp "inputRef" <<< (unsafeCoerce :: a -> Untyped)
 
 label :: forall r a. IsReactNode a => a -> IProp (label :: ReactNode | r)
 label = mkProp "label" <<< (unsafeCoerce :: a -> ReactNode)
-
-labelClassName :: forall r. String -> IProp (labelClassName :: String | r)
-labelClassName = mkProp "labelClassName"
 
 margin :: forall r a. a -> IProp (margin :: Untyped | r)
 margin = mkProp "margin" <<< (unsafeCoerce :: a -> Untyped)

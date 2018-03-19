@@ -1,0 +1,1 @@
+exports.cssBaselineClass = require('material-ui/CssBaseline').default;

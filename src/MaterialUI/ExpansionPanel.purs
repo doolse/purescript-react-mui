@@ -11,7 +11,7 @@ import Unsafe.Coerce (unsafeCoerce)
 
 
 type ExpansionPanelPropsExt r = PaperPropsExt (
-  "CollapseProps" :: Untyped {-React.ComponentType-},
+  "CollapseProps" :: Untyped {-Identifier:Partial-},
   defaultExpanded :: Boolean,
   disabled :: Boolean,
   expanded :: Boolean,

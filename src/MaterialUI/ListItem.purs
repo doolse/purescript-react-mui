@@ -4,14 +4,17 @@ module MaterialUI.ListItem where
 
 import Prelude
 import MaterialUI.ButtonBase (ButtonBasePropsExt)
-import MaterialUI.PropTypes (ReactType)
-import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
-import React (createElement, ReactClass, ReactElement)
+import MaterialUI.PropTypes (ReactType, class IsReactType, Untyped)
+import MaterialUI.Properties (IProp, mkProp, mkPropRecord)
+import React (ReactElement, createElement, ReactClass)
+import Unsafe.Coerce (unsafeCoerce)
 
 
 type ListItemPropsExt r = ButtonBasePropsExt (
   button :: Boolean,
   component :: ReactType,
+  "ContainerComponent" :: ReactType,
+  "ContainerProps" :: Untyped {-React.HTMLAttributes-},
   dense :: Boolean,
   disabled :: Boolean,
   disableGutters :: Boolean,
@@ -26,6 +29,12 @@ type ListItemProps = ListItemPropsExt (
 
 button :: forall r. Boolean -> IProp (button :: Boolean | r)
 button = mkProp "button"
+
+containerComponent :: forall r a. IsReactType a => a -> IProp ("ContainerComponent" :: ReactType | r)
+containerComponent = mkProp "ContainerComponent" <<< (unsafeCoerce :: a -> ReactType)
+
+containerProps :: forall r a. a -> IProp ("ContainerProps" :: Untyped | r)
+containerProps = mkProp "ContainerProps" <<< (unsafeCoerce :: a -> Untyped)
 
 dense :: forall r. Boolean -> IProp (dense :: Boolean | r)
 dense = mkProp "dense"

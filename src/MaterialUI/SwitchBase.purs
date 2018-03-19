@@ -10,11 +10,9 @@ import Unsafe.Coerce (unsafeCoerce)
 
 type SwitchBasePropsExt r = StandardPropsExt (
   checked :: Untyped {-UNION["Boolean","String"]-},
-  checkedClassName :: String,
   checkedIcon :: ReactNode,
   defaultChecked :: Boolean,
   disabled :: Boolean,
-  disabledClassName :: String,
   disableRipple :: Boolean,
   icon :: ReactNode,
   indeterminate :: Boolean,
@@ -36,9 +34,6 @@ type SwitchBaseProps = SwitchBasePropsExt (
 checked :: forall r a. a -> IProp (checked :: Untyped | r)
 checked = mkProp "checked" <<< (unsafeCoerce :: a -> Untyped)
 
-checkedClassName :: forall r. String -> IProp (checkedClassName :: String | r)
-checkedClassName = mkProp "checkedClassName"
-
 checkedIcon :: forall r a. IsReactNode a => a -> IProp (checkedIcon :: ReactNode | r)
 checkedIcon = mkProp "checkedIcon" <<< (unsafeCoerce :: a -> ReactNode)
 
@@ -47,9 +42,6 @@ defaultChecked = mkProp "defaultChecked"
 
 disabled :: forall r. Boolean -> IProp (disabled :: Boolean | r)
 disabled = mkProp "disabled"
-
-disabledClassName :: forall r. String -> IProp (disabledClassName :: String | r)
-disabledClassName = mkProp "disabledClassName"
 
 disableRipple :: forall r. Boolean -> IProp (disableRipple :: Boolean | r)
 disableRipple = mkProp "disableRipple"
