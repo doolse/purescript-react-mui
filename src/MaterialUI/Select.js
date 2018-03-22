@@ -1,0 +1,1 @@
+exports.selectClass = require('material-ui/Select').default;
