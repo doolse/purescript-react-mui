@@ -1,1 +1,1 @@
-exports.cardActionsClass = require('material-ui/CardActions').default;
+exports.cardActionsClass = require('material-ui/Card').CardActions;
