@@ -8,10 +8,12 @@ exports.withStyles = function () {
 
 exports.mediaQuery = function (name) {
   return function (mediaStyles) {
-    return function (other) {
-      var out = Object.assign({}, other);
+      var out = {};
       out[name] = mediaStyles;
       return out;
-    }
   }
+}
+
+exports.cssList = function (arr) {
+  return Object.assign.apply(undefined, [{}].concat(arr));
 }
