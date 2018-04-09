@@ -7,7 +7,6 @@ import MaterialUI.PropTypes (StandardPropsExt)
 import MaterialUI.Properties (mkPropRecord, IProp)
 import React (ReactElement, createElement, ReactClass)
 
-
 type ListItemIconPropsExt (r :: # Type) = StandardPropsExt (
 
   | r

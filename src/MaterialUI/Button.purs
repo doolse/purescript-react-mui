@@ -4,19 +4,13 @@ module MaterialUI.Button where
 
 import Prelude
 import MaterialUI.ButtonBase (ButtonBasePropsExt)
-import MaterialUI.Color (Color)
-import MaterialUI.PropTypes (ReactType)
-import MaterialUI.Properties (IProp, class IsProp, mkProp, mkPropRecord)
-import React (createElement, ReactClass, ReactElement)
-
-newtype Size = Size String
-derive newtype instance isPropSize :: IsProp Size
-
-newtype Variant = Variant String
-derive newtype instance isPropVariant :: IsProp Variant
+import MaterialUI.PropTypes (StdColor, ReactType)
+import MaterialUI.Properties (mkProp, IProp, Enum, mkPropRecord)
+import React (ReactElement, createElement, ReactClass)
+import Unsafe.Coerce (unsafeCoerce)
 
 type ButtonPropsExt r = ButtonBasePropsExt (
-  color :: Color,
+  color :: Enum (StdColor ()),
   component :: ReactType,
   disabled :: Boolean,
   disableFocusRipple :: Boolean,
@@ -24,9 +18,9 @@ type ButtonPropsExt r = ButtonBasePropsExt (
   fullWidth :: Boolean,
   href :: String,
   mini :: Boolean,
-  size :: Size,
+  size :: Enum (small :: String, medium :: String, large :: String),
   type :: String,
-  variant :: Variant
+  variant :: Enum (flat :: String, raised :: String, fab :: String)
   | r
 ) 
 
@@ -34,23 +28,23 @@ type ButtonProps = ButtonPropsExt (
 
 ) 
 
-small :: Size
-small = Size "small"
+small :: forall r. Enum (small :: String | r )
+small = unsafeCoerce "small"
 
-medium :: Size
-medium = Size "medium"
+medium :: forall r. Enum (medium :: String | r )
+medium = unsafeCoerce "medium"
 
-large :: Size
-large = Size "large"
+large :: forall r. Enum (large :: String | r )
+large = unsafeCoerce "large"
 
-flat :: Variant
-flat = Variant "flat"
+flat :: forall r. Enum (flat :: String | r )
+flat = unsafeCoerce "flat"
 
-raised :: Variant
-raised = Variant "raised"
+raised :: forall r. Enum (raised :: String | r )
+raised = unsafeCoerce "raised"
 
-fab :: Variant
-fab = Variant "fab"
+fab :: forall r. Enum (fab :: String | r )
+fab = unsafeCoerce "fab"
 
 disabled :: forall r. Boolean -> IProp (disabled :: Boolean | r)
 disabled = mkProp "disabled"
@@ -70,7 +64,7 @@ href = mkProp "href"
 mini :: forall r. Boolean -> IProp (mini :: Boolean | r)
 mini = mkProp "mini"
 
-size :: forall r. Size -> IProp (size :: Size | r)
+size :: forall r. Enum (small :: String, medium :: String, large :: String) -> IProp (size :: Enum (small :: String, medium :: String, large :: String) | r)
 size = mkProp "size"
 
 foreign import buttonClass :: forall props. ReactClass props

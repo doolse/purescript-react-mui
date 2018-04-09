@@ -6,7 +6,6 @@ import Prelude
 import MaterialUI.Properties (mkPropRecord, IProp)
 import React (ReactElement, createElement, ReactClass)
 
-
 type CssBaselinePropsExt (r :: # Type) = (
 
   | r

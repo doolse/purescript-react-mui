@@ -9,7 +9,6 @@ import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
 import React (ReactElement, createElement, ReactClass)
 import Unsafe.Coerce (unsafeCoerce)
 
-
 type MenuPropsExt r = PopoverPropsExt (
   anchorEl :: Untyped {-Identifier:HTMLElement-},
   "MenuListProps" :: Untyped {-Identifier:Partial-},

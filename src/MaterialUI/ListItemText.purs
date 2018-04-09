@@ -8,7 +8,6 @@ import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
 import React (ReactElement, createElement, ReactClass)
 import Unsafe.Coerce (unsafeCoerce)
 
-
 type ListItemTextPropsExt r = StandardPropsExt (
   disableTypography :: Boolean,
   inset :: Boolean,

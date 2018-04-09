@@ -8,7 +8,6 @@ import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
 import React (ReactElement, createElement, ReactClass)
 import Unsafe.Coerce (unsafeCoerce)
 
-
 type AvatarPropsExt r = StandardPropsExt (
   alt :: String,
   childrenClassName :: String,

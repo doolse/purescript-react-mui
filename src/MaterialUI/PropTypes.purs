@@ -14,6 +14,14 @@ type StandardPropsExt r = (
   | r
 )
 
+type StdColor r = (
+  inherit :: String,
+  primary :: String, 
+  secondary :: String,
+  default :: String
+  | r
+)
+
 foreign import data ReactType :: Type
 foreign import data ReactNode :: Type
 
@@ -23,6 +31,7 @@ class IsReactType a
 instance reactTypeString :: IsReactType String
 instance reactElemNode :: IsReactNode ReactElement
 instance reactStringNode :: IsReactNode String
+instance reactIntNode :: IsReactNode Int
 
 foreign import data EventHandler :: Type -> Type
 

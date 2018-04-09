@@ -9,7 +9,6 @@ import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
 import React (createElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
-
 type FormControlPropsExt r = StandardPropsExt (
   component :: ReactType,
   disabled :: Boolean,

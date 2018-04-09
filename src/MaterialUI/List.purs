@@ -7,7 +7,6 @@ import MaterialUI.PropTypes (StandardPropsExt, ReactType)
 import MaterialUI.Properties (IProp, mkProp, mkPropRecord)
 import React (ReactElement, createElement, ReactClass)
 
-
 type ListPropsExt r = StandardPropsExt (
   component :: ReactType,
   dense :: Boolean,

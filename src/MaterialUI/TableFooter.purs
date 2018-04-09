@@ -7,7 +7,6 @@ import MaterialUI.PropTypes (ReactType)
 import MaterialUI.Properties (mkPropRecord, IProp)
 import React (ReactElement, createElement, ReactClass)
 
-
 type TableFooterPropsExt r = (
   component :: ReactType
   | r

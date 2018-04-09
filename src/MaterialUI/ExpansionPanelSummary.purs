@@ -10,7 +10,6 @@ import MaterialUI.Properties (IProp, mkProp, mkPropRecord)
 import React (createElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
-
 type ExpansionPanelSummaryPropsExt r = ButtonBasePropsExt (
   disabled :: Boolean,
   expanded :: Boolean,

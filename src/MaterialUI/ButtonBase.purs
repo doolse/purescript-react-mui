@@ -9,7 +9,6 @@ import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
 import React (ReactElement, createElement, ReactClass)
 import Unsafe.Coerce (unsafeCoerce)
 
-
 type ButtonBasePropsExt r = StandardPropsExt (
   buttonRef :: Untyped {-React.Ref-},
   centerRipple :: Boolean,

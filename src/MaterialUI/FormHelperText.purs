@@ -8,7 +8,6 @@ import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
 import React (ReactElement, createElement, ReactClass)
 import Unsafe.Coerce (unsafeCoerce)
 
-
 type FormHelperTextPropsExt r = StandardPropsExt (
   disabled :: Boolean,
   error :: Boolean,

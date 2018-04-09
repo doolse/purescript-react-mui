@@ -9,7 +9,6 @@ import MaterialUI.Properties (IProp, mkPropRecord, mkProp)
 import React (ReactElement, createElement, ReactClass)
 import Unsafe.Coerce (unsafeCoerce)
 
-
 type PopoverPropsExt r = ModalPropsExt (
   action :: Untyped {-unknownType:FunctionType-},
   anchorEl :: Untyped {-UNION[Identifier:HTMLElement,unknownType:ParenthesizedType]-},

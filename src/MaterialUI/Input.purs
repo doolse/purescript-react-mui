@@ -8,7 +8,6 @@ import MaterialUI.Properties (IProp, mkProp, mkPropRecord)
 import React (ReactElement, createElement, ReactClass)
 import Unsafe.Coerce (unsafeCoerce)
 
-
 type InputPropsExt r = StandardPropsExt (
   autoComplete :: String,
   autoFocus :: Boolean,
@@ -20,7 +19,7 @@ type InputPropsExt r = StandardPropsExt (
   fullWidth :: Boolean,
   id :: String,
   inputComponent :: ReactType,
-  inputProps :: Untyped {-UNION[FQN:React.TextareaHTMLAttributes,FQN:React.InputHTMLAttributes]-},
+  inputProps :: Untyped {-unknownType:TypeLiteral-},
   inputRef :: Untyped {-React.Ref-},
   margin :: Untyped {-'dense'-},
   multiline :: Boolean,
@@ -31,8 +30,6 @@ type InputPropsExt r = StandardPropsExt (
   startAdornment :: ReactNode,
   type :: String,
   value :: Untyped {-UNION[Identifier:Array,"String","Number"]-},
-  onClean :: Untyped {-unknownType:FunctionType-},
-  onDirty :: Untyped {-unknownType:FunctionType-},
   onChange :: Untyped {-React.ChangeEventHandler-},
   onKeyUp :: Untyped {-React.KeyboardEventHandler-},
   onKeyDown :: Untyped {-React.KeyboardEventHandler-}
@@ -100,12 +97,6 @@ startAdornment = mkProp "startAdornment" <<< (unsafeCoerce :: a -> ReactNode)
 
 value :: forall r a. a -> IProp (value :: Untyped | r)
 value = mkProp "value" <<< (unsafeCoerce :: a -> Untyped)
-
-onClean :: forall r a. a -> IProp (onClean :: Untyped | r)
-onClean = mkProp "onClean" <<< (unsafeCoerce :: a -> Untyped)
-
-onDirty :: forall r a. a -> IProp (onDirty :: Untyped | r)
-onDirty = mkProp "onDirty" <<< (unsafeCoerce :: a -> Untyped)
 
 onChange :: forall r a. a -> IProp (onChange :: Untyped | r)
 onChange = mkProp "onChange" <<< (unsafeCoerce :: a -> Untyped)

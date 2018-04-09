@@ -4,15 +4,12 @@ module MaterialUI.Hidden where
 
 import Prelude
 import MaterialUI.PropTypes (Untyped, StandardPropsExt)
-import MaterialUI.Properties (class IsProp, mkProp, IProp, mkPropRecord)
+import MaterialUI.Properties (IProp, Enum, mkProp, mkPropRecord)
 import React (ReactElement, createElement, ReactClass)
 import Unsafe.Coerce (unsafeCoerce)
 
-newtype Implementation = Implementation String
-derive newtype instance isPropImplementation :: IsProp Implementation
-
 type HiddenPropsExt r = StandardPropsExt (
-  implementation :: Implementation,
+  implementation :: Enum (js :: String, css :: String),
   initialWidth :: Untyped {-Identifier:Breakpoint-},
   lgDown :: Boolean,
   lgUp :: Boolean,
@@ -32,13 +29,13 @@ type HiddenProps = HiddenPropsExt (
 
 ) 
 
-js :: Implementation
-js = Implementation "js"
+js :: forall r. Enum (js :: String | r )
+js = unsafeCoerce "js"
 
-css :: Implementation
-css = Implementation "css"
+css :: forall r. Enum (css :: String | r )
+css = unsafeCoerce "css"
 
-implementation :: forall r. Implementation -> IProp (implementation :: Implementation | r)
+implementation :: forall r. Enum (js :: String, css :: String) -> IProp (implementation :: Enum (js :: String, css :: String) | r)
 implementation = mkProp "implementation"
 
 initialWidth :: forall r a. a -> IProp (initialWidth :: Untyped | r)

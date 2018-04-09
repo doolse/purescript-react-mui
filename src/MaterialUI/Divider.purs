@@ -7,7 +7,6 @@ import MaterialUI.PropTypes (StandardPropsExt, ReactType)
 import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
 import React (createElement, ReactClass, ReactElement)
 
-
 type DividerPropsExt r = StandardPropsExt (
   absolute :: Boolean,
   component :: ReactType,

@@ -9,6 +9,8 @@ import Unsafe.Coerce (unsafeCoerce)
 foreign import data IProp :: # Type -> Type
 foreign import data PropValue :: Type
 
+foreign import data Enum :: # Type -> Type 
+
 class IsProp a where
   toProp :: a -> PropValue
 
@@ -40,6 +42,9 @@ instance reactNodeIsProp :: IsProp ReactNode where
   toProp = unsafeCoerce
 
 instance reactElementIsProp :: IsProp ReactElement where
+  toProp = unsafeCoerce
+
+instance enumIsProp :: IsProp (Enum a) where
   toProp = unsafeCoerce
 
 foreign import mkPropRecord :: forall r rp. Array (IProp r) -> Record rp

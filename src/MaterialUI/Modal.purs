@@ -9,7 +9,6 @@ import MaterialUI.Properties (IProp, mkPropRecord, mkProp)
 import React (ReactElement, createElement, ReactClass)
 import Unsafe.Coerce (unsafeCoerce)
 
-
 type ModalPropsExt r = StandardPropsExt (
   "BackdropComponent" :: ReactType,
   "BackdropProps" :: Untyped {-Identifier:Partial-},

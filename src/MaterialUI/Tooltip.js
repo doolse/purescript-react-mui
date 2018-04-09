@@ -1,0 +1,1 @@
+exports.tooltipClass = require('material-ui/Tooltip').default;

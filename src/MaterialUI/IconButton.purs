@@ -4,13 +4,12 @@ module MaterialUI.IconButton where
 
 import Prelude
 import MaterialUI.ButtonBase (ButtonBasePropsExt)
-import MaterialUI.Color (Color)
-import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
-import React (ReactClass, ReactElement, createElement)
-
+import MaterialUI.PropTypes (StdColor)
+import MaterialUI.Properties (IProp, mkProp, Enum, mkPropRecord)
+import React (createElement, ReactClass, ReactElement)
 
 type IconButtonPropsExt r = ButtonBasePropsExt (
-  color :: Color,
+  color :: Enum (StdColor ()),
   disabled :: Boolean,
   disableRipple :: Boolean
   | r

@@ -4,24 +4,18 @@ module MaterialUI.CircularProgress where
 
 import Prelude
 import MaterialUI.PropTypes (StandardPropsExt, Untyped)
-import MaterialUI.Properties (class IsProp, IProp, mkProp, mkPropRecord)
-import React (createElement, ReactClass, ReactElement)
+import MaterialUI.Properties (IProp, Enum, mkProp, mkPropRecord)
+import React (ReactElement, createElement, ReactClass)
 import Unsafe.Coerce (unsafeCoerce)
 
-newtype CircularProgressColor = CircularProgressColor String
-derive newtype instance isPropCircularProgressColor :: IsProp CircularProgressColor
-
-newtype Variant = Variant String
-derive newtype instance isPropVariant :: IsProp Variant
-
 type CircularProgressPropsExt r = StandardPropsExt (
-  color :: CircularProgressColor,
+  color :: Enum (primary :: String, secondary :: String, inherit :: String),
   max :: Int,
   min :: Int,
   size :: Untyped {-UNION["Number","String"]-},
   thickness :: Int,
   value :: Int,
-  variant :: Variant
+  variant :: Enum (determinate :: String, indeterminate :: String, static :: String)
   | r
 ) 
 
@@ -29,23 +23,23 @@ type CircularProgressProps = CircularProgressPropsExt (
 
 ) 
 
-primary :: CircularProgressColor
-primary = CircularProgressColor "primary"
+primary :: forall r. Enum (primary :: String | r )
+primary = unsafeCoerce "primary"
 
-secondary :: CircularProgressColor
-secondary = CircularProgressColor "secondary"
+secondary :: forall r. Enum (secondary :: String | r )
+secondary = unsafeCoerce "secondary"
 
-inherit :: CircularProgressColor
-inherit = CircularProgressColor "inherit"
+inherit :: forall r. Enum (inherit :: String | r )
+inherit = unsafeCoerce "inherit"
 
-determinate :: Variant
-determinate = Variant "determinate"
+determinate :: forall r. Enum (determinate :: String | r )
+determinate = unsafeCoerce "determinate"
 
-indeterminate :: Variant
-indeterminate = Variant "indeterminate"
+indeterminate :: forall r. Enum (indeterminate :: String | r )
+indeterminate = unsafeCoerce "indeterminate"
 
-static :: Variant
-static = Variant "static"
+static :: forall r. Enum (static :: String | r )
+static = unsafeCoerce "static"
 
 max :: forall r. Int -> IProp (max :: Int | r)
 max = mkProp "max"

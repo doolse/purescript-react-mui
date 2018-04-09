@@ -7,7 +7,6 @@ import MaterialUI.PropTypes (StandardPropsExt, Untyped, ReactNode, class IsReact
 import MaterialUI.Properties (mkProp, IProp)
 import Unsafe.Coerce (unsafeCoerce)
 
-
 type SwitchBasePropsExt r = StandardPropsExt (
   checked :: Untyped {-UNION["Boolean","String"]-},
   checkedIcon :: ReactNode,

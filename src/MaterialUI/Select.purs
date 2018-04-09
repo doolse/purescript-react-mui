@@ -9,7 +9,6 @@ import MaterialUI.Properties (IProp, mkProp, mkPropRecord)
 import React (ReactElement, ReactClass, createElement)
 import Unsafe.Coerce (unsafeCoerce)
 
-
 type SelectPropsExt r = InputPropsExt (
   autoWidth :: Boolean,
   displayEmpty :: Boolean,

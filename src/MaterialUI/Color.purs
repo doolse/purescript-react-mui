@@ -1,23 +1,16 @@
 module MaterialUI.Color where
 
-import MaterialUI.Properties (class IsProp)
+import MaterialUI.Properties (Enum)
 import Unsafe.Coerce (unsafeCoerce)
 
-class IsColor a
-
-newtype Color = Color String
-
-instance colIsColor :: IsColor Color
-derive newtype instance isPropColor :: IsProp Color
-
-inherit :: forall a. IsColor a => a
+inherit :: forall r. Enum (inherit :: String | r)
 inherit = unsafeCoerce "inherit"
 
-primary :: forall a. IsColor a => a
+primary :: forall r. Enum (primary :: String | r)
 primary = unsafeCoerce "primary"
 
-secondary :: forall a. IsColor a => a
+secondary :: forall r. Enum (secondary :: String | r)
 secondary = unsafeCoerce "secondary"
 
-default :: forall a. IsColor a => a
+default :: forall r. Enum (default :: String | r)
 default = unsafeCoerce "default"

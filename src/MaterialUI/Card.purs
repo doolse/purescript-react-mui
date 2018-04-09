@@ -7,7 +7,6 @@ import MaterialUI.Paper (PaperPropsExt)
 import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
 import React (ReactElement, createElement, ReactClass)
 
-
 type CardPropsExt r = PaperPropsExt (
   raised :: Boolean
   | r

@@ -7,7 +7,6 @@ import MaterialUI.PropTypes (StandardPropsExt, ReactType)
 import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
 import React (ReactClass, ReactElement, createElement)
 
-
 type CardMediaPropsExt r = StandardPropsExt (
   component :: ReactType,
   image :: String,

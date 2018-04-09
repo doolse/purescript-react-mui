@@ -7,7 +7,6 @@ import MaterialUI.PropTypes (StandardPropsExt)
 import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
 import React (ReactElement, createElement, ReactClass)
 
-
 type ToolbarPropsExt r = StandardPropsExt (
   disableGutters :: Boolean
   | r

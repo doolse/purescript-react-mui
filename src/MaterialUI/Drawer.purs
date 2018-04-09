@@ -5,18 +5,12 @@ module MaterialUI.Drawer where
 import Prelude
 import MaterialUI.Modal (ModalPropsExt)
 import MaterialUI.PropTypes (Untyped)
-import MaterialUI.Properties (IProp, class IsProp, mkProp, mkPropRecord)
+import MaterialUI.Properties (mkProp, IProp, Enum, mkPropRecord)
 import React (ReactElement, createElement, ReactClass)
 import Unsafe.Coerce (unsafeCoerce)
 
-newtype Anchor = Anchor String
-derive newtype instance isPropAnchor :: IsProp Anchor
-
-newtype Variant = Variant String
-derive newtype instance isPropVariant :: IsProp Variant
-
 type DrawerPropsExt r = ModalPropsExt (
-  anchor :: Anchor,
+  anchor :: Enum (left :: String, top :: String, right :: String, bottom :: String),
   elevation :: Int,
   "ModalProps" :: Untyped {-Identifier:Partial-},
   open :: Boolean,
@@ -24,7 +18,7 @@ type DrawerPropsExt r = ModalPropsExt (
   "SlideProps" :: Untyped {-Identifier:Partial-},
   theme :: Untyped {-Identifier:Theme-},
   transitionDuration :: Untyped {-unknownType:IndexedAccessType-},
-  variant :: Variant
+  variant :: Enum (permanent :: String, persistent :: String, temporary :: String)
   | r
 ) 
 
@@ -32,28 +26,28 @@ type DrawerProps = DrawerPropsExt (
 
 ) 
 
-left :: Anchor
-left = Anchor "left"
+left :: forall r. Enum (left :: String | r )
+left = unsafeCoerce "left"
 
-top :: Anchor
-top = Anchor "top"
+top :: forall r. Enum (top :: String | r )
+top = unsafeCoerce "top"
 
-right :: Anchor
-right = Anchor "right"
+right :: forall r. Enum (right :: String | r )
+right = unsafeCoerce "right"
 
-bottom :: Anchor
-bottom = Anchor "bottom"
+bottom :: forall r. Enum (bottom :: String | r )
+bottom = unsafeCoerce "bottom"
 
-permanent :: Variant
-permanent = Variant "permanent"
+permanent :: forall r. Enum (permanent :: String | r )
+permanent = unsafeCoerce "permanent"
 
-persistent :: Variant
-persistent = Variant "persistent"
+persistent :: forall r. Enum (persistent :: String | r )
+persistent = unsafeCoerce "persistent"
 
-temporary :: Variant
-temporary = Variant "temporary"
+temporary :: forall r. Enum (temporary :: String | r )
+temporary = unsafeCoerce "temporary"
 
-anchor :: forall r. Anchor -> IProp (anchor :: Anchor | r)
+anchor :: forall r. Enum (left :: String, top :: String, right :: String, bottom :: String) -> IProp (anchor :: Enum (left :: String, top :: String, right :: String, bottom :: String) | r)
 anchor = mkProp "anchor"
 
 elevation :: forall r. Int -> IProp (elevation :: Int | r)

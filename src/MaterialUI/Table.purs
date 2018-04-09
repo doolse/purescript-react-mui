@@ -7,7 +7,6 @@ import MaterialUI.PropTypes (StandardPropsExt, ReactType)
 import MaterialUI.Properties (mkPropRecord, IProp)
 import React (ReactElement, createElement, ReactClass)
 
-
 type TablePropsExt r = StandardPropsExt (
   component :: ReactType
   | r

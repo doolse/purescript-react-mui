@@ -7,7 +7,6 @@ import MaterialUI.PropTypes (StandardPropsExt, ReactType)
 import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
 import React (ReactClass, ReactElement, createElement)
 
-
 type MenuItemPropsExt r = StandardPropsExt (
   component :: ReactType,
   role :: String,

@@ -9,7 +9,6 @@ import MaterialUI.Properties (IProp, mkProp, mkPropRecord)
 import React (ReactElement, createElement, ReactClass)
 import Unsafe.Coerce (unsafeCoerce)
 
-
 type ListItemPropsExt r = ButtonBasePropsExt (
   button :: Boolean,
   component :: ReactType,
