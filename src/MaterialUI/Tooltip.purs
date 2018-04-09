@@ -30,38 +30,38 @@ type TooltipProps = TooltipPropsExt (
 
 ) 
 
-bottom_end :: forall r. Enum ("bottom-end" :: String | r )
-bottom_end = unsafeCoerce "bottom-end"
+bottomEnd :: forall r. Enum ("bottom-end" :: String | r )
+bottomEnd = unsafeCoerce "bottom-end"
 
-bottom_start :: forall r. Enum ("bottom-start" :: String | r )
-bottom_start = unsafeCoerce "bottom-start"
+bottomStart :: forall r. Enum ("bottom-start" :: String | r )
+bottomStart = unsafeCoerce "bottom-start"
 
 bottom :: forall r. Enum (bottom :: String | r )
 bottom = unsafeCoerce "bottom"
 
-left_end :: forall r. Enum ("left-end" :: String | r )
-left_end = unsafeCoerce "left-end"
+leftEnd :: forall r. Enum ("left-end" :: String | r )
+leftEnd = unsafeCoerce "left-end"
 
-left_start :: forall r. Enum ("left-start" :: String | r )
-left_start = unsafeCoerce "left-start"
+leftStart :: forall r. Enum ("left-start" :: String | r )
+leftStart = unsafeCoerce "left-start"
 
 left :: forall r. Enum (left :: String | r )
 left = unsafeCoerce "left"
 
-right_end :: forall r. Enum ("right-end" :: String | r )
-right_end = unsafeCoerce "right-end"
+rightEnd :: forall r. Enum ("right-end" :: String | r )
+rightEnd = unsafeCoerce "right-end"
 
-right_start :: forall r. Enum ("right-start" :: String | r )
-right_start = unsafeCoerce "right-start"
+rightStart :: forall r. Enum ("right-start" :: String | r )
+rightStart = unsafeCoerce "right-start"
 
 right :: forall r. Enum (right :: String | r )
 right = unsafeCoerce "right"
 
-top_end :: forall r. Enum ("top-end" :: String | r )
-top_end = unsafeCoerce "top-end"
+topEnd :: forall r. Enum ("top-end" :: String | r )
+topEnd = unsafeCoerce "top-end"
 
-top_start :: forall r. Enum ("top-start" :: String | r )
-top_start = unsafeCoerce "top-start"
+topStart :: forall r. Enum ("top-start" :: String | r )
+topStart = unsafeCoerce "top-start"
 
 top :: forall r. Enum (top :: String | r )
 top = unsafeCoerce "top"

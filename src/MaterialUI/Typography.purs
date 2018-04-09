@@ -25,8 +25,8 @@ type TypographyProps = TypographyPropsExt (
 
 ) 
 
-textsecondary :: forall r. Enum (textSecondary :: String | r )
-textsecondary = unsafeCoerce "textSecondary"
+textSecondary :: forall r. Enum (textSecondary :: String | r )
+textSecondary = unsafeCoerce "textSecondary"
 
 error :: forall r. Enum (error :: String | r )
 error = unsafeCoerce "error"
