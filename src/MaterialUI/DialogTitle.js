@@ -1,0 +1,1 @@
+exports.dialogTitleClass = require('material-ui/Dialog').DialogTitle;

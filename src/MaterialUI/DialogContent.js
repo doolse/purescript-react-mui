@@ -1,0 +1,1 @@
+exports.dialogContentClass = require('material-ui/Dialog').DialogContent;

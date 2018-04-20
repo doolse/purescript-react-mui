@@ -1,0 +1,1 @@
+exports.dialogActionsClass = require('material-ui/Dialog').DialogActions;
