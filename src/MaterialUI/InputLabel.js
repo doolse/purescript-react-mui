@@ -1,0 +1,1 @@
+exports.inputLabelClass = require('material-ui/Input').InputLabel;
