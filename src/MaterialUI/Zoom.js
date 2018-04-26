@@ -1,0 +1,1 @@
+exports.zoomClass = require('material-ui/transitions/Zoom').default;

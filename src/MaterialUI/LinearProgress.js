@@ -1,0 +1,1 @@
+exports.linearProgressClass = require('material-ui/Progress').LinearProgress;

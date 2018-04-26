@@ -1,0 +1,1 @@
+exports.fadeClass = require('material-ui/transitions/Fade').default;

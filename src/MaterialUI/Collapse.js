@@ -1,0 +1,1 @@
+exports.collapseClass = require('material-ui/transitions/Collapse').default;

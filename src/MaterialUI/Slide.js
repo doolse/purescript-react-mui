@@ -1,0 +1,1 @@
+exports.slideClass = require('material-ui/transitions/Slide').default;

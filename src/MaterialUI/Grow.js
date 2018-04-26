@@ -1,0 +1,1 @@
+exports.growClass = require('material-ui/transitions/Grow').default;

@@ -61,8 +61,6 @@ foreign import circularProgressClass :: forall props. ReactClass props
 circularProgressU :: forall props. props -> Array ReactElement -> ReactElement
 circularProgressU = createElement circularProgressClass
 
-circularProgress :: Array (IProp CircularProgressProps) -> Array ReactElement -> ReactElement
-circularProgress = mkPropRecord >>> circularProgressU
+circularProgress :: Array (IProp CircularProgressProps) -> ReactElement
+circularProgress = mkPropRecord >>> circularProgressU >>> (#) []
 
-circularProgress_ :: Array ReactElement -> ReactElement
-circularProgress_ = circularProgressU {}
