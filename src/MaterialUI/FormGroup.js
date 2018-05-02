@@ -1,0 +1,1 @@
+exports.formGroupClass = require('material-ui/Form').FormGroup;

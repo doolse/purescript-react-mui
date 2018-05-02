@@ -7,7 +7,7 @@ import MaterialUI.ButtonBase (ButtonBasePropsExt)
 import MaterialUI.Event (Event)
 import MaterialUI.PropTypes (ReactNode, EventHandler, class IsReactNode)
 import MaterialUI.Properties (IProp, mkProp, mkPropRecord)
-import React (createElement, ReactClass, ReactElement)
+import React (ReactElement, createElement, ReactClass)
 import Unsafe.Coerce (unsafeCoerce)
 
 type ExpansionPanelSummaryPropsExt r = ButtonBasePropsExt (
@@ -31,9 +31,6 @@ expanded = mkProp "expanded"
 
 expandIcon :: forall r a. IsReactNode a => a -> IProp (expandIcon :: ReactNode | r)
 expandIcon = mkProp "expandIcon" <<< (unsafeCoerce :: a -> ReactNode)
-
-onChange :: forall r. EventHandler Event -> IProp (onChange :: EventHandler Event | r)
-onChange = mkProp "onChange"
 
 foreign import expansionPanelSummaryClass :: forall props. ReactClass props
 

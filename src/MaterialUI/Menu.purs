@@ -12,6 +12,8 @@ import Unsafe.Coerce (unsafeCoerce)
 type MenuPropsExt r = PopoverPropsExt (
   anchorEl :: Untyped {-Identifier:HTMLElement-},
   "MenuListProps" :: Untyped {-Identifier:Partial-},
+  "PaperProps" :: Untyped {-Identifier:Partial-},
+  "PopoverClasses" :: Untyped {-Identifier:Partial-},
   transitionDuration :: Untyped {-UNION[unknownType:IndexedAccessType,'auto']-}
   | r
 ) 
@@ -26,6 +28,12 @@ anchorEl = mkProp "anchorEl" <<< (unsafeCoerce :: a -> Untyped)
 
 menuListProps :: forall r a. a -> IProp ("MenuListProps" :: Untyped | r)
 menuListProps = mkProp "MenuListProps" <<< (unsafeCoerce :: a -> Untyped)
+
+paperProps :: forall r a. a -> IProp ("PaperProps" :: Untyped | r)
+paperProps = mkProp "PaperProps" <<< (unsafeCoerce :: a -> Untyped)
+
+popoverClasses :: forall r a. a -> IProp ("PopoverClasses" :: Untyped | r)
+popoverClasses = mkProp "PopoverClasses" <<< (unsafeCoerce :: a -> Untyped)
 
 transitionDuration :: forall r a. a -> IProp (transitionDuration :: Untyped | r)
 transitionDuration = mkProp "transitionDuration" <<< (unsafeCoerce :: a -> Untyped)

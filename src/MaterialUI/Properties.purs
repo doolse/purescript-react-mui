@@ -2,7 +2,7 @@ module MaterialUI.Properties where
 
 import Prelude
 
-import MaterialUI.PropTypes (class IsReactType, EventHandler, ReactNode, ReactType, Styles, Untyped)
+import MaterialUI.PropTypes (class AsEventHandler, class IsReactType, EventHandler, ReactNode, ReactType, Styles, Untyped, toHandler)
 import React (ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
@@ -73,3 +73,18 @@ component c = mkProp "component" (unsafeCoerce c :: ReactType)
 
 variant :: forall a r. IsProp a => a -> IProp (variant::a|r)
 variant = mkProp "variant"
+
+onChange :: forall a e r. AsEventHandler a e => a -> IProp (onChange :: EventHandler e | r)
+onChange = mkProp "onChange" <<< toHandler
+
+onClick :: forall a e r. AsEventHandler a e => a -> IProp (onClick :: EventHandler e | r)
+onClick = mkProp "onClick" <<< toHandler
+
+onClose :: forall a e r. AsEventHandler a e => a -> IProp (onClose :: EventHandler e | r)
+onClose = mkProp "onClose" <<< toHandler
+
+onOpen :: forall a e r. AsEventHandler a e => a -> IProp (onOpen :: EventHandler e | r)
+onOpen = mkProp "onOpen" <<< toHandler
+
+onDelete :: forall a e r. AsEventHandler a e => a -> IProp (onDelete :: EventHandler e | r)
+onDelete = mkProp "onDelete" <<< toHandler

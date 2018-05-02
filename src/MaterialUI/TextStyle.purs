@@ -1,39 +1,37 @@
 module MaterialUI.TextStyle where
 
-import MaterialUI.Properties (class IsProp)
+import MaterialUI.Properties (Enum)
+import Unsafe.Coerce (unsafeCoerce)
 
-newtype TextStyle = TextStyle String
-derive newtype instance isPropPosition :: IsProp TextStyle
+display1 :: forall r. Enum (display1 :: String | r)
+display1 = unsafeCoerce "display1"
 
-display1 :: TextStyle
-display1 = TextStyle "display1"
+display2 :: forall r. Enum (display2 :: String | r)
+display2 = unsafeCoerce "display2"
 
-display2 :: TextStyle
-display2 = TextStyle "display2"
+display3 :: forall r. Enum (display3 :: String | r)
+display3 = unsafeCoerce "display3"
 
-display3 :: TextStyle
-display3 = TextStyle "display3"
+display4 :: forall r. Enum (display4 :: String | r)
+display4 = unsafeCoerce "display4"
 
-display4 :: TextStyle
-display4 = TextStyle "display4"
+title :: forall r. Enum (title :: String | r)
+title = unsafeCoerce "title"
 
-title :: TextStyle
-title = TextStyle "title"
+headline :: forall r. Enum (headline :: String | r)
+headline = unsafeCoerce "headline"
 
-headline :: TextStyle
-headline = TextStyle "headline"
+subheading :: forall r. Enum (subheading :: String | r)
+subheading = unsafeCoerce "subheading"
 
-subheading :: TextStyle
-subheading = TextStyle "subheading"
+body1 :: forall r. Enum (body1 :: String | r)
+body1 = unsafeCoerce "body1"
 
-body1 :: TextStyle
-body1 = TextStyle "body1"
+body2 :: forall r. Enum (body2 :: String | r)
+body2 = unsafeCoerce "body2"
 
-body2 :: TextStyle
-body2 = TextStyle "body2"
+caption :: forall r. Enum (caption :: String | r)
+caption = unsafeCoerce "caption"
 
-caption :: TextStyle
-caption = TextStyle "caption"
-
-button :: TextStyle
-button = TextStyle "button"
+button :: forall r. Enum (button :: String | r)
+button = unsafeCoerce "button"

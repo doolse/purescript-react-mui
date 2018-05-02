@@ -4,7 +4,7 @@ module MaterialUI.ExpansionPanel where
 
 import Prelude
 import MaterialUI.Paper (PaperPropsExt)
-import MaterialUI.PropTypes (Untyped)
+import MaterialUI.PropTypes (EventHandler, Untyped)
 import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
 import React (ReactElement, createElement, ReactClass)
 import Unsafe.Coerce (unsafeCoerce)
@@ -14,7 +14,7 @@ type ExpansionPanelPropsExt r = PaperPropsExt (
   defaultExpanded :: Boolean,
   disabled :: Boolean,
   expanded :: Boolean,
-  onChange :: Untyped {-unknownType:FunctionType-}
+  onChange :: EventHandler Unit
   | r
 ) 
 
@@ -34,9 +34,6 @@ disabled = mkProp "disabled"
 
 expanded :: forall r. Boolean -> IProp (expanded :: Boolean | r)
 expanded = mkProp "expanded"
-
-onChange :: forall r a. a -> IProp (onChange :: Untyped | r)
-onChange = mkProp "onChange" <<< (unsafeCoerce :: a -> Untyped)
 
 foreign import expansionPanelClass :: forall props. ReactClass props
 

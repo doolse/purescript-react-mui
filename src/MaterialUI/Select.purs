@@ -4,9 +4,9 @@ module MaterialUI.Select where
 
 import Prelude
 import MaterialUI.Input (InputPropsExt)
-import MaterialUI.PropTypes (Untyped, ReactNode, class IsReactNode)
+import MaterialUI.PropTypes (Untyped, EventHandler, ReactNode, class IsReactNode)
 import MaterialUI.Properties (IProp, mkProp, mkPropRecord)
-import React (ReactElement, ReactClass, createElement)
+import React (ReactElement, createElement, ReactClass)
 import Unsafe.Coerce (unsafeCoerce)
 
 type SelectPropsExt r = InputPropsExt (
@@ -16,8 +16,8 @@ type SelectPropsExt r = InputPropsExt (
   "MenuProps" :: Untyped {-Identifier:Partial-},
   multiple :: Boolean,
   native :: Boolean,
-  onClose :: Untyped {-unknownType:FunctionType-},
-  onOpen :: Untyped {-unknownType:FunctionType-},
+  onClose :: EventHandler Unit,
+  onOpen :: EventHandler Unit,
   open :: Boolean,
   renderValue :: Untyped {-unknownType:FunctionType-},
   "SelectDisplayProps" :: Untyped {-React.HTMLAttributes-},
@@ -47,12 +47,6 @@ multiple = mkProp "multiple"
 
 native :: forall r. Boolean -> IProp (native :: Boolean | r)
 native = mkProp "native"
-
-onClose :: forall r a. a -> IProp (onClose :: Untyped | r)
-onClose = mkProp "onClose" <<< (unsafeCoerce :: a -> Untyped)
-
-onOpen :: forall r a. a -> IProp (onOpen :: Untyped | r)
-onOpen = mkProp "onOpen" <<< (unsafeCoerce :: a -> Untyped)
 
 open :: forall r. Boolean -> IProp (open :: Boolean | r)
 open = mkProp "open"

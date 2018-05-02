@@ -15,7 +15,8 @@ type ButtonBasePropsExt r = StandardPropsExt (
   component :: ReactType,
   disableRipple :: Boolean,
   focusRipple :: Boolean,
-  onKeyboardFocus :: Untyped {-React.FocusEventHandler-},
+  focusVisibleClassName :: String,
+  onKeyboardFocus :: EventHandler Event,
   "TouchRippleProps" :: Untyped {-Identifier:Partial-},
   onClick :: EventHandler Event
   | r
@@ -38,14 +39,14 @@ disableRipple = mkProp "disableRipple"
 focusRipple :: forall r. Boolean -> IProp (focusRipple :: Boolean | r)
 focusRipple = mkProp "focusRipple"
 
-onKeyboardFocus :: forall r a. a -> IProp (onKeyboardFocus :: Untyped | r)
-onKeyboardFocus = mkProp "onKeyboardFocus" <<< (unsafeCoerce :: a -> Untyped)
+focusVisibleClassName :: forall r. String -> IProp (focusVisibleClassName :: String | r)
+focusVisibleClassName = mkProp "focusVisibleClassName"
+
+onKeyboardFocus :: forall r. EventHandler Event -> IProp (onKeyboardFocus :: EventHandler Event | r)
+onKeyboardFocus = mkProp "onKeyboardFocus"
 
 touchRippleProps :: forall r a. a -> IProp ("TouchRippleProps" :: Untyped | r)
 touchRippleProps = mkProp "TouchRippleProps" <<< (unsafeCoerce :: a -> Untyped)
-
-onClick :: forall r. EventHandler Event -> IProp (onClick :: EventHandler Event | r)
-onClick = mkProp "onClick"
 
 foreign import buttonBaseClass :: forall props. ReactClass props
 

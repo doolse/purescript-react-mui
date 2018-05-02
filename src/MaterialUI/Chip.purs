@@ -33,9 +33,6 @@ deleteIcon = mkProp "deleteIcon"
 label :: forall r a. IsReactNode a => a -> IProp (label :: ReactNode | r)
 label = mkProp "label" <<< (unsafeCoerce :: a -> ReactNode)
 
-onDelete :: forall r. EventHandler Event -> IProp (onDelete :: EventHandler Event | r)
-onDelete = mkProp "onDelete"
-
 onKeyDown :: forall r. EventHandler Event -> IProp (onKeyDown :: EventHandler Event | r)
 onKeyDown = mkProp "onKeyDown"
 

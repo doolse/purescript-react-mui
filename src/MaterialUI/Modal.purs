@@ -65,9 +65,6 @@ manager = mkProp "manager" <<< (unsafeCoerce :: a -> Untyped)
 onBackdropClick :: forall r. EventHandler Event -> IProp (onBackdropClick :: EventHandler Event | r)
 onBackdropClick = mkProp "onBackdropClick"
 
-onClose :: forall r. EventHandler Event -> IProp (onClose :: EventHandler Event | r)
-onClose = mkProp "onClose"
-
 onEscapeKeyDown :: forall r. EventHandler Event -> IProp (onEscapeKeyDown :: EventHandler Event | r)
 onEscapeKeyDown = mkProp "onEscapeKeyDown"
 
