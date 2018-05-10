@@ -33,9 +33,6 @@ deleteIcon = mkProp "deleteIcon"
 label :: forall r a. IsReactNode a => a -> IProp (label :: ReactNode | r)
 label = mkProp "label" <<< (unsafeCoerce :: a -> ReactNode)
 
-onKeyDown :: forall r. EventHandler Event -> IProp (onKeyDown :: EventHandler Event | r)
-onKeyDown = mkProp "onKeyDown"
-
 foreign import chipClass :: forall props. ReactClass props
 
 chipU :: forall props. props -> Array ReactElement -> ReactElement

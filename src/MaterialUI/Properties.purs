@@ -80,6 +80,12 @@ onChange = mkProp "onChange" <<< toHandler
 onClick :: forall a e r. AsEventHandler a e => a -> IProp (onClick :: EventHandler e | r)
 onClick = mkProp "onClick" <<< toHandler
 
+onKeyDown :: forall a e r. AsEventHandler a e => a -> IProp (onKeyDown :: EventHandler e | r)
+onKeyDown = mkProp "onKeyDown" <<< toHandler
+
+onKeyUp :: forall a e r. AsEventHandler a e => a -> IProp (onKeyUp :: EventHandler e | r)
+onKeyUp = mkProp "onKeyUp" <<< toHandler
+
 onClose :: forall a e r. AsEventHandler a e => a -> IProp (onClose :: EventHandler e | r)
 onClose = mkProp "onClose" <<< toHandler
 

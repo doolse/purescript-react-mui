@@ -99,12 +99,6 @@ startAdornment = mkProp "startAdornment" <<< (unsafeCoerce :: a -> ReactNode)
 value :: forall r a. a -> IProp (value :: Untyped | r)
 value = mkProp "value" <<< (unsafeCoerce :: a -> Untyped)
 
-onKeyUp :: forall r. EventHandler Event -> IProp (onKeyUp :: EventHandler Event | r)
-onKeyUp = mkProp "onKeyUp"
-
-onKeyDown :: forall r. EventHandler Event -> IProp (onKeyDown :: EventHandler Event | r)
-onKeyDown = mkProp "onKeyDown"
-
 foreign import inputClass :: forall props. ReactClass props
 
 inputU :: forall props. props -> Array ReactElement -> ReactElement
