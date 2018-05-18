@@ -4,7 +4,7 @@ module MaterialUI.Popover where
 
 import Prelude
 import MaterialUI.Modal (ModalPropsExt)
-import MaterialUI.PropTypes (Untyped, ReactType, class IsReactType)
+import MaterialUI.PropTypes (class IsReactType, Untyped, ReactType)
 import MaterialUI.Properties (IProp, mkPropRecord, mkProp)
 import React (ReactElement, createElement, ReactClass)
 import Unsafe.Coerce (unsafeCoerce)
@@ -22,8 +22,9 @@ type PopoverPropsExt r = ModalPropsExt (
   "PaperProps" :: Untyped {-Identifier:Partial-},
   role :: String,
   transformOrigin :: Untyped {-Identifier:PopoverOrigin-},
-  transition :: ReactType,
-  transitionDuration :: Untyped {-UNION[unknownType:IndexedAccessType,'auto']-}
+  "TransitionComponent" :: ReactType,
+  transitionDuration :: Untyped {-UNION[unknownType:IndexedAccessType,'auto']-},
+  "TransitionProps" :: Untyped {-Identifier:TransitionProps-}
   | r
 ) 
 
@@ -68,11 +69,14 @@ role = mkProp "role"
 transformOrigin :: forall r a. a -> IProp (transformOrigin :: Untyped | r)
 transformOrigin = mkProp "transformOrigin" <<< (unsafeCoerce :: a -> Untyped)
 
-transition :: forall r a. IsReactType a => a -> IProp (transition :: ReactType | r)
-transition = mkProp "transition" <<< (unsafeCoerce :: a -> ReactType)
+transitionComponent :: forall r a. IsReactType a => a -> IProp ("TransitionComponent" :: ReactType | r)
+transitionComponent = mkProp "TransitionComponent" <<< (unsafeCoerce :: a -> ReactType)
 
 transitionDuration :: forall r a. a -> IProp (transitionDuration :: Untyped | r)
 transitionDuration = mkProp "transitionDuration" <<< (unsafeCoerce :: a -> Untyped)
+
+transitionProps :: forall r a. a -> IProp ("TransitionProps" :: Untyped | r)
+transitionProps = mkProp "TransitionProps" <<< (unsafeCoerce :: a -> Untyped)
 
 foreign import popoverClass :: forall props. ReactClass props
 

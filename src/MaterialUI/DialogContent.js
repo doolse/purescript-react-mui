@@ -1,1 +1,1 @@
-exports.dialogContentClass = require('material-ui/Dialog').DialogContent;
+exports.dialogContentClass = require('@material-ui/core/DialogContent').default;

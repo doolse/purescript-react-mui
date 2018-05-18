@@ -1,1 +1,1 @@
-exports.radioClass = require('material-ui/Radio').default;
+exports.radioClass = require('@material-ui/core/Radio').default;

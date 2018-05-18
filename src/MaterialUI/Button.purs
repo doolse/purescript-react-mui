@@ -20,7 +20,7 @@ type ButtonPropsExt r = ButtonBasePropsExt (
   mini :: Boolean,
   size :: Enum (small :: String, medium :: String, large :: String),
   type :: String,
-  variant :: Enum (flat :: String, raised :: String, fab :: String)
+  variant :: Enum (flat :: String, outlined :: String, raised :: String, fab :: String)
   | r
 ) 
 
@@ -39,6 +39,9 @@ large = unsafeCoerce "large"
 
 flat :: forall r. Enum (flat :: String | r )
 flat = unsafeCoerce "flat"
+
+outlined :: forall r. Enum (outlined :: String | r )
+outlined = unsafeCoerce "outlined"
 
 raised :: forall r. Enum (raised :: String | r )
 raised = unsafeCoerce "raised"

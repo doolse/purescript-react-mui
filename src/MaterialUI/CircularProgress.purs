@@ -4,14 +4,12 @@ module MaterialUI.CircularProgress where
 
 import Prelude
 import MaterialUI.PropTypes (StandardPropsExt, Untyped)
-import MaterialUI.Properties (IProp, Enum, mkProp, mkPropRecord)
+import MaterialUI.Properties (mkProp, IProp, Enum, mkPropRecord)
 import React (ReactElement, createElement, ReactClass)
 import Unsafe.Coerce (unsafeCoerce)
 
 type CircularProgressPropsExt r = StandardPropsExt (
   color :: Enum (primary :: String, secondary :: String, inherit :: String),
-  max :: Int,
-  min :: Int,
   size :: Untyped {-UNION["Number","String"]-},
   thickness :: Int,
   value :: Int,
@@ -40,12 +38,6 @@ indeterminate = unsafeCoerce "indeterminate"
 
 static :: forall r. Enum (static :: String | r )
 static = unsafeCoerce "static"
-
-max :: forall r. Int -> IProp (max :: Int | r)
-max = mkProp "max"
-
-min :: forall r. Int -> IProp (min :: Int | r)
-min = mkProp "min"
 
 size :: forall r a. a -> IProp (size :: Untyped | r)
 size = mkProp "size" <<< (unsafeCoerce :: a -> Untyped)

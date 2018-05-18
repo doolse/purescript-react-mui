@@ -1,1 +1,1 @@
-exports.dialogClass = require('material-ui/Dialog').default;
+exports.dialogClass = require('@material-ui/core/Dialog').default;

@@ -1,1 +1,1 @@
-exports.dialogTitleClass = require('material-ui/Dialog').DialogTitle;
+exports.dialogTitleClass = require('@material-ui/core/DialogTitle').default;

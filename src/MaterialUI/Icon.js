@@ -1,1 +1,1 @@
-exports.iconClass = require('material-ui/Icon').default;
+exports.iconClass = require('@material-ui/core/Icon').default;

@@ -1,1 +1,1 @@
-exports.tableCellClass = require('material-ui/Table').TableCell;
+exports.tableCellClass = require('@material-ui/core/TableCell').default;

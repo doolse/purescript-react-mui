@@ -1,4 +1,4 @@
-var CM = require('material-ui/styles/colorManipulator');
+var CM = require('@material-ui/core/styles/colorManipulator');
 exports.fade = function (col) {
   return function (fadeBy)
   {

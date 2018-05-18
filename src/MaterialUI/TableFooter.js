@@ -1,1 +1,1 @@
-exports.tableFooterClass = require('material-ui/Table').TableFooter;
+exports.tableFooterClass = require('@material-ui/core/TableFooter').default;

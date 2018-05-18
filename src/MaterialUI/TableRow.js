@@ -1,1 +1,1 @@
-exports.tableRowClass = require('material-ui/Table').TableRow;
+exports.tableRowClass = require('@material-ui/core/TableRow').default;

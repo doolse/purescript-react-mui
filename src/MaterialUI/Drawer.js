@@ -1,1 +1,1 @@
-exports.drawerClass = require('material-ui/Drawer').default;
+exports.drawerClass = require('@material-ui/core/Drawer').default;

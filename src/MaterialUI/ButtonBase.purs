@@ -10,13 +10,14 @@ import React (ReactElement, createElement, ReactClass)
 import Unsafe.Coerce (unsafeCoerce)
 
 type ButtonBasePropsExt r = StandardPropsExt (
+  action :: Untyped {-unknownType:FunctionType-},
   buttonRef :: Untyped {-React.Ref-},
   centerRipple :: Boolean,
   component :: ReactType,
   disableRipple :: Boolean,
   focusRipple :: Boolean,
   focusVisibleClassName :: String,
-  onKeyboardFocus :: EventHandler Event,
+  onFocusVisible :: EventHandler Event,
   "TouchRippleProps" :: Untyped {-Identifier:Partial-},
   onClick :: EventHandler Event
   | r
@@ -26,6 +27,9 @@ type ButtonBaseProps = ButtonBasePropsExt (
 
 ) 
 
+
+action :: forall r a. a -> IProp (action :: Untyped | r)
+action = mkProp "action" <<< (unsafeCoerce :: a -> Untyped)
 
 buttonRef :: forall r a. a -> IProp (buttonRef :: Untyped | r)
 buttonRef = mkProp "buttonRef" <<< (unsafeCoerce :: a -> Untyped)
@@ -42,8 +46,8 @@ focusRipple = mkProp "focusRipple"
 focusVisibleClassName :: forall r. String -> IProp (focusVisibleClassName :: String | r)
 focusVisibleClassName = mkProp "focusVisibleClassName"
 
-onKeyboardFocus :: forall r. EventHandler Event -> IProp (onKeyboardFocus :: EventHandler Event | r)
-onKeyboardFocus = mkProp "onKeyboardFocus"
+onFocusVisible :: forall r. EventHandler Event -> IProp (onFocusVisible :: EventHandler Event | r)
+onFocusVisible = mkProp "onFocusVisible"
 
 touchRippleProps :: forall r a. a -> IProp ("TouchRippleProps" :: Untyped | r)
 touchRippleProps = mkProp "TouchRippleProps" <<< (unsafeCoerce :: a -> Untyped)

@@ -1,1 +1,1 @@
-exports.listSubheaderClass = require('material-ui/List/ListSubheader').default;
+exports.listSubheaderClass = require('@material-ui/core/ListSubheader').default;

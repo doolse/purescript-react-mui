@@ -1,1 +1,1 @@
-exports.cssBaselineClass = require('material-ui/CssBaseline').default;
+exports.cssBaselineClass = require('@material-ui/core/CssBaseline').default;

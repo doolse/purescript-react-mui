@@ -1,1 +1,1 @@
-exports.listItemSecondaryActionClass = require('material-ui/List').ListItemSecondaryAction;
+exports.listItemSecondaryActionClass = require('@material-ui/core/ListItemSecondaryAction').default;

@@ -1,1 +1,1 @@
-exports.growClass = require('material-ui/transitions/Grow').default;
+exports.growClass = require('@material-ui/core/Grow').default;

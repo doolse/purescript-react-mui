@@ -1,1 +1,1 @@
-exports.formGroupClass = require('material-ui/Form').FormGroup;
+exports.formGroupClass = require('@material-ui/core/FormGroup').default;

@@ -1,1 +1,1 @@
-exports.textFieldClass = require('material-ui/TextField').default;
+exports.textFieldClass = require('@material-ui/core/TextField').default;

@@ -14,8 +14,9 @@ type DialogPropsExt r = ModalPropsExt (
   fullWidth :: Boolean,
   maxWidth :: Untyped {-UNION['xs','sm','md',unknownType:FalseKeyword]-},
   "PaperProps" :: Untyped {-Identifier:Partial-},
-  transition :: ReactType,
-  transitionDuration :: Untyped {-unknownType:IndexedAccessType-}
+  "TransitionComponent" :: ReactType,
+  transitionDuration :: Untyped {-unknownType:IndexedAccessType-},
+  "TransitionProps" :: Untyped {-Identifier:TransitionProps-}
   | r
 ) 
 
@@ -36,11 +37,14 @@ maxWidth = mkProp "maxWidth" <<< (unsafeCoerce :: a -> Untyped)
 paperProps :: forall r a. a -> IProp ("PaperProps" :: Untyped | r)
 paperProps = mkProp "PaperProps" <<< (unsafeCoerce :: a -> Untyped)
 
-transition :: forall r a. IsReactType a => a -> IProp (transition :: ReactType | r)
-transition = mkProp "transition" <<< (unsafeCoerce :: a -> ReactType)
+transitionComponent :: forall r a. IsReactType a => a -> IProp ("TransitionComponent" :: ReactType | r)
+transitionComponent = mkProp "TransitionComponent" <<< (unsafeCoerce :: a -> ReactType)
 
 transitionDuration :: forall r a. a -> IProp (transitionDuration :: Untyped | r)
 transitionDuration = mkProp "transitionDuration" <<< (unsafeCoerce :: a -> Untyped)
+
+transitionProps :: forall r a. a -> IProp ("TransitionProps" :: Untyped | r)
+transitionProps = mkProp "TransitionProps" <<< (unsafeCoerce :: a -> Untyped)
 
 foreign import dialogClass :: forall props. ReactClass props
 

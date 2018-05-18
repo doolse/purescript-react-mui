@@ -4,14 +4,15 @@ module MaterialUI.Select where
 
 import Prelude
 import MaterialUI.Input (InputPropsExt)
-import MaterialUI.PropTypes (Untyped, EventHandler, ReactNode, class IsReactNode)
-import MaterialUI.Properties (IProp, mkProp, mkPropRecord)
+import MaterialUI.PropTypes (Untyped, EventHandler, ReactNode, ReactType, class IsReactType, class IsReactNode)
+import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
 import React (ReactElement, createElement, ReactClass)
 import Unsafe.Coerce (unsafeCoerce)
 
 type SelectPropsExt r = InputPropsExt (
   autoWidth :: Boolean,
   displayEmpty :: Boolean,
+  "IconComponent" :: ReactType,
   input :: ReactNode,
   "MenuProps" :: Untyped {-Identifier:Partial-},
   multiple :: Boolean,
@@ -35,6 +36,9 @@ autoWidth = mkProp "autoWidth"
 
 displayEmpty :: forall r. Boolean -> IProp (displayEmpty :: Boolean | r)
 displayEmpty = mkProp "displayEmpty"
+
+iconComponent :: forall r a. IsReactType a => a -> IProp ("IconComponent" :: ReactType | r)
+iconComponent = mkProp "IconComponent" <<< (unsafeCoerce :: a -> ReactType)
 
 input :: forall r a. IsReactNode a => a -> IProp (input :: ReactNode | r)
 input = mkProp "input" <<< (unsafeCoerce :: a -> ReactNode)

@@ -1,1 +1,1 @@
-exports.cardClass = require('material-ui/Card').default;
+exports.cardClass = require('@material-ui/core/Card').default;

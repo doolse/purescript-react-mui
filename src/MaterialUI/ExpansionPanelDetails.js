@@ -1,1 +1,1 @@
-exports.expansionPanelDetailsClass = require('material-ui/ExpansionPanel').ExpansionPanelDetails;
+exports.expansionPanelDetailsClass = require('@material-ui/core/ExpansionPanelDetails').default;

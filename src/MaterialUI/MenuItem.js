@@ -1,1 +1,1 @@
-exports.menuItemClass = require('material-ui/Menu').MenuItem;
+exports.menuItemClass = require('@material-ui/core/MenuItem').default;

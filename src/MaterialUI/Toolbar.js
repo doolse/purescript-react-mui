@@ -1,1 +1,1 @@
-exports.toolbarClass = require('material-ui/Toolbar').default;
+exports.toolbarClass = require('@material-ui/core/Toolbar').default;

@@ -1,1 +1,1 @@
-exports.appBarClass = require('material-ui/AppBar').default;
+exports.appBarClass = require('@material-ui/core/AppBar').default;

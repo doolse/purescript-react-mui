@@ -1,1 +1,1 @@
-exports.paperClass = require('material-ui/Paper').default;
+exports.paperClass = require('@material-ui/core/Paper').default;

@@ -1,1 +1,1 @@
-exports.typographyClass = require('material-ui/Typography').default;
+exports.typographyClass = require('@material-ui/core/Typography').default;

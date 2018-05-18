@@ -1,1 +1,1 @@
-exports.dialogActionsClass = require('material-ui/Dialog').DialogActions;
+exports.dialogActionsClass = require('@material-ui/core/DialogActions').default;

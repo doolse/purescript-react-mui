@@ -1,1 +1,1 @@
-exports.selectClass = require('material-ui/Select').default;
+exports.selectClass = require('@material-ui/core/Select').default;

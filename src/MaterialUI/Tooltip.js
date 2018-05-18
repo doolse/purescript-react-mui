@@ -1,1 +1,1 @@
-exports.tooltipClass = require('material-ui/Tooltip').default;
+exports.tooltipClass = require('@material-ui/core/Tooltip').default;

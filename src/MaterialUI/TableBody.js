@@ -1,1 +1,1 @@
-exports.tableBodyClass = require('material-ui/Table').TableBody;
+exports.tableBodyClass = require('@material-ui/core/TableBody').default;

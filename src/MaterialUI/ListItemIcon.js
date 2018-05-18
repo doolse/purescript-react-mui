@@ -1,1 +1,1 @@
-exports.listItemIconClass = require('material-ui/List').ListItemIcon;
+exports.listItemIconClass = require('@material-ui/core/ListItemIcon').default;

@@ -1,1 +1,1 @@
-exports.chipClass = require('material-ui/Chip').default;
+exports.chipClass = require('@material-ui/core/Chip').default;

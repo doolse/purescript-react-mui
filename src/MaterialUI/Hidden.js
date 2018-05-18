@@ -1,1 +1,1 @@
-exports.hiddenClass = require('material-ui/Hidden').default;
+exports.hiddenClass = require('@material-ui/core/Hidden').default;

@@ -1,1 +1,1 @@
-exports.slideClass = require('material-ui/transitions/Slide').default;
+exports.slideClass = require('@material-ui/core/Slide').default;

@@ -1,1 +1,1 @@
-exports.inputClass = require('material-ui/Input').default;
+exports.inputClass = require('@material-ui/core/Input').default;

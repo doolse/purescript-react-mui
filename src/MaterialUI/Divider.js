@@ -1,1 +1,1 @@
-exports.dividerClass = require('material-ui/Divider').default;
+exports.dividerClass = require('@material-ui/core/Divider').default;

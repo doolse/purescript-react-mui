@@ -1,1 +1,1 @@
-exports.listItemTextClass = require('material-ui/List').ListItemText;
+exports.listItemTextClass = require('@material-ui/core/ListItemText').default;

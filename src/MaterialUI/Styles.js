@@ -1,4 +1,4 @@
-const ws = require('material-ui/styles').withStyles;
+const ws = require('@material-ui/core/styles').withStyles;
 
 exports.withStyles = function () {
   return function (styleFunc) {

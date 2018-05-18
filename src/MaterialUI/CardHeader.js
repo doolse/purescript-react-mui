@@ -1,1 +1,1 @@
-exports.cardHeaderClass = require('material-ui/Card').CardHeader;
+exports.cardHeaderClass = require('@material-ui/core/CardHeader').default;

@@ -1,1 +1,1 @@
-exports.listClass = require('material-ui/List').default;
+exports.listClass = require('@material-ui/core/List').default;

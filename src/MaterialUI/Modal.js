@@ -1,1 +1,1 @@
-exports.modalClass = require('material-ui/Modal').default;
+exports.modalClass = require('@material-ui/core/Modal').default;

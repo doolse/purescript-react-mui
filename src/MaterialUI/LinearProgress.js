@@ -1,1 +1,1 @@
-exports.linearProgressClass = require('material-ui/Progress').LinearProgress;
+exports.linearProgressClass = require('@material-ui/core/LinearProgress').default;

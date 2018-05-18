@@ -1,1 +1,1 @@
-exports.popoverClass = require('material-ui/Popover').default;
+exports.popoverClass = require('@material-ui/core/Popover').default;
