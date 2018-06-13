@@ -6,7 +6,7 @@ import Prelude
 import MaterialUI.Paper (PaperPropsExt)
 import MaterialUI.PropTypes (StdColor)
 import MaterialUI.Properties (IProp, Enum, mkProp, mkPropRecord)
-import React (createElement, ReactClass, ReactElement)
+import React (ReactClass, ReactElement, unsafeCreateElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type AppBarPropsExt r = PaperPropsExt (
@@ -34,10 +34,10 @@ static = unsafeCoerce "static"
 position :: forall r. Enum (fixed :: String, absolute :: String, sticky :: String, static :: String) -> IProp (position :: Enum (fixed :: String, absolute :: String, sticky :: String, static :: String) | r)
 position = mkProp "position"
 
-foreign import appBarClass :: forall props. ReactClass props
+foreign import appBarClass :: forall props. ReactClass {|props}
 
-appBarU :: forall props. props -> Array ReactElement -> ReactElement
-appBarU = createElement appBarClass
+appBarU :: forall props. {|props} -> Array ReactElement -> ReactElement
+appBarU = unsafeCreateElement appBarClass
 
 appBar :: Array (IProp AppBarProps) -> Array ReactElement -> ReactElement
 appBar = mkPropRecord >>> appBarU

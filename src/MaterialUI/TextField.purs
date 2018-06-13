@@ -4,9 +4,9 @@ module MaterialUI.TextField where
 
 import Prelude
 import MaterialUI.Event (Event)
-import MaterialUI.PropTypes (EventHandler, Untyped, StandardPropsExt, ReactNode, class IsReactNode)
-import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
-import React (ReactElement, createElement, ReactClass)
+import MaterialUI.PropTypes (Untyped, StandardPropsExt, ReactNode, class IsReactNode, EventHandler)
+import MaterialUI.Properties (mkProp, mkPropRecord, IProp)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type TextFieldPropsExt r = StandardPropsExt (
@@ -113,10 +113,10 @@ selectProps = mkProp "SelectProps" <<< (unsafeCoerce :: a -> Untyped)
 value :: forall r a. a -> IProp (value :: Untyped | r)
 value = mkProp "value" <<< (unsafeCoerce :: a -> Untyped)
 
-foreign import textFieldClass :: forall props. ReactClass props
+foreign import textFieldClass :: forall props. ReactClass {|props}
 
-textFieldU :: forall props. props -> Array ReactElement -> ReactElement
-textFieldU = createElement textFieldClass
+textFieldU :: forall props. {|props} -> Array ReactElement -> ReactElement
+textFieldU = unsafeCreateElement textFieldClass
 
 textField :: Array (IProp TextFieldProps) -> ReactElement
 textField = mkPropRecord >>> textFieldU >>> (#) []

@@ -4,9 +4,9 @@ module MaterialUI.Popover where
 
 import Prelude
 import MaterialUI.Modal (ModalPropsExt)
-import MaterialUI.PropTypes (class IsReactType, Untyped, ReactType)
-import MaterialUI.Properties (IProp, mkPropRecord, mkProp)
-import React (ReactElement, createElement, ReactClass)
+import MaterialUI.PropTypes (Untyped, ReactType, class IsReactType)
+import MaterialUI.Properties (mkPropRecord, IProp, mkProp)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type PopoverPropsExt r = ModalPropsExt (
@@ -78,10 +78,10 @@ transitionDuration = mkProp "transitionDuration" <<< (unsafeCoerce :: a -> Untyp
 transitionProps :: forall r a. a -> IProp ("TransitionProps" :: Untyped | r)
 transitionProps = mkProp "TransitionProps" <<< (unsafeCoerce :: a -> Untyped)
 
-foreign import popoverClass :: forall props. ReactClass props
+foreign import popoverClass :: forall props. ReactClass {|props}
 
-popoverU :: forall props. props -> Array ReactElement -> ReactElement
-popoverU = createElement popoverClass
+popoverU :: forall props. {|props} -> Array ReactElement -> ReactElement
+popoverU = unsafeCreateElement popoverClass
 
 popover :: Array (IProp PopoverProps) -> Array ReactElement -> ReactElement
 popover = mkPropRecord >>> popoverU

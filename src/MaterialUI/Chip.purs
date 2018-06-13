@@ -4,9 +4,9 @@ module MaterialUI.Chip where
 
 import Prelude
 import MaterialUI.Event (Event)
-import MaterialUI.PropTypes (StandardPropsExt, EventHandler, ReactNode, ReactType, class IsReactNode)
-import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
-import React (ReactElement, createElement, ReactClass)
+import MaterialUI.PropTypes (EventHandler, ReactNode, ReactType, class IsReactNode, StandardPropsExt)
+import MaterialUI.Properties (IProp, mkProp, mkPropRecord)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type ChipPropsExt r = StandardPropsExt (
@@ -33,10 +33,10 @@ deleteIcon = mkProp "deleteIcon"
 label :: forall r a. IsReactNode a => a -> IProp (label :: ReactNode | r)
 label = mkProp "label" <<< (unsafeCoerce :: a -> ReactNode)
 
-foreign import chipClass :: forall props. ReactClass props
+foreign import chipClass :: forall props. ReactClass {|props}
 
-chipU :: forall props. props -> Array ReactElement -> ReactElement
-chipU = createElement chipClass
+chipU :: forall props. {|props} -> Array ReactElement -> ReactElement
+chipU = unsafeCreateElement chipClass
 
 chip :: Array (IProp ChipProps) -> ReactElement
 chip = mkPropRecord >>> chipU >>> (#) []

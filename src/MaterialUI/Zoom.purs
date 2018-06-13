@@ -4,9 +4,9 @@ module MaterialUI.Zoom where
 
 import Prelude
 import MaterialUI.PropTypes (Untyped)
-import MaterialUI.Properties (IProp, mkProp, mkPropRecord)
+import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
 import MaterialUI.Transition (TransitionPropsExt)
-import React (createElement, ReactClass, ReactElement)
+import React (ReactClass, ReactElement, unsafeCreateElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type ZoomPropsExt r = TransitionPropsExt (
@@ -22,10 +22,10 @@ type ZoomProps = ZoomPropsExt (
 theme :: forall r a. a -> IProp (theme :: Untyped | r)
 theme = mkProp "theme" <<< (unsafeCoerce :: a -> Untyped)
 
-foreign import zoomClass :: forall props. ReactClass props
+foreign import zoomClass :: forall props. ReactClass {|props}
 
-zoomU :: forall props. props -> Array ReactElement -> ReactElement
-zoomU = createElement zoomClass
+zoomU :: forall props. {|props} -> Array ReactElement -> ReactElement
+zoomU = unsafeCreateElement zoomClass
 
 zoom :: Array (IProp ZoomProps) -> Array ReactElement -> ReactElement
 zoom = mkPropRecord >>> zoomU

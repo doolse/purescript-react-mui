@@ -5,8 +5,8 @@ module MaterialUI.Dialog where
 import Prelude
 import MaterialUI.Modal (ModalPropsExt)
 import MaterialUI.PropTypes (Untyped, ReactType, class IsReactType)
-import MaterialUI.Properties (IProp, mkProp, mkPropRecord)
-import React (ReactElement, createElement, ReactClass)
+import MaterialUI.Properties (mkPropRecord, mkProp, IProp)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type DialogPropsExt r = ModalPropsExt (
@@ -46,10 +46,10 @@ transitionDuration = mkProp "transitionDuration" <<< (unsafeCoerce :: a -> Untyp
 transitionProps :: forall r a. a -> IProp ("TransitionProps" :: Untyped | r)
 transitionProps = mkProp "TransitionProps" <<< (unsafeCoerce :: a -> Untyped)
 
-foreign import dialogClass :: forall props. ReactClass props
+foreign import dialogClass :: forall props. ReactClass {|props}
 
-dialogU :: forall props. props -> Array ReactElement -> ReactElement
-dialogU = createElement dialogClass
+dialogU :: forall props. {|props} -> Array ReactElement -> ReactElement
+dialogU = unsafeCreateElement dialogClass
 
 dialog :: Array (IProp DialogProps) -> Array ReactElement -> ReactElement
 dialog = mkPropRecord >>> dialogU

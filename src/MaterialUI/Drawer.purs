@@ -5,8 +5,8 @@ module MaterialUI.Drawer where
 import Prelude
 import MaterialUI.Modal (ModalPropsExt)
 import MaterialUI.PropTypes (Untyped)
-import MaterialUI.Properties (mkProp, IProp, Enum, mkPropRecord)
-import React (ReactElement, createElement, ReactClass)
+import MaterialUI.Properties (Enum, mkProp, IProp, mkPropRecord)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type DrawerPropsExt r = ModalPropsExt (
@@ -71,10 +71,10 @@ theme = mkProp "theme" <<< (unsafeCoerce :: a -> Untyped)
 transitionDuration :: forall r a. a -> IProp (transitionDuration :: Untyped | r)
 transitionDuration = mkProp "transitionDuration" <<< (unsafeCoerce :: a -> Untyped)
 
-foreign import drawerClass :: forall props. ReactClass props
+foreign import drawerClass :: forall props. ReactClass {|props}
 
-drawerU :: forall props. props -> Array ReactElement -> ReactElement
-drawerU = createElement drawerClass
+drawerU :: forall props. {|props} -> Array ReactElement -> ReactElement
+drawerU = unsafeCreateElement drawerClass
 
 drawer :: Array (IProp DrawerProps) -> Array ReactElement -> ReactElement
 drawer = mkPropRecord >>> drawerU

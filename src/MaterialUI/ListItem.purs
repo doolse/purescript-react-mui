@@ -4,9 +4,9 @@ module MaterialUI.ListItem where
 
 import Prelude
 import MaterialUI.ButtonBase (ButtonBasePropsExt)
-import MaterialUI.PropTypes (ReactType, class IsReactType, Untyped)
-import MaterialUI.Properties (IProp, mkProp, mkPropRecord)
-import React (ReactElement, createElement, ReactClass)
+import MaterialUI.PropTypes (class IsReactType, Untyped, ReactType)
+import MaterialUI.Properties (mkProp, mkPropRecord, IProp)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type ListItemPropsExt r = ButtonBasePropsExt (
@@ -47,10 +47,10 @@ disableGutters = mkProp "disableGutters"
 divider :: forall r. Boolean -> IProp (divider :: Boolean | r)
 divider = mkProp "divider"
 
-foreign import listItemClass :: forall props. ReactClass props
+foreign import listItemClass :: forall props. ReactClass {|props}
 
-listItemU :: forall props. props -> Array ReactElement -> ReactElement
-listItemU = createElement listItemClass
+listItemU :: forall props. {|props} -> Array ReactElement -> ReactElement
+listItemU = unsafeCreateElement listItemClass
 
 listItem :: Array (IProp ListItemProps) -> Array ReactElement -> ReactElement
 listItem = mkPropRecord >>> listItemU

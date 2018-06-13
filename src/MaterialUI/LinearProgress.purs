@@ -4,8 +4,8 @@ module MaterialUI.LinearProgress where
 
 import Prelude
 import MaterialUI.PropTypes (StandardPropsExt)
-import MaterialUI.Properties (mkProp, IProp, Enum, mkPropRecord)
-import React (ReactElement, createElement, ReactClass)
+import MaterialUI.Properties (IProp, Enum, mkProp, mkPropRecord)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type LinearProgressPropsExt r = StandardPropsExt (
@@ -44,10 +44,10 @@ value = mkProp "value"
 valueBuffer :: forall r. Int -> IProp (valueBuffer :: Int | r)
 valueBuffer = mkProp "valueBuffer"
 
-foreign import linearProgressClass :: forall props. ReactClass props
+foreign import linearProgressClass :: forall props. ReactClass {|props}
 
-linearProgressU :: forall props. props -> Array ReactElement -> ReactElement
-linearProgressU = createElement linearProgressClass
+linearProgressU :: forall props. {|props} -> Array ReactElement -> ReactElement
+linearProgressU = unsafeCreateElement linearProgressClass
 
 linearProgress :: Array (IProp LinearProgressProps) -> ReactElement
 linearProgress = mkPropRecord >>> linearProgressU >>> (#) []

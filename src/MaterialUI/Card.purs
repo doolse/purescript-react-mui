@@ -4,8 +4,8 @@ module MaterialUI.Card where
 
 import Prelude
 import MaterialUI.Paper (PaperPropsExt)
-import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
-import React (ReactElement, createElement, ReactClass)
+import MaterialUI.Properties (IProp, mkPropRecord, mkProp)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 
 type CardPropsExt r = PaperPropsExt (
   raised :: Boolean
@@ -20,10 +20,10 @@ type CardProps = CardPropsExt (
 raised :: forall r. Boolean -> IProp (raised :: Boolean | r)
 raised = mkProp "raised"
 
-foreign import cardClass :: forall props. ReactClass props
+foreign import cardClass :: forall props. ReactClass {|props}
 
-cardU :: forall props. props -> Array ReactElement -> ReactElement
-cardU = createElement cardClass
+cardU :: forall props. {|props} -> Array ReactElement -> ReactElement
+cardU = unsafeCreateElement cardClass
 
 card :: Array (IProp CardProps) -> Array ReactElement -> ReactElement
 card = mkPropRecord >>> cardU

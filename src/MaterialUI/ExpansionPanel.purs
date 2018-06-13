@@ -4,9 +4,9 @@ module MaterialUI.ExpansionPanel where
 
 import Prelude
 import MaterialUI.Paper (PaperPropsExt)
-import MaterialUI.PropTypes (EventHandler, Untyped)
-import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
-import React (ReactElement, createElement, ReactClass)
+import MaterialUI.PropTypes (Untyped, EventHandler)
+import MaterialUI.Properties (IProp, mkPropRecord, mkProp)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type ExpansionPanelPropsExt r = PaperPropsExt (
@@ -35,10 +35,10 @@ disabled = mkProp "disabled"
 expanded :: forall r. Boolean -> IProp (expanded :: Boolean | r)
 expanded = mkProp "expanded"
 
-foreign import expansionPanelClass :: forall props. ReactClass props
+foreign import expansionPanelClass :: forall props. ReactClass {|props}
 
-expansionPanelU :: forall props. props -> Array ReactElement -> ReactElement
-expansionPanelU = createElement expansionPanelClass
+expansionPanelU :: forall props. {|props} -> Array ReactElement -> ReactElement
+expansionPanelU = unsafeCreateElement expansionPanelClass
 
 expansionPanel :: Array (IProp ExpansionPanelProps) -> Array ReactElement -> ReactElement
 expansionPanel = mkPropRecord >>> expansionPanelU

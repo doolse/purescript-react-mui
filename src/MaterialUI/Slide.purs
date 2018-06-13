@@ -6,7 +6,7 @@ import Prelude
 import MaterialUI.PropTypes (Untyped)
 import MaterialUI.Properties (IProp, Enum, mkProp, mkPropRecord)
 import MaterialUI.Transition (TransitionPropsExt)
-import React (ReactElement, createElement, ReactClass)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type SlidePropsExt r = TransitionPropsExt (
@@ -37,10 +37,10 @@ direction = mkProp "direction"
 theme :: forall r a. a -> IProp (theme :: Untyped | r)
 theme = mkProp "theme" <<< (unsafeCoerce :: a -> Untyped)
 
-foreign import slideClass :: forall props. ReactClass props
+foreign import slideClass :: forall props. ReactClass {|props}
 
-slideU :: forall props. props -> Array ReactElement -> ReactElement
-slideU = createElement slideClass
+slideU :: forall props. {|props} -> Array ReactElement -> ReactElement
+slideU = unsafeCreateElement slideClass
 
 slide :: Array (IProp SlideProps) -> Array ReactElement -> ReactElement
 slide = mkPropRecord >>> slideU

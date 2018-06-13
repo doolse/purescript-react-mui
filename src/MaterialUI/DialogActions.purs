@@ -4,8 +4,8 @@ module MaterialUI.DialogActions where
 
 import Prelude
 import MaterialUI.PropTypes (StandardPropsExt)
-import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
-import React (ReactElement, createElement, ReactClass)
+import MaterialUI.Properties (IProp, mkPropRecord, mkProp)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 
 type DialogActionsPropsExt r = StandardPropsExt (
   disableActionSpacing :: Boolean
@@ -20,10 +20,10 @@ type DialogActionsProps = DialogActionsPropsExt (
 disableActionSpacing :: forall r. Boolean -> IProp (disableActionSpacing :: Boolean | r)
 disableActionSpacing = mkProp "disableActionSpacing"
 
-foreign import dialogActionsClass :: forall props. ReactClass props
+foreign import dialogActionsClass :: forall props. ReactClass {|props}
 
-dialogActionsU :: forall props. props -> Array ReactElement -> ReactElement
-dialogActionsU = createElement dialogActionsClass
+dialogActionsU :: forall props. {|props} -> Array ReactElement -> ReactElement
+dialogActionsU = unsafeCreateElement dialogActionsClass
 
 dialogActions :: Array (IProp DialogActionsProps) -> Array ReactElement -> ReactElement
 dialogActions = mkPropRecord >>> dialogActionsU

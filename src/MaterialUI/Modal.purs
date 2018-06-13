@@ -4,9 +4,9 @@ module MaterialUI.Modal where
 
 import Prelude
 import MaterialUI.Event (Event)
-import MaterialUI.PropTypes (StandardPropsExt, Untyped, EventHandler, ReactType, class IsReactType)
-import MaterialUI.Properties (IProp, mkPropRecord, mkProp)
-import React (ReactElement, createElement, ReactClass)
+import MaterialUI.PropTypes (Untyped, EventHandler, ReactType, class IsReactType, StandardPropsExt)
+import MaterialUI.Properties (mkPropRecord, IProp, mkProp)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type ModalPropsExt r = StandardPropsExt (
@@ -71,10 +71,10 @@ onEscapeKeyDown = mkProp "onEscapeKeyDown"
 open :: forall r. Boolean -> IProp (open :: Boolean | r)
 open = mkProp "open"
 
-foreign import modalClass :: forall props. ReactClass props
+foreign import modalClass :: forall props. ReactClass {|props}
 
-modalU :: forall props. props -> Array ReactElement -> ReactElement
-modalU = createElement modalClass
+modalU :: forall props. {|props} -> Array ReactElement -> ReactElement
+modalU = unsafeCreateElement modalClass
 
 modal :: Array (IProp ModalProps) -> Array ReactElement -> ReactElement
 modal = mkPropRecord >>> modalU

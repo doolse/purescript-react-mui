@@ -4,8 +4,8 @@ module MaterialUI.ExpansionPanelDetails where
 
 import Prelude
 import MaterialUI.PropTypes (StandardPropsExt)
-import MaterialUI.Properties (mkPropRecord, IProp)
-import React (ReactElement, createElement, ReactClass)
+import MaterialUI.Properties (IProp, mkPropRecord)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 
 type ExpansionPanelDetailsPropsExt (r :: # Type) = StandardPropsExt (
 
@@ -17,10 +17,10 @@ type ExpansionPanelDetailsProps = ExpansionPanelDetailsPropsExt (
 ) 
 
 
-foreign import expansionPanelDetailsClass :: forall props. ReactClass props
+foreign import expansionPanelDetailsClass :: forall props. ReactClass {|props}
 
-expansionPanelDetailsU :: forall props. props -> Array ReactElement -> ReactElement
-expansionPanelDetailsU = createElement expansionPanelDetailsClass
+expansionPanelDetailsU :: forall props. {|props} -> Array ReactElement -> ReactElement
+expansionPanelDetailsU = unsafeCreateElement expansionPanelDetailsClass
 
 expansionPanelDetails :: Array (IProp ExpansionPanelDetailsProps) -> Array ReactElement -> ReactElement
 expansionPanelDetails = mkPropRecord >>> expansionPanelDetailsU

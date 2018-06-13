@@ -1,0 +1,1 @@
+exports.snackbarContentClass = require('@material-ui/core/SnackbarContent').default;

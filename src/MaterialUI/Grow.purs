@@ -4,8 +4,8 @@ module MaterialUI.Grow where
 
 import Prelude
 import MaterialUI.PropTypes (Untyped)
-import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
-import React (ReactElement, createElement, ReactClass)
+import MaterialUI.Properties (IProp, mkPropRecord, mkProp)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type GrowPropsExt r = (
@@ -25,10 +25,10 @@ theme = mkProp "theme" <<< (unsafeCoerce :: a -> Untyped)
 timeout :: forall r a. a -> IProp (timeout :: Untyped | r)
 timeout = mkProp "timeout" <<< (unsafeCoerce :: a -> Untyped)
 
-foreign import growClass :: forall props. ReactClass props
+foreign import growClass :: forall props. ReactClass {|props}
 
-growU :: forall props. props -> Array ReactElement -> ReactElement
-growU = createElement growClass
+growU :: forall props. {|props} -> Array ReactElement -> ReactElement
+growU = unsafeCreateElement growClass
 
 grow :: Array (IProp GrowProps) -> Array ReactElement -> ReactElement
 grow = mkPropRecord >>> growU

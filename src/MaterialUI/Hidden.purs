@@ -4,8 +4,8 @@ module MaterialUI.Hidden where
 
 import Prelude
 import MaterialUI.PropTypes (Untyped, StandardPropsExt)
-import MaterialUI.Properties (IProp, Enum, mkProp, mkPropRecord)
-import React (ReactElement, createElement, ReactClass)
+import MaterialUI.Properties (Enum, mkPropRecord, mkProp, IProp)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type HiddenPropsExt r = StandardPropsExt (
@@ -74,10 +74,10 @@ xsDown = mkProp "xsDown"
 xsUp :: forall r. Boolean -> IProp (xsUp :: Boolean | r)
 xsUp = mkProp "xsUp"
 
-foreign import hiddenClass :: forall props. ReactClass props
+foreign import hiddenClass :: forall props. ReactClass {|props}
 
-hiddenU :: forall props. props -> Array ReactElement -> ReactElement
-hiddenU = createElement hiddenClass
+hiddenU :: forall props. {|props} -> Array ReactElement -> ReactElement
+hiddenU = unsafeCreateElement hiddenClass
 
 hidden :: Array (IProp HiddenProps) -> Array ReactElement -> ReactElement
 hidden = mkPropRecord >>> hiddenU

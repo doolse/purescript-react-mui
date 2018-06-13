@@ -4,9 +4,9 @@ module MaterialUI.FormControl where
 
 import Prelude
 import MaterialUI.Event (Event)
-import MaterialUI.PropTypes (StandardPropsExt, EventHandler, ReactType, Untyped)
-import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
-import React (createElement, ReactClass, ReactElement)
+import MaterialUI.PropTypes (EventHandler, ReactType, Untyped, StandardPropsExt)
+import MaterialUI.Properties (IProp, mkProp, mkPropRecord)
+import React (ReactClass, ReactElement, unsafeCreateElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type FormControlPropsExt r = StandardPropsExt (
@@ -47,10 +47,10 @@ onFocus = mkProp "onFocus"
 required :: forall r. Boolean -> IProp (required :: Boolean | r)
 required = mkProp "required"
 
-foreign import formControlClass :: forall props. ReactClass props
+foreign import formControlClass :: forall props. ReactClass {|props}
 
-formControlU :: forall props. props -> Array ReactElement -> ReactElement
-formControlU = createElement formControlClass
+formControlU :: forall props. {|props} -> Array ReactElement -> ReactElement
+formControlU = unsafeCreateElement formControlClass
 
 formControl :: Array (IProp FormControlProps) -> Array ReactElement -> ReactElement
 formControl = mkPropRecord >>> formControlU

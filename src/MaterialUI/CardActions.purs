@@ -4,8 +4,8 @@ module MaterialUI.CardActions where
 
 import Prelude
 import MaterialUI.PropTypes (StandardPropsExt)
-import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
-import React (ReactElement, createElement, ReactClass)
+import MaterialUI.Properties (IProp, mkPropRecord, mkProp)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 
 type CardActionsPropsExt r = StandardPropsExt (
   disableActionSpacing :: Boolean
@@ -20,10 +20,10 @@ type CardActionsProps = CardActionsPropsExt (
 disableActionSpacing :: forall r. Boolean -> IProp (disableActionSpacing :: Boolean | r)
 disableActionSpacing = mkProp "disableActionSpacing"
 
-foreign import cardActionsClass :: forall props. ReactClass props
+foreign import cardActionsClass :: forall props. ReactClass {|props}
 
-cardActionsU :: forall props. props -> Array ReactElement -> ReactElement
-cardActionsU = createElement cardActionsClass
+cardActionsU :: forall props. {|props} -> Array ReactElement -> ReactElement
+cardActionsU = unsafeCreateElement cardActionsClass
 
 cardActions :: Array (IProp CardActionsProps) -> Array ReactElement -> ReactElement
 cardActions = mkPropRecord >>> cardActionsU

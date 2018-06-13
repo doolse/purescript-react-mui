@@ -4,8 +4,8 @@ module MaterialUI.DialogContentText where
 
 import Prelude
 import MaterialUI.PropTypes (StandardPropsExt)
-import MaterialUI.Properties (mkPropRecord, IProp)
-import React (ReactElement, createElement, ReactClass)
+import MaterialUI.Properties (IProp, mkPropRecord)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 
 type DialogContentTextPropsExt (r :: # Type) = StandardPropsExt (
 
@@ -17,10 +17,10 @@ type DialogContentTextProps = DialogContentTextPropsExt (
 ) 
 
 
-foreign import dialogContentTextClass :: forall props. ReactClass props
+foreign import dialogContentTextClass :: forall props. ReactClass {|props}
 
-dialogContentTextU :: forall props. props -> Array ReactElement -> ReactElement
-dialogContentTextU = createElement dialogContentTextClass
+dialogContentTextU :: forall props. {|props} -> Array ReactElement -> ReactElement
+dialogContentTextU = unsafeCreateElement dialogContentTextClass
 
 dialogContentText :: Array (IProp DialogContentTextProps) -> Array ReactElement -> ReactElement
 dialogContentText = mkPropRecord >>> dialogContentTextU

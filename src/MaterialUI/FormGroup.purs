@@ -4,8 +4,8 @@ module MaterialUI.FormGroup where
 
 import Prelude
 import MaterialUI.PropTypes (StandardPropsExt)
-import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
-import React (ReactElement, createElement, ReactClass)
+import MaterialUI.Properties (IProp, mkPropRecord, mkProp)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 
 type FormGroupPropsExt r = StandardPropsExt (
   row :: Boolean
@@ -20,10 +20,10 @@ type FormGroupProps = FormGroupPropsExt (
 row :: forall r. Boolean -> IProp (row :: Boolean | r)
 row = mkProp "row"
 
-foreign import formGroupClass :: forall props. ReactClass props
+foreign import formGroupClass :: forall props. ReactClass {|props}
 
-formGroupU :: forall props. props -> Array ReactElement -> ReactElement
-formGroupU = createElement formGroupClass
+formGroupU :: forall props. {|props} -> Array ReactElement -> ReactElement
+formGroupU = unsafeCreateElement formGroupClass
 
 formGroup :: Array (IProp FormGroupProps) -> Array ReactElement -> ReactElement
 formGroup = mkPropRecord >>> formGroupU

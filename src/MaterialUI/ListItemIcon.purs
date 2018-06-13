@@ -4,8 +4,8 @@ module MaterialUI.ListItemIcon where
 
 import Prelude
 import MaterialUI.PropTypes (StandardPropsExt)
-import MaterialUI.Properties (mkPropRecord, IProp)
-import React (ReactElement, createElement, ReactClass)
+import MaterialUI.Properties (IProp, mkPropRecord)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 
 type ListItemIconPropsExt (r :: # Type) = StandardPropsExt (
 
@@ -17,10 +17,10 @@ type ListItemIconProps = ListItemIconPropsExt (
 ) 
 
 
-foreign import listItemIconClass :: forall props. ReactClass props
+foreign import listItemIconClass :: forall props. ReactClass {|props}
 
-listItemIconU :: forall props. props -> Array ReactElement -> ReactElement
-listItemIconU = createElement listItemIconClass
+listItemIconU :: forall props. {|props} -> Array ReactElement -> ReactElement
+listItemIconU = unsafeCreateElement listItemIconClass
 
 listItemIcon :: Array (IProp ListItemIconProps) -> Array ReactElement -> ReactElement
 listItemIcon = mkPropRecord >>> listItemIconU

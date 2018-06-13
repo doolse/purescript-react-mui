@@ -5,8 +5,8 @@ module MaterialUI.Menu where
 import Prelude
 import MaterialUI.Popover (PopoverPropsExt)
 import MaterialUI.PropTypes (Untyped)
-import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
-import React (ReactElement, createElement, ReactClass)
+import MaterialUI.Properties (mkPropRecord, mkProp, IProp)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type MenuPropsExt r = PopoverPropsExt (
@@ -38,10 +38,10 @@ popoverClasses = mkProp "PopoverClasses" <<< (unsafeCoerce :: a -> Untyped)
 transitionDuration :: forall r a. a -> IProp (transitionDuration :: Untyped | r)
 transitionDuration = mkProp "transitionDuration" <<< (unsafeCoerce :: a -> Untyped)
 
-foreign import menuClass :: forall props. ReactClass props
+foreign import menuClass :: forall props. ReactClass {|props}
 
-menuU :: forall props. props -> Array ReactElement -> ReactElement
-menuU = createElement menuClass
+menuU :: forall props. {|props} -> Array ReactElement -> ReactElement
+menuU = unsafeCreateElement menuClass
 
 menu :: Array (IProp MenuProps) -> Array ReactElement -> ReactElement
 menu = mkPropRecord >>> menuU

@@ -5,8 +5,8 @@ module MaterialUI.Select where
 import Prelude
 import MaterialUI.Input (InputPropsExt)
 import MaterialUI.PropTypes (Untyped, EventHandler, ReactNode, ReactType, class IsReactType, class IsReactNode)
-import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
-import React (ReactElement, createElement, ReactClass)
+import MaterialUI.Properties (mkProp, mkPropRecord, IProp)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type SelectPropsExt r = InputPropsExt (
@@ -64,10 +64,10 @@ selectDisplayProps = mkProp "SelectDisplayProps" <<< (unsafeCoerce :: a -> Untyp
 value :: forall r a. a -> IProp (value :: Untyped | r)
 value = mkProp "value" <<< (unsafeCoerce :: a -> Untyped)
 
-foreign import selectClass :: forall props. ReactClass props
+foreign import selectClass :: forall props. ReactClass {|props}
 
-selectU :: forall props. props -> Array ReactElement -> ReactElement
-selectU = createElement selectClass
+selectU :: forall props. {|props} -> Array ReactElement -> ReactElement
+selectU = unsafeCreateElement selectClass
 
 select :: Array (IProp SelectProps) -> Array ReactElement -> ReactElement
 select = mkPropRecord >>> selectU

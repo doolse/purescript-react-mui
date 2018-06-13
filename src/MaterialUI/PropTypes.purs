@@ -2,8 +2,8 @@ module MaterialUI.PropTypes where
 
 import Prelude
 
-import Control.Monad.Eff (Eff)
-import Control.Monad.Eff.Uncurried (EffFn1, EffFn2, mkEffFn1)
+import Effect (Effect)
+import Effect.Uncurried (EffectFn1, EffectFn2, mkEffectFn1)
 import React (ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
@@ -36,14 +36,14 @@ instance reactIntNode :: IsReactNode Int
 class AsEventHandler a e | a -> e where 
   toHandler :: a -> EventHandler e
 
-instance effFn1AsH :: AsEventHandler (EffFn1 ef a b) a where
+instance effFn1AsH :: AsEventHandler (EffectFn1 a b) a where
   toHandler = unsafeCoerce
 
-instance effFn2AsH :: AsEventHandler (EffFn2 ef a b c) e where
+instance effFn2AsH :: AsEventHandler (EffectFn2 a b c) e where
   toHandler = unsafeCoerce
 
-instance effAsH :: AsEventHandler (e -> Eff ef a) e where
-  toHandler = unsafeCoerce <<< mkEffFn1
+instance effAsH :: AsEventHandler (e -> Effect a) e where
+  toHandler = unsafeCoerce <<< mkEffectFn1
 
 foreign import data EventHandler :: Type -> Type
 foreign import data Alignment :: Type

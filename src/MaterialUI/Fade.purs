@@ -4,9 +4,9 @@ module MaterialUI.Fade where
 
 import Prelude
 import MaterialUI.PropTypes (Untyped)
-import MaterialUI.Properties (IProp, mkProp, mkPropRecord)
+import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
 import MaterialUI.Transition (TransitionPropsExt)
-import React (createElement, ReactClass, ReactElement)
+import React (ReactClass, ReactElement, unsafeCreateElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type FadePropsExt r = TransitionPropsExt (
@@ -22,10 +22,10 @@ type FadeProps = FadePropsExt (
 theme :: forall r a. a -> IProp (theme :: Untyped | r)
 theme = mkProp "theme" <<< (unsafeCoerce :: a -> Untyped)
 
-foreign import fadeClass :: forall props. ReactClass props
+foreign import fadeClass :: forall props. ReactClass {|props}
 
-fadeU :: forall props. props -> Array ReactElement -> ReactElement
-fadeU = createElement fadeClass
+fadeU :: forall props. {|props} -> Array ReactElement -> ReactElement
+fadeU = unsafeCreateElement fadeClass
 
 fade :: Array (IProp FadeProps) -> Array ReactElement -> ReactElement
 fade = mkPropRecord >>> fadeU

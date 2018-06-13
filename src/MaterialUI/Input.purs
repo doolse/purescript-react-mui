@@ -4,9 +4,9 @@ module MaterialUI.Input where
 
 import Prelude
 import MaterialUI.Event (Event)
-import MaterialUI.PropTypes (StandardPropsExt, Untyped, EventHandler, ReactNode, ReactType, class IsReactNode, class IsReactType)
-import MaterialUI.Properties (IProp, mkProp, mkPropRecord)
-import React (ReactElement, createElement, ReactClass)
+import MaterialUI.PropTypes (EventHandler, Untyped, ReactNode, ReactType, class IsReactNode, class IsReactType, StandardPropsExt)
+import MaterialUI.Properties (mkPropRecord, mkProp, IProp)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type InputPropsExt r = StandardPropsExt (
@@ -99,10 +99,10 @@ startAdornment = mkProp "startAdornment" <<< (unsafeCoerce :: a -> ReactNode)
 value :: forall r a. a -> IProp (value :: Untyped | r)
 value = mkProp "value" <<< (unsafeCoerce :: a -> Untyped)
 
-foreign import inputClass :: forall props. ReactClass props
+foreign import inputClass :: forall props. ReactClass {|props}
 
-inputU :: forall props. props -> Array ReactElement -> ReactElement
-inputU = createElement inputClass
+inputU :: forall props. {|props} -> Array ReactElement -> ReactElement
+inputU = unsafeCreateElement inputClass
 
 input :: Array (IProp InputProps) -> Array ReactElement -> ReactElement
 input = mkPropRecord >>> inputU

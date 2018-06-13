@@ -4,8 +4,8 @@ module MaterialUI.ListItemSecondaryAction where
 
 import Prelude
 import MaterialUI.PropTypes (StandardPropsExt)
-import MaterialUI.Properties (mkPropRecord, IProp)
-import React (ReactElement, createElement, ReactClass)
+import MaterialUI.Properties (IProp, mkPropRecord)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 
 type ListItemSecondaryActionPropsExt (r :: # Type) = StandardPropsExt (
 
@@ -17,10 +17,10 @@ type ListItemSecondaryActionProps = ListItemSecondaryActionPropsExt (
 ) 
 
 
-foreign import listItemSecondaryActionClass :: forall props. ReactClass props
+foreign import listItemSecondaryActionClass :: forall props. ReactClass {|props}
 
-listItemSecondaryActionU :: forall props. props -> Array ReactElement -> ReactElement
-listItemSecondaryActionU = createElement listItemSecondaryActionClass
+listItemSecondaryActionU :: forall props. {|props} -> Array ReactElement -> ReactElement
+listItemSecondaryActionU = unsafeCreateElement listItemSecondaryActionClass
 
 listItemSecondaryAction :: Array (IProp ListItemSecondaryActionProps) -> Array ReactElement -> ReactElement
 listItemSecondaryAction = mkPropRecord >>> listItemSecondaryActionU

@@ -5,9 +5,9 @@ module MaterialUI.ExpansionPanelSummary where
 import Prelude
 import MaterialUI.ButtonBase (ButtonBasePropsExt)
 import MaterialUI.Event (Event)
-import MaterialUI.PropTypes (ReactNode, EventHandler, class IsReactNode)
-import MaterialUI.Properties (IProp, mkProp, mkPropRecord)
-import React (ReactElement, createElement, ReactClass)
+import MaterialUI.PropTypes (EventHandler, class IsReactNode, ReactNode)
+import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type ExpansionPanelSummaryPropsExt r = ButtonBasePropsExt (
@@ -32,10 +32,10 @@ expanded = mkProp "expanded"
 expandIcon :: forall r a. IsReactNode a => a -> IProp (expandIcon :: ReactNode | r)
 expandIcon = mkProp "expandIcon" <<< (unsafeCoerce :: a -> ReactNode)
 
-foreign import expansionPanelSummaryClass :: forall props. ReactClass props
+foreign import expansionPanelSummaryClass :: forall props. ReactClass {|props}
 
-expansionPanelSummaryU :: forall props. props -> Array ReactElement -> ReactElement
-expansionPanelSummaryU = createElement expansionPanelSummaryClass
+expansionPanelSummaryU :: forall props. {|props} -> Array ReactElement -> ReactElement
+expansionPanelSummaryU = unsafeCreateElement expansionPanelSummaryClass
 
 expansionPanelSummary :: Array (IProp ExpansionPanelSummaryProps) -> Array ReactElement -> ReactElement
 expansionPanelSummary = mkPropRecord >>> expansionPanelSummaryU

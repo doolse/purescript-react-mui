@@ -4,9 +4,9 @@ module MaterialUI.Button where
 
 import Prelude
 import MaterialUI.ButtonBase (ButtonBasePropsExt)
-import MaterialUI.PropTypes (StdColor, ReactType)
-import MaterialUI.Properties (mkProp, IProp, Enum, mkPropRecord)
-import React (ReactElement, createElement, ReactClass)
+import MaterialUI.PropTypes (ReactType, StdColor)
+import MaterialUI.Properties (Enum, IProp, mkPropRecord, mkProp)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type ButtonPropsExt r = ButtonBasePropsExt (
@@ -70,10 +70,10 @@ mini = mkProp "mini"
 size :: forall r. Enum (small :: String, medium :: String, large :: String) -> IProp (size :: Enum (small :: String, medium :: String, large :: String) | r)
 size = mkProp "size"
 
-foreign import buttonClass :: forall props. ReactClass props
+foreign import buttonClass :: forall props. ReactClass {|props}
 
-buttonU :: forall props. props -> Array ReactElement -> ReactElement
-buttonU = createElement buttonClass
+buttonU :: forall props. {|props} -> Array ReactElement -> ReactElement
+buttonU = unsafeCreateElement buttonClass
 
 button :: Array (IProp ButtonProps) -> Array ReactElement -> ReactElement
 button = mkPropRecord >>> buttonU

@@ -4,9 +4,9 @@ module MaterialUI.ButtonBase where
 
 import Prelude
 import MaterialUI.Event (Event)
-import MaterialUI.PropTypes (StandardPropsExt, Untyped, EventHandler, ReactType)
-import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
-import React (ReactElement, createElement, ReactClass)
+import MaterialUI.PropTypes (Untyped, EventHandler, ReactType, StandardPropsExt)
+import MaterialUI.Properties (IProp, mkPropRecord, mkProp)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type ButtonBasePropsExt r = StandardPropsExt (
@@ -52,10 +52,10 @@ onFocusVisible = mkProp "onFocusVisible"
 touchRippleProps :: forall r a. a -> IProp ("TouchRippleProps" :: Untyped | r)
 touchRippleProps = mkProp "TouchRippleProps" <<< (unsafeCoerce :: a -> Untyped)
 
-foreign import buttonBaseClass :: forall props. ReactClass props
+foreign import buttonBaseClass :: forall props. ReactClass {|props}
 
-buttonBaseU :: forall props. props -> Array ReactElement -> ReactElement
-buttonBaseU = createElement buttonBaseClass
+buttonBaseU :: forall props. {|props} -> Array ReactElement -> ReactElement
+buttonBaseU = unsafeCreateElement buttonBaseClass
 
 buttonBase :: Array (IProp ButtonBaseProps) -> Array ReactElement -> ReactElement
 buttonBase = mkPropRecord >>> buttonBaseU
