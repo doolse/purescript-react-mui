@@ -4,17 +4,18 @@ module MaterialUI.ExpansionPanelSummary where
 
 import Prelude
 import MaterialUI.ButtonBase (ButtonBasePropsExt)
-import MaterialUI.Event (Event)
-import MaterialUI.PropTypes (EventHandler, class IsReactNode, ReactNode)
-import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
+import MaterialUI.PropTypes (ReactNode, Untyped, class IsReactNode, EventHandler)
+import MaterialUI.Properties (IProp, mkProp, mkPropRecord)
 import React (unsafeCreateElement, ReactClass, ReactElement)
+import React.SyntheticEvent (SyntheticEvent)
 import Unsafe.Coerce (unsafeCoerce)
 
 type ExpansionPanelSummaryPropsExt r = ButtonBasePropsExt (
   disabled :: Boolean,
   expanded :: Boolean,
   expandIcon :: ReactNode,
-  onChange :: EventHandler Event
+  "IconButtonProps" :: Untyped {-Identifier:Partial-},
+  onChange :: EventHandler SyntheticEvent
   | r
 ) 
 
@@ -31,6 +32,9 @@ expanded = mkProp "expanded"
 
 expandIcon :: forall r a. IsReactNode a => a -> IProp (expandIcon :: ReactNode | r)
 expandIcon = mkProp "expandIcon" <<< (unsafeCoerce :: a -> ReactNode)
+
+iconButtonProps :: forall r a. a -> IProp ("IconButtonProps" :: Untyped | r)
+iconButtonProps = mkProp "IconButtonProps" <<< (unsafeCoerce :: a -> Untyped)
 
 foreign import expansionPanelSummaryClass :: forall props. ReactClass {|props}
 

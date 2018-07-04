@@ -5,7 +5,7 @@ module MaterialUI.Dialog where
 import Prelude
 import MaterialUI.Modal (ModalPropsExt)
 import MaterialUI.PropTypes (Untyped, ReactType, class IsReactType)
-import MaterialUI.Properties (mkPropRecord, mkProp, IProp)
+import MaterialUI.Properties (mkProp, mkPropRecord, IProp, Enum)
 import React (unsafeCreateElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
@@ -14,6 +14,7 @@ type DialogPropsExt r = ModalPropsExt (
   fullWidth :: Boolean,
   maxWidth :: Untyped {-UNION['xs','sm','md',unknownType:FalseKeyword]-},
   "PaperProps" :: Untyped {-Identifier:Partial-},
+  scroll :: Enum (body :: String, paper :: String),
   "TransitionComponent" :: ReactType,
   transitionDuration :: Untyped {-unknownType:IndexedAccessType-},
   "TransitionProps" :: Untyped {-Identifier:TransitionProps-}
@@ -24,6 +25,11 @@ type DialogProps = DialogPropsExt (
 
 ) 
 
+body :: forall r. Enum (body :: String | r )
+body = unsafeCoerce "body"
+
+paper :: forall r. Enum (paper :: String | r )
+paper = unsafeCoerce "paper"
 
 fullScreen :: forall r. Boolean -> IProp (fullScreen :: Boolean | r)
 fullScreen = mkProp "fullScreen"
@@ -36,6 +42,9 @@ maxWidth = mkProp "maxWidth" <<< (unsafeCoerce :: a -> Untyped)
 
 paperProps :: forall r a. a -> IProp ("PaperProps" :: Untyped | r)
 paperProps = mkProp "PaperProps" <<< (unsafeCoerce :: a -> Untyped)
+
+scroll :: forall r. Enum (body :: String, paper :: String) -> IProp (scroll :: Enum (body :: String, paper :: String) | r)
+scroll = mkProp "scroll"
 
 transitionComponent :: forall r a. IsReactType a => a -> IProp ("TransitionComponent" :: ReactType | r)
 transitionComponent = mkProp "TransitionComponent" <<< (unsafeCoerce :: a -> ReactType)

@@ -47,7 +47,7 @@ recordPrim :: PsType
 recordPrim = PsPrim "Record"
 
 eventFQ :: PsType
-eventFQ = PsFQ "MaterialUI.Event" "Event"
+eventFQ = PsFQ "React.SyntheticEvent" "SyntheticEvent"
 
 eventHandler :: PsType -> PsType
 eventHandler o = PsParam (propTypes "EventHandler") [o]

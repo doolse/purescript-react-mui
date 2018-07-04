@@ -20,7 +20,7 @@ type ButtonPropsExt r = ButtonBasePropsExt (
   mini :: Boolean,
   size :: Enum (small :: String, medium :: String, large :: String),
   type :: String,
-  variant :: Enum (flat :: String, outlined :: String, raised :: String, fab :: String)
+  variant :: Enum (text :: String, flat :: String, outlined :: String, contained :: String, raised :: String, fab :: String, extendedFab :: String)
   | r
 ) 
 
@@ -37,17 +37,26 @@ medium = unsafeCoerce "medium"
 large :: forall r. Enum (large :: String | r )
 large = unsafeCoerce "large"
 
+text :: forall r. Enum (text :: String | r )
+text = unsafeCoerce "text"
+
 flat :: forall r. Enum (flat :: String | r )
 flat = unsafeCoerce "flat"
 
 outlined :: forall r. Enum (outlined :: String | r )
 outlined = unsafeCoerce "outlined"
 
+contained :: forall r. Enum (contained :: String | r )
+contained = unsafeCoerce "contained"
+
 raised :: forall r. Enum (raised :: String | r )
 raised = unsafeCoerce "raised"
 
 fab :: forall r. Enum (fab :: String | r )
 fab = unsafeCoerce "fab"
+
+extendedFab :: forall r. Enum (extendedFab :: String | r )
+extendedFab = unsafeCoerce "extendedFab"
 
 disabled :: forall r. Boolean -> IProp (disabled :: Boolean | r)
 disabled = mkProp "disabled"

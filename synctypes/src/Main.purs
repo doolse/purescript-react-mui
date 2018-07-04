@@ -2,6 +2,8 @@ module Main where
 
 import Prelude
 
+import Data.Array (unsafeIndex)
+import Data.Array.Partial (head)
 import Data.Bifunctor (rmap)
 import Data.Filterable (filterMap)
 import Data.Foldable (traverse_)
@@ -11,7 +13,10 @@ import Effect (Effect)
 import Foreign.Object as M
 import MuiConvert (CompDetails, ReactProps(..), moduleSource, tsToPsProps)
 import Node.Encoding as E
+import Node.FS.Sync (realpath)
 import Node.FS.Sync (writeTextFile) as FS
+import Node.Process (argv)
+import Partial.Unsafe (unsafePartial)
 import TsParser (PropsI(..), readInterfaces)
 
 included :: M.Object CompDetails
@@ -64,8 +69,10 @@ included = M.fromFoldable [t "ButtonProps" "Button", t "ButtonBaseProps" "Button
 
 main :: Effect Unit
 main = do
+  materialUiBase <- unsafePartial $ argv <#> flip unsafeIndex 2
+  configFile <- realpath (materialUiBase <> "/tsconfig.json")
   let toReact (p@PropsI {name}) = tsToPsProps p <$> M.lookup name included
-      allInts = filterMap toReact $ readInterfaces "../../material-ui/tsconfig.json" (flip M.member included)
+      allInts = filterMap toReact $ readInterfaces configFile (flip M.member included)
       writeProps baseDir r@(ReactProps {details:{name}}) = do
         let {purs,js} = moduleSource r
         FS.writeTextFile E.UTF8 (baseDir <> name <> ".purs") purs
