@@ -5,12 +5,11 @@ module MaterialUI.Menu where
 import Prelude
 import MaterialUI.Popover (PopoverPropsExt)
 import MaterialUI.PropTypes (Untyped)
-import MaterialUI.Properties (IProp, mkPropRecord, mkProp)
+import MaterialUI.Properties (mkProp, mkPropRecord, IProp)
 import React (unsafeCreateElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type MenuPropsExt r = PopoverPropsExt (
-  anchorEl :: Untyped {-Identifier:HTMLElement-},
   disableAutoFocusItem :: Boolean,
   "MenuListProps" :: Untyped {-Identifier:Partial-},
   "PaperProps" :: Untyped {-Identifier:Partial-},
@@ -23,9 +22,6 @@ type MenuProps = MenuPropsExt (
 
 ) 
 
-
-anchorEl :: forall r a. a -> IProp (anchorEl :: Untyped | r)
-anchorEl = mkProp "anchorEl" <<< (unsafeCoerce :: a -> Untyped)
 
 disableAutoFocusItem :: forall r. Boolean -> IProp (disableAutoFocusItem :: Boolean | r)
 disableAutoFocusItem = mkProp "disableAutoFocusItem"

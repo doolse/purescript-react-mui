@@ -4,18 +4,20 @@ module MaterialUI.Modal where
 
 import Prelude
 import MaterialUI.PropTypes (Untyped, EventHandler, ReactType, class IsReactType, StandardPropsExt)
-import MaterialUI.Properties (mkPropRecord, mkProp, IProp)
-import React (unsafeCreateElement, ReactClass, ReactElement)
+import MaterialUI.Properties (mkPropRecord, IProp, mkProp)
+import React (ReactElement, ReactClass, unsafeCreateElement)
 import React.SyntheticEvent (SyntheticEvent)
 import Unsafe.Coerce (unsafeCoerce)
 
 type ModalPropsExt r = StandardPropsExt (
   "BackdropComponent" :: ReactType,
   "BackdropProps" :: Untyped {-Identifier:Partial-},
+  container :: Untyped {-unknownType:IndexedAccessType-},
   disableAutoFocus :: Boolean,
   disableBackdropClick :: Boolean,
   disableEnforceFocus :: Boolean,
   disableEscapeKeyDown :: Boolean,
+  disablePortal :: Untyped {-unknownType:IndexedAccessType-},
   disableRestoreFocus :: Boolean,
   hideBackdrop :: Boolean,
   keepMounted :: Boolean,
@@ -23,6 +25,7 @@ type ModalPropsExt r = StandardPropsExt (
   onBackdropClick :: EventHandler SyntheticEvent,
   onClose :: EventHandler SyntheticEvent,
   onEscapeKeyDown :: EventHandler SyntheticEvent,
+  onRendered :: Untyped {-unknownType:IndexedAccessType-},
   open :: Boolean
   | r
 ) 
@@ -38,6 +41,9 @@ backdropComponent = mkProp "BackdropComponent" <<< (unsafeCoerce :: a -> ReactTy
 backdropProps :: forall r a. a -> IProp ("BackdropProps" :: Untyped | r)
 backdropProps = mkProp "BackdropProps" <<< (unsafeCoerce :: a -> Untyped)
 
+container :: forall r a. a -> IProp (container :: Untyped | r)
+container = mkProp "container" <<< (unsafeCoerce :: a -> Untyped)
+
 disableAutoFocus :: forall r. Boolean -> IProp (disableAutoFocus :: Boolean | r)
 disableAutoFocus = mkProp "disableAutoFocus"
 
@@ -49,6 +55,9 @@ disableEnforceFocus = mkProp "disableEnforceFocus"
 
 disableEscapeKeyDown :: forall r. Boolean -> IProp (disableEscapeKeyDown :: Boolean | r)
 disableEscapeKeyDown = mkProp "disableEscapeKeyDown"
+
+disablePortal :: forall r a. a -> IProp (disablePortal :: Untyped | r)
+disablePortal = mkProp "disablePortal" <<< (unsafeCoerce :: a -> Untyped)
 
 disableRestoreFocus :: forall r. Boolean -> IProp (disableRestoreFocus :: Boolean | r)
 disableRestoreFocus = mkProp "disableRestoreFocus"
@@ -68,8 +77,8 @@ onBackdropClick = mkProp "onBackdropClick"
 onEscapeKeyDown :: forall r. EventHandler SyntheticEvent -> IProp (onEscapeKeyDown :: EventHandler SyntheticEvent | r)
 onEscapeKeyDown = mkProp "onEscapeKeyDown"
 
-open :: forall r. Boolean -> IProp (open :: Boolean | r)
-open = mkProp "open"
+onRendered :: forall r a. a -> IProp (onRendered :: Untyped | r)
+onRendered = mkProp "onRendered" <<< (unsafeCoerce :: a -> Untyped)
 
 foreign import modalClass :: forall props. ReactClass {|props}
 

@@ -5,7 +5,7 @@ module MaterialUI.ListItem where
 import Prelude
 import MaterialUI.ButtonBase (ButtonBasePropsExt)
 import MaterialUI.PropTypes (class IsReactType, Untyped, ReactType)
-import MaterialUI.Properties (mkPropRecord, mkProp, IProp)
+import MaterialUI.Properties (mkProp, mkPropRecord, IProp)
 import React (unsafeCreateElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
@@ -38,9 +38,6 @@ containerProps = mkProp "ContainerProps" <<< (unsafeCoerce :: a -> Untyped)
 
 dense :: forall r. Boolean -> IProp (dense :: Boolean | r)
 dense = mkProp "dense"
-
-disabled :: forall r. Boolean -> IProp (disabled :: Boolean | r)
-disabled = mkProp "disabled"
 
 disableGutters :: forall r. Boolean -> IProp (disableGutters :: Boolean | r)
 disableGutters = mkProp "disableGutters"

@@ -6,7 +6,7 @@ import Prelude
 import MaterialUI.Input (InputPropsExt)
 import MaterialUI.PropTypes (Untyped, EventHandler, ReactNode, ReactType, class IsReactType, class IsReactNode)
 import MaterialUI.Properties (mkProp, mkPropRecord, IProp)
-import React (unsafeCreateElement, ReactClass, ReactElement)
+import React (ReactElement, ReactClass, unsafeCreateElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type SelectPropsExt r = InputPropsExt (
@@ -51,9 +51,6 @@ multiple = mkProp "multiple"
 
 native :: forall r. Boolean -> IProp (native :: Boolean | r)
 native = mkProp "native"
-
-open :: forall r. Boolean -> IProp (open :: Boolean | r)
-open = mkProp "open"
 
 renderValue :: forall r a. a -> IProp (renderValue :: Untyped | r)
 renderValue = mkProp "renderValue" <<< (unsafeCoerce :: a -> Untyped)

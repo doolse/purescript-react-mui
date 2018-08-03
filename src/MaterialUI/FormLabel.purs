@@ -21,9 +21,6 @@ type FormLabelProps = FormLabelPropsExt (
 ) 
 
 
-disabled :: forall r. Boolean -> IProp (disabled :: Boolean | r)
-disabled = mkProp "disabled"
-
 error :: forall r. Boolean -> IProp (error :: Boolean | r)
 error = mkProp "error"
 

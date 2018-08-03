@@ -10,7 +10,7 @@ import Unsafe.Coerce (unsafeCoerce)
 
 type TypographyPropsExt r = StandardPropsExt (
   align :: Untyped {-PropTypes.Alignment-},
-  color :: Enum (StdColor (textSecondary :: String, error :: String)),
+  color :: Enum (StdColor (textPrimary :: String, textSecondary :: String, error :: String)),
   component :: ReactType,
   gutterBottom :: Boolean,
   headlineMapping :: Untyped {-unknownType:MappedType-},
@@ -23,6 +23,9 @@ type TypographyPropsExt r = StandardPropsExt (
 type TypographyProps = TypographyPropsExt (
 
 ) 
+
+textPrimary :: forall r. Enum (textPrimary :: String | r )
+textPrimary = unsafeCoerce "textPrimary"
 
 textSecondary :: forall r. Enum (textSecondary :: String | r )
 textSecondary = unsafeCoerce "textSecondary"

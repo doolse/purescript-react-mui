@@ -4,10 +4,12 @@ module MaterialUI.Toolbar where
 
 import Prelude
 import MaterialUI.PropTypes (StandardPropsExt)
-import MaterialUI.Properties (IProp, mkPropRecord, mkProp)
-import React (unsafeCreateElement, ReactClass, ReactElement)
+import MaterialUI.Properties (Enum, mkProp, IProp, mkPropRecord)
+import React (ReactClass, ReactElement, unsafeCreateElement)
+import Unsafe.Coerce (unsafeCoerce)
 
 type ToolbarPropsExt r = StandardPropsExt (
+  variant :: Enum (regular :: String, dense :: String),
   disableGutters :: Boolean
   | r
 ) 
@@ -16,6 +18,11 @@ type ToolbarProps = ToolbarPropsExt (
 
 ) 
 
+regular :: forall r. Enum (regular :: String | r )
+regular = unsafeCoerce "regular"
+
+dense :: forall r. Enum (dense :: String | r )
+dense = unsafeCoerce "dense"
 
 disableGutters :: forall r. Boolean -> IProp (disableGutters :: Boolean | r)
 disableGutters = mkProp "disableGutters"

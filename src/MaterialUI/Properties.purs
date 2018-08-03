@@ -94,3 +94,9 @@ onOpen = mkProp "onOpen" <<< toHandler
 
 onDelete :: forall a e r. AsEventHandler a e => a -> IProp (onDelete :: EventHandler e | r)
 onDelete = mkProp "onDelete" <<< toHandler
+
+open :: forall r. Boolean -> IProp (open :: Boolean | r)
+open = mkProp "open"
+
+disabled :: forall r. Boolean -> IProp (disabled :: Boolean | r)
+disabled = mkProp "disabled"

@@ -5,7 +5,7 @@ module MaterialUI.FormHelperText where
 import Prelude
 import MaterialUI.PropTypes (ReactType, Untyped, StandardPropsExt)
 import MaterialUI.Properties (IProp, mkProp, mkPropRecord)
-import React (unsafeCreateElement, ReactClass, ReactElement)
+import React (ReactClass, ReactElement, unsafeCreateElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type FormHelperTextPropsExt r = StandardPropsExt (
@@ -20,9 +20,6 @@ type FormHelperTextProps = FormHelperTextPropsExt (
 
 ) 
 
-
-disabled :: forall r. Boolean -> IProp (disabled :: Boolean | r)
-disabled = mkProp "disabled"
 
 error :: forall r. Boolean -> IProp (error :: Boolean | r)
 error = mkProp "error"

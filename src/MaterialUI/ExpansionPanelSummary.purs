@@ -4,8 +4,8 @@ module MaterialUI.ExpansionPanelSummary where
 
 import Prelude
 import MaterialUI.ButtonBase (ButtonBasePropsExt)
-import MaterialUI.PropTypes (ReactNode, Untyped, class IsReactNode, EventHandler)
-import MaterialUI.Properties (IProp, mkProp, mkPropRecord)
+import MaterialUI.PropTypes (EventHandler, Untyped, ReactNode, class IsReactNode)
+import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
 import React (unsafeCreateElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticEvent)
 import Unsafe.Coerce (unsafeCoerce)
@@ -23,9 +23,6 @@ type ExpansionPanelSummaryProps = ExpansionPanelSummaryPropsExt (
 
 ) 
 
-
-disabled :: forall r. Boolean -> IProp (disabled :: Boolean | r)
-disabled = mkProp "disabled"
 
 expanded :: forall r. Boolean -> IProp (expanded :: Boolean | r)
 expanded = mkProp "expanded"

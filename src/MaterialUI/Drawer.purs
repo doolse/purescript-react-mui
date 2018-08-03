@@ -5,7 +5,7 @@ module MaterialUI.Drawer where
 import Prelude
 import MaterialUI.Modal (ModalPropsExt)
 import MaterialUI.PropTypes (Untyped)
-import MaterialUI.Properties (Enum, mkProp, IProp, mkPropRecord)
+import MaterialUI.Properties (IProp, Enum, mkPropRecord, mkProp)
 import React (unsafeCreateElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
@@ -55,9 +55,6 @@ elevation = mkProp "elevation"
 
 modalProps :: forall r a. a -> IProp ("ModalProps" :: Untyped | r)
 modalProps = mkProp "ModalProps" <<< (unsafeCoerce :: a -> Untyped)
-
-open :: forall r. Boolean -> IProp (open :: Boolean | r)
-open = mkProp "open"
 
 paperProps :: forall r a. a -> IProp ("PaperProps" :: Untyped | r)
 paperProps = mkProp "PaperProps" <<< (unsafeCoerce :: a -> Untyped)

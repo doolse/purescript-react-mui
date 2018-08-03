@@ -53,9 +53,6 @@ autoFocus = mkProp "autoFocus"
 defaultValue :: forall r a. a -> IProp (defaultValue :: Untyped | r)
 defaultValue = mkProp "defaultValue" <<< (unsafeCoerce :: a -> Untyped)
 
-disabled :: forall r. Boolean -> IProp (disabled :: Boolean | r)
-disabled = mkProp "disabled"
-
 error :: forall r. Boolean -> IProp (error :: Boolean | r)
 error = mkProp "error"
 

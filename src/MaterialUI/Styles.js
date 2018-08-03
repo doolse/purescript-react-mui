@@ -1,8 +1,8 @@
-const ws = require('@material-ui/core/styles').withStyles;
+const Styles = require('@material-ui/core/styles');
 
 exports.withStyles = function () {
   return function (styleFunc) {
-    return ws(styleFunc, {withTheme:true});
+    return Styles.withStyles(styleFunc, {withTheme:true});
   }
 }
 
@@ -17,3 +17,9 @@ exports.mediaQuery = function (name) {
 exports.cssList = function (arr) {
   return Object.assign.apply(undefined, [{}].concat(arr));
 }
+
+exports.createMuiTheme = function(t) {
+  return Styles.createMuiTheme(t);
+}
+
+exports.muiThemeProviderClass = Styles.MuiThemeProvider;

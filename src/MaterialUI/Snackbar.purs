@@ -4,14 +4,14 @@ module MaterialUI.Snackbar where
 
 import Prelude
 import MaterialUI.PropTypes (Untyped, EventHandler, ReactType, class IsReactType, StandardPropsExt)
-import MaterialUI.Properties (IProp, mkProp, mkPropRecord)
+import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
 import React (ReactElement, unsafeCreateElement, ReactClass)
 import React.SyntheticEvent (SyntheticEvent)
 import Unsafe.Coerce (unsafeCoerce)
 
 type SnackbarPropsExt r = StandardPropsExt (
   action :: Untyped {-UNION[FQN:React.ReactElement,unknownType:ArrayType]-},
-  anchorOrigin :: Untyped {-Identifier:SnackBarOrigin-},
+  anchorOrigin :: Untyped {-Identifier:SnackbarOrigin-},
   autoHideDuration :: Int,
   "ContentProps" :: Untyped {-Identifier:Partial-},
   disableWindowBlurListener :: Boolean,
@@ -55,9 +55,6 @@ onMouseEnter = mkProp "onMouseEnter"
 
 onMouseLeave :: forall r. EventHandler SyntheticEvent -> IProp (onMouseLeave :: EventHandler SyntheticEvent | r)
 onMouseLeave = mkProp "onMouseLeave"
-
-open :: forall r. Boolean -> IProp (open :: Boolean | r)
-open = mkProp "open"
 
 resumeHideDuration :: forall r. Int -> IProp (resumeHideDuration :: Int | r)
 resumeHideDuration = mkProp "resumeHideDuration"

@@ -5,7 +5,7 @@ module MaterialUI.Button where
 import Prelude
 import MaterialUI.ButtonBase (ButtonBasePropsExt)
 import MaterialUI.PropTypes (ReactType, StdColor)
-import MaterialUI.Properties (Enum, IProp, mkPropRecord, mkProp)
+import MaterialUI.Properties (IProp, Enum, mkPropRecord, mkProp)
 import React (unsafeCreateElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
@@ -57,9 +57,6 @@ fab = unsafeCoerce "fab"
 
 extendedFab :: forall r. Enum (extendedFab :: String | r )
 extendedFab = unsafeCoerce "extendedFab"
-
-disabled :: forall r. Boolean -> IProp (disabled :: Boolean | r)
-disabled = mkProp "disabled"
 
 disableFocusRipple :: forall r. Boolean -> IProp (disableFocusRipple :: Boolean | r)
 disableFocusRipple = mkProp "disableFocusRipple"

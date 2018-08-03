@@ -102,7 +102,7 @@ reactNode = propWithClass "ReactNode" "IsReactNode"
 
 commonProps :: S.Set String
 commonProps = S.fromFoldable ["color", "type", "component", "inputProps", "variant", "onClick", 
-  "onChange", "onOpen", "onClose", "onDelete", "onKeyDown", "onKeyUp"]
+  "onChange", "onOpen", "onClose", "onDelete", "onKeyDown", "onKeyUp", "open", "disabled"]
 
 newtype ReactProps = ReactProps {details::CompDetails,
   defs :: Array PsPropDef, enums :: Array REnum }

@@ -29,9 +29,6 @@ collapseProps = mkProp "CollapseProps" <<< (unsafeCoerce :: a -> Untyped)
 defaultExpanded :: forall r. Boolean -> IProp (defaultExpanded :: Boolean | r)
 defaultExpanded = mkProp "defaultExpanded"
 
-disabled :: forall r. Boolean -> IProp (disabled :: Boolean | r)
-disabled = mkProp "disabled"
-
 expanded :: forall r. Boolean -> IProp (expanded :: Boolean | r)
 expanded = mkProp "expanded"
 

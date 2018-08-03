@@ -11,7 +11,7 @@ import Unsafe.Coerce (unsafeCoerce)
 
 type PopoverPropsExt r = ModalPropsExt (
   action :: Untyped {-unknownType:FunctionType-},
-  anchorEl :: Untyped {-UNION[Identifier:HTMLElement,unknownType:ParenthesizedType]-},
+  anchorEl :: Untyped {-UNION[unknownType:NullKeyword,Identifier:HTMLElement,unknownType:ParenthesizedType]-},
   anchorOrigin :: Untyped {-Identifier:PopoverOrigin-},
   anchorPosition :: Untyped {-Identifier:PopoverPosition-},
   anchorReference :: Untyped {-Identifier:PopoverReference-},

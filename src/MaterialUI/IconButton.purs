@@ -6,7 +6,7 @@ import Prelude
 import MaterialUI.ButtonBase (ButtonBasePropsExt)
 import MaterialUI.PropTypes (StdColor)
 import MaterialUI.Properties (mkProp, IProp, Enum, mkPropRecord)
-import React (ReactClass, ReactElement, unsafeCreateElement)
+import React (ReactElement, unsafeCreateElement, ReactClass)
 
 type IconButtonPropsExt r = ButtonBasePropsExt (
   color :: Enum (StdColor ()),
@@ -19,9 +19,6 @@ type IconButtonProps = IconButtonPropsExt (
 
 ) 
 
-
-disabled :: forall r. Boolean -> IProp (disabled :: Boolean | r)
-disabled = mkProp "disabled"
 
 disableRipple :: forall r. Boolean -> IProp (disableRipple :: Boolean | r)
 disableRipple = mkProp "disableRipple"

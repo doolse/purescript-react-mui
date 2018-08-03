@@ -4,7 +4,7 @@ module MaterialUI.Input where
 
 import Prelude
 import MaterialUI.PropTypes (StandardPropsExt, Untyped, EventHandler, ReactType, class IsReactNode, class IsReactType, ReactNode)
-import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
+import MaterialUI.Properties (mkPropRecord, IProp, mkProp)
 import React (unsafeCreateElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticEvent)
 import Unsafe.Coerce (unsafeCoerce)
@@ -26,6 +26,7 @@ type InputPropsExt r = StandardPropsExt (
   multiline :: Boolean,
   name :: String,
   placeholder :: String,
+  required :: Boolean,
   rows :: Untyped {-UNION["String","Number"]-},
   rowsMax :: Untyped {-UNION["String","Number"]-},
   startAdornment :: ReactNode,
@@ -50,9 +51,6 @@ autoFocus = mkProp "autoFocus"
 
 defaultValue :: forall r a. a -> IProp (defaultValue :: Untyped | r)
 defaultValue = mkProp "defaultValue" <<< (unsafeCoerce :: a -> Untyped)
-
-disabled :: forall r. Boolean -> IProp (disabled :: Boolean | r)
-disabled = mkProp "disabled"
 
 disableUnderline :: forall r. Boolean -> IProp (disableUnderline :: Boolean | r)
 disableUnderline = mkProp "disableUnderline"
@@ -86,6 +84,9 @@ name = mkProp "name"
 
 placeholder :: forall r. String -> IProp (placeholder :: String | r)
 placeholder = mkProp "placeholder"
+
+required :: forall r. Boolean -> IProp (required :: Boolean | r)
+required = mkProp "required"
 
 rows :: forall r a. a -> IProp (rows :: Untyped | r)
 rows = mkProp "rows" <<< (unsafeCoerce :: a -> Untyped)

@@ -27,9 +27,6 @@ type InputLabelProps = InputLabelPropsExt (
 disableAnimation :: forall r. Boolean -> IProp (disableAnimation :: Boolean | r)
 disableAnimation = mkProp "disableAnimation"
 
-disabled :: forall r. Boolean -> IProp (disabled :: Boolean | r)
-disabled = mkProp "disabled"
-
 error :: forall r. Boolean -> IProp (error :: Boolean | r)
 error = mkProp "error"
 

@@ -4,10 +4,11 @@ module MaterialUI.SwitchBase where
 
 import Prelude
 import MaterialUI.PropTypes (Untyped, EventHandler, ReactNode, class IsReactNode, StandardPropsExt)
-import MaterialUI.Properties (IProp, mkProp)
+import MaterialUI.Properties (mkProp, IProp)
 import Unsafe.Coerce (unsafeCoerce)
 
 type SwitchBasePropsExt r = StandardPropsExt (
+  autoFocus :: Boolean,
   checked :: Untyped {-UNION["Boolean","String"]-},
   checkedIcon :: ReactNode,
   defaultChecked :: Boolean,
@@ -20,6 +21,8 @@ type SwitchBasePropsExt r = StandardPropsExt (
   inputRef :: Untyped {-React.Ref-},
   name :: String,
   onChange :: EventHandler Unit,
+  readOnly :: Boolean,
+  required :: Boolean,
   tabIndex :: Int,
   value :: String
   | r
@@ -30,6 +33,9 @@ type SwitchBaseProps = SwitchBasePropsExt (
 ) 
 
 
+autoFocus :: forall r. Boolean -> IProp (autoFocus :: Boolean | r)
+autoFocus = mkProp "autoFocus"
+
 checked :: forall r a. a -> IProp (checked :: Untyped | r)
 checked = mkProp "checked" <<< (unsafeCoerce :: a -> Untyped)
 
@@ -38,9 +44,6 @@ checkedIcon = mkProp "checkedIcon" <<< (unsafeCoerce :: a -> ReactNode)
 
 defaultChecked :: forall r. Boolean -> IProp (defaultChecked :: Boolean | r)
 defaultChecked = mkProp "defaultChecked"
-
-disabled :: forall r. Boolean -> IProp (disabled :: Boolean | r)
-disabled = mkProp "disabled"
 
 disableRipple :: forall r. Boolean -> IProp (disableRipple :: Boolean | r)
 disableRipple = mkProp "disableRipple"
@@ -59,6 +62,12 @@ inputRef = mkProp "inputRef" <<< (unsafeCoerce :: a -> Untyped)
 
 name :: forall r. String -> IProp (name :: String | r)
 name = mkProp "name"
+
+readOnly :: forall r. Boolean -> IProp (readOnly :: Boolean | r)
+readOnly = mkProp "readOnly"
+
+required :: forall r. Boolean -> IProp (required :: Boolean | r)
+required = mkProp "required"
 
 tabIndex :: forall r. Int -> IProp (tabIndex :: Int | r)
 tabIndex = mkProp "tabIndex"
