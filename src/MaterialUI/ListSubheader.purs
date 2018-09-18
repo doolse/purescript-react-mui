@@ -9,10 +9,11 @@ import React (ReactClass, ReactElement, unsafeCreateElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type ListSubheaderPropsExt r = StandardPropsExt (
-  component :: ReactType,
   color :: Enum (default :: String, primary :: String, inherit :: String),
-  inset :: Boolean,
-  disableSticky :: Boolean
+  component :: ReactType,
+  disableGutters :: Boolean,
+  disableSticky :: Boolean,
+  inset :: Boolean
   | r
 ) 
 
@@ -29,11 +30,14 @@ primary = unsafeCoerce "primary"
 inherit :: forall r. Enum (inherit :: String | r )
 inherit = unsafeCoerce "inherit"
 
-inset :: forall r. Boolean -> IProp (inset :: Boolean | r)
-inset = mkProp "inset"
+disableGutters :: forall r. Boolean -> IProp (disableGutters :: Boolean | r)
+disableGutters = mkProp "disableGutters"
 
 disableSticky :: forall r. Boolean -> IProp (disableSticky :: Boolean | r)
 disableSticky = mkProp "disableSticky"
+
+inset :: forall r. Boolean -> IProp (inset :: Boolean | r)
+inset = mkProp "inset"
 
 foreign import listSubheaderClass :: forall props. ReactClass {|props}
 

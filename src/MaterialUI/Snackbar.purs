@@ -5,17 +5,18 @@ module MaterialUI.Snackbar where
 import Prelude
 import MaterialUI.PropTypes (Untyped, EventHandler, ReactType, class IsReactType, StandardPropsExt)
 import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
-import React (ReactElement, unsafeCreateElement, ReactClass)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticEvent)
 import Unsafe.Coerce (unsafeCoerce)
 
 type SnackbarPropsExt r = StandardPropsExt (
-  action :: Untyped {-UNION[FQN:React.ReactElement,unknownType:ArrayType]-},
+  action :: Untyped {-unknownType:IndexedAccessType-},
   anchorOrigin :: Untyped {-Identifier:SnackbarOrigin-},
   autoHideDuration :: Int,
+  "ClickAwayListenerProps" :: Untyped {-Identifier:Partial-},
   "ContentProps" :: Untyped {-Identifier:Partial-},
   disableWindowBlurListener :: Boolean,
-  message :: ReactElement,
+  message :: Untyped {-unknownType:IndexedAccessType-},
   onClose :: EventHandler Unit,
   onMouseEnter :: EventHandler SyntheticEvent,
   onMouseLeave :: EventHandler SyntheticEvent,
@@ -41,14 +42,17 @@ anchorOrigin = mkProp "anchorOrigin" <<< (unsafeCoerce :: a -> Untyped)
 autoHideDuration :: forall r. Int -> IProp (autoHideDuration :: Int | r)
 autoHideDuration = mkProp "autoHideDuration"
 
+clickAwayListenerProps :: forall r a. a -> IProp ("ClickAwayListenerProps" :: Untyped | r)
+clickAwayListenerProps = mkProp "ClickAwayListenerProps" <<< (unsafeCoerce :: a -> Untyped)
+
 contentProps :: forall r a. a -> IProp ("ContentProps" :: Untyped | r)
 contentProps = mkProp "ContentProps" <<< (unsafeCoerce :: a -> Untyped)
 
 disableWindowBlurListener :: forall r. Boolean -> IProp (disableWindowBlurListener :: Boolean | r)
 disableWindowBlurListener = mkProp "disableWindowBlurListener"
 
-message :: forall r. ReactElement -> IProp (message :: ReactElement | r)
-message = mkProp "message"
+message :: forall r a. a -> IProp (message :: Untyped | r)
+message = mkProp "message" <<< (unsafeCoerce :: a -> Untyped)
 
 onMouseEnter :: forall r. EventHandler SyntheticEvent -> IProp (onMouseEnter :: EventHandler SyntheticEvent | r)
 onMouseEnter = mkProp "onMouseEnter"

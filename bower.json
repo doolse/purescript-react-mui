@@ -10,7 +10,9 @@
     "purescript-prelude": "^4.0.1",
     "purescript-react": "^6.0.0",
     "purescript-react-dom": "^6.0.0",
-    "purescript-typelevel-prelude": "^3.0.0"
+    "purescript-typelevel-prelude": "^3.0.0",
+    "purescript-js-date": "^6.0.0",
+    "purescript-tscompat": "doolse/purescript-tscompat#master"
   },
   "devDependencies": {
     "purescript-psci-support": "^4.0.0",

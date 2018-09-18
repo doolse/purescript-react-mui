@@ -4,15 +4,18 @@ module MaterialUI.FormHelperText where
 
 import Prelude
 import MaterialUI.PropTypes (ReactType, Untyped, StandardPropsExt)
-import MaterialUI.Properties (IProp, mkProp, mkPropRecord)
-import React (ReactClass, ReactElement, unsafeCreateElement)
+import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
+import React (unsafeCreateElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type FormHelperTextPropsExt r = StandardPropsExt (
   disabled :: Boolean,
   error :: Boolean,
+  filled :: Boolean,
+  focused :: Boolean,
   component :: ReactType,
-  margin :: Untyped {-'dense'-}
+  margin :: Untyped {-'dense'-},
+  required :: Boolean
   | r
 ) 
 
@@ -24,8 +27,17 @@ type FormHelperTextProps = FormHelperTextPropsExt (
 error :: forall r. Boolean -> IProp (error :: Boolean | r)
 error = mkProp "error"
 
+filled :: forall r. Boolean -> IProp (filled :: Boolean | r)
+filled = mkProp "filled"
+
+focused :: forall r. Boolean -> IProp (focused :: Boolean | r)
+focused = mkProp "focused"
+
 margin :: forall r a. a -> IProp (margin :: Untyped | r)
 margin = mkProp "margin" <<< (unsafeCoerce :: a -> Untyped)
+
+required :: forall r. Boolean -> IProp (required :: Boolean | r)
+required = mkProp "required"
 
 foreign import formHelperTextClass :: forall props. ReactClass {|props}
 

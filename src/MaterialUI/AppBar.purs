@@ -11,7 +11,7 @@ import Unsafe.Coerce (unsafeCoerce)
 
 type AppBarPropsExt r = PaperPropsExt (
   color :: Enum (StdColor ()),
-  position :: Enum (fixed :: String, absolute :: String, sticky :: String, static :: String)
+  position :: Enum (fixed :: String, absolute :: String, sticky :: String, static :: String, relative :: String)
   | r
 ) 
 
@@ -31,7 +31,10 @@ sticky = unsafeCoerce "sticky"
 static :: forall r. Enum (static :: String | r )
 static = unsafeCoerce "static"
 
-position :: forall r. Enum (fixed :: String, absolute :: String, sticky :: String, static :: String) -> IProp (position :: Enum (fixed :: String, absolute :: String, sticky :: String, static :: String) | r)
+relative :: forall r. Enum (relative :: String | r )
+relative = unsafeCoerce "relative"
+
+position :: forall r. Enum (fixed :: String, absolute :: String, sticky :: String, static :: String, relative :: String) -> IProp (position :: Enum (fixed :: String, absolute :: String, sticky :: String, static :: String, relative :: String) | r)
 position = mkProp "position"
 
 foreign import appBarClass :: forall props. ReactClass {|props}

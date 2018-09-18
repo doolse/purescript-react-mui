@@ -21,7 +21,7 @@ type TooltipPropsExt r = StandardPropsExt (
   onOpen :: EventHandler Unit,
   open :: Boolean,
   placement :: Enum ("bottom-end" :: String, "bottom-start" :: String, bottom :: String, "left-end" :: String, "left-start" :: String, left :: String, "right-end" :: String, "right-start" :: String, right :: String, "top-end" :: String, "top-start" :: String, top :: String),
-  "PopperProps" :: Untyped {-Identifier:Object-},
+  "PopperProps" :: Untyped {-unknownType:ObjectKeyword-},
   title :: ReactNode,
   "TransitionComponent" :: ReactType,
   "TransitionProps" :: Untyped {-Identifier:TransitionProps-}

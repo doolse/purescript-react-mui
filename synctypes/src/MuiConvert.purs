@@ -338,6 +338,7 @@ tsToPsProps (PropsI {name:iname, members, extends}) details = let
     parentRec o = PsExt {exts: [o], extMembers:[]}
 
     parent (TsIdentifier "ButtonBaseProps") = parentRec $ PsFQ "MaterialUI.ButtonBase" "ButtonBasePropsExt"
+    parent (TsIdentifier "ListItemProps") = parentRec $ PsFQ "MaterialUI.ListItem" "ListItemPropsExt"
     parent (TsIdentifier "PaperProps") = parentRec $ PsFQ "MaterialUI.Paper" "PaperPropsExt" 
     parent (TsIdentifier "SwitchBaseProps") = parentRec $ PsFQ "MaterialUI.SwitchBase" "SwitchBasePropsExt" 
     parent (TsIdentifier "InputProps") = parentRec $ PsFQ "MaterialUI.Input" "InputPropsExt" 

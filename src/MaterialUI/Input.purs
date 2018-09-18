@@ -4,7 +4,7 @@ module MaterialUI.Input where
 
 import Prelude
 import MaterialUI.PropTypes (StandardPropsExt, Untyped, EventHandler, ReactType, class IsReactNode, class IsReactType, ReactNode)
-import MaterialUI.Properties (mkPropRecord, IProp, mkProp)
+import MaterialUI.Properties (mkProp, mkPropRecord, IProp)
 import React (unsafeCreateElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticEvent)
 import Unsafe.Coerce (unsafeCoerce)
@@ -20,18 +20,19 @@ type InputPropsExt r = StandardPropsExt (
   fullWidth :: Boolean,
   id :: String,
   inputComponent :: ReactType,
-  inputProps :: Untyped {-unknownType:TypeLiteral-},
+  inputProps :: Untyped {-Identifier:InputComponentProps-},
   inputRef :: Untyped {-UNION[FQN:React.Ref,FQN:React.RefObject]-},
   margin :: Untyped {-'dense'-},
   multiline :: Boolean,
   name :: String,
   placeholder :: String,
+  readOnly :: Boolean,
   required :: Boolean,
   rows :: Untyped {-UNION["String","Number"]-},
   rowsMax :: Untyped {-UNION["String","Number"]-},
   startAdornment :: ReactNode,
   type :: String,
-  value :: Untyped {-UNION[Identifier:Array,"String","Number"]-},
+  value :: Untyped {-UNION[Identifier:Array,"String","Number","Boolean"]-},
   onChange :: EventHandler SyntheticEvent,
   onKeyUp :: EventHandler SyntheticEvent,
   onKeyDown :: EventHandler SyntheticEvent
@@ -84,6 +85,9 @@ name = mkProp "name"
 
 placeholder :: forall r. String -> IProp (placeholder :: String | r)
 placeholder = mkProp "placeholder"
+
+readOnly :: forall r. Boolean -> IProp (readOnly :: Boolean | r)
+readOnly = mkProp "readOnly"
 
 required :: forall r. Boolean -> IProp (required :: Boolean | r)
 required = mkProp "required"

@@ -12,7 +12,7 @@ import Unsafe.Coerce (unsafeCoerce)
 type DialogPropsExt r = ModalPropsExt (
   fullScreen :: Boolean,
   fullWidth :: Boolean,
-  maxWidth :: Untyped {-UNION['xs','sm','md',unknownType:FalseKeyword]-},
+  maxWidth :: Untyped {-UNION['xs','sm','md','lg',unknownType:FalseKeyword]-},
   "PaperProps" :: Untyped {-Identifier:Partial-},
   scroll :: Enum (body :: String, paper :: String),
   "TransitionComponent" :: ReactType,

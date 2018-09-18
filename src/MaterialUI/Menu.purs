@@ -13,7 +13,7 @@ type MenuPropsExt r = PopoverPropsExt (
   disableAutoFocusItem :: Boolean,
   "MenuListProps" :: Untyped {-Identifier:Partial-},
   "PaperProps" :: Untyped {-Identifier:Partial-},
-  "PopoverClasses" :: Untyped {-Identifier:Partial-},
+  "PopoverClasses" :: Untyped {-unknownType:IndexedAccessType-},
   transitionDuration :: Untyped {-UNION[unknownType:IndexedAccessType,'auto']-}
   | r
 ) 

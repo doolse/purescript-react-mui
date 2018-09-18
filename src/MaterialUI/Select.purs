@@ -22,7 +22,7 @@ type SelectPropsExt r = InputPropsExt (
   open :: Boolean,
   renderValue :: Untyped {-unknownType:FunctionType-},
   "SelectDisplayProps" :: Untyped {-React.HTMLAttributes-},
-  value :: Untyped {-UNION[Identifier:Array,"String","Number"]-}
+  value :: Untyped {-UNION[Identifier:Array,"String","Number","Boolean"]-}
   | r
 ) 
 

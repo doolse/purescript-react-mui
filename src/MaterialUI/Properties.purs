@@ -2,6 +2,8 @@ module MaterialUI.Properties where
 
 import Prelude
 
+import Data.JSDate (JSDate)
+import Data.Nullable (Nullable)
 import MaterialUI.PropTypes (class AsEventHandler, class IsReactType, EventHandler, ReactNode, ReactType, Styles, Untyped, toHandler)
 import React (ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
@@ -18,6 +20,12 @@ instance ehIsProp :: IsProp (EventHandler a) where
   toProp = unsafeCoerce
 
 instance utIsProp :: IsProp Untyped where
+  toProp = unsafeCoerce
+
+instance jsd :: IsProp JSDate where 
+  toProp = unsafeCoerce
+
+instance nullIsProp :: IsProp a => IsProp (Nullable a) where
   toProp = unsafeCoerce
 
 instance booleanIsProp :: IsProp Boolean where

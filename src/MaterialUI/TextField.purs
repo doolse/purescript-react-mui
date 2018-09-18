@@ -35,7 +35,7 @@ type TextFieldPropsExt r = StandardPropsExt (
   select :: Boolean,
   "SelectProps" :: Untyped {-Identifier:Partial-},
   type :: String,
-  value :: Untyped {-UNION[Identifier:Array,"String","Number"]-}
+  value :: Untyped {-UNION[Identifier:Array,"String","Number","Boolean"]-}
   | r
 ) 
 

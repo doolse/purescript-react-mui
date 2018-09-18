@@ -12,7 +12,7 @@ type InputLabelPropsExt r = StandardPropsExt (
   disableAnimation :: Boolean,
   disabled :: Boolean,
   error :: Boolean,
-  "FormLabelClasses" :: Untyped {-Identifier:Partial-},
+  "FormLabelClasses" :: Untyped {-unknownType:IndexedAccessType-},
   focused :: Boolean,
   required :: Boolean,
   shrink :: Boolean

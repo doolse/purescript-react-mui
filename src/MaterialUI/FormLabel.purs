@@ -11,6 +11,7 @@ type FormLabelPropsExt r = StandardPropsExt (
   component :: ReactType,
   disabled :: Boolean,
   error :: Boolean,
+  filled :: Boolean,
   focused :: Boolean,
   required :: Boolean
   | r
@@ -23,6 +24,9 @@ type FormLabelProps = FormLabelPropsExt (
 
 error :: forall r. Boolean -> IProp (error :: Boolean | r)
 error = mkProp "error"
+
+filled :: forall r. Boolean -> IProp (filled :: Boolean | r)
+filled = mkProp "filled"
 
 focused :: forall r. Boolean -> IProp (focused :: Boolean | r)
 focused = mkProp "focused"

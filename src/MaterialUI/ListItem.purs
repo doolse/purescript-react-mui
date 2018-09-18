@@ -5,7 +5,7 @@ module MaterialUI.ListItem where
 import Prelude
 import MaterialUI.ButtonBase (ButtonBasePropsExt)
 import MaterialUI.PropTypes (class IsReactType, Untyped, ReactType)
-import MaterialUI.Properties (mkProp, mkPropRecord, IProp)
+import MaterialUI.Properties (mkPropRecord, mkProp, IProp)
 import React (unsafeCreateElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
@@ -18,7 +18,8 @@ type ListItemPropsExt r = ButtonBasePropsExt (
   disabled :: Boolean,
   disableGutters :: Boolean,
   divider :: Boolean,
-  focusVisibleClassName :: String
+  focusVisibleClassName :: String,
+  selected :: Boolean
   | r
 ) 
 
@@ -47,6 +48,9 @@ divider = mkProp "divider"
 
 focusVisibleClassName :: forall r. String -> IProp (focusVisibleClassName :: String | r)
 focusVisibleClassName = mkProp "focusVisibleClassName"
+
+selected :: forall r. Boolean -> IProp (selected :: Boolean | r)
+selected = mkProp "selected"
 
 foreign import listItemClass :: forall props. ReactClass {|props}
 

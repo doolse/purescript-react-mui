@@ -15,7 +15,7 @@ type HiddenPropsExt r = StandardPropsExt (
   lgUp :: Boolean,
   mdDown :: Boolean,
   mdUp :: Boolean,
-  only :: Untyped {-UNION[Identifier:Breakpoint,Identifier:Array]-},
+  only :: Untyped {-UNION[Identifier:Breakpoint,unknownType:ArrayType]-},
   smDown :: Boolean,
   smUp :: Boolean,
   xlDown :: Boolean,

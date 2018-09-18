@@ -16,9 +16,10 @@ type PopoverPropsExt r = ModalPropsExt (
   anchorPosition :: Untyped {-Identifier:PopoverPosition-},
   anchorReference :: Untyped {-Identifier:PopoverReference-},
   elevation :: Int,
-  getContentAnchorEl :: Untyped {-unknownType:FunctionType-},
+  getContentAnchorEl :: Untyped {-UNION[unknownType:NullKeyword,unknownType:ParenthesizedType]-},
   marginThreshold :: Int,
   modal :: Boolean,
+  "ModalClasses" :: Untyped {-unknownType:IndexedAccessType-},
   "PaperProps" :: Untyped {-Identifier:Partial-},
   role :: String,
   transformOrigin :: Untyped {-Identifier:PopoverOrigin-},
@@ -59,6 +60,9 @@ marginThreshold = mkProp "marginThreshold"
 
 modal :: forall r. Boolean -> IProp (modal :: Boolean | r)
 modal = mkProp "modal"
+
+modalClasses :: forall r a. a -> IProp ("ModalClasses" :: Untyped | r)
+modalClasses = mkProp "ModalClasses" <<< (unsafeCoerce :: a -> Untyped)
 
 paperProps :: forall r a. a -> IProp ("PaperProps" :: Untyped | r)
 paperProps = mkProp "PaperProps" <<< (unsafeCoerce :: a -> Untyped)

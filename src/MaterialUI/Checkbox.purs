@@ -4,7 +4,7 @@ module MaterialUI.Checkbox where
 
 import Prelude
 import MaterialUI.PropTypes (class IsReactNode, ReactNode)
-import MaterialUI.Properties (mkProp, IProp, mkPropRecord, Enum)
+import MaterialUI.Properties (IProp, mkPropRecord, mkProp, Enum)
 import MaterialUI.SwitchBase (SwitchBasePropsExt)
 import React (unsafeCreateElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
@@ -12,7 +12,8 @@ import Unsafe.Coerce (unsafeCoerce)
 type CheckboxPropsExt r = SwitchBasePropsExt (
   checkedIcon :: ReactNode,
   color :: Enum (primary :: String, secondary :: String, default :: String),
-  icon :: ReactNode
+  icon :: ReactNode,
+  indeterminate :: Boolean
   | r
 ) 
 
@@ -34,6 +35,9 @@ checkedIcon = mkProp "checkedIcon" <<< (unsafeCoerce :: a -> ReactNode)
 
 icon :: forall r a. IsReactNode a => a -> IProp (icon :: ReactNode | r)
 icon = mkProp "icon" <<< (unsafeCoerce :: a -> ReactNode)
+
+indeterminate :: forall r. Boolean -> IProp (indeterminate :: Boolean | r)
+indeterminate = mkProp "indeterminate"
 
 foreign import checkboxClass :: forall props. ReactClass {|props}
 

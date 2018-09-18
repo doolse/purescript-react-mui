@@ -15,8 +15,6 @@ type SwitchBasePropsExt r = StandardPropsExt (
   disabled :: Boolean,
   disableRipple :: Boolean,
   icon :: ReactNode,
-  indeterminate :: Boolean,
-  indeterminateIcon :: ReactNode,
   inputProps :: Untyped {-React.InputHTMLAttributes-},
   inputRef :: Untyped {-React.Ref-},
   name :: String,
@@ -50,12 +48,6 @@ disableRipple = mkProp "disableRipple"
 
 icon :: forall r a. IsReactNode a => a -> IProp (icon :: ReactNode | r)
 icon = mkProp "icon" <<< (unsafeCoerce :: a -> ReactNode)
-
-indeterminate :: forall r. Boolean -> IProp (indeterminate :: Boolean | r)
-indeterminate = mkProp "indeterminate"
-
-indeterminateIcon :: forall r a. IsReactNode a => a -> IProp (indeterminateIcon :: ReactNode | r)
-indeterminateIcon = mkProp "indeterminateIcon" <<< (unsafeCoerce :: a -> ReactNode)
 
 inputRef :: forall r a. a -> IProp (inputRef :: Untyped | r)
 inputRef = mkProp "inputRef" <<< (unsafeCoerce :: a -> Untyped)

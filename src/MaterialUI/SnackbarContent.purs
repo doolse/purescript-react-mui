@@ -4,14 +4,14 @@ module MaterialUI.SnackbarContent where
 
 import Prelude
 import MaterialUI.Paper (PaperPropsExt)
-import MaterialUI.PropTypes (Untyped)
-import MaterialUI.Properties (mkProp, IProp, mkPropRecord)
+import MaterialUI.PropTypes (ReactNode, class IsReactNode)
+import MaterialUI.Properties (IProp, mkProp, mkPropRecord)
 import React (unsafeCreateElement, ReactClass, ReactElement)
 import Unsafe.Coerce (unsafeCoerce)
 
 type SnackbarContentPropsExt r = PaperPropsExt (
-  action :: ReactElement,
-  message :: Untyped {-UNION[FQN:React.ReactElement,"String"]-}
+  action :: ReactNode,
+  message :: ReactNode
   | r
 ) 
 
@@ -20,11 +20,11 @@ type SnackbarContentProps = SnackbarContentPropsExt (
 ) 
 
 
-action :: forall r. ReactElement -> IProp (action :: ReactElement | r)
-action = mkProp "action"
+action :: forall r a. IsReactNode a => a -> IProp (action :: ReactNode | r)
+action = mkProp "action" <<< (unsafeCoerce :: a -> ReactNode)
 
-message :: forall r a. a -> IProp (message :: Untyped | r)
-message = mkProp "message" <<< (unsafeCoerce :: a -> Untyped)
+message :: forall r a. IsReactNode a => a -> IProp (message :: ReactNode | r)
+message = mkProp "message" <<< (unsafeCoerce :: a -> ReactNode)
 
 foreign import snackbarContentClass :: forall props. ReactClass {|props}
 
