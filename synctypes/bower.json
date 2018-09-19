@@ -1,5 +1,5 @@
 {
-  "name": "parsets",
+  "name": "purescript-react-mui-sync",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -7,21 +7,10 @@
     "output"
   ],
   "dependencies": {
-    "purescript-prelude": "^4.0.1",
-    "purescript-console": "^4.1.0",
-    "purescript-unsafe-coerce": "^4.0.0",
-    "purescript-functions": "^4.0.0",
-    "purescript-foldable-traversable": "^4.0.0",
-    "purescript-filterable": "^3.0.1",
-    "purescript-strings": "^4.0.0",
+    "purescript-readts": "doolse/purescript-readts",
     "purescript-node-fs": "^5.0.0",
-    "purescript-unicode": "^4.0.1",
+    "purescript-argonaut": "^4.0.1",
     "purescript-debug": "^4.0.0",
-    "purescript-ordered-collections": "^1.0.0",
-    "purescript-foreign-object": "^1.0.0",
-    "purescript-node-process": "^6.0.0"
-  },
-  "devDependencies": {
-    "purescript-psci-support": "^4.0.0"
+    "purescript-console": "^4.1.0"
   }
 }

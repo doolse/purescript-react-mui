@@ -1,10 +1,9 @@
 {
-  "name": "parsets",
+  "name": "purescript-react-mui-sync",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "readts": "^0.1.0",
-    "typescript": "^2.6.2"
+    "@material-ui/core": "^3.1.0",
+    "typescript": "^3.0.3"
   }
 }
