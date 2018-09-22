@@ -1,12 +1,17 @@
 module ReactMUI.NativeSelectInput where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classNativeSelectInput :: forall a. ReactClass a
 
 type NativeSelectInputPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   disabled :: Boolean,
   "IconComponent" :: OneOf ((
     typed :: String,
@@ -29,7 +34,11 @@ type NativeSelectInputPropsO r = (
 type NativeSelectInputPropsM  = (
 )
 
-foreign import nativeSelectInput :: forall a. IsTSRecord a (NativeSelectInputPropsO NativeSelectInputPropsM) NativeSelectInputPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+nativeSelectInput :: forall a. IsTSEq (Record a) (OptionRecord (NativeSelectInputPropsO NativeSelectInputPropsM) NativeSelectInputPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+nativeSelectInput = unsafeCreateElementDynamic classNativeSelectInput
 
 nativeSelectInput_ :: Function (Array ReactElement) ReactElement
-nativeSelectInput_ = nativeSelectInput {}
+nativeSelectInput_ = unsafeCreateElementDynamic classNativeSelectInput {}
+
+nativeSelectInput' :: forall a. IsTSEq (Record a) (OptionRecord (NativeSelectInputPropsO NativeSelectInputPropsM) NativeSelectInputPropsM) => Function (Record a) ReactElement
+nativeSelectInput' = unsafeCreateLeafElement classNativeSelectInput

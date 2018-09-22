@@ -1,12 +1,17 @@
 module ReactMUI.NativeSelect where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classNativeSelect :: forall a. ReactClass a
 
 type NativeSelectPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   "IconComponent" :: OneOf ((
     typed :: String,
     typed :: Any {--React.ComponentClass<any, any>--},
@@ -69,7 +74,6 @@ type NativeSelectPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -263,7 +267,11 @@ type NativeSelectPropsO r = (
 type NativeSelectPropsM  = (
 )
 
-foreign import nativeSelect :: forall a. IsTSRecord a (NativeSelectPropsO NativeSelectPropsM) NativeSelectPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+nativeSelect :: forall a. IsTSEq (Record a) (OptionRecord (NativeSelectPropsO NativeSelectPropsM) NativeSelectPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+nativeSelect = unsafeCreateElementDynamic classNativeSelect
 
 nativeSelect_ :: Function (Array ReactElement) ReactElement
-nativeSelect_ = nativeSelect {}
+nativeSelect_ = unsafeCreateElementDynamic classNativeSelect {}
+
+nativeSelect' :: forall a. IsTSEq (Record a) (OptionRecord (NativeSelectPropsO NativeSelectPropsM) NativeSelectPropsM) => Function (Record a) ReactElement
+nativeSelect' = unsafeCreateLeafElement classNativeSelect

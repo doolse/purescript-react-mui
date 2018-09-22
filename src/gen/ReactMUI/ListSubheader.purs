@@ -1,12 +1,16 @@
 module ReactMUI.ListSubheader where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classListSubheader :: forall a. ReactClass a
 
 type ListSubheaderPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   color :: OneOf ((
     typed :: StringConst ("inherit"),
     typed :: StringConst ("default"),
@@ -64,7 +68,6 @@ type ListSubheaderPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -231,7 +234,11 @@ type ListSubheaderPropsO r = (
 type ListSubheaderPropsM  = (
 )
 
-foreign import listSubheader :: forall a. IsTSRecord a (ListSubheaderPropsO ListSubheaderPropsM) ListSubheaderPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+listSubheader :: forall a. IsTSEq (Record a) (OptionRecord (ListSubheaderPropsO ListSubheaderPropsM) ListSubheaderPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+listSubheader = unsafeCreateElementDynamic classListSubheader
 
 listSubheader_ :: Function (Array ReactElement) ReactElement
-listSubheader_ = listSubheader {}
+listSubheader_ = unsafeCreateElementDynamic classListSubheader {}
+
+listSubheader' :: forall a. IsTSEq (Record a) (OptionRecord (ListSubheaderPropsO ListSubheaderPropsM) ListSubheaderPropsM) => Function (Record a) ReactElement
+listSubheader' = unsafeCreateLeafElement classListSubheader

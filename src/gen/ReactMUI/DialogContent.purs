@@ -1,12 +1,16 @@
 module ReactMUI.DialogContent where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classDialogContent :: forall a. ReactClass a
 
 type DialogContentPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   color :: String,
   hidden :: Boolean,
   style :: Any {--React.CSSProperties<>--},
@@ -54,7 +58,6 @@ type DialogContentPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -221,7 +224,11 @@ type DialogContentPropsO r = (
 type DialogContentPropsM  = (
 )
 
-foreign import dialogContent :: forall a. IsTSRecord a (DialogContentPropsO DialogContentPropsM) DialogContentPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+dialogContent :: forall a. IsTSEq (Record a) (OptionRecord (DialogContentPropsO DialogContentPropsM) DialogContentPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+dialogContent = unsafeCreateElementDynamic classDialogContent
 
 dialogContent_ :: Function (Array ReactElement) ReactElement
-dialogContent_ = dialogContent {}
+dialogContent_ = unsafeCreateElementDynamic classDialogContent {}
+
+dialogContent' :: forall a. IsTSEq (Record a) (OptionRecord (DialogContentPropsO DialogContentPropsM) DialogContentPropsM) => Function (Record a) ReactElement
+dialogContent' = unsafeCreateLeafElement classDialogContent

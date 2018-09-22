@@ -1,15 +1,19 @@
 module ReactMUI.TextField where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classTextField :: forall a. ReactClass a
 
 type TextFieldPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   autoComplete :: String,
   autoFocus :: Boolean,
-  children :: ReactNode,
   defaultValue :: OneOf ((
     typed :: String,
     typed :: Number)),
@@ -270,7 +274,11 @@ type TextFieldPropsO r = (
 type TextFieldPropsM  = (
 )
 
-foreign import textField :: forall a. IsTSRecord a (TextFieldPropsO TextFieldPropsM) TextFieldPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+textField :: forall a. IsTSEq (Record a) (OptionRecord (TextFieldPropsO TextFieldPropsM) TextFieldPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+textField = unsafeCreateElementDynamic classTextField
 
 textField_ :: Function (Array ReactElement) ReactElement
-textField_ = textField {}
+textField_ = unsafeCreateElementDynamic classTextField {}
+
+textField' :: forall a. IsTSEq (Record a) (OptionRecord (TextFieldPropsO TextFieldPropsM) TextFieldPropsM) => Function (Record a) ReactElement
+textField' = unsafeCreateLeafElement classTextField

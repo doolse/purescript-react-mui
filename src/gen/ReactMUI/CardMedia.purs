@@ -1,12 +1,16 @@
 module ReactMUI.CardMedia where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classCardMedia :: forall a. ReactClass a
 
 type CardMediaPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   component :: OneOf ((
     typed :: String,
     typed :: Any {--React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/CardMedia/CardMedia".CardMediaProps<>, any>--},
@@ -60,7 +64,6 @@ type CardMediaPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -227,7 +230,11 @@ type CardMediaPropsO r = (
 type CardMediaPropsM  = (
 )
 
-foreign import cardMedia :: forall a. IsTSRecord a (CardMediaPropsO CardMediaPropsM) CardMediaPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+cardMedia :: forall a. IsTSEq (Record a) (OptionRecord (CardMediaPropsO CardMediaPropsM) CardMediaPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+cardMedia = unsafeCreateElementDynamic classCardMedia
 
 cardMedia_ :: Function (Array ReactElement) ReactElement
-cardMedia_ = cardMedia {}
+cardMedia_ = unsafeCreateElementDynamic classCardMedia {}
+
+cardMedia' :: forall a. IsTSEq (Record a) (OptionRecord (CardMediaPropsO CardMediaPropsM) CardMediaPropsM) => Function (Record a) ReactElement
+cardMedia' = unsafeCreateLeafElement classCardMedia

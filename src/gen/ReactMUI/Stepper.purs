@@ -1,12 +1,17 @@
 module ReactMUI.Stepper where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classStepper :: forall a. ReactClass a
 
 type StepperPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   activeStep :: Number,
   alternativeLabel :: Boolean,
   connector :: ReactNode,
@@ -231,6 +236,13 @@ type StepperPropsO r = (
   classes :: Any {--unknown--} | r )
 
 type StepperPropsM  = (
-  children :: ReactNode)
+)
 
-foreign import stepper :: forall a. IsTSRecord a (StepperPropsO StepperPropsM) StepperPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+stepper :: forall a. IsTSEq (Record a) (OptionRecord (StepperPropsO StepperPropsM) StepperPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+stepper = unsafeCreateElementDynamic classStepper
+
+stepper_ :: Function (Array ReactElement) ReactElement
+stepper_ = unsafeCreateElementDynamic classStepper {}
+
+stepper' :: forall a. IsTSEq (Record a) (OptionRecord (StepperPropsO StepperPropsM) StepperPropsM) => Function (Record a) ReactElement
+stepper' = unsafeCreateLeafElement classStepper

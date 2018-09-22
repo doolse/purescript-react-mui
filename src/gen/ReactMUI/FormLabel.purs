@@ -1,12 +1,16 @@
 module ReactMUI.FormLabel where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classFormLabel :: forall a. ReactClass a
 
 type FormLabelPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   component :: OneOf ((
     typed :: String,
     typed :: Any {--React.ComponentClass<React.LabelHTMLAttributes<interface HTMLLabelElement>, any>--},
@@ -63,7 +67,6 @@ type FormLabelPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLLabelElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLLabelElement>--}) Unit,
@@ -232,7 +235,11 @@ type FormLabelPropsO r = (
 type FormLabelPropsM  = (
 )
 
-foreign import formLabel :: forall a. IsTSRecord a (FormLabelPropsO FormLabelPropsM) FormLabelPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+formLabel :: forall a. IsTSEq (Record a) (OptionRecord (FormLabelPropsO FormLabelPropsM) FormLabelPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+formLabel = unsafeCreateElementDynamic classFormLabel
 
 formLabel_ :: Function (Array ReactElement) ReactElement
-formLabel_ = formLabel {}
+formLabel_ = unsafeCreateElementDynamic classFormLabel {}
+
+formLabel' :: forall a. IsTSEq (Record a) (OptionRecord (FormLabelPropsO FormLabelPropsM) FormLabelPropsM) => Function (Record a) ReactElement
+formLabel' = unsafeCreateLeafElement classFormLabel

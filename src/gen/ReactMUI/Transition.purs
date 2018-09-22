@@ -1,11 +1,16 @@
 module ReactMUI.Transition where
-import Data.TSCompat (Any, OneOf)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classTransition :: forall a. ReactClass a
 
 type TransitionPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   style :: Any {--React.CSSProperties<>--},
   appear :: Boolean,
   enter :: Boolean,
@@ -33,7 +38,11 @@ type TransitionPropsO r = (
 type TransitionPropsM  = (
 )
 
-foreign import transition :: forall a. IsTSRecord a (TransitionPropsO TransitionPropsM) TransitionPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+transition :: forall a. IsTSEq (Record a) (OptionRecord (TransitionPropsO TransitionPropsM) TransitionPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+transition = unsafeCreateElementDynamic classTransition
 
 transition_ :: Function (Array ReactElement) ReactElement
-transition_ = transition {}
+transition_ = unsafeCreateElementDynamic classTransition {}
+
+transition' :: forall a. IsTSEq (Record a) (OptionRecord (TransitionPropsO TransitionPropsM) TransitionPropsM) => Function (Record a) ReactElement
+transition' = unsafeCreateLeafElement classTransition

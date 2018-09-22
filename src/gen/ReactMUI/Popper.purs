@@ -1,12 +1,16 @@
 module ReactMUI.Popper where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classPopper :: forall a. ReactClass a
 
 type PopperPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   transition :: Boolean,
   anchorEl :: OneOf ((
     typed :: Any {--interface HTMLElement--},
@@ -239,15 +243,13 @@ type PopperPropsO r = (
   onTransitionEndCapture :: EffectFn1 (Any {--React.TransitionEvent<interface HTMLDivElement>--}) Unit | r )
 
 type PopperPropsM  = (
-  children :: OneOf ((
-    typed :: Boolean,
-    typed :: String,
-    typed :: Number,
-    typed :: Any {--{}--},
-    typed :: ReactElement,
-    typed :: Any {--React.ReactNodeArray<>--},
-    typed :: Any {--React.ReactPortal<>--},
-    typed :: Function (Any {--{placement: "bottom" | "left" | "right" | "top" | "bottom-end" | "bottom-start" | "left-end" | "left-start" | "right-end" | "right-start" | "top-end" | "top-start", TransitionProps: undefined | "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/transitions/transition".TransitionProps<>}--}) ReactNode)),
   open :: Boolean)
 
-foreign import popper :: forall a. IsTSRecord a (PopperPropsO PopperPropsM) PopperPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+popper :: forall a. IsTSEq (Record a) (OptionRecord (PopperPropsO PopperPropsM) PopperPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+popper = unsafeCreateElementDynamic classPopper
+
+popper_ :: Function (Array ReactElement) ReactElement
+popper_ = unsafeCreateElementDynamic classPopper {}
+
+popper' :: forall a. IsTSEq (Record a) (OptionRecord (PopperPropsO PopperPropsM) PopperPropsM) => Function (Record a) ReactElement
+popper' = unsafeCreateLeafElement classPopper

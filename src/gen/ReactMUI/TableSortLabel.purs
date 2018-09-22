@@ -1,12 +1,16 @@
 module ReactMUI.TableSortLabel where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classTableSortLabel :: forall a. ReactClass a
 
 type TableSortLabelPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   active :: Boolean,
   direction :: OneOf ((
     typed :: StringConst ("asc"),
@@ -63,7 +67,6 @@ type TableSortLabelPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLElement>--}) Unit,
@@ -267,7 +270,11 @@ type TableSortLabelPropsO r = (
 type TableSortLabelPropsM  = (
 )
 
-foreign import tableSortLabel :: forall a. IsTSRecord a (TableSortLabelPropsO TableSortLabelPropsM) TableSortLabelPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+tableSortLabel :: forall a. IsTSEq (Record a) (OptionRecord (TableSortLabelPropsO TableSortLabelPropsM) TableSortLabelPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+tableSortLabel = unsafeCreateElementDynamic classTableSortLabel
 
 tableSortLabel_ :: Function (Array ReactElement) ReactElement
-tableSortLabel_ = tableSortLabel {}
+tableSortLabel_ = unsafeCreateElementDynamic classTableSortLabel {}
+
+tableSortLabel' :: forall a. IsTSEq (Record a) (OptionRecord (TableSortLabelPropsO TableSortLabelPropsM) TableSortLabelPropsM) => Function (Record a) ReactElement
+tableSortLabel' = unsafeCreateLeafElement classTableSortLabel

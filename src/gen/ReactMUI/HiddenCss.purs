@@ -1,9 +1,14 @@
 module ReactMUI.HiddenCss where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import React (ReactElement)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classHiddenCss :: forall a. ReactClass a
 
 type HiddenCssPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   lgDown :: Boolean,
   lgUp :: Boolean,
   mdDown :: Boolean,
@@ -25,7 +30,11 @@ type HiddenCssPropsO r = (
 type HiddenCssPropsM  = (
 )
 
-foreign import hiddenCss :: forall a. IsTSRecord a (HiddenCssPropsO HiddenCssPropsM) HiddenCssPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+hiddenCss :: forall a. IsTSEq (Record a) (OptionRecord (HiddenCssPropsO HiddenCssPropsM) HiddenCssPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+hiddenCss = unsafeCreateElementDynamic classHiddenCss
 
 hiddenCss_ :: Function (Array ReactElement) ReactElement
-hiddenCss_ = hiddenCss {}
+hiddenCss_ = unsafeCreateElementDynamic classHiddenCss {}
+
+hiddenCss' :: forall a. IsTSEq (Record a) (OptionRecord (HiddenCssPropsO HiddenCssPropsM) HiddenCssPropsM) => Function (Record a) ReactElement
+hiddenCss' = unsafeCreateLeafElement classHiddenCss

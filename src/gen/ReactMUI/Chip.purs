@@ -1,12 +1,17 @@
 module ReactMUI.Chip where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classChip :: forall a. ReactClass a
 
 type ChipPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   avatar :: ReactElement,
   clickable :: Boolean,
   color :: OneOf ((
@@ -71,7 +76,6 @@ type ChipPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -238,7 +242,11 @@ type ChipPropsO r = (
 type ChipPropsM  = (
 )
 
-foreign import chip :: forall a. IsTSRecord a (ChipPropsO ChipPropsM) ChipPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+chip :: forall a. IsTSEq (Record a) (OptionRecord (ChipPropsO ChipPropsM) ChipPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+chip = unsafeCreateElementDynamic classChip
 
 chip_ :: Function (Array ReactElement) ReactElement
-chip_ = chip {}
+chip_ = unsafeCreateElementDynamic classChip {}
+
+chip' :: forall a. IsTSEq (Record a) (OptionRecord (ChipPropsO ChipPropsM) ChipPropsM) => Function (Record a) ReactElement
+chip' = unsafeCreateLeafElement classChip

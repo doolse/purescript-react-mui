@@ -1,13 +1,16 @@
 module ReactMUI.Collapse where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classCollapse :: forall a. ReactClass a
 
 type CollapsePropsO r = (
-  children :: ReactNode,
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   collapsedHeight :: String,
   component :: OneOf ((
     typed :: String,
@@ -48,7 +51,11 @@ type CollapsePropsO r = (
 type CollapsePropsM  = (
 )
 
-foreign import collapse :: forall a. IsTSRecord a (CollapsePropsO CollapsePropsM) CollapsePropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+collapse :: forall a. IsTSEq (Record a) (OptionRecord (CollapsePropsO CollapsePropsM) CollapsePropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+collapse = unsafeCreateElementDynamic classCollapse
 
 collapse_ :: Function (Array ReactElement) ReactElement
-collapse_ = collapse {}
+collapse_ = unsafeCreateElementDynamic classCollapse {}
+
+collapse' :: forall a. IsTSEq (Record a) (OptionRecord (CollapsePropsO CollapsePropsM) CollapsePropsM) => Function (Record a) ReactElement
+collapse' = unsafeCreateLeafElement classCollapse

@@ -1,12 +1,17 @@
 module ReactMUI.Checkbox where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classCheckbox :: forall a. ReactClass a
 
 type CheckboxPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   checkedIcon :: ReactNode,
   color :: OneOf ((
     typed :: StringConst ("default"),
@@ -62,7 +67,6 @@ type CheckboxPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLElement>--}) Unit,
@@ -275,7 +279,11 @@ type CheckboxPropsO r = (
 type CheckboxPropsM  = (
 )
 
-foreign import checkbox :: forall a. IsTSRecord a (CheckboxPropsO CheckboxPropsM) CheckboxPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+checkbox :: forall a. IsTSEq (Record a) (OptionRecord (CheckboxPropsO CheckboxPropsM) CheckboxPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+checkbox = unsafeCreateElementDynamic classCheckbox
 
 checkbox_ :: Function (Array ReactElement) ReactElement
-checkbox_ = checkbox {}
+checkbox_ = unsafeCreateElementDynamic classCheckbox {}
+
+checkbox' :: forall a. IsTSEq (Record a) (OptionRecord (CheckboxPropsO CheckboxPropsM) CheckboxPropsM) => Function (Record a) ReactElement
+checkbox' = unsafeCreateLeafElement classCheckbox

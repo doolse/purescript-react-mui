@@ -3,20 +3,24 @@ module Main where
 import Prelude
 
 import Data.Array (mapMaybe)
-import Data.Maybe (Maybe(..), fromMaybe, isJust)
+import Data.Maybe (Maybe(..), isJust)
+import Data.Set as Set
 import Data.String (Pattern(..), indexOf)
 import Data.String as String
 import Data.Traversable (traverse_)
 import Effect (Effect)
 import ReadTS (TSType(..), readInterfaceTypes)
-import ReadTS.Convert (startsWithAny) 
-import ReadTS.Convert.React (ComponentModule, ComponentType(..), convertProperty, 
-  detectComponentType, propertiesToModule, reactComponentMapper, reactRefMapping, writeComponent, writeEnumModule)
+import ReadTS.CommonPS (numberType, stringType)
+import ReadTS.Convert (anyType, startsWithAny, unionType)
+import ReadTS.Convert.React (ComponentModule, Property, convertProperty, detectComponentType, propertiesToModule, reactComponentMapper, reactRefMapping, writeComponent, writeEnumModule)
 
-overrideType :: String -> Maybe ComponentType
-overrideType = case _ of 
-  "ListItemSecondaryAction" -> Just PropsAndChildren
-  _ -> Nothing
+-- overrideType :: String -> Maybe ComponentType
+-- overrideType = case _ of 
+--   "ListItemSecondaryAction" -> Just PropsAndChildren
+--   _ -> Nothing
+
+keyProperty :: Property
+keyProperty = {name:"key", optional: true, t: unionType [stringType, numberType], stringEnums: Set.empty }
 
 convertComponent :: TSType -> Maybe ComponentModule
 convertComponent = case _ of
@@ -25,9 +29,9 @@ convertComponent = case _ of
       doConvert = convertProperty $ reactComponentMapper reactRefMapping
       propertyConvert p | startsWithAny ["aria"] p.name = Nothing 
       propertyConvert p = Just $ doConvert p
-      props = mapMaybe propertyConvert members 
+      props = [keyProperty] <> (mapMaybe propertyConvert members)
       detected = detectComponentType props
-      componentType = fromMaybe detected.componentType $ overrideType componentName 
+      componentType = detected.componentType
       classRequire = "@material-ui/core/" <> componentName
       moduleName = "ReactMUI." <> componentName
       componentModule = propertiesToModule {classRequire,moduleName,classProperty:"default"} 

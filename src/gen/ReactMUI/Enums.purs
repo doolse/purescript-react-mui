@@ -122,23 +122,11 @@ down = unsafeCoerce "down"
 end :: StringConst ("end")
 end = unsafeCoerce "end"
 
-entered :: StringConst ("entered")
-entered = unsafeCoerce "entered"
-
-entering :: StringConst ("entering")
-entering = unsafeCoerce "entering"
-
 error :: StringConst ("error")
 error = unsafeCoerce "error"
 
 evenodd :: StringConst ("evenodd")
 evenodd = unsafeCoerce "evenodd"
-
-exited :: StringConst ("exited")
-exited = unsafeCoerce "exited"
-
-exiting :: StringConst ("exiting")
-exiting = unsafeCoerce "exiting"
 
 extendedFab :: StringConst ("extendedFab")
 extendedFab = unsafeCoerce "extendedFab"
@@ -400,9 +388,6 @@ topEnd = unsafeCoerce "top-end"
 
 topStart :: StringConst ("top-start")
 topStart = unsafeCoerce "top-start"
-
-unmounted :: StringConst ("unmounted")
-unmounted = unsafeCoerce "unmounted"
 
 up :: StringConst ("up")
 up = unsafeCoerce "up"

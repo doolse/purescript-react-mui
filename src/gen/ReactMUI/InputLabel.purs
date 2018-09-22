@@ -1,12 +1,16 @@
 module ReactMUI.InputLabel where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classInputLabel :: forall a. ReactClass a
 
 type InputLabelPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   disableAnimation :: Boolean,
   disabled :: Boolean,
   error :: Boolean,
@@ -62,7 +66,6 @@ type InputLabelPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLLabelElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLLabelElement>--}) Unit,
@@ -235,7 +238,11 @@ type InputLabelPropsO r = (
 type InputLabelPropsM  = (
 )
 
-foreign import inputLabel :: forall a. IsTSRecord a (InputLabelPropsO InputLabelPropsM) InputLabelPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+inputLabel :: forall a. IsTSEq (Record a) (OptionRecord (InputLabelPropsO InputLabelPropsM) InputLabelPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+inputLabel = unsafeCreateElementDynamic classInputLabel
 
 inputLabel_ :: Function (Array ReactElement) ReactElement
-inputLabel_ = inputLabel {}
+inputLabel_ = unsafeCreateElementDynamic classInputLabel {}
+
+inputLabel' :: forall a. IsTSEq (Record a) (OptionRecord (InputLabelPropsO InputLabelPropsM) InputLabelPropsM) => Function (Record a) ReactElement
+inputLabel' = unsafeCreateLeafElement classInputLabel

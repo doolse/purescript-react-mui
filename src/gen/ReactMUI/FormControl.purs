@@ -1,12 +1,16 @@
 module ReactMUI.FormControl where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classFormControl :: forall a. ReactClass a
 
 type FormControlPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   component :: OneOf ((
     typed :: String,
     typed :: Any {--React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/FormControl/FormControl".FormControlProps<>, any>--},
@@ -68,7 +72,6 @@ type FormControlPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -234,7 +237,11 @@ type FormControlPropsO r = (
 type FormControlPropsM  = (
 )
 
-foreign import formControl :: forall a. IsTSRecord a (FormControlPropsO FormControlPropsM) FormControlPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+formControl :: forall a. IsTSEq (Record a) (OptionRecord (FormControlPropsO FormControlPropsM) FormControlPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+formControl = unsafeCreateElementDynamic classFormControl
 
 formControl_ :: Function (Array ReactElement) ReactElement
-formControl_ = formControl {}
+formControl_ = unsafeCreateElementDynamic classFormControl {}
+
+formControl' :: forall a. IsTSEq (Record a) (OptionRecord (FormControlPropsO FormControlPropsM) FormControlPropsM) => Function (Record a) ReactElement
+formControl' = unsafeCreateLeafElement classFormControl

@@ -1,12 +1,17 @@
 module ReactMUI.Tab where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classTab :: forall a. ReactClass a
 
 type TabPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   disabled :: Boolean,
   fullWidth :: Boolean,
   icon :: OneOf ((
@@ -65,7 +70,6 @@ type TabPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLElement>--}) Unit,
@@ -263,7 +267,11 @@ type TabPropsO r = (
 type TabPropsM  = (
 )
 
-foreign import tab :: forall a. IsTSRecord a (TabPropsO TabPropsM) TabPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+tab :: forall a. IsTSEq (Record a) (OptionRecord (TabPropsO TabPropsM) TabPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+tab = unsafeCreateElementDynamic classTab
 
 tab_ :: Function (Array ReactElement) ReactElement
-tab_ = tab {}
+tab_ = unsafeCreateElementDynamic classTab {}
+
+tab' :: forall a. IsTSEq (Record a) (OptionRecord (TabPropsO TabPropsM) TabPropsM) => Function (Record a) ReactElement
+tab' = unsafeCreateLeafElement classTab

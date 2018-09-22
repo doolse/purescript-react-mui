@@ -1,12 +1,16 @@
 module ReactMUI.RadioGroup where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classRadioGroup :: forall a. ReactClass a
 
 type RadioGroupPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   name :: String,
   onChange :: EffectFn2 (Any {--React.ChangeEvent<{}>--}) String Unit,
   value :: String,
@@ -58,7 +62,6 @@ type RadioGroupPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -225,7 +228,11 @@ type RadioGroupPropsO r = (
 type RadioGroupPropsM  = (
 )
 
-foreign import radioGroup :: forall a. IsTSRecord a (RadioGroupPropsO RadioGroupPropsM) RadioGroupPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+radioGroup :: forall a. IsTSEq (Record a) (OptionRecord (RadioGroupPropsO RadioGroupPropsM) RadioGroupPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+radioGroup = unsafeCreateElementDynamic classRadioGroup
 
 radioGroup_ :: Function (Array ReactElement) ReactElement
-radioGroup_ = radioGroup {}
+radioGroup_ = unsafeCreateElementDynamic classRadioGroup {}
+
+radioGroup' :: forall a. IsTSEq (Record a) (OptionRecord (RadioGroupPropsO RadioGroupPropsM) RadioGroupPropsM) => Function (Record a) ReactElement
+radioGroup' = unsafeCreateLeafElement classRadioGroup

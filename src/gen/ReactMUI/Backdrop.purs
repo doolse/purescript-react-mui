@@ -1,12 +1,16 @@
 module ReactMUI.Backdrop where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classBackdrop :: forall a. ReactClass a
 
 type BackdropPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   invisible :: Boolean,
   onClick :: EffectFn1 (Any {--React.SyntheticEvent<{}>--}) Unit,
   transitionDuration :: OneOf ((
@@ -59,7 +63,6 @@ type BackdropPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -248,4 +251,11 @@ type BackdropPropsO r = (
 type BackdropPropsM  = (
   open :: Boolean)
 
-foreign import backdrop :: forall a. IsTSRecord a (BackdropPropsO BackdropPropsM) BackdropPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+backdrop :: forall a. IsTSEq (Record a) (OptionRecord (BackdropPropsO BackdropPropsM) BackdropPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+backdrop = unsafeCreateElementDynamic classBackdrop
+
+backdrop_ :: Function (Array ReactElement) ReactElement
+backdrop_ = unsafeCreateElementDynamic classBackdrop {}
+
+backdrop' :: forall a. IsTSEq (Record a) (OptionRecord (BackdropPropsO BackdropPropsM) BackdropPropsM) => Function (Record a) ReactElement
+backdrop' = unsafeCreateLeafElement classBackdrop

@@ -1,12 +1,16 @@
 module ReactMUI.NotchedOutline where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classNotchedOutline :: forall a. ReactClass a
 
 type NotchedOutlinePropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   disabled :: Boolean,
   error :: Boolean,
   focused :: Boolean,
@@ -57,7 +61,6 @@ type NotchedOutlinePropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLFieldSetElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLFieldSetElement>--}) Unit,
@@ -227,4 +230,11 @@ type NotchedOutlinePropsM  = (
   labelWidth :: Number,
   notched :: Boolean)
 
-foreign import notchedOutline :: forall a. IsTSRecord a (NotchedOutlinePropsO NotchedOutlinePropsM) NotchedOutlinePropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+notchedOutline :: forall a. IsTSEq (Record a) (OptionRecord (NotchedOutlinePropsO NotchedOutlinePropsM) NotchedOutlinePropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+notchedOutline = unsafeCreateElementDynamic classNotchedOutline
+
+notchedOutline_ :: Function (Array ReactElement) ReactElement
+notchedOutline_ = unsafeCreateElementDynamic classNotchedOutline {}
+
+notchedOutline' :: forall a. IsTSEq (Record a) (OptionRecord (NotchedOutlinePropsO NotchedOutlinePropsM) NotchedOutlinePropsM) => Function (Record a) ReactElement
+notchedOutline' = unsafeCreateLeafElement classNotchedOutline

@@ -1,12 +1,16 @@
 module ReactMUI.LinearProgress where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classLinearProgress :: forall a. ReactClass a
 
 type LinearProgressPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   color :: OneOf ((
     typed :: StringConst ("primary"),
     typed :: StringConst ("secondary"))),
@@ -63,7 +67,6 @@ type LinearProgressPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -230,7 +233,11 @@ type LinearProgressPropsO r = (
 type LinearProgressPropsM  = (
 )
 
-foreign import linearProgress :: forall a. IsTSRecord a (LinearProgressPropsO LinearProgressPropsM) LinearProgressPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+linearProgress :: forall a. IsTSEq (Record a) (OptionRecord (LinearProgressPropsO LinearProgressPropsM) LinearProgressPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+linearProgress = unsafeCreateElementDynamic classLinearProgress
 
 linearProgress_ :: Function (Array ReactElement) ReactElement
-linearProgress_ = linearProgress {}
+linearProgress_ = unsafeCreateElementDynamic classLinearProgress {}
+
+linearProgress' :: forall a. IsTSEq (Record a) (OptionRecord (LinearProgressPropsO LinearProgressPropsM) LinearProgressPropsM) => Function (Record a) ReactElement
+linearProgress' = unsafeCreateLeafElement classLinearProgress

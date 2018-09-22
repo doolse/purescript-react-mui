@@ -1,12 +1,16 @@
 module ReactMUI.ExpansionPanel where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classExpansionPanel :: forall a. ReactClass a
 
 type ExpansionPanelPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   "CollapseProps" :: Any {--unknown--},
   defaultExpanded :: Boolean,
   disabled :: Boolean,
@@ -62,7 +66,6 @@ type ExpansionPanelPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -233,7 +236,11 @@ type ExpansionPanelPropsO r = (
 type ExpansionPanelPropsM  = (
 )
 
-foreign import expansionPanel :: forall a. IsTSRecord a (ExpansionPanelPropsO ExpansionPanelPropsM) ExpansionPanelPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+expansionPanel :: forall a. IsTSEq (Record a) (OptionRecord (ExpansionPanelPropsO ExpansionPanelPropsM) ExpansionPanelPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+expansionPanel = unsafeCreateElementDynamic classExpansionPanel
 
 expansionPanel_ :: Function (Array ReactElement) ReactElement
-expansionPanel_ = expansionPanel {}
+expansionPanel_ = unsafeCreateElementDynamic classExpansionPanel {}
+
+expansionPanel' :: forall a. IsTSEq (Record a) (OptionRecord (ExpansionPanelPropsO ExpansionPanelPropsM) ExpansionPanelPropsM) => Function (Record a) ReactElement
+expansionPanel' = unsafeCreateLeafElement classExpansionPanel

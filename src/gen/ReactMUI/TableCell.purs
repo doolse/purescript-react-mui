@@ -1,12 +1,16 @@
 module ReactMUI.TableCell where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classTableCell :: forall a. ReactClass a
 
 type TableCellPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   component :: OneOf ((
     typed :: String,
     typed :: Any {--React.ComponentClass<React.ThHTMLAttributes<interface HTMLTableHeaderCellElement> | React.TdHTMLAttributes<interface HTMLTableDataCellElement>, any>--},
@@ -72,7 +76,6 @@ type TableCellPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLTableHeaderCellElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLTableHeaderCellElement>--}) Unit,
@@ -243,7 +246,11 @@ type TableCellPropsO r = (
 type TableCellPropsM  = (
 )
 
-foreign import tableCell :: forall a. IsTSRecord a (TableCellPropsO TableCellPropsM) TableCellPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+tableCell :: forall a. IsTSEq (Record a) (OptionRecord (TableCellPropsO TableCellPropsM) TableCellPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+tableCell = unsafeCreateElementDynamic classTableCell
 
 tableCell_ :: Function (Array ReactElement) ReactElement
-tableCell_ = tableCell {}
+tableCell_ = unsafeCreateElementDynamic classTableCell {}
+
+tableCell' :: forall a. IsTSEq (Record a) (OptionRecord (TableCellPropsO TableCellPropsM) TableCellPropsM) => Function (Record a) ReactElement
+tableCell' = unsafeCreateLeafElement classTableCell

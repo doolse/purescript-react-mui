@@ -1,12 +1,16 @@
 module ReactMUI.CircularProgress where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classCircularProgress :: forall a. ReactClass a
 
 type CircularProgressPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   color :: OneOf ((
     typed :: StringConst ("inherit"),
     typed :: StringConst ("primary"),
@@ -66,7 +70,6 @@ type CircularProgressPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -233,7 +236,11 @@ type CircularProgressPropsO r = (
 type CircularProgressPropsM  = (
 )
 
-foreign import circularProgress :: forall a. IsTSRecord a (CircularProgressPropsO CircularProgressPropsM) CircularProgressPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+circularProgress :: forall a. IsTSEq (Record a) (OptionRecord (CircularProgressPropsO CircularProgressPropsM) CircularProgressPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+circularProgress = unsafeCreateElementDynamic classCircularProgress
 
 circularProgress_ :: Function (Array ReactElement) ReactElement
-circularProgress_ = circularProgress {}
+circularProgress_ = unsafeCreateElementDynamic classCircularProgress {}
+
+circularProgress' :: forall a. IsTSEq (Record a) (OptionRecord (CircularProgressPropsO CircularProgressPropsM) CircularProgressPropsM) => Function (Record a) ReactElement
+circularProgress' = unsafeCreateLeafElement classCircularProgress

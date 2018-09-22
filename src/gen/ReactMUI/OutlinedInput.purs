@@ -1,12 +1,17 @@
 module ReactMUI.OutlinedInput where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classOutlinedInput :: forall a. ReactClass a
 
 type OutlinedInputPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   notched :: Number,
   color :: String,
   margin :: StringConst ("dense"),
@@ -57,7 +62,6 @@ type OutlinedInputPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -260,4 +264,11 @@ type OutlinedInputPropsO r = (
 type OutlinedInputPropsM  = (
   labelWidth :: Number)
 
-foreign import outlinedInput :: forall a. IsTSRecord a (OutlinedInputPropsO OutlinedInputPropsM) OutlinedInputPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+outlinedInput :: forall a. IsTSEq (Record a) (OptionRecord (OutlinedInputPropsO OutlinedInputPropsM) OutlinedInputPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+outlinedInput = unsafeCreateElementDynamic classOutlinedInput
+
+outlinedInput_ :: Function (Array ReactElement) ReactElement
+outlinedInput_ = unsafeCreateElementDynamic classOutlinedInput {}
+
+outlinedInput' :: forall a. IsTSEq (Record a) (OptionRecord (OutlinedInputPropsO OutlinedInputPropsM) OutlinedInputPropsM) => Function (Record a) ReactElement
+outlinedInput' = unsafeCreateLeafElement classOutlinedInput

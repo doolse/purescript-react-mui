@@ -1,12 +1,16 @@
 module ReactMUI.CardActions where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classCardActions :: forall a. ReactClass a
 
 type CardActionsPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   disableActionSpacing :: Boolean,
   color :: String,
   hidden :: Boolean,
@@ -55,7 +59,6 @@ type CardActionsPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -222,7 +225,11 @@ type CardActionsPropsO r = (
 type CardActionsPropsM  = (
 )
 
-foreign import cardActions :: forall a. IsTSRecord a (CardActionsPropsO CardActionsPropsM) CardActionsPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+cardActions :: forall a. IsTSEq (Record a) (OptionRecord (CardActionsPropsO CardActionsPropsM) CardActionsPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+cardActions = unsafeCreateElementDynamic classCardActions
 
 cardActions_ :: Function (Array ReactElement) ReactElement
-cardActions_ = cardActions {}
+cardActions_ = unsafeCreateElementDynamic classCardActions {}
+
+cardActions' :: forall a. IsTSEq (Record a) (OptionRecord (CardActionsPropsO CardActionsPropsM) CardActionsPropsM) => Function (Record a) ReactElement
+cardActions' = unsafeCreateLeafElement classCardActions

@@ -1,9 +1,14 @@
 module ReactMUI.Portal where
-import Data.TSCompat (Any, OneOf)
-import Data.TSCompat.Class (class IsTSRecord)
-import React (ReactElement)
+import Data.TSCompat (Any, OneOf, OptionRecord)
+import Data.TSCompat.Class (class IsTSEq)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classPortal :: forall a. ReactClass a
 
 type PortalPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   container :: OneOf ((
     typed :: Any {--interface Element--},
     typed :: Any {--React.Component<any, {}, any>--},
@@ -12,6 +17,13 @@ type PortalPropsO r = (
   onRendered :: Any {--( => void)--} | r )
 
 type PortalPropsM  = (
-  children :: ReactElement)
+)
 
-foreign import portal :: forall a. IsTSRecord a (PortalPropsO PortalPropsM) PortalPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+portal :: forall a. IsTSEq (Record a) (OptionRecord (PortalPropsO PortalPropsM) PortalPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+portal = unsafeCreateElementDynamic classPortal
+
+portal_ :: Function (Array ReactElement) ReactElement
+portal_ = unsafeCreateElementDynamic classPortal {}
+
+portal' :: forall a. IsTSEq (Record a) (OptionRecord (PortalPropsO PortalPropsM) PortalPropsM) => Function (Record a) ReactElement
+portal' = unsafeCreateLeafElement classPortal

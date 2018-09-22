@@ -1,12 +1,16 @@
 module ReactMUI.Textarea where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classTextarea :: forall a. ReactClass a
 
 type TextareaPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   defaultValue :: Any {--any--},
   disabled :: Boolean,
   rows :: OneOf ((
@@ -65,7 +69,6 @@ type TextareaPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLTextAreaElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLTextAreaElement>--}) Unit,
@@ -242,7 +245,11 @@ type TextareaPropsO r = (
 type TextareaPropsM  = (
 )
 
-foreign import textarea :: forall a. IsTSRecord a (TextareaPropsO TextareaPropsM) TextareaPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+textarea :: forall a. IsTSEq (Record a) (OptionRecord (TextareaPropsO TextareaPropsM) TextareaPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+textarea = unsafeCreateElementDynamic classTextarea
 
 textarea_ :: Function (Array ReactElement) ReactElement
-textarea_ = textarea {}
+textarea_ = unsafeCreateElementDynamic classTextarea {}
+
+textarea' :: forall a. IsTSEq (Record a) (OptionRecord (TextareaPropsO TextareaPropsM) TextareaPropsM) => Function (Record a) ReactElement
+textarea' = unsafeCreateLeafElement classTextarea

@@ -1,12 +1,16 @@
 module ReactMUI.Button where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classButton :: forall a. ReactClass a
 
 type ButtonPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   color :: OneOf ((
     typed :: StringConst ("inherit"),
     typed :: StringConst ("default"),
@@ -81,7 +85,6 @@ type ButtonPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLElement>--}) Unit,
@@ -278,7 +281,11 @@ type ButtonPropsO r = (
 type ButtonPropsM  = (
 )
 
-foreign import button :: forall a. IsTSRecord a (ButtonPropsO ButtonPropsM) ButtonPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+button :: forall a. IsTSEq (Record a) (OptionRecord (ButtonPropsO ButtonPropsM) ButtonPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+button = unsafeCreateElementDynamic classButton
 
 button_ :: Function (Array ReactElement) ReactElement
-button_ = button {}
+button_ = unsafeCreateElementDynamic classButton {}
+
+button' :: forall a. IsTSEq (Record a) (OptionRecord (ButtonPropsO ButtonPropsM) ButtonPropsM) => Function (Record a) ReactElement
+button' = unsafeCreateLeafElement classButton

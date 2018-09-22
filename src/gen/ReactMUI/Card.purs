@@ -1,12 +1,16 @@
 module ReactMUI.Card where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classCard :: forall a. ReactClass a
 
 type CardPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   raised :: Boolean,
   color :: String,
   hidden :: Boolean,
@@ -56,7 +60,6 @@ type CardPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -228,7 +231,11 @@ type CardPropsO r = (
 type CardPropsM  = (
 )
 
-foreign import card :: forall a. IsTSRecord a (CardPropsO CardPropsM) CardPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+card :: forall a. IsTSEq (Record a) (OptionRecord (CardPropsO CardPropsM) CardPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+card = unsafeCreateElementDynamic classCard
 
 card_ :: Function (Array ReactElement) ReactElement
-card_ = card {}
+card_ = unsafeCreateElementDynamic classCard {}
+
+card' :: forall a. IsTSEq (Record a) (OptionRecord (CardPropsO CardPropsM) CardPropsM) => Function (Record a) ReactElement
+card' = unsafeCreateLeafElement classCard

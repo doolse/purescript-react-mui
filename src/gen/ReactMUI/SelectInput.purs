@@ -1,12 +1,17 @@
 module ReactMUI.SelectInput where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classSelectInput :: forall a. ReactClass a
 
 type SelectInputPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   autoFocus :: Boolean,
   disabled :: Boolean,
   "IconComponent" :: OneOf ((
@@ -57,4 +62,11 @@ type SelectInputPropsM  = (
   multiple :: Boolean,
   native :: Boolean)
 
-foreign import selectInput :: forall a. IsTSRecord a (SelectInputPropsO SelectInputPropsM) SelectInputPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+selectInput :: forall a. IsTSEq (Record a) (OptionRecord (SelectInputPropsO SelectInputPropsM) SelectInputPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+selectInput = unsafeCreateElementDynamic classSelectInput
+
+selectInput_ :: Function (Array ReactElement) ReactElement
+selectInput_ = unsafeCreateElementDynamic classSelectInput {}
+
+selectInput' :: forall a. IsTSEq (Record a) (OptionRecord (SelectInputPropsO SelectInputPropsM) SelectInputPropsM) => Function (Record a) ReactElement
+selectInput' = unsafeCreateLeafElement classSelectInput

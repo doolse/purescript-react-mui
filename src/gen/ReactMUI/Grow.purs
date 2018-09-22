@@ -1,11 +1,16 @@
 module ReactMUI.Grow where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classGrow :: forall a. ReactClass a
 
 type GrowPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   theme :: Any {--interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/createMuiTheme".Theme--},
   timeout :: OneOf ((
     typed :: Number,
@@ -35,7 +40,11 @@ type GrowPropsO r = (
 type GrowPropsM  = (
 )
 
-foreign import grow :: forall a. IsTSRecord a (GrowPropsO GrowPropsM) GrowPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+grow :: forall a. IsTSEq (Record a) (OptionRecord (GrowPropsO GrowPropsM) GrowPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+grow = unsafeCreateElementDynamic classGrow
 
 grow_ :: Function (Array ReactElement) ReactElement
-grow_ = grow {}
+grow_ = unsafeCreateElementDynamic classGrow {}
+
+grow' :: forall a. IsTSEq (Record a) (OptionRecord (GrowPropsO GrowPropsM) GrowPropsM) => Function (Record a) ReactElement
+grow' = unsafeCreateLeafElement classGrow

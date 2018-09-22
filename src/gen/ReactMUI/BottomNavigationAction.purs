@@ -1,12 +1,17 @@
 module ReactMUI.BottomNavigationAction where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classBottomNavigationAction :: forall a. ReactClass a
 
 type BottomNavigationActionPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   icon :: OneOf ((
     typed :: String,
     typed :: ReactElement)),
@@ -64,7 +69,6 @@ type BottomNavigationActionPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLElement>--}) Unit,
@@ -262,7 +266,11 @@ type BottomNavigationActionPropsO r = (
 type BottomNavigationActionPropsM  = (
 )
 
-foreign import bottomNavigationAction :: forall a. IsTSRecord a (BottomNavigationActionPropsO BottomNavigationActionPropsM) BottomNavigationActionPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+bottomNavigationAction :: forall a. IsTSEq (Record a) (OptionRecord (BottomNavigationActionPropsO BottomNavigationActionPropsM) BottomNavigationActionPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+bottomNavigationAction = unsafeCreateElementDynamic classBottomNavigationAction
 
 bottomNavigationAction_ :: Function (Array ReactElement) ReactElement
-bottomNavigationAction_ = bottomNavigationAction {}
+bottomNavigationAction_ = unsafeCreateElementDynamic classBottomNavigationAction {}
+
+bottomNavigationAction' :: forall a. IsTSEq (Record a) (OptionRecord (BottomNavigationActionPropsO BottomNavigationActionPropsM) BottomNavigationActionPropsM) => Function (Record a) ReactElement
+bottomNavigationAction' = unsafeCreateLeafElement classBottomNavigationAction

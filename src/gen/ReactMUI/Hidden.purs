@@ -1,9 +1,14 @@
 module ReactMUI.Hidden where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import React (ReactElement)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classHidden :: forall a. ReactClass a
 
 type HiddenPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   implementation :: OneOf ((
     typed :: StringConst ("js"),
     typed :: StringConst ("css"))),
@@ -41,7 +46,11 @@ type HiddenPropsO r = (
 type HiddenPropsM  = (
 )
 
-foreign import hidden :: forall a. IsTSRecord a (HiddenPropsO HiddenPropsM) HiddenPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+hidden :: forall a. IsTSEq (Record a) (OptionRecord (HiddenPropsO HiddenPropsM) HiddenPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+hidden = unsafeCreateElementDynamic classHidden
 
 hidden_ :: Function (Array ReactElement) ReactElement
-hidden_ = hidden {}
+hidden_ = unsafeCreateElementDynamic classHidden {}
+
+hidden' :: forall a. IsTSEq (Record a) (OptionRecord (HiddenPropsO HiddenPropsM) HiddenPropsM) => Function (Record a) ReactElement
+hidden' = unsafeCreateLeafElement classHidden

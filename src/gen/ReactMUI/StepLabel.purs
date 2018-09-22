@@ -1,12 +1,17 @@
 module ReactMUI.StepLabel where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classStepLabel :: forall a. ReactClass a
 
 type StepLabelPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   active :: Boolean,
   alternativeLabel :: Boolean,
   completed :: Boolean,
@@ -233,6 +238,13 @@ type StepLabelPropsO r = (
     typed :: Any {--React.RefObject<any>--})) | r )
 
 type StepLabelPropsM  = (
-  children :: ReactNode)
+)
 
-foreign import stepLabel :: forall a. IsTSRecord a (StepLabelPropsO StepLabelPropsM) StepLabelPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+stepLabel :: forall a. IsTSEq (Record a) (OptionRecord (StepLabelPropsO StepLabelPropsM) StepLabelPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+stepLabel = unsafeCreateElementDynamic classStepLabel
+
+stepLabel_ :: Function (Array ReactElement) ReactElement
+stepLabel_ = unsafeCreateElementDynamic classStepLabel {}
+
+stepLabel' :: forall a. IsTSEq (Record a) (OptionRecord (StepLabelPropsO StepLabelPropsM) StepLabelPropsM) => Function (Record a) ReactElement
+stepLabel' = unsafeCreateLeafElement classStepLabel

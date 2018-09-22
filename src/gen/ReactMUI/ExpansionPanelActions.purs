@@ -1,12 +1,16 @@
 module ReactMUI.ExpansionPanelActions where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classExpansionPanelActions :: forall a. ReactClass a
 
 type ExpansionPanelActionsPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   color :: String,
   hidden :: Boolean,
   style :: Any {--React.CSSProperties<>--},
@@ -54,7 +58,6 @@ type ExpansionPanelActionsPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -221,7 +224,11 @@ type ExpansionPanelActionsPropsO r = (
 type ExpansionPanelActionsPropsM  = (
 )
 
-foreign import expansionPanelActions :: forall a. IsTSRecord a (ExpansionPanelActionsPropsO ExpansionPanelActionsPropsM) ExpansionPanelActionsPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+expansionPanelActions :: forall a. IsTSEq (Record a) (OptionRecord (ExpansionPanelActionsPropsO ExpansionPanelActionsPropsM) ExpansionPanelActionsPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+expansionPanelActions = unsafeCreateElementDynamic classExpansionPanelActions
 
 expansionPanelActions_ :: Function (Array ReactElement) ReactElement
-expansionPanelActions_ = expansionPanelActions {}
+expansionPanelActions_ = unsafeCreateElementDynamic classExpansionPanelActions {}
+
+expansionPanelActions' :: forall a. IsTSEq (Record a) (OptionRecord (ExpansionPanelActionsPropsO ExpansionPanelActionsPropsM) ExpansionPanelActionsPropsM) => Function (Record a) ReactElement
+expansionPanelActions' = unsafeCreateLeafElement classExpansionPanelActions

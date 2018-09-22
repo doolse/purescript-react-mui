@@ -1,12 +1,16 @@
 module ReactMUI.AppBar where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classAppBar :: forall a. ReactClass a
 
 type AppBarPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   color :: OneOf ((
     typed :: StringConst ("inherit"),
     typed :: StringConst ("default"),
@@ -65,7 +69,6 @@ type AppBarPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -237,7 +240,11 @@ type AppBarPropsO r = (
 type AppBarPropsM  = (
 )
 
-foreign import appBar :: forall a. IsTSRecord a (AppBarPropsO AppBarPropsM) AppBarPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+appBar :: forall a. IsTSEq (Record a) (OptionRecord (AppBarPropsO AppBarPropsM) AppBarPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+appBar = unsafeCreateElementDynamic classAppBar
 
 appBar_ :: Function (Array ReactElement) ReactElement
-appBar_ = appBar {}
+appBar_ = unsafeCreateElementDynamic classAppBar {}
+
+appBar' :: forall a. IsTSEq (Record a) (OptionRecord (AppBarPropsO AppBarPropsM) AppBarPropsM) => Function (Record a) ReactElement
+appBar' = unsafeCreateLeafElement classAppBar

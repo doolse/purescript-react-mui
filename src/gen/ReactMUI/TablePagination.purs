@@ -1,12 +1,17 @@
 module ReactMUI.TablePagination where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classTablePagination :: forall a. ReactClass a
 
 type TablePaginationPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   "ActionsComponent" :: OneOf ((
     typed :: String,
     typed :: Any {--React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/TableCell/TableCell".TableCellProps<>, any>--},
@@ -74,7 +79,6 @@ type TablePaginationPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLTableHeaderCellElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLTableHeaderCellElement>--}) Unit,
@@ -259,4 +263,11 @@ type TablePaginationPropsM  = (
   page :: Number,
   rowsPerPage :: Number)
 
-foreign import tablePagination :: forall a. IsTSRecord a (TablePaginationPropsO TablePaginationPropsM) TablePaginationPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+tablePagination :: forall a. IsTSEq (Record a) (OptionRecord (TablePaginationPropsO TablePaginationPropsM) TablePaginationPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+tablePagination = unsafeCreateElementDynamic classTablePagination
+
+tablePagination_ :: Function (Array ReactElement) ReactElement
+tablePagination_ = unsafeCreateElementDynamic classTablePagination {}
+
+tablePagination' :: forall a. IsTSEq (Record a) (OptionRecord (TablePaginationPropsO TablePaginationPropsM) TablePaginationPropsM) => Function (Record a) ReactElement
+tablePagination' = unsafeCreateLeafElement classTablePagination

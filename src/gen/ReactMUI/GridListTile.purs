@@ -1,12 +1,16 @@
 module ReactMUI.GridListTile where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classGridListTile :: forall a. ReactClass a
 
 type GridListTilePropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   cols :: Number,
   component :: OneOf ((
     typed :: String,
@@ -60,7 +64,6 @@ type GridListTilePropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLLIElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLLIElement>--}) Unit,
@@ -227,7 +230,11 @@ type GridListTilePropsO r = (
 type GridListTilePropsM  = (
 )
 
-foreign import gridListTile :: forall a. IsTSRecord a (GridListTilePropsO GridListTilePropsM) GridListTilePropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+gridListTile :: forall a. IsTSEq (Record a) (OptionRecord (GridListTilePropsO GridListTilePropsM) GridListTilePropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+gridListTile = unsafeCreateElementDynamic classGridListTile
 
 gridListTile_ :: Function (Array ReactElement) ReactElement
-gridListTile_ = gridListTile {}
+gridListTile_ = unsafeCreateElementDynamic classGridListTile {}
+
+gridListTile' :: forall a. IsTSEq (Record a) (OptionRecord (GridListTilePropsO GridListTilePropsM) GridListTilePropsM) => Function (Record a) ReactElement
+gridListTile' = unsafeCreateLeafElement classGridListTile

@@ -1,12 +1,17 @@
 module ReactMUI.Tooltip where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classTooltip :: forall a. ReactClass a
 
 type TooltipPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   disableFocusListener :: Boolean,
   disableHoverListener :: Boolean,
   disableTouchListener :: Boolean,
@@ -246,7 +251,13 @@ type TooltipPropsO r = (
     typed :: Any {--React.RefObject<any>--})) | r )
 
 type TooltipPropsM  = (
-  children :: ReactElement,
   title :: ReactNode)
 
-foreign import tooltip :: forall a. IsTSRecord a (TooltipPropsO TooltipPropsM) TooltipPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+tooltip :: forall a. IsTSEq (Record a) (OptionRecord (TooltipPropsO TooltipPropsM) TooltipPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+tooltip = unsafeCreateElementDynamic classTooltip
+
+tooltip_ :: Function (Array ReactElement) ReactElement
+tooltip_ = unsafeCreateElementDynamic classTooltip {}
+
+tooltip' :: forall a. IsTSEq (Record a) (OptionRecord (TooltipPropsO TooltipPropsM) TooltipPropsM) => Function (Record a) ReactElement
+tooltip' = unsafeCreateLeafElement classTooltip

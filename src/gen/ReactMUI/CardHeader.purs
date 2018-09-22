@@ -1,12 +1,17 @@
 module ReactMUI.CardHeader where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classCardHeader :: forall a. ReactClass a
 
 type CardHeaderPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   action :: ReactNode,
   avatar :: ReactNode,
   component :: OneOf ((
@@ -64,7 +69,6 @@ type CardHeaderPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -231,7 +235,11 @@ type CardHeaderPropsO r = (
 type CardHeaderPropsM  = (
 )
 
-foreign import cardHeader :: forall a. IsTSRecord a (CardHeaderPropsO CardHeaderPropsM) CardHeaderPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+cardHeader :: forall a. IsTSEq (Record a) (OptionRecord (CardHeaderPropsO CardHeaderPropsM) CardHeaderPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+cardHeader = unsafeCreateElementDynamic classCardHeader
 
 cardHeader_ :: Function (Array ReactElement) ReactElement
-cardHeader_ = cardHeader {}
+cardHeader_ = unsafeCreateElementDynamic classCardHeader {}
+
+cardHeader' :: forall a. IsTSEq (Record a) (OptionRecord (CardHeaderPropsO CardHeaderPropsM) CardHeaderPropsM) => Function (Record a) ReactElement
+cardHeader' = unsafeCreateLeafElement classCardHeader

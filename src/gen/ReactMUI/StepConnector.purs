@@ -1,12 +1,16 @@
 module ReactMUI.StepConnector where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classStepConnector :: forall a. ReactClass a
 
 type StepConnectorPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   alternativeLabel :: Boolean,
   orientation :: OneOf ((
     typed :: StringConst ("horizontal"),
@@ -58,7 +62,6 @@ type StepConnectorPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -225,7 +228,11 @@ type StepConnectorPropsO r = (
 type StepConnectorPropsM  = (
 )
 
-foreign import stepConnector :: forall a. IsTSRecord a (StepConnectorPropsO StepConnectorPropsM) StepConnectorPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+stepConnector :: forall a. IsTSEq (Record a) (OptionRecord (StepConnectorPropsO StepConnectorPropsM) StepConnectorPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+stepConnector = unsafeCreateElementDynamic classStepConnector
 
 stepConnector_ :: Function (Array ReactElement) ReactElement
-stepConnector_ = stepConnector {}
+stepConnector_ = unsafeCreateElementDynamic classStepConnector {}
+
+stepConnector' :: forall a. IsTSEq (Record a) (OptionRecord (StepConnectorPropsO StepConnectorPropsM) StepConnectorPropsM) => Function (Record a) ReactElement
+stepConnector' = unsafeCreateLeafElement classStepConnector

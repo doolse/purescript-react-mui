@@ -1,12 +1,16 @@
 module ReactMUI.Popover where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classPopover :: forall a. ReactClass a
 
 type PopoverPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   action :: EffectFn1 (Any {--interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Popover/Popover".PopoverActions--}) Unit,
   anchorEl :: OneOf ((
     typed :: Any {--interface HTMLElement--},
@@ -17,7 +21,6 @@ type PopoverPropsO r = (
     typed :: StringConst ("none"),
     typed :: StringConst ("anchorEl"),
     typed :: StringConst ("anchorPosition"))),
-  children :: ReactNode,
   elevation :: Number,
   getContentAnchorEl :: Function (Any {--interface HTMLElement--}) (Any {--interface HTMLElement--}),
   marginThreshold :: Number,
@@ -282,4 +285,11 @@ type PopoverPropsO r = (
 type PopoverPropsM  = (
   open :: Boolean)
 
-foreign import popover :: forall a. IsTSRecord a (PopoverPropsO PopoverPropsM) PopoverPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+popover :: forall a. IsTSEq (Record a) (OptionRecord (PopoverPropsO PopoverPropsM) PopoverPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+popover = unsafeCreateElementDynamic classPopover
+
+popover_ :: Function (Array ReactElement) ReactElement
+popover_ = unsafeCreateElementDynamic classPopover {}
+
+popover' :: forall a. IsTSEq (Record a) (OptionRecord (PopoverPropsO PopoverPropsM) PopoverPropsM) => Function (Record a) ReactElement
+popover' = unsafeCreateLeafElement classPopover

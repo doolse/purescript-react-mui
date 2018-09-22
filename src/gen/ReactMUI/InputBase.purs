@@ -1,12 +1,17 @@
 module ReactMUI.InputBase where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classInputBase :: forall a. ReactClass a
 
 type InputBasePropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   autoComplete :: String,
   autoFocus :: Boolean,
   defaultValue :: OneOf ((
@@ -95,7 +100,6 @@ type InputBasePropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -259,7 +263,11 @@ type InputBasePropsO r = (
 type InputBasePropsM  = (
 )
 
-foreign import inputBase :: forall a. IsTSRecord a (InputBasePropsO InputBasePropsM) InputBasePropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+inputBase :: forall a. IsTSEq (Record a) (OptionRecord (InputBasePropsO InputBasePropsM) InputBasePropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+inputBase = unsafeCreateElementDynamic classInputBase
 
 inputBase_ :: Function (Array ReactElement) ReactElement
-inputBase_ = inputBase {}
+inputBase_ = unsafeCreateElementDynamic classInputBase {}
+
+inputBase' :: forall a. IsTSEq (Record a) (OptionRecord (InputBasePropsO InputBasePropsM) InputBasePropsM) => Function (Record a) ReactElement
+inputBase' = unsafeCreateLeafElement classInputBase

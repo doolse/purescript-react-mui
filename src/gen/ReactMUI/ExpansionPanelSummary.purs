@@ -1,12 +1,17 @@
 module ReactMUI.ExpansionPanelSummary where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classExpansionPanelSummary :: forall a. ReactClass a
 
 type ExpansionPanelSummaryPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   disabled :: Boolean,
   expanded :: Boolean,
   expandIcon :: ReactNode,
@@ -59,7 +64,6 @@ type ExpansionPanelSummaryPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLElement>--}) Unit,
@@ -262,7 +266,11 @@ type ExpansionPanelSummaryPropsO r = (
 type ExpansionPanelSummaryPropsM  = (
 )
 
-foreign import expansionPanelSummary :: forall a. IsTSRecord a (ExpansionPanelSummaryPropsO ExpansionPanelSummaryPropsM) ExpansionPanelSummaryPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+expansionPanelSummary :: forall a. IsTSEq (Record a) (OptionRecord (ExpansionPanelSummaryPropsO ExpansionPanelSummaryPropsM) ExpansionPanelSummaryPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+expansionPanelSummary = unsafeCreateElementDynamic classExpansionPanelSummary
 
 expansionPanelSummary_ :: Function (Array ReactElement) ReactElement
-expansionPanelSummary_ = expansionPanelSummary {}
+expansionPanelSummary_ = unsafeCreateElementDynamic classExpansionPanelSummary {}
+
+expansionPanelSummary' :: forall a. IsTSEq (Record a) (OptionRecord (ExpansionPanelSummaryPropsO ExpansionPanelSummaryPropsM) ExpansionPanelSummaryPropsM) => Function (Record a) ReactElement
+expansionPanelSummary' = unsafeCreateLeafElement classExpansionPanelSummary

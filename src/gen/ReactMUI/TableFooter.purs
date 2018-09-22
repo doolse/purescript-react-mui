@@ -1,12 +1,16 @@
 module ReactMUI.TableFooter where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classTableFooter :: forall a. ReactClass a
 
 type TableFooterPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   component :: OneOf ((
     typed :: String,
     typed :: Any {--React.ComponentClass<React.HTMLAttributes<interface HTMLTableSectionElement>, any>--},
@@ -58,7 +62,6 @@ type TableFooterPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLTableSectionElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLTableSectionElement>--}) Unit,
@@ -225,7 +228,11 @@ type TableFooterPropsO r = (
 type TableFooterPropsM  = (
 )
 
-foreign import tableFooter :: forall a. IsTSRecord a (TableFooterPropsO TableFooterPropsM) TableFooterPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+tableFooter :: forall a. IsTSEq (Record a) (OptionRecord (TableFooterPropsO TableFooterPropsM) TableFooterPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+tableFooter = unsafeCreateElementDynamic classTableFooter
 
 tableFooter_ :: Function (Array ReactElement) ReactElement
-tableFooter_ = tableFooter {}
+tableFooter_ = unsafeCreateElementDynamic classTableFooter {}
+
+tableFooter' :: forall a. IsTSEq (Record a) (OptionRecord (TableFooterPropsO TableFooterPropsM) TableFooterPropsM) => Function (Record a) ReactElement
+tableFooter' = unsafeCreateLeafElement classTableFooter

@@ -1,15 +1,18 @@
 module ReactMUI.Step where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classStep :: forall a. ReactClass a
 
 type StepPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   active :: Boolean,
   alternativeLabel :: Boolean,
-  children :: ReactNode,
   completed :: Boolean,
   connector :: ReactElement,
   disabled :: Boolean,
@@ -231,7 +234,11 @@ type StepPropsO r = (
 type StepPropsM  = (
 )
 
-foreign import step :: forall a. IsTSRecord a (StepPropsO StepPropsM) StepPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+step :: forall a. IsTSEq (Record a) (OptionRecord (StepPropsO StepPropsM) StepPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+step = unsafeCreateElementDynamic classStep
 
 step_ :: Function (Array ReactElement) ReactElement
-step_ = step {}
+step_ = unsafeCreateElementDynamic classStep {}
+
+step' :: forall a. IsTSEq (Record a) (OptionRecord (StepPropsO StepPropsM) StepPropsM) => Function (Record a) ReactElement
+step' = unsafeCreateLeafElement classStep

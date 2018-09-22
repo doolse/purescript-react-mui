@@ -1,15 +1,18 @@
 module ReactMUI.Tabs where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classTabs :: forall a. ReactClass a
 
 type TabsPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   action :: EffectFn1 (Any {--interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Tabs/Tabs".TabsActions--}) Unit,
   centered :: Boolean,
-  children :: ReactNode,
   component :: OneOf ((
     typed :: String,
     typed :: Any {--React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Tabs/Tabs".TabsProps<>, any>--},
@@ -270,4 +273,11 @@ type TabsPropsO r = (
 type TabsPropsM  = (
   value :: Any {--any--})
 
-foreign import tabs :: forall a. IsTSRecord a (TabsPropsO TabsPropsM) TabsPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+tabs :: forall a. IsTSEq (Record a) (OptionRecord (TabsPropsO TabsPropsM) TabsPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+tabs = unsafeCreateElementDynamic classTabs
+
+tabs_ :: Function (Array ReactElement) ReactElement
+tabs_ = unsafeCreateElementDynamic classTabs {}
+
+tabs' :: forall a. IsTSEq (Record a) (OptionRecord (TabsPropsO TabsPropsM) TabsPropsM) => Function (Record a) ReactElement
+tabs' = unsafeCreateLeafElement classTabs

@@ -1,12 +1,16 @@
 module ReactMUI.CardActionArea where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classCardActionArea :: forall a. ReactClass a
 
 type CardActionAreaPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   focusVisibleClassName :: String,
   color :: String,
   hidden :: Boolean,
@@ -56,7 +60,6 @@ type CardActionAreaPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLElement>--}) Unit,
@@ -259,7 +262,11 @@ type CardActionAreaPropsO r = (
 type CardActionAreaPropsM  = (
 )
 
-foreign import cardActionArea :: forall a. IsTSRecord a (CardActionAreaPropsO CardActionAreaPropsM) CardActionAreaPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+cardActionArea :: forall a. IsTSEq (Record a) (OptionRecord (CardActionAreaPropsO CardActionAreaPropsM) CardActionAreaPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+cardActionArea = unsafeCreateElementDynamic classCardActionArea
 
 cardActionArea_ :: Function (Array ReactElement) ReactElement
-cardActionArea_ = cardActionArea {}
+cardActionArea_ = unsafeCreateElementDynamic classCardActionArea {}
+
+cardActionArea' :: forall a. IsTSEq (Record a) (OptionRecord (CardActionAreaPropsO CardActionAreaPropsM) CardActionAreaPropsM) => Function (Record a) ReactElement
+cardActionArea' = unsafeCreateLeafElement classCardActionArea

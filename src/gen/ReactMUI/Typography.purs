@@ -1,12 +1,16 @@
 module ReactMUI.Typography where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classTypography :: forall a. ReactClass a
 
 type TypographyPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   align :: OneOf ((
     typed :: StringConst ("left"),
     typed :: StringConst ("right"),
@@ -89,7 +93,6 @@ type TypographyPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLElement>--}) Unit,
@@ -256,7 +259,11 @@ type TypographyPropsO r = (
 type TypographyPropsM  = (
 )
 
-foreign import typography :: forall a. IsTSRecord a (TypographyPropsO TypographyPropsM) TypographyPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+typography :: forall a. IsTSEq (Record a) (OptionRecord (TypographyPropsO TypographyPropsM) TypographyPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+typography = unsafeCreateElementDynamic classTypography
 
 typography_ :: Function (Array ReactElement) ReactElement
-typography_ = typography {}
+typography_ = unsafeCreateElementDynamic classTypography {}
+
+typography' :: forall a. IsTSEq (Record a) (OptionRecord (TypographyPropsO TypographyPropsM) TypographyPropsM) => Function (Record a) ReactElement
+typography' = unsafeCreateLeafElement classTypography

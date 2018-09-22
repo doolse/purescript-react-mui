@@ -1,12 +1,17 @@
 module ReactMUI.SnackbarContent where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classSnackbarContent :: forall a. ReactClass a
 
 type SnackbarContentPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   action :: ReactNode,
   message :: ReactNode,
   color :: String,
@@ -57,7 +62,6 @@ type SnackbarContentPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -229,7 +233,11 @@ type SnackbarContentPropsO r = (
 type SnackbarContentPropsM  = (
 )
 
-foreign import snackbarContent :: forall a. IsTSRecord a (SnackbarContentPropsO SnackbarContentPropsM) SnackbarContentPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+snackbarContent :: forall a. IsTSEq (Record a) (OptionRecord (SnackbarContentPropsO SnackbarContentPropsM) SnackbarContentPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+snackbarContent = unsafeCreateElementDynamic classSnackbarContent
 
 snackbarContent_ :: Function (Array ReactElement) ReactElement
-snackbarContent_ = snackbarContent {}
+snackbarContent_ = unsafeCreateElementDynamic classSnackbarContent {}
+
+snackbarContent' :: forall a. IsTSEq (Record a) (OptionRecord (SnackbarContentPropsO SnackbarContentPropsM) SnackbarContentPropsM) => Function (Record a) ReactElement
+snackbarContent' = unsafeCreateLeafElement classSnackbarContent

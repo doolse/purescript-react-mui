@@ -1,12 +1,16 @@
 module ReactMUI.InputAdornment where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classInputAdornment :: forall a. ReactClass a
 
 type InputAdornmentPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   component :: OneOf ((
     typed :: String,
     typed :: Any {--React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputAdornment/InputAdornment".InputAdornmentProps<>, any>--},
@@ -59,7 +63,6 @@ type InputAdornmentPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -228,4 +231,11 @@ type InputAdornmentPropsM  = (
     typed :: StringConst ("end"),
     typed :: StringConst ("start"))))
 
-foreign import inputAdornment :: forall a. IsTSRecord a (InputAdornmentPropsO InputAdornmentPropsM) InputAdornmentPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+inputAdornment :: forall a. IsTSEq (Record a) (OptionRecord (InputAdornmentPropsO InputAdornmentPropsM) InputAdornmentPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+inputAdornment = unsafeCreateElementDynamic classInputAdornment
+
+inputAdornment_ :: Function (Array ReactElement) ReactElement
+inputAdornment_ = unsafeCreateElementDynamic classInputAdornment {}
+
+inputAdornment' :: forall a. IsTSEq (Record a) (OptionRecord (InputAdornmentPropsO InputAdornmentPropsM) InputAdornmentPropsM) => Function (Record a) ReactElement
+inputAdornment' = unsafeCreateLeafElement classInputAdornment

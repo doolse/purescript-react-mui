@@ -1,12 +1,16 @@
 module ReactMUI.TableHead where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classTableHead :: forall a. ReactClass a
 
 type TableHeadPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   component :: OneOf ((
     typed :: String,
     typed :: Any {--React.ComponentClass<React.HTMLAttributes<interface HTMLTableSectionElement>, any>--},
@@ -58,7 +62,6 @@ type TableHeadPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLTableSectionElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLTableSectionElement>--}) Unit,
@@ -225,7 +228,11 @@ type TableHeadPropsO r = (
 type TableHeadPropsM  = (
 )
 
-foreign import tableHead :: forall a. IsTSRecord a (TableHeadPropsO TableHeadPropsM) TableHeadPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+tableHead :: forall a. IsTSEq (Record a) (OptionRecord (TableHeadPropsO TableHeadPropsM) TableHeadPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+tableHead = unsafeCreateElementDynamic classTableHead
 
 tableHead_ :: Function (Array ReactElement) ReactElement
-tableHead_ = tableHead {}
+tableHead_ = unsafeCreateElementDynamic classTableHead {}
+
+tableHead' :: forall a. IsTSEq (Record a) (OptionRecord (TableHeadPropsO TableHeadPropsM) TableHeadPropsM) => Function (Record a) ReactElement
+tableHead' = unsafeCreateLeafElement classTableHead

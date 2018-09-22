@@ -1,12 +1,16 @@
 module ReactMUI.DialogContentText where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classDialogContentText :: forall a. ReactClass a
 
 type DialogContentTextPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   color :: OneOf ((
     typed :: StringConst ("inherit"),
     typed :: StringConst ("default"),
@@ -61,7 +65,6 @@ type DialogContentTextPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLElement>--}) Unit,
@@ -256,7 +259,11 @@ type DialogContentTextPropsO r = (
 type DialogContentTextPropsM  = (
 )
 
-foreign import dialogContentText :: forall a. IsTSRecord a (DialogContentTextPropsO DialogContentTextPropsM) DialogContentTextPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+dialogContentText :: forall a. IsTSEq (Record a) (OptionRecord (DialogContentTextPropsO DialogContentTextPropsM) DialogContentTextPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+dialogContentText = unsafeCreateElementDynamic classDialogContentText
 
 dialogContentText_ :: Function (Array ReactElement) ReactElement
-dialogContentText_ = dialogContentText {}
+dialogContentText_ = unsafeCreateElementDynamic classDialogContentText {}
+
+dialogContentText' :: forall a. IsTSEq (Record a) (OptionRecord (DialogContentTextPropsO DialogContentTextPropsM) DialogContentTextPropsM) => Function (Record a) ReactElement
+dialogContentText' = unsafeCreateLeafElement classDialogContentText

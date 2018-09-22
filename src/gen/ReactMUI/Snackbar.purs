@@ -1,12 +1,17 @@
 module ReactMUI.Snackbar where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classSnackbar :: forall a. ReactClass a
 
 type SnackbarPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   action :: ReactNode,
   anchorOrigin :: Any {--interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Snackbar/Snackbar".SnackbarOrigin--},
   autoHideDuration :: Number,
@@ -73,7 +78,6 @@ type SnackbarPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -250,4 +254,11 @@ type SnackbarPropsO r = (
 type SnackbarPropsM  = (
   open :: Boolean)
 
-foreign import snackbar :: forall a. IsTSRecord a (SnackbarPropsO SnackbarPropsM) SnackbarPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+snackbar :: forall a. IsTSEq (Record a) (OptionRecord (SnackbarPropsO SnackbarPropsM) SnackbarPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+snackbar = unsafeCreateElementDynamic classSnackbar
+
+snackbar_ :: Function (Array ReactElement) ReactElement
+snackbar_ = unsafeCreateElementDynamic classSnackbar {}
+
+snackbar' :: forall a. IsTSEq (Record a) (OptionRecord (SnackbarPropsO SnackbarPropsM) SnackbarPropsM) => Function (Record a) ReactElement
+snackbar' = unsafeCreateLeafElement classSnackbar

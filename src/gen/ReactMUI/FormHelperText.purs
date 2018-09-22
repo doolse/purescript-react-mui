@@ -1,12 +1,16 @@
 module ReactMUI.FormHelperText where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classFormHelperText :: forall a. ReactClass a
 
 type FormHelperTextPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   disabled :: Boolean,
   error :: Boolean,
   filled :: Boolean,
@@ -68,7 +72,6 @@ type FormHelperTextPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLParagraphElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLParagraphElement>--}) Unit,
@@ -235,7 +238,11 @@ type FormHelperTextPropsO r = (
 type FormHelperTextPropsM  = (
 )
 
-foreign import formHelperText :: forall a. IsTSRecord a (FormHelperTextPropsO FormHelperTextPropsM) FormHelperTextPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+formHelperText :: forall a. IsTSEq (Record a) (OptionRecord (FormHelperTextPropsO FormHelperTextPropsM) FormHelperTextPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+formHelperText = unsafeCreateElementDynamic classFormHelperText
 
 formHelperText_ :: Function (Array ReactElement) ReactElement
-formHelperText_ = formHelperText {}
+formHelperText_ = unsafeCreateElementDynamic classFormHelperText {}
+
+formHelperText' :: forall a. IsTSEq (Record a) (OptionRecord (FormHelperTextPropsO FormHelperTextPropsM) FormHelperTextPropsM) => Function (Record a) ReactElement
+formHelperText' = unsafeCreateLeafElement classFormHelperText

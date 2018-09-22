@@ -1,12 +1,16 @@
 module ReactMUI.SvgIcon where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classSvgIcon :: forall a. ReactClass a
 
 type SvgIconPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   color :: OneOf ((
     typed :: StringConst ("inherit"),
     typed :: StringConst ("default"),
@@ -232,7 +236,6 @@ type SvgIconPropsO r = (
   lang :: String,
   tabIndex :: Number,
   role :: String,
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface SVGSVGElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface SVGSVGElement>--}) Unit,
@@ -876,7 +879,11 @@ type SvgIconPropsO r = (
 type SvgIconPropsM  = (
 )
 
-foreign import svgIcon :: forall a. IsTSRecord a (SvgIconPropsO SvgIconPropsM) SvgIconPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+svgIcon :: forall a. IsTSEq (Record a) (OptionRecord (SvgIconPropsO SvgIconPropsM) SvgIconPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+svgIcon = unsafeCreateElementDynamic classSvgIcon
 
 svgIcon_ :: Function (Array ReactElement) ReactElement
-svgIcon_ = svgIcon {}
+svgIcon_ = unsafeCreateElementDynamic classSvgIcon {}
+
+svgIcon' :: forall a. IsTSEq (Record a) (OptionRecord (SvgIconPropsO SvgIconPropsM) SvgIconPropsM) => Function (Record a) ReactElement
+svgIcon' = unsafeCreateLeafElement classSvgIcon

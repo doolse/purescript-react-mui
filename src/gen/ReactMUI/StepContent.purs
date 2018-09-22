@@ -1,12 +1,16 @@
 module ReactMUI.StepContent where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classStepContent :: forall a. ReactClass a
 
 type StepContentPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   active :: Boolean,
   alternativeLabel :: Boolean,
   completed :: Boolean,
@@ -234,6 +238,13 @@ type StepContentPropsO r = (
     typed :: Any {--React.RefObject<any>--})) | r )
 
 type StepContentPropsM  = (
-  children :: ReactNode)
+)
 
-foreign import stepContent :: forall a. IsTSRecord a (StepContentPropsO StepContentPropsM) StepContentPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+stepContent :: forall a. IsTSEq (Record a) (OptionRecord (StepContentPropsO StepContentPropsM) StepContentPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+stepContent = unsafeCreateElementDynamic classStepContent
+
+stepContent_ :: Function (Array ReactElement) ReactElement
+stepContent_ = unsafeCreateElementDynamic classStepContent {}
+
+stepContent' :: forall a. IsTSEq (Record a) (OptionRecord (StepContentPropsO StepContentPropsM) StepContentPropsM) => Function (Record a) ReactElement
+stepContent' = unsafeCreateLeafElement classStepContent

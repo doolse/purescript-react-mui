@@ -1,12 +1,17 @@
 module ReactMUI.FilledInput where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classFilledInput :: forall a. ReactClass a
 
 type FilledInputPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   color :: String,
   margin :: StringConst ("dense"),
   hidden :: Boolean,
@@ -56,7 +61,6 @@ type FilledInputPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -259,7 +263,11 @@ type FilledInputPropsO r = (
 type FilledInputPropsM  = (
 )
 
-foreign import filledInput :: forall a. IsTSRecord a (FilledInputPropsO FilledInputPropsM) FilledInputPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+filledInput :: forall a. IsTSEq (Record a) (OptionRecord (FilledInputPropsO FilledInputPropsM) FilledInputPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+filledInput = unsafeCreateElementDynamic classFilledInput
 
 filledInput_ :: Function (Array ReactElement) ReactElement
-filledInput_ = filledInput {}
+filledInput_ = unsafeCreateElementDynamic classFilledInput {}
+
+filledInput' :: forall a. IsTSEq (Record a) (OptionRecord (FilledInputPropsO FilledInputPropsM) FilledInputPropsM) => Function (Record a) ReactElement
+filledInput' = unsafeCreateLeafElement classFilledInput

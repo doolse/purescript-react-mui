@@ -1,12 +1,16 @@
 module ReactMUI.MobileStepper where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classMobileStepper :: forall a. ReactClass a
 
 type MobileStepperPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   activeStep :: Number,
   "LinearProgressProps" :: Any {--unknown--},
   position :: OneOf ((
@@ -65,7 +69,6 @@ type MobileStepperPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -239,4 +242,11 @@ type MobileStepperPropsM  = (
   nextButton :: ReactElement,
   steps :: Number)
 
-foreign import mobileStepper :: forall a. IsTSRecord a (MobileStepperPropsO MobileStepperPropsM) MobileStepperPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+mobileStepper :: forall a. IsTSEq (Record a) (OptionRecord (MobileStepperPropsO MobileStepperPropsM) MobileStepperPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+mobileStepper = unsafeCreateElementDynamic classMobileStepper
+
+mobileStepper_ :: Function (Array ReactElement) ReactElement
+mobileStepper_ = unsafeCreateElementDynamic classMobileStepper {}
+
+mobileStepper' :: forall a. IsTSEq (Record a) (OptionRecord (MobileStepperPropsO MobileStepperPropsM) MobileStepperPropsM) => Function (Record a) ReactElement
+mobileStepper' = unsafeCreateLeafElement classMobileStepper

@@ -1,11 +1,16 @@
 module ReactMUI.Zoom where
-import Data.TSCompat (Any, OneOf)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classZoom :: forall a. ReactClass a
 
 type ZoomPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   theme :: Any {--interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/createMuiTheme".Theme--},
   style :: Any {--React.CSSProperties<>--},
   appear :: Boolean,
@@ -34,7 +39,11 @@ type ZoomPropsO r = (
 type ZoomPropsM  = (
 )
 
-foreign import zoom :: forall a. IsTSRecord a (ZoomPropsO ZoomPropsM) ZoomPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+zoom :: forall a. IsTSEq (Record a) (OptionRecord (ZoomPropsO ZoomPropsM) ZoomPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+zoom = unsafeCreateElementDynamic classZoom
 
 zoom_ :: Function (Array ReactElement) ReactElement
-zoom_ = zoom {}
+zoom_ = unsafeCreateElementDynamic classZoom {}
+
+zoom' :: forall a. IsTSEq (Record a) (OptionRecord (ZoomPropsO ZoomPropsM) ZoomPropsM) => Function (Record a) ReactElement
+zoom' = unsafeCreateLeafElement classZoom

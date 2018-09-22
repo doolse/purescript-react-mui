@@ -1,12 +1,16 @@
 module ReactMUI.BottomNavigation where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classBottomNavigation :: forall a. ReactClass a
 
 type BottomNavigationPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   onChange :: EffectFn2 (Any {--React.ChangeEvent<{}>--}) (Any {--any--}) Unit,
   showLabels :: Boolean,
   value :: Any {--any--},
@@ -220,6 +224,13 @@ type BottomNavigationPropsO r = (
     typed :: Any {--React.RefObject<any>--})) | r )
 
 type BottomNavigationPropsM  = (
-  children :: ReactNode)
+)
 
-foreign import bottomNavigation :: forall a. IsTSRecord a (BottomNavigationPropsO BottomNavigationPropsM) BottomNavigationPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+bottomNavigation :: forall a. IsTSEq (Record a) (OptionRecord (BottomNavigationPropsO BottomNavigationPropsM) BottomNavigationPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+bottomNavigation = unsafeCreateElementDynamic classBottomNavigation
+
+bottomNavigation_ :: Function (Array ReactElement) ReactElement
+bottomNavigation_ = unsafeCreateElementDynamic classBottomNavigation {}
+
+bottomNavigation' :: forall a. IsTSEq (Record a) (OptionRecord (BottomNavigationPropsO BottomNavigationPropsM) BottomNavigationPropsM) => Function (Record a) ReactElement
+bottomNavigation' = unsafeCreateLeafElement classBottomNavigation

@@ -1,12 +1,16 @@
 module ReactMUI.DialogActions where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classDialogActions :: forall a. ReactClass a
 
 type DialogActionsPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   disableActionSpacing :: Boolean,
   color :: String,
   hidden :: Boolean,
@@ -55,7 +59,6 @@ type DialogActionsPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -222,7 +225,11 @@ type DialogActionsPropsO r = (
 type DialogActionsPropsM  = (
 )
 
-foreign import dialogActions :: forall a. IsTSRecord a (DialogActionsPropsO DialogActionsPropsM) DialogActionsPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+dialogActions :: forall a. IsTSEq (Record a) (OptionRecord (DialogActionsPropsO DialogActionsPropsM) DialogActionsPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+dialogActions = unsafeCreateElementDynamic classDialogActions
 
 dialogActions_ :: Function (Array ReactElement) ReactElement
-dialogActions_ = dialogActions {}
+dialogActions_ = unsafeCreateElementDynamic classDialogActions {}
+
+dialogActions' :: forall a. IsTSEq (Record a) (OptionRecord (DialogActionsPropsO DialogActionsPropsM) DialogActionsPropsM) => Function (Record a) ReactElement
+dialogActions' = unsafeCreateLeafElement classDialogActions

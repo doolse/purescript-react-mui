@@ -1,12 +1,17 @@
 module ReactMUI.InputBaseComponent where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classInputBaseComponent :: forall a. ReactClass a
 
 type InputBaseComponentPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   autoComplete :: String,
   autoFocus :: Boolean,
   defaultValue :: OneOf ((
@@ -95,7 +100,6 @@ type InputBaseComponentPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -259,7 +263,11 @@ type InputBaseComponentPropsO r = (
 type InputBaseComponentPropsM  = (
 )
 
-foreign import inputBaseComponent :: forall a. IsTSRecord a (InputBaseComponentPropsO InputBaseComponentPropsM) InputBaseComponentPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+inputBaseComponent :: forall a. IsTSEq (Record a) (OptionRecord (InputBaseComponentPropsO InputBaseComponentPropsM) InputBaseComponentPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+inputBaseComponent = unsafeCreateElementDynamic classInputBaseComponent
 
 inputBaseComponent_ :: Function (Array ReactElement) ReactElement
-inputBaseComponent_ = inputBaseComponent {}
+inputBaseComponent_ = unsafeCreateElementDynamic classInputBaseComponent {}
+
+inputBaseComponent' :: forall a. IsTSEq (Record a) (OptionRecord (InputBaseComponentPropsO InputBaseComponentPropsM) InputBaseComponentPropsM) => Function (Record a) ReactElement
+inputBaseComponent' = unsafeCreateLeafElement classInputBaseComponent

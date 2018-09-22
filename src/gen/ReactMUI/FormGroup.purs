@@ -1,12 +1,16 @@
 module ReactMUI.FormGroup where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classFormGroup :: forall a. ReactClass a
 
 type FormGroupPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   row :: Boolean,
   color :: String,
   hidden :: Boolean,
@@ -55,7 +59,6 @@ type FormGroupPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -223,7 +226,11 @@ type FormGroupPropsO r = (
 type FormGroupPropsM  = (
 )
 
-foreign import formGroup :: forall a. IsTSRecord a (FormGroupPropsO FormGroupPropsM) FormGroupPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+formGroup :: forall a. IsTSEq (Record a) (OptionRecord (FormGroupPropsO FormGroupPropsM) FormGroupPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+formGroup = unsafeCreateElementDynamic classFormGroup
 
 formGroup_ :: Function (Array ReactElement) ReactElement
-formGroup_ = formGroup {}
+formGroup_ = unsafeCreateElementDynamic classFormGroup {}
+
+formGroup' :: forall a. IsTSEq (Record a) (OptionRecord (FormGroupPropsO FormGroupPropsM) FormGroupPropsM) => Function (Record a) ReactElement
+formGroup' = unsafeCreateLeafElement classFormGroup

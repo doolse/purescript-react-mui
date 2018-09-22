@@ -1,12 +1,16 @@
 module ReactMUI.SwipeableDrawer where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classSwipeableDrawer :: forall a. ReactClass a
 
 type SwipeableDrawerPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   disableBackdropTransition :: Boolean,
   disableDiscovery :: Boolean,
   disableSwipeToOpen :: Boolean,
@@ -64,7 +68,6 @@ type SwipeableDrawerPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -280,4 +283,11 @@ type SwipeableDrawerPropsM  = (
   onOpen :: EffectFn1 (Any {--React.SyntheticEvent<{}>--}) Unit,
   open :: Boolean)
 
-foreign import swipeableDrawer :: forall a. IsTSRecord a (SwipeableDrawerPropsO SwipeableDrawerPropsM) SwipeableDrawerPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+swipeableDrawer :: forall a. IsTSEq (Record a) (OptionRecord (SwipeableDrawerPropsO SwipeableDrawerPropsM) SwipeableDrawerPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+swipeableDrawer = unsafeCreateElementDynamic classSwipeableDrawer
+
+swipeableDrawer_ :: Function (Array ReactElement) ReactElement
+swipeableDrawer_ = unsafeCreateElementDynamic classSwipeableDrawer {}
+
+swipeableDrawer' :: forall a. IsTSEq (Record a) (OptionRecord (SwipeableDrawerPropsO SwipeableDrawerPropsM) SwipeableDrawerPropsM) => Function (Record a) ReactElement
+swipeableDrawer' = unsafeCreateLeafElement classSwipeableDrawer

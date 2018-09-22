@@ -1,9 +1,14 @@
 module ReactMUI.ListItemAvatar where
-import Data.TSCompat (Any, OneOf)
-import Data.TSCompat.Class (class IsTSRecord)
-import React (ReactElement)
+import Data.TSCompat (Any, OneOf, OptionRecord)
+import Data.TSCompat.Class (class IsTSEq)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classListItemAvatar :: forall a. ReactClass a
 
 type ListItemAvatarPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   classes :: Any {--unknown--},
   innerRef :: OneOf ((
     typed :: String,
@@ -15,7 +20,11 @@ type ListItemAvatarPropsO r = (
 type ListItemAvatarPropsM  = (
 )
 
-foreign import listItemAvatar :: forall a. IsTSRecord a (ListItemAvatarPropsO ListItemAvatarPropsM) ListItemAvatarPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+listItemAvatar :: forall a. IsTSEq (Record a) (OptionRecord (ListItemAvatarPropsO ListItemAvatarPropsM) ListItemAvatarPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+listItemAvatar = unsafeCreateElementDynamic classListItemAvatar
 
 listItemAvatar_ :: Function (Array ReactElement) ReactElement
-listItemAvatar_ = listItemAvatar {}
+listItemAvatar_ = unsafeCreateElementDynamic classListItemAvatar {}
+
+listItemAvatar' :: forall a. IsTSEq (Record a) (OptionRecord (ListItemAvatarPropsO ListItemAvatarPropsM) ListItemAvatarPropsM) => Function (Record a) ReactElement
+listItemAvatar' = unsafeCreateLeafElement classListItemAvatar

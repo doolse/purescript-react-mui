@@ -1,12 +1,17 @@
 module ReactMUI.FormControlLabel where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classFormControlLabel :: forall a. ReactClass a
 
 type FormControlLabelPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   checked :: OneOf ((
     typed :: Boolean,
     typed :: String)),
@@ -70,7 +75,6 @@ type FormControlLabelPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLLabelElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLLabelElement>--}) Unit,
@@ -239,4 +243,11 @@ type FormControlLabelPropsM  = (
   control :: ReactElement,
   label :: ReactNode)
 
-foreign import formControlLabel :: forall a. IsTSRecord a (FormControlLabelPropsO FormControlLabelPropsM) FormControlLabelPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+formControlLabel :: forall a. IsTSEq (Record a) (OptionRecord (FormControlLabelPropsO FormControlLabelPropsM) FormControlLabelPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+formControlLabel = unsafeCreateElementDynamic classFormControlLabel
+
+formControlLabel_ :: Function (Array ReactElement) ReactElement
+formControlLabel_ = unsafeCreateElementDynamic classFormControlLabel {}
+
+formControlLabel' :: forall a. IsTSEq (Record a) (OptionRecord (FormControlLabelPropsO FormControlLabelPropsM) FormControlLabelPropsM) => Function (Record a) ReactElement
+formControlLabel' = unsafeCreateLeafElement classFormControlLabel

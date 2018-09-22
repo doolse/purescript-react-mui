@@ -1,12 +1,16 @@
 module ReactMUI.List where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classList :: forall a. ReactClass a
 
 type ListPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   component :: OneOf ((
     typed :: String,
     typed :: Any {--React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/List/List".ListProps<>, any>--},
@@ -61,7 +65,6 @@ type ListPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLUListElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLUListElement>--}) Unit,
@@ -228,7 +231,11 @@ type ListPropsO r = (
 type ListPropsM  = (
 )
 
-foreign import list :: forall a. IsTSRecord a (ListPropsO ListPropsM) ListPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+list :: forall a. IsTSEq (Record a) (OptionRecord (ListPropsO ListPropsM) ListPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+list = unsafeCreateElementDynamic classList
 
 list_ :: Function (Array ReactElement) ReactElement
-list_ = list {}
+list_ = unsafeCreateElementDynamic classList {}
+
+list' :: forall a. IsTSEq (Record a) (OptionRecord (ListPropsO ListPropsM) ListPropsM) => Function (Record a) ReactElement
+list' = unsafeCreateLeafElement classList

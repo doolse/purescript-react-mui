@@ -1,12 +1,16 @@
 module ReactMUI.DialogTitle where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classDialogTitle :: forall a. ReactClass a
 
 type DialogTitlePropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   disableTypography :: Boolean,
   color :: String,
   hidden :: Boolean,
@@ -55,7 +59,6 @@ type DialogTitlePropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -222,7 +225,11 @@ type DialogTitlePropsO r = (
 type DialogTitlePropsM  = (
 )
 
-foreign import dialogTitle :: forall a. IsTSRecord a (DialogTitlePropsO DialogTitlePropsM) DialogTitlePropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+dialogTitle :: forall a. IsTSEq (Record a) (OptionRecord (DialogTitlePropsO DialogTitlePropsM) DialogTitlePropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+dialogTitle = unsafeCreateElementDynamic classDialogTitle
 
 dialogTitle_ :: Function (Array ReactElement) ReactElement
-dialogTitle_ = dialogTitle {}
+dialogTitle_ = unsafeCreateElementDynamic classDialogTitle {}
+
+dialogTitle' :: forall a. IsTSEq (Record a) (OptionRecord (DialogTitlePropsO DialogTitlePropsM) DialogTitlePropsM) => Function (Record a) ReactElement
+dialogTitle' = unsafeCreateLeafElement classDialogTitle

@@ -1,12 +1,16 @@
 module ReactMUI.MenuList where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classMenuList :: forall a. ReactClass a
 
 type MenuListPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   onKeyDown :: EffectFn1 (Any {--React.SyntheticEvent<React.KeyboardEvent<any>>--}) Unit,
   color :: String,
   hidden :: Boolean,
@@ -56,7 +60,6 @@ type MenuListPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLUListElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLUListElement>--}) Unit,
@@ -228,7 +231,11 @@ type MenuListPropsO r = (
 type MenuListPropsM  = (
 )
 
-foreign import menuList :: forall a. IsTSRecord a (MenuListPropsO MenuListPropsM) MenuListPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+menuList :: forall a. IsTSEq (Record a) (OptionRecord (MenuListPropsO MenuListPropsM) MenuListPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+menuList = unsafeCreateElementDynamic classMenuList
 
 menuList_ :: Function (Array ReactElement) ReactElement
-menuList_ = menuList {}
+menuList_ = unsafeCreateElementDynamic classMenuList {}
+
+menuList' :: forall a. IsTSEq (Record a) (OptionRecord (MenuListPropsO MenuListPropsM) MenuListPropsM) => Function (Record a) ReactElement
+menuList' = unsafeCreateLeafElement classMenuList

@@ -1,18 +1,21 @@
 module ReactMUI.Drawer where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classDrawer :: forall a. ReactClass a
 
 type DrawerPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   anchor :: OneOf ((
     typed :: StringConst ("bottom"),
     typed :: StringConst ("left"),
     typed :: StringConst ("right"),
     typed :: StringConst ("top"))),
-  children :: ReactNode,
   elevation :: Number,
   "ModalProps" :: Any {--unknown--},
   open :: Boolean,
@@ -274,7 +277,11 @@ type DrawerPropsO r = (
 type DrawerPropsM  = (
 )
 
-foreign import drawer :: forall a. IsTSRecord a (DrawerPropsO DrawerPropsM) DrawerPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+drawer :: forall a. IsTSEq (Record a) (OptionRecord (DrawerPropsO DrawerPropsM) DrawerPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+drawer = unsafeCreateElementDynamic classDrawer
 
 drawer_ :: Function (Array ReactElement) ReactElement
-drawer_ = drawer {}
+drawer_ = unsafeCreateElementDynamic classDrawer {}
+
+drawer' :: forall a. IsTSEq (Record a) (OptionRecord (DrawerPropsO DrawerPropsM) DrawerPropsM) => Function (Record a) ReactElement
+drawer' = unsafeCreateLeafElement classDrawer

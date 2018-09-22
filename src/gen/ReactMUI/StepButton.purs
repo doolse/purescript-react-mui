@@ -1,12 +1,17 @@
 module ReactMUI.StepButton where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classStepButton :: forall a. ReactClass a
 
 type StepButtonPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   active :: Boolean,
   alternativeLabel :: Boolean,
   completed :: Boolean,
@@ -67,7 +72,6 @@ type StepButtonPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLElement>--}) Unit,
@@ -271,7 +275,11 @@ type StepButtonPropsO r = (
 type StepButtonPropsM  = (
 )
 
-foreign import stepButton :: forall a. IsTSRecord a (StepButtonPropsO StepButtonPropsM) StepButtonPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+stepButton :: forall a. IsTSEq (Record a) (OptionRecord (StepButtonPropsO StepButtonPropsM) StepButtonPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+stepButton = unsafeCreateElementDynamic classStepButton
 
 stepButton_ :: Function (Array ReactElement) ReactElement
-stepButton_ = stepButton {}
+stepButton_ = unsafeCreateElementDynamic classStepButton {}
+
+stepButton' :: forall a. IsTSEq (Record a) (OptionRecord (StepButtonPropsO StepButtonPropsM) StepButtonPropsM) => Function (Record a) ReactElement
+stepButton' = unsafeCreateLeafElement classStepButton

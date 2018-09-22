@@ -1,12 +1,17 @@
 module ReactMUI.Badge where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classBadge :: forall a. ReactClass a
 
 type BadgePropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   color :: OneOf ((
     typed :: StringConst ("inherit"),
     typed :: StringConst ("default"),
@@ -227,7 +232,13 @@ type BadgePropsO r = (
     typed :: Any {--React.RefObject<any>--})) | r )
 
 type BadgePropsM  = (
-  badgeContent :: ReactNode,
-  children :: ReactNode)
+  badgeContent :: ReactNode)
 
-foreign import badge :: forall a. IsTSRecord a (BadgePropsO BadgePropsM) BadgePropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+badge :: forall a. IsTSEq (Record a) (OptionRecord (BadgePropsO BadgePropsM) BadgePropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+badge = unsafeCreateElementDynamic classBadge
+
+badge_ :: Function (Array ReactElement) ReactElement
+badge_ = unsafeCreateElementDynamic classBadge {}
+
+badge' :: forall a. IsTSEq (Record a) (OptionRecord (BadgePropsO BadgePropsM) BadgePropsM) => Function (Record a) ReactElement
+badge' = unsafeCreateLeafElement classBadge

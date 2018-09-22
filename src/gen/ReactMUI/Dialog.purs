@@ -1,13 +1,16 @@
 module ReactMUI.Dialog where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classDialog :: forall a. ReactClass a
 
 type DialogPropsO r = (
-  children :: ReactNode,
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   fullScreen :: Boolean,
   fullWidth :: Boolean,
   maxWidth :: OneOf ((
@@ -276,4 +279,11 @@ type DialogPropsO r = (
 type DialogPropsM  = (
   open :: Boolean)
 
-foreign import dialog :: forall a. IsTSRecord a (DialogPropsO DialogPropsM) DialogPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+dialog :: forall a. IsTSEq (Record a) (OptionRecord (DialogPropsO DialogPropsM) DialogPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+dialog = unsafeCreateElementDynamic classDialog
+
+dialog_ :: Function (Array ReactElement) ReactElement
+dialog_ = unsafeCreateElementDynamic classDialog {}
+
+dialog' :: forall a. IsTSEq (Record a) (OptionRecord (DialogPropsO DialogPropsM) DialogPropsM) => Function (Record a) ReactElement
+dialog' = unsafeCreateLeafElement classDialog

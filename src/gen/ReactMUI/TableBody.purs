@@ -1,12 +1,16 @@
 module ReactMUI.TableBody where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classTableBody :: forall a. ReactClass a
 
 type TableBodyPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   component :: OneOf ((
     typed :: String,
     typed :: Any {--React.ComponentClass<React.HTMLAttributes<interface HTMLTableSectionElement>, any>--},
@@ -58,7 +62,6 @@ type TableBodyPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLTableSectionElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLTableSectionElement>--}) Unit,
@@ -225,7 +228,11 @@ type TableBodyPropsO r = (
 type TableBodyPropsM  = (
 )
 
-foreign import tableBody :: forall a. IsTSRecord a (TableBodyPropsO TableBodyPropsM) TableBodyPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+tableBody :: forall a. IsTSEq (Record a) (OptionRecord (TableBodyPropsO TableBodyPropsM) TableBodyPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+tableBody = unsafeCreateElementDynamic classTableBody
 
 tableBody_ :: Function (Array ReactElement) ReactElement
-tableBody_ = tableBody {}
+tableBody_ = unsafeCreateElementDynamic classTableBody {}
+
+tableBody' :: forall a. IsTSEq (Record a) (OptionRecord (TableBodyPropsO TableBodyPropsM) TableBodyPropsM) => Function (Record a) ReactElement
+tableBody' = unsafeCreateLeafElement classTableBody

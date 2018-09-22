@@ -1,12 +1,16 @@
 module ReactMUI.TabIndicator where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classTabIndicator :: forall a. ReactClass a
 
 type TabIndicatorPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   hidden :: Boolean,
   defaultChecked :: Boolean,
   defaultValue :: OneOf ((
@@ -52,7 +56,6 @@ type TabIndicatorPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -220,4 +223,11 @@ type TabIndicatorPropsM  = (
   color :: String,
   style :: Any {--{left: number, width: number}--})
 
-foreign import tabIndicator :: forall a. IsTSRecord a (TabIndicatorPropsO TabIndicatorPropsM) TabIndicatorPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+tabIndicator :: forall a. IsTSEq (Record a) (OptionRecord (TabIndicatorPropsO TabIndicatorPropsM) TabIndicatorPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+tabIndicator = unsafeCreateElementDynamic classTabIndicator
+
+tabIndicator_ :: Function (Array ReactElement) ReactElement
+tabIndicator_ = unsafeCreateElementDynamic classTabIndicator {}
+
+tabIndicator' :: forall a. IsTSEq (Record a) (OptionRecord (TabIndicatorPropsO TabIndicatorPropsM) TabIndicatorPropsM) => Function (Record a) ReactElement
+tabIndicator' = unsafeCreateLeafElement classTabIndicator

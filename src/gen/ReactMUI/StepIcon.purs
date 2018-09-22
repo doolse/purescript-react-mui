@@ -1,12 +1,17 @@
 module ReactMUI.StepIcon where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classStepIcon :: forall a. ReactClass a
 
 type StepIconPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   active :: Boolean,
   completed :: Boolean,
   error :: Boolean,
@@ -57,7 +62,6 @@ type StepIconPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -224,4 +228,11 @@ type StepIconPropsO r = (
 type StepIconPropsM  = (
   icon :: ReactNode)
 
-foreign import stepIcon :: forall a. IsTSRecord a (StepIconPropsO StepIconPropsM) StepIconPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+stepIcon :: forall a. IsTSEq (Record a) (OptionRecord (StepIconPropsO StepIconPropsM) StepIconPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+stepIcon = unsafeCreateElementDynamic classStepIcon
+
+stepIcon_ :: Function (Array ReactElement) ReactElement
+stepIcon_ = unsafeCreateElementDynamic classStepIcon {}
+
+stepIcon' :: forall a. IsTSEq (Record a) (OptionRecord (StepIconPropsO StepIconPropsM) StepIconPropsM) => Function (Record a) ReactElement
+stepIcon' = unsafeCreateLeafElement classStepIcon

@@ -1,12 +1,17 @@
 module ReactMUI.Select where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classSelect :: forall a. ReactClass a
 
 type SelectPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   autoWidth :: Boolean,
   displayEmpty :: Boolean,
   "IconComponent" :: OneOf ((
@@ -94,7 +99,6 @@ type SelectPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -288,7 +292,11 @@ type SelectPropsO r = (
 type SelectPropsM  = (
 )
 
-foreign import select :: forall a. IsTSRecord a (SelectPropsO SelectPropsM) SelectPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+select :: forall a. IsTSEq (Record a) (OptionRecord (SelectPropsO SelectPropsM) SelectPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+select = unsafeCreateElementDynamic classSelect
 
 select_ :: Function (Array ReactElement) ReactElement
-select_ = select {}
+select_ = unsafeCreateElementDynamic classSelect {}
+
+select' :: forall a. IsTSEq (Record a) (OptionRecord (SelectPropsO SelectPropsM) SelectPropsM) => Function (Record a) ReactElement
+select' = unsafeCreateLeafElement classSelect

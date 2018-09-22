@@ -1,12 +1,16 @@
 module ReactMUI.Grid where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classGrid :: forall a. ReactClass a
 
 type GridPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   alignContent :: OneOf ((
     typed :: StringConst ("space-around"),
     typed :: StringConst ("space-between"),
@@ -96,7 +100,6 @@ type GridPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLElement>--}) Unit,
@@ -338,7 +341,11 @@ type GridPropsO r = (
 type GridPropsM  = (
 )
 
-foreign import grid :: forall a. IsTSRecord a (GridPropsO GridPropsM) GridPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+grid :: forall a. IsTSEq (Record a) (OptionRecord (GridPropsO GridPropsM) GridPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+grid = unsafeCreateElementDynamic classGrid
 
 grid_ :: Function (Array ReactElement) ReactElement
-grid_ = grid {}
+grid_ = unsafeCreateElementDynamic classGrid {}
+
+grid' :: forall a. IsTSEq (Record a) (OptionRecord (GridPropsO GridPropsM) GridPropsM) => Function (Record a) ReactElement
+grid' = unsafeCreateLeafElement classGrid

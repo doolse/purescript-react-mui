@@ -1,12 +1,16 @@
 module ReactMUI.ButtonBase where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classButtonBase :: forall a. ReactClass a
 
 type ButtonBasePropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   action :: EffectFn1 (Any {--interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/ButtonBase/ButtonBase".ButtonBaseActions--}) Unit,
   buttonRef :: OneOf ((
     typed :: String,
@@ -73,7 +77,6 @@ type ButtonBasePropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLElement>--}) Unit,
@@ -259,7 +262,11 @@ type ButtonBasePropsO r = (
 type ButtonBasePropsM  = (
 )
 
-foreign import buttonBase :: forall a. IsTSRecord a (ButtonBasePropsO ButtonBasePropsM) ButtonBasePropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+buttonBase :: forall a. IsTSEq (Record a) (OptionRecord (ButtonBasePropsO ButtonBasePropsM) ButtonBasePropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+buttonBase = unsafeCreateElementDynamic classButtonBase
 
 buttonBase_ :: Function (Array ReactElement) ReactElement
-buttonBase_ = buttonBase {}
+buttonBase_ = unsafeCreateElementDynamic classButtonBase {}
+
+buttonBase' :: forall a. IsTSEq (Record a) (OptionRecord (ButtonBasePropsO ButtonBasePropsM) ButtonBasePropsM) => Function (Record a) ReactElement
+buttonBase' = unsafeCreateLeafElement classButtonBase

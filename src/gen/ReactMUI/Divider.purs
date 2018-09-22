@@ -1,12 +1,16 @@
 module ReactMUI.Divider where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classDivider :: forall a. ReactClass a
 
 type DividerPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   absolute :: Boolean,
   component :: OneOf ((
     typed :: String,
@@ -61,7 +65,6 @@ type DividerPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLHRElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLHRElement>--}) Unit,
@@ -228,7 +231,11 @@ type DividerPropsO r = (
 type DividerPropsM  = (
 )
 
-foreign import divider :: forall a. IsTSRecord a (DividerPropsO DividerPropsM) DividerPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+divider :: forall a. IsTSEq (Record a) (OptionRecord (DividerPropsO DividerPropsM) DividerPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+divider = unsafeCreateElementDynamic classDivider
 
 divider_ :: Function (Array ReactElement) ReactElement
-divider_ = divider {}
+divider_ = unsafeCreateElementDynamic classDivider {}
+
+divider' :: forall a. IsTSEq (Record a) (OptionRecord (DividerPropsO DividerPropsM) DividerPropsM) => Function (Record a) ReactElement
+divider' = unsafeCreateLeafElement classDivider

@@ -1,10 +1,15 @@
 module ReactMUI.GridListTileBar where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classGridListTileBar :: forall a. ReactClass a
 
 type GridListTileBarPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   actionIcon :: ReactNode,
   actionPosition :: OneOf ((
     typed :: StringConst ("left"),
@@ -25,7 +30,11 @@ type GridListTileBarPropsO r = (
 type GridListTileBarPropsM  = (
 )
 
-foreign import gridListTileBar :: forall a. IsTSRecord a (GridListTileBarPropsO GridListTileBarPropsM) GridListTileBarPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+gridListTileBar :: forall a. IsTSEq (Record a) (OptionRecord (GridListTileBarPropsO GridListTileBarPropsM) GridListTileBarPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+gridListTileBar = unsafeCreateElementDynamic classGridListTileBar
 
 gridListTileBar_ :: Function (Array ReactElement) ReactElement
-gridListTileBar_ = gridListTileBar {}
+gridListTileBar_ = unsafeCreateElementDynamic classGridListTileBar {}
+
+gridListTileBar' :: forall a. IsTSEq (Record a) (OptionRecord (GridListTileBarPropsO GridListTileBarPropsM) GridListTileBarPropsM) => Function (Record a) ReactElement
+gridListTileBar' = unsafeCreateLeafElement classGridListTileBar

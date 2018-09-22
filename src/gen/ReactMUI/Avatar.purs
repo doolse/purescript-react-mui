@@ -1,12 +1,16 @@
 module ReactMUI.Avatar where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classAvatar :: forall a. ReactClass a
 
 type AvatarPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   alt :: String,
   childrenClassName :: String,
   component :: OneOf ((
@@ -64,7 +68,6 @@ type AvatarPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -231,7 +234,11 @@ type AvatarPropsO r = (
 type AvatarPropsM  = (
 )
 
-foreign import avatar :: forall a. IsTSRecord a (AvatarPropsO AvatarPropsM) AvatarPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+avatar :: forall a. IsTSEq (Record a) (OptionRecord (AvatarPropsO AvatarPropsM) AvatarPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+avatar = unsafeCreateElementDynamic classAvatar
 
 avatar_ :: Function (Array ReactElement) ReactElement
-avatar_ = avatar {}
+avatar_ = unsafeCreateElementDynamic classAvatar {}
+
+avatar' :: forall a. IsTSEq (Record a) (OptionRecord (AvatarPropsO AvatarPropsM) AvatarPropsM) => Function (Record a) ReactElement
+avatar' = unsafeCreateLeafElement classAvatar

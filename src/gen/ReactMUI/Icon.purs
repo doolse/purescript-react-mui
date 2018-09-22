@@ -1,12 +1,16 @@
 module ReactMUI.Icon where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classIcon :: forall a. ReactClass a
 
 type IconPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   color :: OneOf ((
     typed :: StringConst ("inherit"),
     typed :: StringConst ("default"),
@@ -70,7 +74,6 @@ type IconPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLSpanElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLSpanElement>--}) Unit,
@@ -237,7 +240,11 @@ type IconPropsO r = (
 type IconPropsM  = (
 )
 
-foreign import icon :: forall a. IsTSRecord a (IconPropsO IconPropsM) IconPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+icon :: forall a. IsTSEq (Record a) (OptionRecord (IconPropsO IconPropsM) IconPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+icon = unsafeCreateElementDynamic classIcon
 
 icon_ :: Function (Array ReactElement) ReactElement
-icon_ = icon {}
+icon_ = unsafeCreateElementDynamic classIcon {}
+
+icon' :: forall a. IsTSEq (Record a) (OptionRecord (IconPropsO IconPropsM) IconPropsM) => Function (Record a) ReactElement
+icon' = unsafeCreateLeafElement classIcon

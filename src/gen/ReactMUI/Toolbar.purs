@@ -1,12 +1,16 @@
 module ReactMUI.Toolbar where
-import Data.TSCompat (Any, OneOf, StringConst)
-import Data.TSCompat.Class (class IsTSRecord)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
+import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (ReactElement)
+import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+
+foreign import classToolbar :: forall a. ReactClass a
 
 type ToolbarPropsO r = (
+  key :: OneOf ((
+    typed :: String,
+    typed :: Number)),
   variant :: OneOf ((
     typed :: StringConst ("dense"),
     typed :: StringConst ("regular"))),
@@ -58,7 +62,6 @@ type ToolbarPropsO r = (
   unselectable :: OneOf ((
     typed :: StringConst ("on"),
     typed :: StringConst ("off"))),
-  children :: ReactNode,
   dangerouslySetInnerHTML :: Any {--{__html: string}--},
   onCopy :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
   onCopyCapture :: EffectFn1 (Any {--React.ClipboardEvent<interface HTMLDivElement>--}) Unit,
@@ -225,7 +228,11 @@ type ToolbarPropsO r = (
 type ToolbarPropsM  = (
 )
 
-foreign import toolbar :: forall a. IsTSRecord a (ToolbarPropsO ToolbarPropsM) ToolbarPropsM => Function (Record a) (Function (Array ReactElement) ReactElement)
+toolbar :: forall a. IsTSEq (Record a) (OptionRecord (ToolbarPropsO ToolbarPropsM) ToolbarPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+toolbar = unsafeCreateElementDynamic classToolbar
 
 toolbar_ :: Function (Array ReactElement) ReactElement
-toolbar_ = toolbar {}
+toolbar_ = unsafeCreateElementDynamic classToolbar {}
+
+toolbar' :: forall a. IsTSEq (Record a) (OptionRecord (ToolbarPropsO ToolbarPropsM) ToolbarPropsM) => Function (Record a) ReactElement
+toolbar' = unsafeCreateLeafElement classToolbar
