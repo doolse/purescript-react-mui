@@ -1,1 +1,0 @@
-exports.chipClass = require('@material-ui/core/Chip').default;

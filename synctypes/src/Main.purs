@@ -11,13 +11,8 @@ import Data.Traversable (traverse_)
 import Effect (Effect)
 import ReadTS (TSType(..), readInterfaceTypes)
 import ReadTS.CommonPS (numberType, stringType)
-import ReadTS.Convert (anyType, startsWithAny, unionType)
+import ReadTS.Convert (startsWithAny, unionType)
 import ReadTS.Convert.React (ComponentModule, Property, convertProperty, detectComponentType, propertiesToModule, reactComponentMapper, reactRefMapping, writeComponent, writeEnumModule)
-
--- overrideType :: String -> Maybe ComponentType
--- overrideType = case _ of 
---   "ListItemSecondaryAction" -> Just PropsAndChildren
---   _ -> Nothing
 
 keyProperty :: Property
 keyProperty = {name:"key", optional: true, t: unionType [stringType, numberType], stringEnums: Set.empty }
@@ -33,7 +28,7 @@ convertComponent = case _ of
       detected = detectComponentType props
       componentType = detected.componentType
       classRequire = "@material-ui/core/" <> componentName
-      moduleName = "ReactMUI." <> componentName
+      moduleName = "MaterialUI." <> componentName
       componentModule = propertiesToModule {classRequire,moduleName,classProperty:"default"} 
                               componentName detected.props componentType
     in Just componentModule 
@@ -53,4 +48,4 @@ main = do
   t <- readInterfaceTypes "muiconfig.json" includedInterface
   let components = mapMaybe convertComponent t
   traverse_ (writeComponent "../src/gen") components
-  writeEnumModule "../src/gen" "ReactMUI.Enums" components
+  writeEnumModule "../src/gen" "MaterialUI.Enums" components

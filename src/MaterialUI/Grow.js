@@ -1,1 +1,0 @@
-exports.growClass = require('@material-ui/core/Grow').default;

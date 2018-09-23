@@ -1,1 +1,0 @@
-exports.dividerClass = require('@material-ui/core/Divider').default;

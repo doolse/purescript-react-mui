@@ -1,1 +1,0 @@
-exports.formLabelClass = require('@material-ui/core/FormLabel').default;

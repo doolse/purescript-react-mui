@@ -1,1 +1,0 @@
-exports.inputLabelClass = require('@material-ui/core/InputLabel').default;

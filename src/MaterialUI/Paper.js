@@ -1,1 +1,0 @@
-exports.paperClass = require('@material-ui/core/Paper').default;

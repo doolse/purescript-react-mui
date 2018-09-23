@@ -1,1 +1,0 @@
-exports.radioGroupClass = require('@material-ui/core/RadioGroup').default;

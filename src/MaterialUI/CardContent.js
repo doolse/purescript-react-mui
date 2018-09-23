@@ -1,1 +1,0 @@
-exports.cardContentClass = require('@material-ui/core/CardContent').default;

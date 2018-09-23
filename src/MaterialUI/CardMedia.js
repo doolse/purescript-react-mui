@@ -1,1 +1,0 @@
-exports.cardMediaClass = require('@material-ui/core/CardMedia').default;

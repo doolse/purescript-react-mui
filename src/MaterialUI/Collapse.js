@@ -1,1 +1,0 @@
-exports.collapseClass = require('@material-ui/core/Collapse').default;

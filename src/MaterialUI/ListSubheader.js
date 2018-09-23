@@ -1,1 +1,0 @@
-exports.listSubheaderClass = require('@material-ui/core/ListSubheader').default;

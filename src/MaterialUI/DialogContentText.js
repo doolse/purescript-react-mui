@@ -1,1 +1,0 @@
-exports.dialogContentTextClass = require('@material-ui/core/DialogContentText').default;

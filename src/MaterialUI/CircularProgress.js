@@ -1,1 +1,0 @@
-exports.circularProgressClass = require('@material-ui/core/CircularProgress').default;

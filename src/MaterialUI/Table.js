@@ -1,1 +1,0 @@
-exports.tableClass = require('@material-ui/core/Table').default;

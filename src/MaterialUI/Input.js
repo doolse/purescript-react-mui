@@ -1,1 +1,0 @@
-exports.inputClass = require('@material-ui/core/Input').default;

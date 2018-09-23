@@ -1,1 +1,0 @@
-exports.formControlClass = require('@material-ui/core/FormControl').default;

@@ -1,1 +1,0 @@
-exports.formHelperTextClass = require('@material-ui/core/FormHelperText').default;

@@ -1,1 +1,0 @@
-exports.switchClass = require('@material-ui/core/Switch').default;

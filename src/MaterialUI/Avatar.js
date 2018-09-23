@@ -1,1 +1,0 @@
-exports.avatarClass = require('@material-ui/core/Avatar').default;

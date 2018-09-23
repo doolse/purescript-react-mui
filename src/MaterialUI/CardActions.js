@@ -1,1 +1,0 @@
-exports.cardActionsClass = require('@material-ui/core/CardActions').default;
