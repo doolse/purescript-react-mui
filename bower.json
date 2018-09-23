@@ -6,13 +6,17 @@
     "bower_components",
     "output"
   ],
+  "license": "MIT",
+  "repository": {                                                           
+    "type": "git",                                                          
+    "url": "https://github.com/doolse/purescript-react-mui.git"             
+  },
   "dependencies": {
     "purescript-prelude": "^4.0.1",
     "purescript-react": "^6.0.0",
     "purescript-react-dom": "^6.0.0",
-    "purescript-typelevel-prelude": "^3.0.0",
     "purescript-js-date": "^6.0.0",
-    "purescript-tscompat": "doolse/purescript-tscompat#master"
+    "purescript-tscompat": "^1.0.0"
   },
   "devDependencies": {
     "purescript-psci-support": "^4.0.0",
