@@ -4,18 +4,23 @@ import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (unsafeCreateElement)
 import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 
-foreign import classCssBaseline :: forall a.ReactClass a
+foreign import classCssBaseline :: forall a. ReactClass a
 
-type CssBaselinePropsO r = (key :: OneOf ((typed :: Number,
-  typed :: String)) | r)
+type CssBaselinePropsO r = (
+  key :: OneOf (
+    typed :: Number, 
+    typed :: String
+  )
+ | r)
 
-type CssBaselinePropsM  = ()
+type CssBaselinePropsM  = (
+)
 
-cssBaseline :: forall a.IsTSEq (Record a) (OptionRecord (CssBaselinePropsO CssBaselinePropsM) CssBaselinePropsM)  => Record a -> ReactElement -> ReactElement
+cssBaseline :: forall a. IsTSEq (Record a) (OptionRecord (CssBaselinePropsO CssBaselinePropsM) CssBaselinePropsM) => Record a -> ReactElement -> ReactElement
 cssBaseline = unsafeCreateElement classCssBaseline
 
 cssBaseline_ :: ReactElement -> ReactElement
 cssBaseline_ = unsafeCreateElement classCssBaseline {}
 
-cssBaseline' :: forall a.IsTSEq (Record a) (OptionRecord (CssBaselinePropsO CssBaselinePropsM) CssBaselinePropsM)  => Record a -> ReactElement
+cssBaseline' :: forall a. IsTSEq (Record a) (OptionRecord (CssBaselinePropsO CssBaselinePropsM) CssBaselinePropsM) => Record a -> ReactElement
 cssBaseline' = unsafeCreateLeafElement classCssBaseline
