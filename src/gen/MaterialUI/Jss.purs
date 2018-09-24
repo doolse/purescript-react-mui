@@ -1,28 +1,25 @@
 module MaterialUI.Jss where
 import Data.TSCompat (Any, OneOf, OptionRecord)
 import Data.TSCompat.Class (class IsTSEq)
-import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
+import Data.TSCompat.React (unsafeCreateElement)
+import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 
-foreign import classJss :: forall a. ReactClass a
+foreign import classJss :: forall a.ReactClass a
 
-type JssPropsO r = (
-  key :: OneOf ((
-    typed :: String,
-    typed :: Number)),
-  "@global" :: Any {--"\"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@types/jss/css\".CSSProperties"--},
-  extend :: String,
-  composes :: OneOf ((
-    typed :: String,
-    typed :: Array String)) | r )
+type JssPropsO r = (composes :: OneOf ((typed :: Array String,
+  typed :: String)),
+  key :: OneOf ((typed :: Number,
+  typed :: String)),
+  "@global" :: Any{-- "\"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@types/jss/css\".CSSProperties"--},
+  extend :: String | r)
 
-type JssPropsM  = (
-)
+type JssPropsM  = ()
 
-jss :: forall a. IsTSEq (Record a) (OptionRecord (JssPropsO JssPropsM) JssPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+jss :: forall a.IsTSEq (Record a) (OptionRecord (JssPropsO JssPropsM) JssPropsM)  => Record a -> Array ReactElement -> ReactElement
 jss = unsafeCreateElement classJss
 
-jss_ :: Function (Array ReactElement) ReactElement
+jss_ :: Array ReactElement -> ReactElement
 jss_ = unsafeCreateElement classJss {}
 
-jss' :: forall a. IsTSEq (Record a) (OptionRecord (JssPropsO JssPropsM) JssPropsM) => Function (Record a) ReactElement
+jss' :: forall a.IsTSEq (Record a) (OptionRecord (JssPropsO JssPropsM) JssPropsM)  => Record a -> ReactElement
 jss' = unsafeCreateLeafElement classJss

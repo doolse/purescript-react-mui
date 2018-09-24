@@ -1,29 +1,25 @@
 module MaterialUI.MuiThemeProvider where
 import Data.TSCompat (Any, OneOf, OptionRecord)
 import Data.TSCompat.Class (class IsTSEq)
-import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
+import Data.TSCompat.React (unsafeCreateElement)
+import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 
-foreign import classMuiThemeProvider :: forall a. ReactClass a
+foreign import classMuiThemeProvider :: forall a.ReactClass a
 
-type MuiThemeProviderPropsO r = (
-  key :: OneOf ((
-    typed :: String,
-    typed :: Number)),
-  sheetsManager :: Any {--Map<interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/withStyles".StylesCreator, Map<interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/createMuiTheme".Theme, interface SheetManagerTheme>>--},
-  disableStylesGeneration :: Boolean | r )
+type MuiThemeProviderPropsO r = (disableStylesGeneration :: Boolean,
+  key :: OneOf ((typed :: Number,
+  typed :: String)),
+  sheetsManager :: Any{-- Map<interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/withStyles".StylesCreator, Map<interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/createMuiTheme".Theme, interface SheetManagerTheme>>--} | r)
 
-type MuiThemeProviderPropsM  = (
-  theme :: OneOf ((
-    typed :: Any {--interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/createMuiTheme".Theme--},
-    typed :: Function (OneOf ((
-      typed :: Any {--null--},
-      typed :: Any {--interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/createMuiTheme".Theme--}))) (Any {--interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/createMuiTheme".Theme--}))))
+type MuiThemeProviderPropsM  = (theme :: OneOf ((typed :: OneOf ((typed :: Any{-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/createMuiTheme".Theme--},
+  typed :: Any{-- null--})) -> Any{-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/createMuiTheme".Theme--},
+  typed :: Any{-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/createMuiTheme".Theme--})))
 
-muiThemeProvider :: forall a. IsTSEq (Record a) (OptionRecord (MuiThemeProviderPropsO MuiThemeProviderPropsM) MuiThemeProviderPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+muiThemeProvider :: forall a.IsTSEq (Record a) (OptionRecord (MuiThemeProviderPropsO MuiThemeProviderPropsM) MuiThemeProviderPropsM)  => Record a -> Array ReactElement -> ReactElement
 muiThemeProvider = unsafeCreateElement classMuiThemeProvider
 
-muiThemeProvider_ :: Function (Array ReactElement) ReactElement
+muiThemeProvider_ :: Array ReactElement -> ReactElement
 muiThemeProvider_ = unsafeCreateElement classMuiThemeProvider {}
 
-muiThemeProvider' :: forall a. IsTSEq (Record a) (OptionRecord (MuiThemeProviderPropsO MuiThemeProviderPropsM) MuiThemeProviderPropsM) => Function (Record a) ReactElement
+muiThemeProvider' :: forall a.IsTSEq (Record a) (OptionRecord (MuiThemeProviderPropsO MuiThemeProviderPropsM) MuiThemeProviderPropsM)  => Record a -> ReactElement
 muiThemeProvider' = unsafeCreateLeafElement classMuiThemeProvider

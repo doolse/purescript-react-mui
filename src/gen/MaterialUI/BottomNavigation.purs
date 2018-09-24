@@ -1,27 +1,28 @@
 module MaterialUI.BottomNavigation where
 import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
+import Data.TSCompat.React (unsafeCreateElement)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
-foreign import classBottomNavigation :: forall a. ReactClass a
+foreign import classBottomNavigation :: forall a.ReactClass a
 
-type BottomNavigationPropsO r = (
-  key :: OneOf ((
-    typed :: String,
-    typed :: Number)),
-  onChange :: EffectFn2 (Any {--React.ChangeEvent<{}>--}) Any Unit,
+type BottomNavigationPropsO r = (innerRef :: OneOf ((typed :: Any{-- React.RefObject<any>--},
+  typed :: String,
+  typed :: Any -> Any)),
+  key :: OneOf ((typed :: Number,
+  typed :: String)),
+  onChange :: EffectFn2 SyntheticEvent Any Unit,
   showLabels :: Boolean,
   value :: Any,
   color :: String,
   hidden :: Boolean,
-  style :: Any {--React.CSSProperties<>--},
+  style :: Any{-- React.CSSProperties<>--},
   defaultChecked :: Boolean,
-  defaultValue :: OneOf ((
-    typed :: String,
-    typed :: Array String)),
+  defaultValue :: OneOf ((typed :: Array String,
+  typed :: String)),
   suppressContentEditableWarning :: Boolean,
   suppressHydrationWarning :: Boolean,
   accessKey :: String,
@@ -59,11 +60,9 @@ type BottomNavigationPropsO r = (
   itemRef :: String,
   results :: Number,
   security :: String,
-  unselectable :: OneOf ((
-    typed :: StringConst ("on"),
-    typed :: StringConst ("off"))),
-  dangerouslySetInnerHTML :: Record ((
-    "__html" :: String)),
+  unselectable :: OneOf ((typed :: StringConst "off",
+  typed :: StringConst "on")),
+  dangerouslySetInnerHTML :: Record ("__html" :: String),
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit,
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit,
   onCut :: EffectFn1 SyntheticClipboardEvent Unit,
@@ -187,26 +186,26 @@ type BottomNavigationPropsO r = (
   onTouchMoveCapture :: EffectFn1 SyntheticTouchEvent Unit,
   onTouchStart :: EffectFn1 SyntheticTouchEvent Unit,
   onTouchStartCapture :: EffectFn1 SyntheticTouchEvent Unit,
-  onPointerDown :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerDownCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerMove :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerMoveCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerUp :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerUpCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerCancel :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerCancelCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerEnter :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerEnterCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerLeave :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerLeaveCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerOver :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerOverCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerOut :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerOutCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onGotPointerCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onGotPointerCaptureCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onLostPointerCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onLostPointerCaptureCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
+  onPointerDown :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerDownCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerMove :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerMoveCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerUp :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerUpCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerCancel :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerCancelCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerEnter :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerEnterCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerLeave :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerLeaveCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerOver :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerOverCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerOut :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerOutCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onGotPointerCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onGotPointerCaptureCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onLostPointerCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onLostPointerCaptureCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
   onScroll :: EffectFn1 SyntheticUIEvent Unit,
   onScrollCapture :: EffectFn1 SyntheticUIEvent Unit,
   onWheel :: EffectFn1 SyntheticWheelEvent Unit,
@@ -219,20 +218,15 @@ type BottomNavigationPropsO r = (
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit,
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit,
   onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit,
-  classes :: Any {--unknown--},
-  innerRef :: OneOf ((
-    typed :: String,
-    typed :: Function Any Any,
-    typed :: Any {--React.RefObject<any>--})) | r )
+  classes :: Any{-- unknown--} | r)
 
-type BottomNavigationPropsM  = (
-)
+type BottomNavigationPropsM  = ()
 
-bottomNavigation :: forall a. IsTSEq (Record a) (OptionRecord (BottomNavigationPropsO BottomNavigationPropsM) BottomNavigationPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+bottomNavigation :: forall a.IsTSEq (Record a) (OptionRecord (BottomNavigationPropsO BottomNavigationPropsM) BottomNavigationPropsM)  => Record a -> Array ReactElement -> ReactElement
 bottomNavigation = unsafeCreateElement classBottomNavigation
 
-bottomNavigation_ :: Function (Array ReactElement) ReactElement
+bottomNavigation_ :: Array ReactElement -> ReactElement
 bottomNavigation_ = unsafeCreateElement classBottomNavigation {}
 
-bottomNavigation' :: forall a. IsTSEq (Record a) (OptionRecord (BottomNavigationPropsO BottomNavigationPropsM) BottomNavigationPropsM) => Function (Record a) ReactElement
+bottomNavigation' :: forall a.IsTSEq (Record a) (OptionRecord (BottomNavigationPropsO BottomNavigationPropsM) BottomNavigationPropsM)  => Record a -> ReactElement
 bottomNavigation' = unsafeCreateLeafElement classBottomNavigation

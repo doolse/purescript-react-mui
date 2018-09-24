@@ -1,40 +1,34 @@
 module MaterialUI.GridListTileBar where
 import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
-import Data.TSCompat.React (ReactNode)
-import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
+import Data.TSCompat.React (unsafeCreateElement, ReactNode)
+import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 
-foreign import classGridListTileBar :: forall a. ReactClass a
+foreign import classGridListTileBar :: forall a.ReactClass a
 
-type GridListTileBarPropsO r = (
-  key :: OneOf ((
-    typed :: String,
-    typed :: Number)),
+type GridListTileBarPropsO r = (style :: Any{-- React.CSSProperties<>--},
+  key :: OneOf ((typed :: Number,
+  typed :: String)),
   actionIcon :: ReactNode,
-  actionPosition :: OneOf ((
-    typed :: StringConst ("left"),
-    typed :: StringConst ("right"))),
+  actionPosition :: OneOf ((typed :: StringConst "right",
+  typed :: StringConst "left")),
   subtitle :: ReactNode,
   title :: ReactNode,
-  titlePosition :: OneOf ((
-    typed :: StringConst ("bottom"),
-    typed :: StringConst ("top"))),
-  classes :: Any {--unknown--},
-  innerRef :: OneOf ((
-    typed :: String,
-    typed :: Function Any Any,
-    typed :: Any {--React.RefObject<any>--})),
-  className :: String,
-  style :: Any {--React.CSSProperties<>--} | r )
+  titlePosition :: OneOf ((typed :: StringConst "top",
+  typed :: StringConst "bottom")),
+  classes :: Any{-- unknown--},
+  innerRef :: OneOf ((typed :: Any{-- React.RefObject<any>--},
+  typed :: String,
+  typed :: Any -> Any)),
+  className :: String | r)
 
-type GridListTileBarPropsM  = (
-)
+type GridListTileBarPropsM  = ()
 
-gridListTileBar :: forall a. IsTSEq (Record a) (OptionRecord (GridListTileBarPropsO GridListTileBarPropsM) GridListTileBarPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+gridListTileBar :: forall a.IsTSEq (Record a) (OptionRecord (GridListTileBarPropsO GridListTileBarPropsM) GridListTileBarPropsM)  => Record a -> Array ReactElement -> ReactElement
 gridListTileBar = unsafeCreateElement classGridListTileBar
 
-gridListTileBar_ :: Function (Array ReactElement) ReactElement
+gridListTileBar_ :: Array ReactElement -> ReactElement
 gridListTileBar_ = unsafeCreateElement classGridListTileBar {}
 
-gridListTileBar' :: forall a. IsTSEq (Record a) (OptionRecord (GridListTileBarPropsO GridListTileBarPropsM) GridListTileBarPropsM) => Function (Record a) ReactElement
+gridListTileBar' :: forall a.IsTSEq (Record a) (OptionRecord (GridListTileBarPropsO GridListTileBarPropsM) GridListTileBarPropsM)  => Record a -> ReactElement
 gridListTileBar' = unsafeCreateLeafElement classGridListTileBar

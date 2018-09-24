@@ -1,35 +1,32 @@
 module MaterialUI.MobileStepper where
 import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
+import Data.TSCompat.React (unsafeCreateElement)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
-foreign import classMobileStepper :: forall a. ReactClass a
+foreign import classMobileStepper :: forall a.ReactClass a
 
-type MobileStepperPropsO r = (
-  key :: OneOf ((
-    typed :: String,
-    typed :: Number)),
+type MobileStepperPropsO r = (classes :: Any{-- unknown--},
+  key :: OneOf ((typed :: Number,
+  typed :: String)),
   activeStep :: Number,
-  "LinearProgressProps" :: Any {--unknown--},
-  position :: OneOf ((
-    typed :: StringConst ("bottom"),
-    typed :: StringConst ("top"),
-    typed :: StringConst ("static"))),
-  variant :: OneOf ((
-    typed :: StringConst ("progress"),
-    typed :: StringConst ("text"),
-    typed :: StringConst ("dots"))),
+  "LinearProgressProps" :: Any{-- unknown--},
+  position :: OneOf ((typed :: StringConst "static",
+  typed :: StringConst "bottom",
+  typed :: StringConst "top")),
+  variant :: OneOf ((typed :: StringConst "dots",
+  typed :: StringConst "progress",
+  typed :: StringConst "text")),
   color :: String,
   hidden :: Boolean,
-  style :: Any {--React.CSSProperties<>--},
+  style :: Any{-- React.CSSProperties<>--},
   square :: Boolean,
   defaultChecked :: Boolean,
-  defaultValue :: OneOf ((
-    typed :: String,
-    typed :: Array String)),
+  defaultValue :: OneOf ((typed :: Array String,
+  typed :: String)),
   suppressContentEditableWarning :: Boolean,
   suppressHydrationWarning :: Boolean,
   accessKey :: String,
@@ -67,11 +64,9 @@ type MobileStepperPropsO r = (
   itemRef :: String,
   results :: Number,
   security :: String,
-  unselectable :: OneOf ((
-    typed :: StringConst ("on"),
-    typed :: StringConst ("off"))),
-  dangerouslySetInnerHTML :: Record ((
-    "__html" :: String)),
+  unselectable :: OneOf ((typed :: StringConst "off",
+  typed :: StringConst "on")),
+  dangerouslySetInnerHTML :: Record ("__html" :: String),
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit,
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit,
   onCut :: EffectFn1 SyntheticClipboardEvent Unit,
@@ -196,26 +191,26 @@ type MobileStepperPropsO r = (
   onTouchMoveCapture :: EffectFn1 SyntheticTouchEvent Unit,
   onTouchStart :: EffectFn1 SyntheticTouchEvent Unit,
   onTouchStartCapture :: EffectFn1 SyntheticTouchEvent Unit,
-  onPointerDown :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerDownCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerMove :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerMoveCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerUp :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerUpCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerCancel :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerCancelCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerEnter :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerEnterCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerLeave :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerLeaveCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerOver :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerOverCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerOut :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerOutCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onGotPointerCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onGotPointerCaptureCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onLostPointerCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onLostPointerCaptureCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
+  onPointerDown :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerDownCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerMove :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerMoveCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerUp :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerUpCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerCancel :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerCancelCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerEnter :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerEnterCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerLeave :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerLeaveCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerOver :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerOverCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerOut :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerOutCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onGotPointerCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onGotPointerCaptureCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onLostPointerCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onLostPointerCaptureCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
   onScroll :: EffectFn1 SyntheticUIEvent Unit,
   onScrollCapture :: EffectFn1 SyntheticUIEvent Unit,
   onWheel :: EffectFn1 SyntheticWheelEvent Unit,
@@ -228,27 +223,23 @@ type MobileStepperPropsO r = (
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit,
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit,
   onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit,
-  component :: OneOf ((
-    typed :: String,
-    typed :: Any {--React.ComponentClass<"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Paper/Paper".PaperProps<>, any>--},
-    typed :: Any {--(props: "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Paper/Paper".PaperProps<> | {children: undefined | null | string | number | false | true | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--})),
+  component :: OneOf ((typed :: Any{-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Paper/Paper".PaperProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--},
+  typed :: String,
+  typed :: Any{-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Paper/Paper".PaperProps<>, any>--})),
   elevation :: Number,
-  innerRef :: OneOf ((
-    typed :: String,
-    typed :: Function Any Any,
-    typed :: Any {--React.RefObject<any>--})),
-  classes :: Any {--unknown--} | r )
+  innerRef :: OneOf ((typed :: Any{-- React.RefObject<any>--},
+  typed :: String,
+  typed :: Any -> Any)) | r)
 
-type MobileStepperPropsM  = (
+type MobileStepperPropsM  = (steps :: Number,
   backButton :: ReactElement,
-  nextButton :: ReactElement,
-  steps :: Number)
+  nextButton :: ReactElement)
 
-mobileStepper :: forall a. IsTSEq (Record a) (OptionRecord (MobileStepperPropsO MobileStepperPropsM) MobileStepperPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+mobileStepper :: forall a.IsTSEq (Record a) (OptionRecord (MobileStepperPropsO MobileStepperPropsM) MobileStepperPropsM)  => Record a -> Array ReactElement -> ReactElement
 mobileStepper = unsafeCreateElement classMobileStepper
 
-mobileStepper_ :: Function (Array ReactElement) ReactElement
+mobileStepper_ :: Array ReactElement -> ReactElement
 mobileStepper_ = unsafeCreateElement classMobileStepper {}
 
-mobileStepper' :: forall a. IsTSEq (Record a) (OptionRecord (MobileStepperPropsO MobileStepperPropsM) MobileStepperPropsM) => Function (Record a) ReactElement
+mobileStepper' :: forall a.IsTSEq (Record a) (OptionRecord (MobileStepperPropsO MobileStepperPropsM) MobileStepperPropsM)  => Record a -> ReactElement
 mobileStepper' = unsafeCreateLeafElement classMobileStepper

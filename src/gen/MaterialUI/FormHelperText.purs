@@ -1,38 +1,37 @@
 module MaterialUI.FormHelperText where
 import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
+import Data.TSCompat.React (unsafeCreateElement)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
-foreign import classFormHelperText :: forall a. ReactClass a
+foreign import classFormHelperText :: forall a.ReactClass a
 
-type FormHelperTextPropsO r = (
-  key :: OneOf ((
-    typed :: String,
-    typed :: Number)),
+type FormHelperTextPropsO r = (innerRef :: OneOf ((typed :: Any{-- React.RefObject<any>--},
+  typed :: String,
+  typed :: Any -> Any)),
+  key :: OneOf ((typed :: Number,
+  typed :: String)),
   disabled :: Boolean,
   error :: Boolean,
   filled :: Boolean,
   focused :: Boolean,
-  component :: OneOf ((
-    typed :: String,
-    typed :: Any {--React.ComponentClass<"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/FormHelperText/FormHelperText".FormHelperTextProps<>, any>--},
-    typed :: Any {--(props: "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/FormHelperText/FormHelperText".FormHelperTextProps<> | {children: undefined | null | string | number | false | true | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--})),
-  margin :: StringConst ("dense"),
+  component :: OneOf ((typed :: Any{-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/FormHelperText/FormHelperText".FormHelperTextProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--},
+  typed :: String,
+  typed :: Any{-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/FormHelperText/FormHelperText".FormHelperTextProps<>, any>--})),
+  margin :: StringConst "dense",
   required :: Boolean,
-  variant :: OneOf ((
-    typed :: StringConst ("filled"),
-    typed :: StringConst ("outlined"),
-    typed :: StringConst ("standard"))),
+  variant :: OneOf ((typed :: StringConst "standard",
+  typed :: StringConst "filled",
+  typed :: StringConst "outlined")),
   color :: String,
   hidden :: Boolean,
-  style :: Any {--React.CSSProperties<>--},
+  style :: Any{-- React.CSSProperties<>--},
   defaultChecked :: Boolean,
-  defaultValue :: OneOf ((
-    typed :: String,
-    typed :: Array String)),
+  defaultValue :: OneOf ((typed :: Array String,
+  typed :: String)),
   suppressContentEditableWarning :: Boolean,
   suppressHydrationWarning :: Boolean,
   accessKey :: String,
@@ -70,11 +69,9 @@ type FormHelperTextPropsO r = (
   itemRef :: String,
   results :: Number,
   security :: String,
-  unselectable :: OneOf ((
-    typed :: StringConst ("on"),
-    typed :: StringConst ("off"))),
-  dangerouslySetInnerHTML :: Record ((
-    "__html" :: String)),
+  unselectable :: OneOf ((typed :: StringConst "off",
+  typed :: StringConst "on")),
+  dangerouslySetInnerHTML :: Record ("__html" :: String),
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit,
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit,
   onCut :: EffectFn1 SyntheticClipboardEvent Unit,
@@ -199,26 +196,26 @@ type FormHelperTextPropsO r = (
   onTouchMoveCapture :: EffectFn1 SyntheticTouchEvent Unit,
   onTouchStart :: EffectFn1 SyntheticTouchEvent Unit,
   onTouchStartCapture :: EffectFn1 SyntheticTouchEvent Unit,
-  onPointerDown :: EffectFn1 (Any {--React.PointerEvent<interface HTMLParagraphElement>--}) Unit,
-  onPointerDownCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLParagraphElement>--}) Unit,
-  onPointerMove :: EffectFn1 (Any {--React.PointerEvent<interface HTMLParagraphElement>--}) Unit,
-  onPointerMoveCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLParagraphElement>--}) Unit,
-  onPointerUp :: EffectFn1 (Any {--React.PointerEvent<interface HTMLParagraphElement>--}) Unit,
-  onPointerUpCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLParagraphElement>--}) Unit,
-  onPointerCancel :: EffectFn1 (Any {--React.PointerEvent<interface HTMLParagraphElement>--}) Unit,
-  onPointerCancelCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLParagraphElement>--}) Unit,
-  onPointerEnter :: EffectFn1 (Any {--React.PointerEvent<interface HTMLParagraphElement>--}) Unit,
-  onPointerEnterCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLParagraphElement>--}) Unit,
-  onPointerLeave :: EffectFn1 (Any {--React.PointerEvent<interface HTMLParagraphElement>--}) Unit,
-  onPointerLeaveCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLParagraphElement>--}) Unit,
-  onPointerOver :: EffectFn1 (Any {--React.PointerEvent<interface HTMLParagraphElement>--}) Unit,
-  onPointerOverCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLParagraphElement>--}) Unit,
-  onPointerOut :: EffectFn1 (Any {--React.PointerEvent<interface HTMLParagraphElement>--}) Unit,
-  onPointerOutCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLParagraphElement>--}) Unit,
-  onGotPointerCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLParagraphElement>--}) Unit,
-  onGotPointerCaptureCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLParagraphElement>--}) Unit,
-  onLostPointerCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLParagraphElement>--}) Unit,
-  onLostPointerCaptureCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLParagraphElement>--}) Unit,
+  onPointerDown :: EffectFn1 Any{-- React.PointerEvent<interface HTMLParagraphElement>--} Unit,
+  onPointerDownCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLParagraphElement>--} Unit,
+  onPointerMove :: EffectFn1 Any{-- React.PointerEvent<interface HTMLParagraphElement>--} Unit,
+  onPointerMoveCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLParagraphElement>--} Unit,
+  onPointerUp :: EffectFn1 Any{-- React.PointerEvent<interface HTMLParagraphElement>--} Unit,
+  onPointerUpCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLParagraphElement>--} Unit,
+  onPointerCancel :: EffectFn1 Any{-- React.PointerEvent<interface HTMLParagraphElement>--} Unit,
+  onPointerCancelCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLParagraphElement>--} Unit,
+  onPointerEnter :: EffectFn1 Any{-- React.PointerEvent<interface HTMLParagraphElement>--} Unit,
+  onPointerEnterCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLParagraphElement>--} Unit,
+  onPointerLeave :: EffectFn1 Any{-- React.PointerEvent<interface HTMLParagraphElement>--} Unit,
+  onPointerLeaveCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLParagraphElement>--} Unit,
+  onPointerOver :: EffectFn1 Any{-- React.PointerEvent<interface HTMLParagraphElement>--} Unit,
+  onPointerOverCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLParagraphElement>--} Unit,
+  onPointerOut :: EffectFn1 Any{-- React.PointerEvent<interface HTMLParagraphElement>--} Unit,
+  onPointerOutCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLParagraphElement>--} Unit,
+  onGotPointerCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLParagraphElement>--} Unit,
+  onGotPointerCaptureCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLParagraphElement>--} Unit,
+  onLostPointerCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLParagraphElement>--} Unit,
+  onLostPointerCaptureCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLParagraphElement>--} Unit,
   onScroll :: EffectFn1 SyntheticUIEvent Unit,
   onScrollCapture :: EffectFn1 SyntheticUIEvent Unit,
   onWheel :: EffectFn1 SyntheticWheelEvent Unit,
@@ -231,20 +228,15 @@ type FormHelperTextPropsO r = (
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit,
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit,
   onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit,
-  classes :: Any {--unknown--},
-  innerRef :: OneOf ((
-    typed :: String,
-    typed :: Function Any Any,
-    typed :: Any {--React.RefObject<any>--})) | r )
+  classes :: Any{-- unknown--} | r)
 
-type FormHelperTextPropsM  = (
-)
+type FormHelperTextPropsM  = ()
 
-formHelperText :: forall a. IsTSEq (Record a) (OptionRecord (FormHelperTextPropsO FormHelperTextPropsM) FormHelperTextPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+formHelperText :: forall a.IsTSEq (Record a) (OptionRecord (FormHelperTextPropsO FormHelperTextPropsM) FormHelperTextPropsM)  => Record a -> Array ReactElement -> ReactElement
 formHelperText = unsafeCreateElement classFormHelperText
 
-formHelperText_ :: Function (Array ReactElement) ReactElement
+formHelperText_ :: Array ReactElement -> ReactElement
 formHelperText_ = unsafeCreateElement classFormHelperText {}
 
-formHelperText' :: forall a. IsTSEq (Record a) (OptionRecord (FormHelperTextPropsO FormHelperTextPropsM) FormHelperTextPropsM) => Function (Record a) ReactElement
+formHelperText' :: forall a.IsTSEq (Record a) (OptionRecord (FormHelperTextPropsO FormHelperTextPropsM) FormHelperTextPropsM)  => Record a -> ReactElement
 formHelperText' = unsafeCreateLeafElement classFormHelperText

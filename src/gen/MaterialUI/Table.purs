@@ -1,33 +1,32 @@
 module MaterialUI.Table where
 import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
+import Data.TSCompat.React (unsafeCreateElement)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
-foreign import classTable :: forall a. ReactClass a
+foreign import classTable :: forall a.ReactClass a
 
-type TablePropsO r = (
-  key :: OneOf ((
-    typed :: String,
-    typed :: Number)),
-  component :: OneOf ((
-    typed :: String,
-    typed :: Any {--React.ComponentClass<React.TableHTMLAttributes<interface HTMLTableElement>, any>--},
-    typed :: Any {--(props: React.TableHTMLAttributes<interface HTMLTableElement> | {children: undefined | null | string | number | false | true | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--})),
-  padding :: OneOf ((
-    typed :: StringConst ("none"),
-    typed :: StringConst ("default"),
-    typed :: StringConst ("dense"),
-    typed :: StringConst ("checkbox"))),
+type TablePropsO r = (innerRef :: OneOf ((typed :: Any{-- React.RefObject<any>--},
+  typed :: String,
+  typed :: Any -> Any)),
+  key :: OneOf ((typed :: Number,
+  typed :: String)),
+  component :: OneOf ((typed :: Any{-- (props: React.TableHTMLAttributes<interface HTMLTableElement> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--},
+  typed :: String,
+  typed :: Any{-- React.ComponentClass<React.TableHTMLAttributes<interface HTMLTableElement>, any>--})),
+  padding :: OneOf ((typed :: StringConst "checkbox",
+  typed :: StringConst "none",
+  typed :: StringConst "default",
+  typed :: StringConst "dense")),
   color :: String,
   hidden :: Boolean,
-  style :: Any {--React.CSSProperties<>--},
+  style :: Any{-- React.CSSProperties<>--},
   defaultChecked :: Boolean,
-  defaultValue :: OneOf ((
-    typed :: String,
-    typed :: Array String)),
+  defaultValue :: OneOf ((typed :: Array String,
+  typed :: String)),
   suppressContentEditableWarning :: Boolean,
   suppressHydrationWarning :: Boolean,
   accessKey :: String,
@@ -65,11 +64,9 @@ type TablePropsO r = (
   itemRef :: String,
   results :: Number,
   security :: String,
-  unselectable :: OneOf ((
-    typed :: StringConst ("on"),
-    typed :: StringConst ("off"))),
-  dangerouslySetInnerHTML :: Record ((
-    "__html" :: String)),
+  unselectable :: OneOf ((typed :: StringConst "off",
+  typed :: StringConst "on")),
+  dangerouslySetInnerHTML :: Record ("__html" :: String),
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit,
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit,
   onCut :: EffectFn1 SyntheticClipboardEvent Unit,
@@ -194,26 +191,26 @@ type TablePropsO r = (
   onTouchMoveCapture :: EffectFn1 SyntheticTouchEvent Unit,
   onTouchStart :: EffectFn1 SyntheticTouchEvent Unit,
   onTouchStartCapture :: EffectFn1 SyntheticTouchEvent Unit,
-  onPointerDown :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableElement>--}) Unit,
-  onPointerDownCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableElement>--}) Unit,
-  onPointerMove :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableElement>--}) Unit,
-  onPointerMoveCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableElement>--}) Unit,
-  onPointerUp :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableElement>--}) Unit,
-  onPointerUpCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableElement>--}) Unit,
-  onPointerCancel :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableElement>--}) Unit,
-  onPointerCancelCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableElement>--}) Unit,
-  onPointerEnter :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableElement>--}) Unit,
-  onPointerEnterCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableElement>--}) Unit,
-  onPointerLeave :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableElement>--}) Unit,
-  onPointerLeaveCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableElement>--}) Unit,
-  onPointerOver :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableElement>--}) Unit,
-  onPointerOverCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableElement>--}) Unit,
-  onPointerOut :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableElement>--}) Unit,
-  onPointerOutCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableElement>--}) Unit,
-  onGotPointerCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableElement>--}) Unit,
-  onGotPointerCaptureCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableElement>--}) Unit,
-  onLostPointerCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableElement>--}) Unit,
-  onLostPointerCaptureCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableElement>--}) Unit,
+  onPointerDown :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableElement>--} Unit,
+  onPointerDownCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableElement>--} Unit,
+  onPointerMove :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableElement>--} Unit,
+  onPointerMoveCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableElement>--} Unit,
+  onPointerUp :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableElement>--} Unit,
+  onPointerUpCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableElement>--} Unit,
+  onPointerCancel :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableElement>--} Unit,
+  onPointerCancelCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableElement>--} Unit,
+  onPointerEnter :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableElement>--} Unit,
+  onPointerEnterCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableElement>--} Unit,
+  onPointerLeave :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableElement>--} Unit,
+  onPointerLeaveCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableElement>--} Unit,
+  onPointerOver :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableElement>--} Unit,
+  onPointerOverCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableElement>--} Unit,
+  onPointerOut :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableElement>--} Unit,
+  onPointerOutCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableElement>--} Unit,
+  onGotPointerCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableElement>--} Unit,
+  onGotPointerCaptureCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableElement>--} Unit,
+  onLostPointerCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableElement>--} Unit,
+  onLostPointerCaptureCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableElement>--} Unit,
   onScroll :: EffectFn1 SyntheticUIEvent Unit,
   onScrollCapture :: EffectFn1 SyntheticUIEvent Unit,
   onWheel :: EffectFn1 SyntheticWheelEvent Unit,
@@ -226,27 +223,20 @@ type TablePropsO r = (
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit,
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit,
   onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit,
-  cellPadding :: OneOf ((
-    typed :: String,
-    typed :: Number)),
-  cellSpacing :: OneOf ((
-    typed :: String,
-    typed :: Number)),
+  cellPadding :: OneOf ((typed :: Number,
+  typed :: String)),
+  cellSpacing :: OneOf ((typed :: Number,
+  typed :: String)),
   summary :: String,
-  classes :: Any {--unknown--},
-  innerRef :: OneOf ((
-    typed :: String,
-    typed :: Function Any Any,
-    typed :: Any {--React.RefObject<any>--})) | r )
+  classes :: Any{-- unknown--} | r)
 
-type TablePropsM  = (
-)
+type TablePropsM  = ()
 
-table :: forall a. IsTSEq (Record a) (OptionRecord (TablePropsO TablePropsM) TablePropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+table :: forall a.IsTSEq (Record a) (OptionRecord (TablePropsO TablePropsM) TablePropsM)  => Record a -> Array ReactElement -> ReactElement
 table = unsafeCreateElement classTable
 
-table_ :: Function (Array ReactElement) ReactElement
+table_ :: Array ReactElement -> ReactElement
 table_ = unsafeCreateElement classTable {}
 
-table' :: forall a. IsTSEq (Record a) (OptionRecord (TablePropsO TablePropsM) TablePropsM) => Function (Record a) ReactElement
+table' :: forall a.IsTSEq (Record a) (OptionRecord (TablePropsO TablePropsM) TablePropsM)  => Record a -> ReactElement
 table' = unsafeCreateLeafElement classTable

@@ -1,71 +1,62 @@
 module MaterialUI.TextField where
 import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat.React (unsafeCreateElement, ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
-foreign import classTextField :: forall a. ReactClass a
+foreign import classTextField :: forall a.ReactClass a
 
-type TextFieldPropsO r = (
-  key :: OneOf ((
-    typed :: String,
-    typed :: Number)),
+type TextFieldPropsO r = (classes :: Any{-- unknown--},
+  key :: OneOf ((typed :: Number,
+  typed :: String)),
   autoComplete :: String,
   autoFocus :: Boolean,
-  defaultValue :: OneOf ((
-    typed :: String,
-    typed :: Number)),
+  defaultValue :: OneOf ((typed :: Number,
+  typed :: String)),
   disabled :: Boolean,
   error :: Boolean,
-  "FormHelperTextProps" :: Any {--unknown--},
+  "FormHelperTextProps" :: Any{-- unknown--},
   fullWidth :: Boolean,
   helperText :: ReactNode,
   id :: String,
-  "InputLabelProps" :: Any {--unknown--},
-  "InputProps" :: Any {--unknown--},
-  inputProps :: Any {--"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<>--},
-  inputRef :: OneOf ((
-    typed :: String,
-    typed :: Function Any Any,
-    typed :: Any {--React.RefObject<any>--})),
+  "InputLabelProps" :: Any{-- unknown--},
+  "InputProps" :: Any{-- unknown--},
+  inputProps :: Any{-- "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<>--},
+  inputRef :: OneOf ((typed :: Any{-- React.RefObject<any>--},
+  typed :: String,
+  typed :: Any -> Any)),
   label :: ReactNode,
-  margin :: OneOf ((
-    typed :: StringConst ("normal"),
-    typed :: StringConst ("none"),
-    typed :: StringConst ("dense"))),
+  margin :: OneOf ((typed :: StringConst "dense",
+  typed :: StringConst "normal",
+  typed :: StringConst "none")),
   multiline :: Boolean,
   name :: String,
-  onChange :: EffectFn1 (Any {--React.ChangeEvent<interface HTMLInputElement | interface HTMLTextAreaElement | interface HTMLSelectElement>--}) Unit,
+  onChange :: EffectFn1 SyntheticEvent Unit,
   placeholder :: String,
   required :: Boolean,
-  rows :: OneOf ((
-    typed :: String,
-    typed :: Number)),
-  rowsMax :: OneOf ((
-    typed :: String,
-    typed :: Number)),
+  rows :: OneOf ((typed :: Number,
+  typed :: String)),
+  rowsMax :: OneOf ((typed :: Number,
+  typed :: String)),
   select :: Boolean,
-  "SelectProps" :: Any {--unknown--},
+  "SelectProps" :: Any{-- unknown--},
   type :: String,
-  value :: OneOf ((
-    typed :: Boolean,
-    typed :: String,
-    typed :: Number,
-    typed :: Array (OneOf ((
-      typed :: String,
-      typed :: Number,
-      typed :: Any {--false--},
-      typed :: Any {--true--}))))),
-  variant :: OneOf ((
-    typed :: StringConst ("filled"),
-    typed :: StringConst ("outlined"),
-    typed :: StringConst ("standard"))),
+  value :: OneOf ((typed :: Array (OneOf ((typed :: Any{-- true--},
+  typed :: String,
+  typed :: Number,
+  typed :: Any{-- false--}))),
+  typed :: Boolean,
+  typed :: String,
+  typed :: Number)),
+  variant :: OneOf ((typed :: StringConst "standard",
+  typed :: StringConst "filled",
+  typed :: StringConst "outlined")),
   color :: String,
   hidden :: Boolean,
-  style :: Any {--React.CSSProperties<>--},
+  style :: Any{-- React.CSSProperties<>--},
   defaultChecked :: Boolean,
   suppressContentEditableWarning :: Boolean,
   suppressHydrationWarning :: Boolean,
@@ -102,11 +93,9 @@ type TextFieldPropsO r = (
   itemRef :: String,
   results :: Number,
   security :: String,
-  unselectable :: OneOf ((
-    typed :: StringConst ("on"),
-    typed :: StringConst ("off"))),
-  dangerouslySetInnerHTML :: Record ((
-    "__html" :: String)),
+  unselectable :: OneOf ((typed :: StringConst "off",
+  typed :: StringConst "on")),
+  dangerouslySetInnerHTML :: Record ("__html" :: String),
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit,
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit,
   onCut :: EffectFn1 SyntheticClipboardEvent Unit,
@@ -230,26 +219,26 @@ type TextFieldPropsO r = (
   onTouchMoveCapture :: EffectFn1 SyntheticTouchEvent Unit,
   onTouchStart :: EffectFn1 SyntheticTouchEvent Unit,
   onTouchStartCapture :: EffectFn1 SyntheticTouchEvent Unit,
-  onPointerDown :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerDownCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerMove :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerMoveCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerUp :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerUpCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerCancel :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerCancelCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerEnter :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerEnterCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerLeave :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerLeaveCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerOver :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerOverCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerOut :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerOutCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onGotPointerCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onGotPointerCaptureCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onLostPointerCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onLostPointerCaptureCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
+  onPointerDown :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerDownCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerMove :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerMoveCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerUp :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerUpCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerCancel :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerCancelCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerEnter :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerEnterCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerLeave :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerLeaveCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerOver :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerOverCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerOut :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerOutCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onGotPointerCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onGotPointerCaptureCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onLostPointerCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onLostPointerCaptureCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
   onScroll :: EffectFn1 SyntheticUIEvent Unit,
   onScrollCapture :: EffectFn1 SyntheticUIEvent Unit,
   onWheel :: EffectFn1 SyntheticWheelEvent Unit,
@@ -262,25 +251,21 @@ type TextFieldPropsO r = (
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit,
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit,
   onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit,
-  component :: OneOf ((
-    typed :: String,
-    typed :: Any {--React.ComponentClass<"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/FormControl/FormControl".FormControlProps<>, any>--},
-    typed :: Any {--(props: "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/FormControl/FormControl".FormControlProps<> | {children: undefined | null | string | number | false | true | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--})),
-  innerRef :: OneOf ((
-    typed :: String,
-    typed :: Function Any Any,
-    typed :: Any {--React.RefObject<any>--})),
-  manifest :: String,
-  classes :: Any {--unknown--} | r )
+  component :: OneOf ((typed :: Any{-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/FormControl/FormControl".FormControlProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--},
+  typed :: String,
+  typed :: Any{-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/FormControl/FormControl".FormControlProps<>, any>--})),
+  innerRef :: OneOf ((typed :: Any{-- React.RefObject<any>--},
+  typed :: String,
+  typed :: Any -> Any)),
+  manifest :: String | r)
 
-type TextFieldPropsM  = (
-)
+type TextFieldPropsM  = ()
 
-textField :: forall a. IsTSEq (Record a) (OptionRecord (TextFieldPropsO TextFieldPropsM) TextFieldPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+textField :: forall a.IsTSEq (Record a) (OptionRecord (TextFieldPropsO TextFieldPropsM) TextFieldPropsM)  => Record a -> Array ReactElement -> ReactElement
 textField = unsafeCreateElement classTextField
 
-textField_ :: Function (Array ReactElement) ReactElement
+textField_ :: Array ReactElement -> ReactElement
 textField_ = unsafeCreateElement classTextField {}
 
-textField' :: forall a. IsTSEq (Record a) (OptionRecord (TextFieldPropsO TextFieldPropsM) TextFieldPropsM) => Function (Record a) ReactElement
+textField' :: forall a.IsTSEq (Record a) (OptionRecord (TextFieldPropsO TextFieldPropsM) TextFieldPropsM)  => Record a -> ReactElement
 textField' = unsafeCreateLeafElement classTextField

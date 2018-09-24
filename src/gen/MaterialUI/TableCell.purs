@@ -1,42 +1,39 @@
 module MaterialUI.TableCell where
 import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
+import Data.TSCompat.React (unsafeCreateElement)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
-foreign import classTableCell :: forall a. ReactClass a
+foreign import classTableCell :: forall a.ReactClass a
 
-type TableCellPropsO r = (
-  key :: OneOf ((
-    typed :: String,
-    typed :: Number)),
-  component :: OneOf ((
-    typed :: String,
-    typed :: Any {--React.ComponentClass<React.ThHTMLAttributes<interface HTMLTableHeaderCellElement> | React.TdHTMLAttributes<interface HTMLTableDataCellElement>, any>--},
-    typed :: Any {--(props: React.ThHTMLAttributes<interface HTMLTableHeaderCellElement> | React.TdHTMLAttributes<interface HTMLTableDataCellElement> | {children: undefined | null | string | number | false | true | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--})),
+type TableCellPropsO r = (innerRef :: OneOf ((typed :: Any{-- React.RefObject<any>--},
+  typed :: String,
+  typed :: Any -> Any)),
+  key :: OneOf ((typed :: Number,
+  typed :: String)),
+  component :: OneOf ((typed :: Any{-- (props: React.ThHTMLAttributes<interface HTMLTableHeaderCellElement> | React.TdHTMLAttributes<interface HTMLTableDataCellElement> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--},
+  typed :: String,
+  typed :: Any{-- React.ComponentClass<React.ThHTMLAttributes<interface HTMLTableHeaderCellElement> | React.TdHTMLAttributes<interface HTMLTableDataCellElement>, any>--})),
   numeric :: Boolean,
-  padding :: OneOf ((
-    typed :: StringConst ("none"),
-    typed :: StringConst ("default"),
-    typed :: StringConst ("dense"),
-    typed :: StringConst ("checkbox"))),
-  sortDirection :: OneOf ((
-    typed :: Any {--false--},
-    typed :: StringConst ("asc"),
-    typed :: StringConst ("desc"))),
-  variant :: OneOf ((
-    typed :: StringConst ("body"),
-    typed :: StringConst ("head"),
-    typed :: StringConst ("footer"))),
+  padding :: OneOf ((typed :: StringConst "checkbox",
+  typed :: StringConst "none",
+  typed :: StringConst "default",
+  typed :: StringConst "dense")),
+  sortDirection :: OneOf ((typed :: StringConst "desc",
+  typed :: Any{-- false--},
+  typed :: StringConst "asc")),
+  variant :: OneOf ((typed :: StringConst "footer",
+  typed :: StringConst "body",
+  typed :: StringConst "head")),
   color :: String,
   hidden :: Boolean,
-  style :: Any {--React.CSSProperties<>--},
+  style :: Any{-- React.CSSProperties<>--},
   defaultChecked :: Boolean,
-  defaultValue :: OneOf ((
-    typed :: String,
-    typed :: Array String)),
+  defaultValue :: OneOf ((typed :: Array String,
+  typed :: String)),
   suppressContentEditableWarning :: Boolean,
   suppressHydrationWarning :: Boolean,
   accessKey :: String,
@@ -74,11 +71,9 @@ type TableCellPropsO r = (
   itemRef :: String,
   results :: Number,
   security :: String,
-  unselectable :: OneOf ((
-    typed :: StringConst ("on"),
-    typed :: StringConst ("off"))),
-  dangerouslySetInnerHTML :: Record ((
-    "__html" :: String)),
+  unselectable :: OneOf ((typed :: StringConst "off",
+  typed :: StringConst "on")),
+  dangerouslySetInnerHTML :: Record ("__html" :: String),
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit,
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit,
   onCut :: EffectFn1 SyntheticClipboardEvent Unit,
@@ -203,26 +198,26 @@ type TableCellPropsO r = (
   onTouchMoveCapture :: EffectFn1 SyntheticTouchEvent Unit,
   onTouchStart :: EffectFn1 SyntheticTouchEvent Unit,
   onTouchStartCapture :: EffectFn1 SyntheticTouchEvent Unit,
-  onPointerDown :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerDownCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerMove :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerMoveCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerUp :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerUpCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerCancel :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerCancelCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerEnter :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerEnterCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerLeave :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerLeaveCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerOver :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerOverCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerOut :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerOutCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onGotPointerCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onGotPointerCaptureCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onLostPointerCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onLostPointerCaptureCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
+  onPointerDown :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerDownCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerMove :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerMoveCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerUp :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerUpCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerCancel :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerCancelCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerEnter :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerEnterCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerLeave :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerLeaveCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerOver :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerOverCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerOut :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerOutCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onGotPointerCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onGotPointerCaptureCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onLostPointerCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onLostPointerCaptureCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
   onScroll :: EffectFn1 SyntheticUIEvent Unit,
   onScrollCapture :: EffectFn1 SyntheticUIEvent Unit,
   onWheel :: EffectFn1 SyntheticWheelEvent Unit,
@@ -239,20 +234,15 @@ type TableCellPropsO r = (
   headers :: String,
   rowSpan :: Number,
   scope :: String,
-  classes :: Any {--unknown--},
-  innerRef :: OneOf ((
-    typed :: String,
-    typed :: Function Any Any,
-    typed :: Any {--React.RefObject<any>--})) | r )
+  classes :: Any{-- unknown--} | r)
 
-type TableCellPropsM  = (
-)
+type TableCellPropsM  = ()
 
-tableCell :: forall a. IsTSEq (Record a) (OptionRecord (TableCellPropsO TableCellPropsM) TableCellPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+tableCell :: forall a.IsTSEq (Record a) (OptionRecord (TableCellPropsO TableCellPropsM) TableCellPropsM)  => Record a -> Array ReactElement -> ReactElement
 tableCell = unsafeCreateElement classTableCell
 
-tableCell_ :: Function (Array ReactElement) ReactElement
+tableCell_ :: Array ReactElement -> ReactElement
 tableCell_ = unsafeCreateElement classTableCell {}
 
-tableCell' :: forall a. IsTSEq (Record a) (OptionRecord (TableCellPropsO TableCellPropsM) TableCellPropsM) => Function (Record a) ReactElement
+tableCell' :: forall a.IsTSEq (Record a) (OptionRecord (TableCellPropsO TableCellPropsM) TableCellPropsM)  => Record a -> ReactElement
 tableCell' = unsafeCreateLeafElement classTableCell

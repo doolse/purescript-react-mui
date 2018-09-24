@@ -1,45 +1,40 @@
 module MaterialUI.TablePagination where
 import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat.React (unsafeCreateElement, ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
-foreign import classTablePagination :: forall a. ReactClass a
+foreign import classTablePagination :: forall a.ReactClass a
 
-type TablePaginationPropsO r = (
-  key :: OneOf ((
-    typed :: String,
-    typed :: Number)),
-  "ActionsComponent" :: OneOf ((
-    typed :: String,
-    typed :: Any {--React.ComponentClass<"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/TableCell/TableCell".TableCellProps<>, any>--},
-    typed :: Any {--(props: "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/TableCell/TableCell".TableCellProps<> | {children: undefined | null | string | number | false | true | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--})),
-  backIconButtonProps :: Any {--unknown--},
-  component :: OneOf ((
-    typed :: String,
-    typed :: Any {--React.ComponentClass<"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/TableCell/TableCell".TableCellProps<>, any>--},
-    typed :: Any {--(props: "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/TableCell/TableCell".TableCellProps<> | {children: undefined | null | string | number | false | true | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--})),
-  labelDisplayedRows :: Function (Any {--interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/TablePagination/TablePagination".LabelDisplayedRowsArgs--}) ReactNode,
+type TablePaginationPropsO r = (classes :: Any{-- unknown--},
+  key :: OneOf ((typed :: Number,
+  typed :: String)),
+  "ActionsComponent" :: OneOf ((typed :: Any{-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/TableCell/TableCell".TableCellProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--},
+  typed :: String,
+  typed :: Any{-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/TableCell/TableCell".TableCellProps<>, any>--})),
+  backIconButtonProps :: Any{-- unknown--},
+  component :: OneOf ((typed :: Any{-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/TableCell/TableCell".TableCellProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--},
+  typed :: String,
+  typed :: Any{-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/TableCell/TableCell".TableCellProps<>, any>--})),
+  labelDisplayedRows :: Any{-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/TablePagination/TablePagination".LabelDisplayedRowsArgs--} -> ReactNode,
   labelRowsPerPage :: ReactNode,
-  nextIconButtonProps :: Any {--unknown--},
-  onChangeRowsPerPage :: EffectFn1 (Any {--React.ChangeEvent<interface HTMLInputElement | interface HTMLTextAreaElement>--}) Unit,
+  nextIconButtonProps :: Any{-- unknown--},
+  onChangeRowsPerPage :: EffectFn1 SyntheticEvent Unit,
   rowsPerPageOptions :: Array Number,
-  "SelectProps" :: Any {--unknown--},
+  "SelectProps" :: Any{-- unknown--},
   color :: String,
-  padding :: OneOf ((
-    typed :: StringConst ("none"),
-    typed :: StringConst ("default"),
-    typed :: StringConst ("dense"),
-    typed :: StringConst ("checkbox"))),
+  padding :: OneOf ((typed :: StringConst "checkbox",
+  typed :: StringConst "none",
+  typed :: StringConst "default",
+  typed :: StringConst "dense")),
   hidden :: Boolean,
-  style :: Any {--React.CSSProperties<>--},
+  style :: Any{-- React.CSSProperties<>--},
   defaultChecked :: Boolean,
-  defaultValue :: OneOf ((
-    typed :: String,
-    typed :: Array String)),
+  defaultValue :: OneOf ((typed :: Array String,
+  typed :: String)),
   suppressContentEditableWarning :: Boolean,
   suppressHydrationWarning :: Boolean,
   accessKey :: String,
@@ -77,11 +72,9 @@ type TablePaginationPropsO r = (
   itemRef :: String,
   results :: Number,
   security :: String,
-  unselectable :: OneOf ((
-    typed :: StringConst ("on"),
-    typed :: StringConst ("off"))),
-  dangerouslySetInnerHTML :: Record ((
-    "__html" :: String)),
+  unselectable :: OneOf ((typed :: StringConst "off",
+  typed :: StringConst "on")),
+  dangerouslySetInnerHTML :: Record ("__html" :: String),
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit,
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit,
   onCut :: EffectFn1 SyntheticClipboardEvent Unit,
@@ -206,26 +199,26 @@ type TablePaginationPropsO r = (
   onTouchMoveCapture :: EffectFn1 SyntheticTouchEvent Unit,
   onTouchStart :: EffectFn1 SyntheticTouchEvent Unit,
   onTouchStartCapture :: EffectFn1 SyntheticTouchEvent Unit,
-  onPointerDown :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerDownCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerMove :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerMoveCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerUp :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerUpCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerCancel :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerCancelCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerEnter :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerEnterCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerLeave :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerLeaveCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerOver :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerOverCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerOut :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onPointerOutCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onGotPointerCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onGotPointerCaptureCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onLostPointerCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
-  onLostPointerCaptureCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLTableHeaderCellElement>--}) Unit,
+  onPointerDown :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerDownCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerMove :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerMoveCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerUp :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerUpCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerCancel :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerCancelCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerEnter :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerEnterCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerLeave :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerLeaveCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerOver :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerOverCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerOut :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onPointerOutCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onGotPointerCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onGotPointerCaptureCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onLostPointerCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
+  onLostPointerCaptureCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLTableHeaderCellElement>--} Unit,
   onScroll :: EffectFn1 SyntheticUIEvent Unit,
   onScrollCapture :: EffectFn1 SyntheticUIEvent Unit,
   onWheel :: EffectFn1 SyntheticWheelEvent Unit,
@@ -238,38 +231,32 @@ type TablePaginationPropsO r = (
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit,
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit,
   onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit,
-  innerRef :: OneOf ((
-    typed :: String,
-    typed :: Function Any Any,
-    typed :: Any {--React.RefObject<any>--})),
-  variant :: OneOf ((
-    typed :: StringConst ("body"),
-    typed :: StringConst ("head"),
-    typed :: StringConst ("footer"))),
+  innerRef :: OneOf ((typed :: Any{-- React.RefObject<any>--},
+  typed :: String,
+  typed :: Any -> Any)),
+  variant :: OneOf ((typed :: StringConst "footer",
+  typed :: StringConst "body",
+  typed :: StringConst "head")),
   numeric :: Boolean,
   colSpan :: Number,
   headers :: String,
   rowSpan :: Number,
   scope :: String,
-  sortDirection :: OneOf ((
-    typed :: Any {--false--},
-    typed :: StringConst ("asc"),
-    typed :: StringConst ("desc"))),
-  classes :: Any {--unknown--} | r )
+  sortDirection :: OneOf ((typed :: StringConst "desc",
+  typed :: Any{-- false--},
+  typed :: StringConst "asc")) | r)
 
-type TablePaginationPropsM  = (
+type TablePaginationPropsM  = (rowsPerPage :: Number,
   count :: Number,
-  onChangePage :: EffectFn2 (OneOf ((
-    typed :: Any {--null--},
-    typed :: SyntheticMouseEvent))) Number Unit,
-  page :: Number,
-  rowsPerPage :: Number)
+  onChangePage :: EffectFn2 (OneOf ((typed :: SyntheticMouseEvent,
+  typed :: Any{-- null--}))) Number Unit,
+  page :: Number)
 
-tablePagination :: forall a. IsTSEq (Record a) (OptionRecord (TablePaginationPropsO TablePaginationPropsM) TablePaginationPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+tablePagination :: forall a.IsTSEq (Record a) (OptionRecord (TablePaginationPropsO TablePaginationPropsM) TablePaginationPropsM)  => Record a -> Array ReactElement -> ReactElement
 tablePagination = unsafeCreateElement classTablePagination
 
-tablePagination_ :: Function (Array ReactElement) ReactElement
+tablePagination_ :: Array ReactElement -> ReactElement
 tablePagination_ = unsafeCreateElement classTablePagination {}
 
-tablePagination' :: forall a. IsTSEq (Record a) (OptionRecord (TablePaginationPropsO TablePaginationPropsM) TablePaginationPropsM) => Function (Record a) ReactElement
+tablePagination' :: forall a.IsTSEq (Record a) (OptionRecord (TablePaginationPropsO TablePaginationPropsM) TablePaginationPropsM)  => Record a -> ReactElement
 tablePagination' = unsafeCreateLeafElement classTablePagination

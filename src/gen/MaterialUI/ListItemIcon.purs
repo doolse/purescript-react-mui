@@ -1,30 +1,27 @@
 module MaterialUI.ListItemIcon where
 import Data.TSCompat (Any, OneOf, OptionRecord)
 import Data.TSCompat.Class (class IsTSEq)
-import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
+import Data.TSCompat.React (unsafeCreateElement)
+import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 
-foreign import classListItemIcon :: forall a. ReactClass a
+foreign import classListItemIcon :: forall a.ReactClass a
 
-type ListItemIconPropsO r = (
-  key :: OneOf ((
-    typed :: String,
-    typed :: Number)),
-  classes :: Any {--unknown--},
-  innerRef :: OneOf ((
-    typed :: String,
-    typed :: Function Any Any,
-    typed :: Any {--React.RefObject<any>--})),
-  className :: String,
-  style :: Any {--React.CSSProperties<>--} | r )
+type ListItemIconPropsO r = (style :: Any{-- React.CSSProperties<>--},
+  key :: OneOf ((typed :: Number,
+  typed :: String)),
+  classes :: Any{-- unknown--},
+  innerRef :: OneOf ((typed :: Any{-- React.RefObject<any>--},
+  typed :: String,
+  typed :: Any -> Any)),
+  className :: String | r)
 
-type ListItemIconPropsM  = (
-)
+type ListItemIconPropsM  = ()
 
-listItemIcon :: forall a. IsTSEq (Record a) (OptionRecord (ListItemIconPropsO ListItemIconPropsM) ListItemIconPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+listItemIcon :: forall a.IsTSEq (Record a) (OptionRecord (ListItemIconPropsO ListItemIconPropsM) ListItemIconPropsM)  => Record a -> ReactElement -> ReactElement
 listItemIcon = unsafeCreateElement classListItemIcon
 
-listItemIcon_ :: Function (Array ReactElement) ReactElement
+listItemIcon_ :: ReactElement -> ReactElement
 listItemIcon_ = unsafeCreateElement classListItemIcon {}
 
-listItemIcon' :: forall a. IsTSEq (Record a) (OptionRecord (ListItemIconPropsO ListItemIconPropsM) ListItemIconPropsM) => Function (Record a) ReactElement
+listItemIcon' :: forall a.IsTSEq (Record a) (OptionRecord (ListItemIconPropsO ListItemIconPropsM) ListItemIconPropsM)  => Record a -> ReactElement
 listItemIcon' = unsafeCreateLeafElement classListItemIcon

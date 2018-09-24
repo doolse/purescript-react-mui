@@ -1,18 +1,19 @@
 module MaterialUI.Tooltip where
 import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat.React (unsafeCreateElement, ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
-foreign import classTooltip :: forall a. ReactClass a
+foreign import classTooltip :: forall a.ReactClass a
 
-type TooltipPropsO r = (
-  key :: OneOf ((
-    typed :: String,
-    typed :: Number)),
+type TooltipPropsO r = (innerRef :: OneOf ((typed :: Any{-- React.RefObject<any>--},
+  typed :: String,
+  typed :: Any -> Any)),
+  key :: OneOf ((typed :: Number,
+  typed :: String)),
   disableFocusListener :: Boolean,
   disableHoverListener :: Boolean,
   disableTouchListener :: Boolean,
@@ -21,35 +22,32 @@ type TooltipPropsO r = (
   id :: String,
   leaveDelay :: Number,
   leaveTouchDelay :: Number,
-  onClose :: EffectFn1 (Any {--React.ChangeEvent<{}>--}) Unit,
-  onOpen :: EffectFn1 (Any {--React.ChangeEvent<{}>--}) Unit,
+  onClose :: EffectFn1 SyntheticEvent Unit,
+  onOpen :: EffectFn1 SyntheticEvent Unit,
   open :: Boolean,
-  placement :: OneOf ((
-    typed :: StringConst ("bottom"),
-    typed :: StringConst ("left"),
-    typed :: StringConst ("right"),
-    typed :: StringConst ("top"),
-    typed :: StringConst ("bottom-end"),
-    typed :: StringConst ("bottom-start"),
-    typed :: StringConst ("left-end"),
-    typed :: StringConst ("left-start"),
-    typed :: StringConst ("right-end"),
-    typed :: StringConst ("right-start"),
-    typed :: StringConst ("top-end"),
-    typed :: StringConst ("top-start"))),
-  "PopperProps" :: Any {--unknown--},
-  "TransitionComponent" :: OneOf ((
-    typed :: String,
-    typed :: Any {--React.ComponentClass<any, any>--},
-    typed :: Any {--(props: any, context: any => null | React.ReactElement<any>)--})),
-  "TransitionProps" :: Any {--"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/transitions/transition".TransitionProps<>--},
+  placement :: OneOf ((typed :: StringConst "top-start",
+  typed :: StringConst "bottom",
+  typed :: StringConst "left",
+  typed :: StringConst "right",
+  typed :: StringConst "top",
+  typed :: StringConst "bottom-end",
+  typed :: StringConst "bottom-start",
+  typed :: StringConst "left-end",
+  typed :: StringConst "left-start",
+  typed :: StringConst "right-end",
+  typed :: StringConst "right-start",
+  typed :: StringConst "top-end")),
+  "PopperProps" :: Any{-- unknown--},
+  "TransitionComponent" :: OneOf ((typed :: Any{-- (props: any, context: any => null | React.ReactElement<any>)--},
+  typed :: String,
+  typed :: Any{-- React.ComponentClass<any, any>--})),
+  "TransitionProps" :: Any{-- "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/transitions/transition".TransitionProps<>--},
   color :: String,
   hidden :: Boolean,
-  style :: Any {--React.CSSProperties<>--},
+  style :: Any{-- React.CSSProperties<>--},
   defaultChecked :: Boolean,
-  defaultValue :: OneOf ((
-    typed :: String,
-    typed :: Array String)),
+  defaultValue :: OneOf ((typed :: Array String,
+  typed :: String)),
   suppressContentEditableWarning :: Boolean,
   suppressHydrationWarning :: Boolean,
   accessKey :: String,
@@ -85,11 +83,9 @@ type TooltipPropsO r = (
   itemRef :: String,
   results :: Number,
   security :: String,
-  unselectable :: OneOf ((
-    typed :: StringConst ("on"),
-    typed :: StringConst ("off"))),
-  dangerouslySetInnerHTML :: Record ((
-    "__html" :: String)),
+  unselectable :: OneOf ((typed :: StringConst "off",
+  typed :: StringConst "on")),
+  dangerouslySetInnerHTML :: Record ("__html" :: String),
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit,
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit,
   onCut :: EffectFn1 SyntheticClipboardEvent Unit,
@@ -214,26 +210,26 @@ type TooltipPropsO r = (
   onTouchMoveCapture :: EffectFn1 SyntheticTouchEvent Unit,
   onTouchStart :: EffectFn1 SyntheticTouchEvent Unit,
   onTouchStartCapture :: EffectFn1 SyntheticTouchEvent Unit,
-  onPointerDown :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerDownCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerMove :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerMoveCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerUp :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerUpCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerCancel :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerCancelCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerEnter :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerEnterCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerLeave :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerLeaveCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerOver :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerOverCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerOut :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerOutCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onGotPointerCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onGotPointerCaptureCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onLostPointerCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onLostPointerCaptureCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
+  onPointerDown :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerDownCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerMove :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerMoveCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerUp :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerUpCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerCancel :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerCancelCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerEnter :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerEnterCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerLeave :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerLeaveCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerOver :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerOverCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerOut :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerOutCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onGotPointerCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onGotPointerCaptureCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onLostPointerCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onLostPointerCaptureCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
   onScroll :: EffectFn1 SyntheticUIEvent Unit,
   onScrollCapture :: EffectFn1 SyntheticUIEvent Unit,
   onWheel :: EffectFn1 SyntheticWheelEvent Unit,
@@ -246,20 +242,15 @@ type TooltipPropsO r = (
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit,
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit,
   onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit,
-  classes :: Any {--unknown--},
-  innerRef :: OneOf ((
-    typed :: String,
-    typed :: Function Any Any,
-    typed :: Any {--React.RefObject<any>--})) | r )
+  classes :: Any{-- unknown--} | r)
 
-type TooltipPropsM  = (
-  title :: ReactNode)
+type TooltipPropsM  = (title :: ReactNode)
 
-tooltip :: forall a. IsTSEq (Record a) (OptionRecord (TooltipPropsO TooltipPropsM) TooltipPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+tooltip :: forall a.IsTSEq (Record a) (OptionRecord (TooltipPropsO TooltipPropsM) TooltipPropsM)  => Record a -> ReactElement -> ReactElement
 tooltip = unsafeCreateElement classTooltip
 
-tooltip_ :: Function (Array ReactElement) ReactElement
+tooltip_ :: ReactElement -> ReactElement
 tooltip_ = unsafeCreateElement classTooltip {}
 
-tooltip' :: forall a. IsTSEq (Record a) (OptionRecord (TooltipPropsO TooltipPropsM) TooltipPropsM) => Function (Record a) ReactElement
+tooltip' :: forall a.IsTSEq (Record a) (OptionRecord (TooltipPropsO TooltipPropsM) TooltipPropsM)  => Record a -> ReactElement
 tooltip' = unsafeCreateLeafElement classTooltip

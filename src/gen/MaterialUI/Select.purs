@@ -1,65 +1,56 @@
 module MaterialUI.Select where
 import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
-import Data.TSCompat.React (ReactNode)
+import Data.TSCompat.React (unsafeCreateElement, ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
-foreign import classSelect :: forall a. ReactClass a
+foreign import classSelect :: forall a.ReactClass a
 
-type SelectPropsO r = (
-  key :: OneOf ((
-    typed :: String,
-    typed :: Number)),
+type SelectPropsO r = (onChange :: EffectFn2 SyntheticEvent ReactNode Unit,
+  key :: OneOf ((typed :: Number,
+  typed :: String)),
   autoWidth :: Boolean,
   displayEmpty :: Boolean,
-  "IconComponent" :: OneOf ((
-    typed :: String,
-    typed :: Any {--React.ComponentClass<any, any>--},
-    typed :: Any {--(props: any, context: any => null | React.ReactElement<any>)--})),
+  "IconComponent" :: OneOf ((typed :: Any{-- (props: any, context: any => null | React.ReactElement<any>)--},
+  typed :: String,
+  typed :: Any{-- React.ComponentClass<any, any>--})),
   input :: ReactNode,
-  "MenuProps" :: Any {--unknown--},
+  "MenuProps" :: Any{-- unknown--},
   multiple :: Boolean,
   native :: Boolean,
-  onClose :: EffectFn1 (Any {--React.ChangeEvent<{}>--}) Unit,
-  onOpen :: EffectFn1 (Any {--React.ChangeEvent<{}>--}) Unit,
+  onClose :: EffectFn1 SyntheticEvent Unit,
+  onOpen :: EffectFn1 SyntheticEvent Unit,
   open :: Boolean,
-  renderValue :: Function (OneOf ((
-    typed :: Any {--undefined--},
-    typed :: String,
-    typed :: Number,
-    typed :: Any {--false--},
-    typed :: Any {--true--},
-    typed :: Array (OneOf ((
-      typed :: String,
-      typed :: Number,
-      typed :: Any {--false--},
-      typed :: Any {--true--})))))) ReactNode,
-  "SelectDisplayProps" :: Any {--React.HTMLAttributes<interface HTMLDivElement>--},
-  value :: OneOf ((
-    typed :: Boolean,
-    typed :: String,
-    typed :: Number,
-    typed :: Array (OneOf ((
-      typed :: String,
-      typed :: Number,
-      typed :: Any {--false--},
-      typed :: Any {--true--}))))),
-  variant :: OneOf ((
-    typed :: StringConst ("filled"),
-    typed :: StringConst ("outlined"),
-    typed :: StringConst ("standard"))),
+  renderValue :: OneOf ((typed :: Array (OneOf ((typed :: Any{-- true--},
+  typed :: String,
+  typed :: Number,
+  typed :: Any{-- false--}))),
+  typed :: Boolean,
+  typed :: Any{-- undefined--},
+  typed :: String,
+  typed :: Number)) -> ReactNode,
+  "SelectDisplayProps" :: Any{-- React.HTMLAttributes<interface HTMLDivElement>--},
+  value :: OneOf ((typed :: Array (OneOf ((typed :: Any{-- true--},
+  typed :: String,
+  typed :: Number,
+  typed :: Any{-- false--}))),
+  typed :: Boolean,
+  typed :: String,
+  typed :: Number)),
+  variant :: OneOf ((typed :: StringConst "standard",
+  typed :: StringConst "filled",
+  typed :: StringConst "outlined")),
   color :: String,
-  margin :: StringConst ("dense"),
+  margin :: StringConst "dense",
   hidden :: Boolean,
-  style :: Any {--React.CSSProperties<>--},
+  style :: Any{-- React.CSSProperties<>--},
   disabled :: Boolean,
   defaultChecked :: Boolean,
-  defaultValue :: OneOf ((
-    typed :: String,
-    typed :: Number)),
+  defaultValue :: OneOf ((typed :: Number,
+  typed :: String)),
   suppressContentEditableWarning :: Boolean,
   suppressHydrationWarning :: Boolean,
   accessKey :: String,
@@ -97,11 +88,9 @@ type SelectPropsO r = (
   itemRef :: String,
   results :: Number,
   security :: String,
-  unselectable :: OneOf ((
-    typed :: StringConst ("on"),
-    typed :: StringConst ("off"))),
-  dangerouslySetInnerHTML :: Record ((
-    "__html" :: String)),
+  unselectable :: OneOf ((typed :: StringConst "off",
+  typed :: StringConst "on")),
+  dangerouslySetInnerHTML :: Record ("__html" :: String),
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit,
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit,
   onCut :: EffectFn1 SyntheticClipboardEvent Unit,
@@ -225,26 +214,26 @@ type SelectPropsO r = (
   onTouchMoveCapture :: EffectFn1 SyntheticTouchEvent Unit,
   onTouchStart :: EffectFn1 SyntheticTouchEvent Unit,
   onTouchStartCapture :: EffectFn1 SyntheticTouchEvent Unit,
-  onPointerDown :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerDownCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerMove :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerMoveCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerUp :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerUpCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerCancel :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerCancelCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerEnter :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerEnterCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerLeave :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerLeaveCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerOver :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerOverCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerOut :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerOutCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onGotPointerCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onGotPointerCaptureCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onLostPointerCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onLostPointerCaptureCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
+  onPointerDown :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerDownCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerMove :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerMoveCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerUp :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerUpCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerCancel :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerCancelCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerEnter :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerEnterCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerLeave :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerLeaveCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerOver :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerOverCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerOut :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerOutCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onGotPointerCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onGotPointerCaptureCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onLostPointerCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onLostPointerCaptureCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
   onScroll :: EffectFn1 SyntheticUIEvent Unit,
   onScrollCapture :: EffectFn1 SyntheticUIEvent Unit,
   onWheel :: EffectFn1 SyntheticWheelEvent Unit,
@@ -257,48 +246,41 @@ type SelectPropsO r = (
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit,
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit,
   onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit,
-  innerRef :: OneOf ((
-    typed :: String,
-    typed :: Function Any Any,
-    typed :: Any {--React.RefObject<any>--})),
+  innerRef :: OneOf ((typed :: Any{-- React.RefObject<any>--},
+  typed :: String,
+  typed :: Any -> Any)),
   error :: Boolean,
   type :: String,
   autoFocus :: Boolean,
   name :: String,
   fullWidth :: Boolean,
-  inputProps :: Any {--"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<>--},
-  inputRef :: OneOf ((
-    typed :: String,
-    typed :: Function Any Any,
-    typed :: Any {--React.RefObject<any>--})),
+  inputProps :: Any{-- "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<>--},
+  inputRef :: OneOf ((typed :: Any{-- React.RefObject<any>--},
+  typed :: String,
+  typed :: Any -> Any)),
   readOnly :: Boolean,
   required :: Boolean,
   multiline :: Boolean,
   autoComplete :: String,
   disableUnderline :: Boolean,
   endAdornment :: ReactNode,
-  inputComponent :: OneOf ((
-    typed :: String,
-    typed :: Any {--React.ComponentClass<"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<>, any>--},
-    typed :: Any {--(props: "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<> | {children: undefined | null | string | number | false | true | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--})),
-  rows :: OneOf ((
-    typed :: String,
-    typed :: Number)),
-  rowsMax :: OneOf ((
-    typed :: String,
-    typed :: Number)),
+  inputComponent :: OneOf ((typed :: Any{-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--},
+  typed :: String,
+  typed :: Any{-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<>, any>--})),
+  rows :: OneOf ((typed :: Number,
+  typed :: String)),
+  rowsMax :: OneOf ((typed :: Number,
+  typed :: String)),
   startAdornment :: ReactNode,
-  classes :: Any {--unknown--},
-  onChange :: EffectFn2 (Any {--React.ChangeEvent<interface HTMLSelectElement>--}) ReactNode Unit | r )
+  classes :: Any{-- unknown--} | r)
 
-type SelectPropsM  = (
-)
+type SelectPropsM  = ()
 
-select :: forall a. IsTSEq (Record a) (OptionRecord (SelectPropsO SelectPropsM) SelectPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+select :: forall a.IsTSEq (Record a) (OptionRecord (SelectPropsO SelectPropsM) SelectPropsM)  => Record a -> Array ReactElement -> ReactElement
 select = unsafeCreateElement classSelect
 
-select_ :: Function (Array ReactElement) ReactElement
+select_ :: Array ReactElement -> ReactElement
 select_ = unsafeCreateElement classSelect {}
 
-select' :: forall a. IsTSEq (Record a) (OptionRecord (SelectPropsO SelectPropsM) SelectPropsM) => Function (Record a) ReactElement
+select' :: forall a.IsTSEq (Record a) (OptionRecord (SelectPropsO SelectPropsM) SelectPropsM)  => Record a -> ReactElement
 select' = unsafeCreateLeafElement classSelect

@@ -1,49 +1,41 @@
 module MaterialUI.Drawer where
 import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
+import Data.TSCompat.React (unsafeCreateElement)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
-foreign import classDrawer :: forall a. ReactClass a
+foreign import classDrawer :: forall a.ReactClass a
 
-type DrawerPropsO r = (
-  key :: OneOf ((
-    typed :: String,
-    typed :: Number)),
-  anchor :: OneOf ((
-    typed :: StringConst ("bottom"),
-    typed :: StringConst ("left"),
-    typed :: StringConst ("right"),
-    typed :: StringConst ("top"))),
+type DrawerPropsO r = (classes :: Any{-- unknown--},
+  key :: OneOf ((typed :: Number,
+  typed :: String)),
+  anchor :: OneOf ((typed :: StringConst "top",
+  typed :: StringConst "bottom",
+  typed :: StringConst "left",
+  typed :: StringConst "right")),
   elevation :: Number,
-  "ModalProps" :: Any {--unknown--},
+  "ModalProps" :: Any{-- unknown--},
   open :: Boolean,
-  "PaperProps" :: Any {--unknown--},
-  "SlideProps" :: Any {--unknown--},
-  theme :: Any {--interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/createMuiTheme".Theme--},
-  transitionDuration :: OneOf ((
-    typed :: Number,
-    typed :: OptionRecord ((
-      enter :: OneOf ((
-        typed :: Any {--undefined--},
-        typed :: Number)),
-      exit :: OneOf ((
-        typed :: Any {--undefined--},
-        typed :: Number)))) ((
-)))),
-  variant :: OneOf ((
-    typed :: StringConst ("permanent"),
-    typed :: StringConst ("persistent"),
-    typed :: StringConst ("temporary"))),
+  "PaperProps" :: Any{-- unknown--},
+  "SlideProps" :: Any{-- unknown--},
+  theme :: Any{-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/createMuiTheme".Theme--},
+  transitionDuration :: OneOf ((typed :: OptionRecord ((exit :: OneOf ((typed :: Number,
+  typed :: Any{-- undefined--})),
+  enter :: OneOf ((typed :: Number,
+  typed :: Any{-- undefined--})))) (),
+  typed :: Number)),
+  variant :: OneOf ((typed :: StringConst "temporary",
+  typed :: StringConst "permanent",
+  typed :: StringConst "persistent")),
   color :: String,
   hidden :: Boolean,
-  style :: Any {--React.CSSProperties<>--},
+  style :: Any{-- React.CSSProperties<>--},
   defaultChecked :: Boolean,
-  defaultValue :: OneOf ((
-    typed :: String,
-    typed :: Array String)),
+  defaultValue :: OneOf ((typed :: Array String,
+  typed :: String)),
   suppressContentEditableWarning :: Boolean,
   suppressHydrationWarning :: Boolean,
   accessKey :: String,
@@ -81,11 +73,9 @@ type DrawerPropsO r = (
   itemRef :: String,
   results :: Number,
   security :: String,
-  unselectable :: OneOf ((
-    typed :: StringConst ("on"),
-    typed :: StringConst ("off"))),
-  dangerouslySetInnerHTML :: Record ((
-    "__html" :: String)),
+  unselectable :: OneOf ((typed :: StringConst "off",
+  typed :: StringConst "on")),
+  dangerouslySetInnerHTML :: Record ("__html" :: String),
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit,
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit,
   onCut :: EffectFn1 SyntheticClipboardEvent Unit,
@@ -210,26 +200,26 @@ type DrawerPropsO r = (
   onTouchMoveCapture :: EffectFn1 SyntheticTouchEvent Unit,
   onTouchStart :: EffectFn1 SyntheticTouchEvent Unit,
   onTouchStartCapture :: EffectFn1 SyntheticTouchEvent Unit,
-  onPointerDown :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerDownCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerMove :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerMoveCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerUp :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerUpCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerCancel :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerCancelCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerEnter :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerEnterCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerLeave :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerLeaveCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerOver :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerOverCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerOut :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onPointerOutCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onGotPointerCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onGotPointerCaptureCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onLostPointerCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
-  onLostPointerCaptureCapture :: EffectFn1 (Any {--React.PointerEvent<interface HTMLDivElement>--}) Unit,
+  onPointerDown :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerDownCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerMove :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerMoveCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerUp :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerUpCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerCancel :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerCancelCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerEnter :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerEnterCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerLeave :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerLeaveCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerOver :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerOverCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerOut :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onPointerOutCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onGotPointerCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onGotPointerCaptureCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onLostPointerCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
+  onLostPointerCaptureCapture :: EffectFn1 Any{-- React.PointerEvent<interface HTMLDivElement>--} Unit,
   onScroll :: EffectFn1 SyntheticUIEvent Unit,
   onScrollCapture :: EffectFn1 SyntheticUIEvent Unit,
   onWheel :: EffectFn1 SyntheticWheelEvent Unit,
@@ -242,34 +232,25 @@ type DrawerPropsO r = (
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit,
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit,
   onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit,
-  innerRef :: OneOf ((
-    typed :: String,
-    typed :: Function Any Any,
-    typed :: Any {--React.RefObject<any>--})),
-  onEnter :: EffectFn2 (Any {--interface HTMLElement--}) (OneOf ((
-    typed :: Any {--false--},
-    typed :: Any {--true--}))) Unit,
-  onEntering :: EffectFn2 (Any {--interface HTMLElement--}) (OneOf ((
-    typed :: Any {--false--},
-    typed :: Any {--true--}))) Unit,
-  onEntered :: EffectFn2 (Any {--interface HTMLElement--}) (OneOf ((
-    typed :: Any {--false--},
-    typed :: Any {--true--}))) Unit,
-  onExit :: EffectFn1 (Any {--interface HTMLElement--}) Unit,
-  onExiting :: EffectFn1 (Any {--interface HTMLElement--}) Unit,
-  onExited :: EffectFn1 (Any {--interface HTMLElement--}) Unit,
-  container :: OneOf ((
-    typed :: Any {--interface Element--},
-    typed :: Any {--React.Component<any, {}, any>--},
-    typed :: Any {--( => interface Element | React.Component<any, {}, any>)--})),
+  innerRef :: OneOf ((typed :: Any{-- React.RefObject<any>--},
+  typed :: String,
+  typed :: Any -> Any)),
+  onEnter :: EffectFn2 Any{-- interface HTMLElement--} Boolean Unit,
+  onEntering :: EffectFn2 Any{-- interface HTMLElement--} Boolean Unit,
+  onEntered :: EffectFn2 Any{-- interface HTMLElement--} Boolean Unit,
+  onExit :: EffectFn1 Any{-- interface HTMLElement--} Unit,
+  onExiting :: EffectFn1 Any{-- interface HTMLElement--} Unit,
+  onExited :: EffectFn1 Any{-- interface HTMLElement--} Unit,
+  container :: OneOf ((typed :: Any{-- ( => interface Element | React.Component<any, {}, any>)--},
+  typed :: Any{-- interface Element--},
+  typed :: Any{-- React.Component<any, {}, any>--})),
   manifest :: String,
   disablePortal :: Boolean,
-  onRendered :: Any {--( => void)--},
-  "BackdropComponent" :: OneOf ((
-    typed :: String,
-    typed :: Any {--React.ComponentClass<"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Backdrop/Backdrop".BackdropProps<>, any>--},
-    typed :: Any {--(props: "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Backdrop/Backdrop".BackdropProps<> | {children: undefined | null | string | number | false | true | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--})),
-  "BackdropProps" :: Any {--unknown--},
+  onRendered :: Any{-- ( => void)--},
+  "BackdropComponent" :: OneOf ((typed :: Any{-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Backdrop/Backdrop".BackdropProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--},
+  typed :: String,
+  typed :: Any{-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Backdrop/Backdrop".BackdropProps<>, any>--})),
+  "BackdropProps" :: Any{-- unknown--},
   disableAutoFocus :: Boolean,
   disableBackdropClick :: Boolean,
   disableEnforceFocus :: Boolean,
@@ -277,20 +258,18 @@ type DrawerPropsO r = (
   disableRestoreFocus :: Boolean,
   hideBackdrop :: Boolean,
   keepMounted :: Boolean,
-  manager :: Any {--ModalManager<>--},
+  manager :: Any{-- ModalManager<>--},
   onBackdropClick :: EffectFn1 SyntheticEvent Unit,
   onClose :: EffectFn1 SyntheticEvent Unit,
-  onEscapeKeyDown :: EffectFn1 SyntheticEvent Unit,
-  classes :: Any {--unknown--} | r )
+  onEscapeKeyDown :: EffectFn1 SyntheticEvent Unit | r)
 
-type DrawerPropsM  = (
-)
+type DrawerPropsM  = ()
 
-drawer :: forall a. IsTSEq (Record a) (OptionRecord (DrawerPropsO DrawerPropsM) DrawerPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
+drawer :: forall a.IsTSEq (Record a) (OptionRecord (DrawerPropsO DrawerPropsM) DrawerPropsM)  => Record a -> Array ReactElement -> ReactElement
 drawer = unsafeCreateElement classDrawer
 
-drawer_ :: Function (Array ReactElement) ReactElement
+drawer_ :: Array ReactElement -> ReactElement
 drawer_ = unsafeCreateElement classDrawer {}
 
-drawer' :: forall a. IsTSEq (Record a) (OptionRecord (DrawerPropsO DrawerPropsM) DrawerPropsM) => Function (Record a) ReactElement
+drawer' :: forall a.IsTSEq (Record a) (OptionRecord (DrawerPropsO DrawerPropsM) DrawerPropsM)  => Record a -> ReactElement
 drawer' = unsafeCreateLeafElement classDrawer
