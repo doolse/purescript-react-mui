@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classAvatar :: forall a. ReactClass a
@@ -237,10 +237,10 @@ type AvatarPropsM  = (
 )
 
 avatar :: forall a. IsTSEq (Record a) (OptionRecord (AvatarPropsO AvatarPropsM) AvatarPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-avatar = unsafeCreateElementDynamic classAvatar
+avatar = unsafeCreateElement classAvatar
 
 avatar_ :: Function (Array ReactElement) ReactElement
-avatar_ = unsafeCreateElementDynamic classAvatar {}
+avatar_ = unsafeCreateElement classAvatar {}
 
 avatar' :: forall a. IsTSEq (Record a) (OptionRecord (AvatarPropsO AvatarPropsM) AvatarPropsM) => Function (Record a) ReactElement
 avatar' = unsafeCreateLeafElement classAvatar

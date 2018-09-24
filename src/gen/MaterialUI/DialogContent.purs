@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classDialogContent :: forall a. ReactClass a
@@ -227,10 +227,10 @@ type DialogContentPropsM  = (
 )
 
 dialogContent :: forall a. IsTSEq (Record a) (OptionRecord (DialogContentPropsO DialogContentPropsM) DialogContentPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-dialogContent = unsafeCreateElementDynamic classDialogContent
+dialogContent = unsafeCreateElement classDialogContent
 
 dialogContent_ :: Function (Array ReactElement) ReactElement
-dialogContent_ = unsafeCreateElementDynamic classDialogContent {}
+dialogContent_ = unsafeCreateElement classDialogContent {}
 
 dialogContent' :: forall a. IsTSEq (Record a) (OptionRecord (DialogContentPropsO DialogContentPropsM) DialogContentPropsM) => Function (Record a) ReactElement
 dialogContent' = unsafeCreateLeafElement classDialogContent

@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classTableSortLabel :: forall a. ReactClass a
@@ -273,10 +273,10 @@ type TableSortLabelPropsM  = (
 )
 
 tableSortLabel :: forall a. IsTSEq (Record a) (OptionRecord (TableSortLabelPropsO TableSortLabelPropsM) TableSortLabelPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-tableSortLabel = unsafeCreateElementDynamic classTableSortLabel
+tableSortLabel = unsafeCreateElement classTableSortLabel
 
 tableSortLabel_ :: Function (Array ReactElement) ReactElement
-tableSortLabel_ = unsafeCreateElementDynamic classTableSortLabel {}
+tableSortLabel_ = unsafeCreateElement classTableSortLabel {}
 
 tableSortLabel' :: forall a. IsTSEq (Record a) (OptionRecord (TableSortLabelPropsO TableSortLabelPropsM) TableSortLabelPropsM) => Function (Record a) ReactElement
 tableSortLabel' = unsafeCreateLeafElement classTableSortLabel

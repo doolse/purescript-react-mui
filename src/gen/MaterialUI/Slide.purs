@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 
 foreign import classSlide :: forall a. ReactClass a
 
@@ -51,10 +51,10 @@ type SlidePropsM  = (
     typed :: StringConst ("down"))))
 
 slide :: forall a. IsTSEq (Record a) (OptionRecord (SlidePropsO SlidePropsM) SlidePropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-slide = unsafeCreateElementDynamic classSlide
+slide = unsafeCreateElement classSlide
 
 slide_ :: Function (Array ReactElement) ReactElement
-slide_ = unsafeCreateElementDynamic classSlide {}
+slide_ = unsafeCreateElement classSlide {}
 
 slide' :: forall a. IsTSEq (Record a) (OptionRecord (SlidePropsO SlidePropsM) SlidePropsM) => Function (Record a) ReactElement
 slide' = unsafeCreateLeafElement classSlide

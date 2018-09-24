@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classIconButton :: forall a. ReactClass a
@@ -269,10 +269,10 @@ type IconButtonPropsM  = (
 )
 
 iconButton :: forall a. IsTSEq (Record a) (OptionRecord (IconButtonPropsO IconButtonPropsM) IconButtonPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-iconButton = unsafeCreateElementDynamic classIconButton
+iconButton = unsafeCreateElement classIconButton
 
 iconButton_ :: Function (Array ReactElement) ReactElement
-iconButton_ = unsafeCreateElementDynamic classIconButton {}
+iconButton_ = unsafeCreateElement classIconButton {}
 
 iconButton' :: forall a. IsTSEq (Record a) (OptionRecord (IconButtonPropsO IconButtonPropsM) IconButtonPropsM) => Function (Record a) ReactElement
 iconButton' = unsafeCreateLeafElement classIconButton

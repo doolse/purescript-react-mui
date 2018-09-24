@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 
 foreign import classTransition :: forall a. ReactClass a
 
@@ -46,10 +46,10 @@ type TransitionPropsM  = (
 )
 
 transition :: forall a. IsTSEq (Record a) (OptionRecord (TransitionPropsO TransitionPropsM) TransitionPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-transition = unsafeCreateElementDynamic classTransition
+transition = unsafeCreateElement classTransition
 
 transition_ :: Function (Array ReactElement) ReactElement
-transition_ = unsafeCreateElementDynamic classTransition {}
+transition_ = unsafeCreateElement classTransition {}
 
 transition' :: forall a. IsTSEq (Record a) (OptionRecord (TransitionPropsO TransitionPropsM) TransitionPropsM) => Function (Record a) ReactElement
 transition' = unsafeCreateLeafElement classTransition

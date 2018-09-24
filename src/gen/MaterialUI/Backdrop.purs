@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classBackdrop :: forall a. ReactClass a
@@ -268,10 +268,10 @@ type BackdropPropsM  = (
   open :: Boolean)
 
 backdrop :: forall a. IsTSEq (Record a) (OptionRecord (BackdropPropsO BackdropPropsM) BackdropPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-backdrop = unsafeCreateElementDynamic classBackdrop
+backdrop = unsafeCreateElement classBackdrop
 
 backdrop_ :: Function (Array ReactElement) ReactElement
-backdrop_ = unsafeCreateElementDynamic classBackdrop {}
+backdrop_ = unsafeCreateElement classBackdrop {}
 
 backdrop' :: forall a. IsTSEq (Record a) (OptionRecord (BackdropPropsO BackdropPropsM) BackdropPropsM) => Function (Record a) ReactElement
 backdrop' = unsafeCreateLeafElement classBackdrop

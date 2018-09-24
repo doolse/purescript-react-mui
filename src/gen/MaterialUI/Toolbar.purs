@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classToolbar :: forall a. ReactClass a
@@ -231,10 +231,10 @@ type ToolbarPropsM  = (
 )
 
 toolbar :: forall a. IsTSEq (Record a) (OptionRecord (ToolbarPropsO ToolbarPropsM) ToolbarPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-toolbar = unsafeCreateElementDynamic classToolbar
+toolbar = unsafeCreateElement classToolbar
 
 toolbar_ :: Function (Array ReactElement) ReactElement
-toolbar_ = unsafeCreateElementDynamic classToolbar {}
+toolbar_ = unsafeCreateElement classToolbar {}
 
 toolbar' :: forall a. IsTSEq (Record a) (OptionRecord (ToolbarPropsO ToolbarPropsM) ToolbarPropsM) => Function (Record a) ReactElement
 toolbar' = unsafeCreateLeafElement classToolbar

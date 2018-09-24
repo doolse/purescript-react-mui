@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 
 foreign import classRootRef :: forall a. ReactClass a
 
@@ -21,10 +21,10 @@ type RootRefPropsM  = (
 )
 
 rootRef :: forall a. IsTSEq (Record a) (OptionRecord (RootRefPropsO RootRefPropsM) RootRefPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-rootRef = unsafeCreateElementDynamic classRootRef
+rootRef = unsafeCreateElement classRootRef
 
 rootRef_ :: Function (Array ReactElement) ReactElement
-rootRef_ = unsafeCreateElementDynamic classRootRef {}
+rootRef_ = unsafeCreateElement classRootRef {}
 
 rootRef' :: forall a. IsTSEq (Record a) (OptionRecord (RootRefPropsO RootRefPropsM) RootRefPropsM) => Function (Record a) ReactElement
 rootRef' = unsafeCreateLeafElement classRootRef

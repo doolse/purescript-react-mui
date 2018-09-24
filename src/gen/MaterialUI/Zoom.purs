@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 
 foreign import classZoom :: forall a. ReactClass a
 
@@ -47,10 +47,10 @@ type ZoomPropsM  = (
 )
 
 zoom :: forall a. IsTSEq (Record a) (OptionRecord (ZoomPropsO ZoomPropsM) ZoomPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-zoom = unsafeCreateElementDynamic classZoom
+zoom = unsafeCreateElement classZoom
 
 zoom_ :: Function (Array ReactElement) ReactElement
-zoom_ = unsafeCreateElementDynamic classZoom {}
+zoom_ = unsafeCreateElement classZoom {}
 
 zoom' :: forall a. IsTSEq (Record a) (OptionRecord (ZoomPropsO ZoomPropsM) ZoomPropsM) => Function (Record a) ReactElement
 zoom' = unsafeCreateLeafElement classZoom

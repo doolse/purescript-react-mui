@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classPaper :: forall a. ReactClass a
@@ -233,10 +233,10 @@ type PaperPropsM  = (
 )
 
 paper :: forall a. IsTSEq (Record a) (OptionRecord (PaperPropsO PaperPropsM) PaperPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-paper = unsafeCreateElementDynamic classPaper
+paper = unsafeCreateElement classPaper
 
 paper_ :: Function (Array ReactElement) ReactElement
-paper_ = unsafeCreateElementDynamic classPaper {}
+paper_ = unsafeCreateElement classPaper {}
 
 paper' :: forall a. IsTSEq (Record a) (OptionRecord (PaperPropsO PaperPropsM) PaperPropsM) => Function (Record a) ReactElement
 paper' = unsafeCreateLeafElement classPaper

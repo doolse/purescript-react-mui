@@ -1,7 +1,7 @@
 module MaterialUI.Portal where
 import Data.TSCompat (Any, OneOf, OptionRecord)
 import Data.TSCompat.Class (class IsTSEq)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 
 foreign import classPortal :: forall a. ReactClass a
 
@@ -20,10 +20,10 @@ type PortalPropsM  = (
 )
 
 portal :: forall a. IsTSEq (Record a) (OptionRecord (PortalPropsO PortalPropsM) PortalPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-portal = unsafeCreateElementDynamic classPortal
+portal = unsafeCreateElement classPortal
 
 portal_ :: Function (Array ReactElement) ReactElement
-portal_ = unsafeCreateElementDynamic classPortal {}
+portal_ = unsafeCreateElement classPortal {}
 
 portal' :: forall a. IsTSEq (Record a) (OptionRecord (PortalPropsO PortalPropsM) PortalPropsM) => Function (Record a) ReactElement
 portal' = unsafeCreateLeafElement classPortal

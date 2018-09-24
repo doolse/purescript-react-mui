@@ -4,7 +4,7 @@ import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticFocusEvent)
 
 foreign import classSelectInput :: forall a. ReactClass a
@@ -76,10 +76,10 @@ type SelectInputPropsM  = (
   native :: Boolean)
 
 selectInput :: forall a. IsTSEq (Record a) (OptionRecord (SelectInputPropsO SelectInputPropsM) SelectInputPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-selectInput = unsafeCreateElementDynamic classSelectInput
+selectInput = unsafeCreateElement classSelectInput
 
 selectInput_ :: Function (Array ReactElement) ReactElement
-selectInput_ = unsafeCreateElementDynamic classSelectInput {}
+selectInput_ = unsafeCreateElement classSelectInput {}
 
 selectInput' :: forall a. IsTSEq (Record a) (OptionRecord (SelectInputPropsO SelectInputPropsM) SelectInputPropsM) => Function (Record a) ReactElement
 selectInput' = unsafeCreateLeafElement classSelectInput

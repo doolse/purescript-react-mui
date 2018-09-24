@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classMobileStepper :: forall a. ReactClass a
@@ -245,10 +245,10 @@ type MobileStepperPropsM  = (
   steps :: Number)
 
 mobileStepper :: forall a. IsTSEq (Record a) (OptionRecord (MobileStepperPropsO MobileStepperPropsM) MobileStepperPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-mobileStepper = unsafeCreateElementDynamic classMobileStepper
+mobileStepper = unsafeCreateElement classMobileStepper
 
 mobileStepper_ :: Function (Array ReactElement) ReactElement
-mobileStepper_ = unsafeCreateElementDynamic classMobileStepper {}
+mobileStepper_ = unsafeCreateElement classMobileStepper {}
 
 mobileStepper' :: forall a. IsTSEq (Record a) (OptionRecord (MobileStepperPropsO MobileStepperPropsM) MobileStepperPropsM) => Function (Record a) ReactElement
 mobileStepper' = unsafeCreateLeafElement classMobileStepper

@@ -4,7 +4,7 @@ import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classSelect :: forall a. ReactClass a
@@ -295,10 +295,10 @@ type SelectPropsM  = (
 )
 
 select :: forall a. IsTSEq (Record a) (OptionRecord (SelectPropsO SelectPropsM) SelectPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-select = unsafeCreateElementDynamic classSelect
+select = unsafeCreateElement classSelect
 
 select_ :: Function (Array ReactElement) ReactElement
-select_ = unsafeCreateElementDynamic classSelect {}
+select_ = unsafeCreateElement classSelect {}
 
 select' :: forall a. IsTSEq (Record a) (OptionRecord (SelectPropsO SelectPropsM) SelectPropsM) => Function (Record a) ReactElement
 select' = unsafeCreateLeafElement classSelect

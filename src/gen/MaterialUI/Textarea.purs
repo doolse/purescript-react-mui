@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classTextarea :: forall a. ReactClass a
@@ -248,10 +248,10 @@ type TextareaPropsM  = (
 )
 
 textarea :: forall a. IsTSEq (Record a) (OptionRecord (TextareaPropsO TextareaPropsM) TextareaPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-textarea = unsafeCreateElementDynamic classTextarea
+textarea = unsafeCreateElement classTextarea
 
 textarea_ :: Function (Array ReactElement) ReactElement
-textarea_ = unsafeCreateElementDynamic classTextarea {}
+textarea_ = unsafeCreateElement classTextarea {}
 
 textarea' :: forall a. IsTSEq (Record a) (OptionRecord (TextareaPropsO TextareaPropsM) TextareaPropsM) => Function (Record a) ReactElement
 textarea' = unsafeCreateLeafElement classTextarea

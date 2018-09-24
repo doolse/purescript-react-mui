@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 
 foreign import classCollapse :: forall a. ReactClass a
 
@@ -59,10 +59,10 @@ type CollapsePropsM  = (
 )
 
 collapse :: forall a. IsTSEq (Record a) (OptionRecord (CollapsePropsO CollapsePropsM) CollapsePropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-collapse = unsafeCreateElementDynamic classCollapse
+collapse = unsafeCreateElement classCollapse
 
 collapse_ :: Function (Array ReactElement) ReactElement
-collapse_ = unsafeCreateElementDynamic classCollapse {}
+collapse_ = unsafeCreateElement classCollapse {}
 
 collapse' :: forall a. IsTSEq (Record a) (OptionRecord (CollapsePropsO CollapsePropsM) CollapsePropsM) => Function (Record a) ReactElement
 collapse' = unsafeCreateLeafElement classCollapse

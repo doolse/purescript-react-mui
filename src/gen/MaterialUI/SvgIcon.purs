@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classSvgIcon :: forall a. ReactClass a
@@ -882,10 +882,10 @@ type SvgIconPropsM  = (
 )
 
 svgIcon :: forall a. IsTSEq (Record a) (OptionRecord (SvgIconPropsO SvgIconPropsM) SvgIconPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-svgIcon = unsafeCreateElementDynamic classSvgIcon
+svgIcon = unsafeCreateElement classSvgIcon
 
 svgIcon_ :: Function (Array ReactElement) ReactElement
-svgIcon_ = unsafeCreateElementDynamic classSvgIcon {}
+svgIcon_ = unsafeCreateElement classSvgIcon {}
 
 svgIcon' :: forall a. IsTSEq (Record a) (OptionRecord (SvgIconPropsO SvgIconPropsM) SvgIconPropsM) => Function (Record a) ReactElement
 svgIcon' = unsafeCreateLeafElement classSvgIcon

@@ -4,7 +4,7 @@ import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classCheckbox :: forall a. ReactClass a
@@ -282,10 +282,10 @@ type CheckboxPropsM  = (
 )
 
 checkbox :: forall a. IsTSEq (Record a) (OptionRecord (CheckboxPropsO CheckboxPropsM) CheckboxPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-checkbox = unsafeCreateElementDynamic classCheckbox
+checkbox = unsafeCreateElement classCheckbox
 
 checkbox_ :: Function (Array ReactElement) ReactElement
-checkbox_ = unsafeCreateElementDynamic classCheckbox {}
+checkbox_ = unsafeCreateElement classCheckbox {}
 
 checkbox' :: forall a. IsTSEq (Record a) (OptionRecord (CheckboxPropsO CheckboxPropsM) CheckboxPropsM) => Function (Record a) ReactElement
 checkbox' = unsafeCreateLeafElement classCheckbox

@@ -4,7 +4,7 @@ import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classNativeSelect :: forall a. ReactClass a
@@ -270,10 +270,10 @@ type NativeSelectPropsM  = (
 )
 
 nativeSelect :: forall a. IsTSEq (Record a) (OptionRecord (NativeSelectPropsO NativeSelectPropsM) NativeSelectPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-nativeSelect = unsafeCreateElementDynamic classNativeSelect
+nativeSelect = unsafeCreateElement classNativeSelect
 
 nativeSelect_ :: Function (Array ReactElement) ReactElement
-nativeSelect_ = unsafeCreateElementDynamic classNativeSelect {}
+nativeSelect_ = unsafeCreateElement classNativeSelect {}
 
 nativeSelect' :: forall a. IsTSEq (Record a) (OptionRecord (NativeSelectPropsO NativeSelectPropsM) NativeSelectPropsM) => Function (Record a) ReactElement
 nativeSelect' = unsafeCreateLeafElement classNativeSelect

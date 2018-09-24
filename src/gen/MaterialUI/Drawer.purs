@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classDrawer :: forall a. ReactClass a
@@ -287,10 +287,10 @@ type DrawerPropsM  = (
 )
 
 drawer :: forall a. IsTSEq (Record a) (OptionRecord (DrawerPropsO DrawerPropsM) DrawerPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-drawer = unsafeCreateElementDynamic classDrawer
+drawer = unsafeCreateElement classDrawer
 
 drawer_ :: Function (Array ReactElement) ReactElement
-drawer_ = unsafeCreateElementDynamic classDrawer {}
+drawer_ = unsafeCreateElement classDrawer {}
 
 drawer' :: forall a. IsTSEq (Record a) (OptionRecord (DrawerPropsO DrawerPropsM) DrawerPropsM) => Function (Record a) ReactElement
 drawer' = unsafeCreateLeafElement classDrawer

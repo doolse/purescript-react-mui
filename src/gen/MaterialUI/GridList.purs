@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classGridList :: forall a. ReactClass a
@@ -236,10 +236,10 @@ type GridListPropsM  = (
 )
 
 gridList :: forall a. IsTSEq (Record a) (OptionRecord (GridListPropsO GridListPropsM) GridListPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-gridList = unsafeCreateElementDynamic classGridList
+gridList = unsafeCreateElement classGridList
 
 gridList_ :: Function (Array ReactElement) ReactElement
-gridList_ = unsafeCreateElementDynamic classGridList {}
+gridList_ = unsafeCreateElement classGridList {}
 
 gridList' :: forall a. IsTSEq (Record a) (OptionRecord (GridListPropsO GridListPropsM) GridListPropsM) => Function (Record a) ReactElement
 gridList' = unsafeCreateLeafElement classGridList

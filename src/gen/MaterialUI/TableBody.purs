@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classTableBody :: forall a. ReactClass a
@@ -231,10 +231,10 @@ type TableBodyPropsM  = (
 )
 
 tableBody :: forall a. IsTSEq (Record a) (OptionRecord (TableBodyPropsO TableBodyPropsM) TableBodyPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-tableBody = unsafeCreateElementDynamic classTableBody
+tableBody = unsafeCreateElement classTableBody
 
 tableBody_ :: Function (Array ReactElement) ReactElement
-tableBody_ = unsafeCreateElementDynamic classTableBody {}
+tableBody_ = unsafeCreateElement classTableBody {}
 
 tableBody' :: forall a. IsTSEq (Record a) (OptionRecord (TableBodyPropsO TableBodyPropsM) TableBodyPropsM) => Function (Record a) ReactElement
 tableBody' = unsafeCreateLeafElement classTableBody

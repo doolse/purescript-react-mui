@@ -4,7 +4,7 @@ import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classBadge :: forall a. ReactClass a
@@ -237,10 +237,10 @@ type BadgePropsM  = (
   badgeContent :: ReactNode)
 
 badge :: forall a. IsTSEq (Record a) (OptionRecord (BadgePropsO BadgePropsM) BadgePropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-badge = unsafeCreateElementDynamic classBadge
+badge = unsafeCreateElement classBadge
 
 badge_ :: Function (Array ReactElement) ReactElement
-badge_ = unsafeCreateElementDynamic classBadge {}
+badge_ = unsafeCreateElement classBadge {}
 
 badge' :: forall a. IsTSEq (Record a) (OptionRecord (BadgePropsO BadgePropsM) BadgePropsM) => Function (Record a) ReactElement
 badge' = unsafeCreateLeafElement classBadge

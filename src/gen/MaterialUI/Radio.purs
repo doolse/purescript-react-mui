@@ -4,7 +4,7 @@ import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classRadio :: forall a. ReactClass a
@@ -280,10 +280,10 @@ type RadioPropsM  = (
 )
 
 radio :: forall a. IsTSEq (Record a) (OptionRecord (RadioPropsO RadioPropsM) RadioPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-radio = unsafeCreateElementDynamic classRadio
+radio = unsafeCreateElement classRadio
 
 radio_ :: Function (Array ReactElement) ReactElement
-radio_ = unsafeCreateElementDynamic classRadio {}
+radio_ = unsafeCreateElement classRadio {}
 
 radio' :: forall a. IsTSEq (Record a) (OptionRecord (RadioPropsO RadioPropsM) RadioPropsM) => Function (Record a) ReactElement
 radio' = unsafeCreateLeafElement classRadio

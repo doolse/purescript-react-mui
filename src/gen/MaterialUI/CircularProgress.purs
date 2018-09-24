@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classCircularProgress :: forall a. ReactClass a
@@ -239,10 +239,10 @@ type CircularProgressPropsM  = (
 )
 
 circularProgress :: forall a. IsTSEq (Record a) (OptionRecord (CircularProgressPropsO CircularProgressPropsM) CircularProgressPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-circularProgress = unsafeCreateElementDynamic classCircularProgress
+circularProgress = unsafeCreateElement classCircularProgress
 
 circularProgress_ :: Function (Array ReactElement) ReactElement
-circularProgress_ = unsafeCreateElementDynamic classCircularProgress {}
+circularProgress_ = unsafeCreateElement classCircularProgress {}
 
 circularProgress' :: forall a. IsTSEq (Record a) (OptionRecord (CircularProgressPropsO CircularProgressPropsM) CircularProgressPropsM) => Function (Record a) ReactElement
 circularProgress' = unsafeCreateLeafElement classCircularProgress

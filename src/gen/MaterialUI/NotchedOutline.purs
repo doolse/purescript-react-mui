@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classNotchedOutline :: forall a. ReactClass a
@@ -233,10 +233,10 @@ type NotchedOutlinePropsM  = (
   notched :: Boolean)
 
 notchedOutline :: forall a. IsTSEq (Record a) (OptionRecord (NotchedOutlinePropsO NotchedOutlinePropsM) NotchedOutlinePropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-notchedOutline = unsafeCreateElementDynamic classNotchedOutline
+notchedOutline = unsafeCreateElement classNotchedOutline
 
 notchedOutline_ :: Function (Array ReactElement) ReactElement
-notchedOutline_ = unsafeCreateElementDynamic classNotchedOutline {}
+notchedOutline_ = unsafeCreateElement classNotchedOutline {}
 
 notchedOutline' :: forall a. IsTSEq (Record a) (OptionRecord (NotchedOutlinePropsO NotchedOutlinePropsM) NotchedOutlinePropsM) => Function (Record a) ReactElement
 notchedOutline' = unsafeCreateLeafElement classNotchedOutline

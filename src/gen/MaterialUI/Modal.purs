@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classModal :: forall a. ReactClass a
@@ -250,10 +250,10 @@ type ModalPropsM  = (
   open :: Boolean)
 
 modal :: forall a. IsTSEq (Record a) (OptionRecord (ModalPropsO ModalPropsM) ModalPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-modal = unsafeCreateElementDynamic classModal
+modal = unsafeCreateElement classModal
 
 modal_ :: Function (Array ReactElement) ReactElement
-modal_ = unsafeCreateElementDynamic classModal {}
+modal_ = unsafeCreateElement classModal {}
 
 modal' :: forall a. IsTSEq (Record a) (OptionRecord (ModalPropsO ModalPropsM) ModalPropsM) => Function (Record a) ReactElement
 modal' = unsafeCreateLeafElement classModal

@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classFormGroup :: forall a. ReactClass a
@@ -229,10 +229,10 @@ type FormGroupPropsM  = (
 )
 
 formGroup :: forall a. IsTSEq (Record a) (OptionRecord (FormGroupPropsO FormGroupPropsM) FormGroupPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-formGroup = unsafeCreateElementDynamic classFormGroup
+formGroup = unsafeCreateElement classFormGroup
 
 formGroup_ :: Function (Array ReactElement) ReactElement
-formGroup_ = unsafeCreateElementDynamic classFormGroup {}
+formGroup_ = unsafeCreateElement classFormGroup {}
 
 formGroup' :: forall a. IsTSEq (Record a) (OptionRecord (FormGroupPropsO FormGroupPropsM) FormGroupPropsM) => Function (Record a) ReactElement
 formGroup' = unsafeCreateLeafElement classFormGroup

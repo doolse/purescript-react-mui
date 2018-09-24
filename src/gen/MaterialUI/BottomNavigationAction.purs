@@ -4,7 +4,7 @@ import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classBottomNavigationAction :: forall a. ReactClass a
@@ -269,10 +269,10 @@ type BottomNavigationActionPropsM  = (
 )
 
 bottomNavigationAction :: forall a. IsTSEq (Record a) (OptionRecord (BottomNavigationActionPropsO BottomNavigationActionPropsM) BottomNavigationActionPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-bottomNavigationAction = unsafeCreateElementDynamic classBottomNavigationAction
+bottomNavigationAction = unsafeCreateElement classBottomNavigationAction
 
 bottomNavigationAction_ :: Function (Array ReactElement) ReactElement
-bottomNavigationAction_ = unsafeCreateElementDynamic classBottomNavigationAction {}
+bottomNavigationAction_ = unsafeCreateElement classBottomNavigationAction {}
 
 bottomNavigationAction' :: forall a. IsTSEq (Record a) (OptionRecord (BottomNavigationActionPropsO BottomNavigationActionPropsM) BottomNavigationActionPropsM) => Function (Record a) ReactElement
 bottomNavigationAction' = unsafeCreateLeafElement classBottomNavigationAction

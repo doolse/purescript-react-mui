@@ -4,7 +4,7 @@ import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classSnackbar :: forall a. ReactClass a
@@ -264,10 +264,10 @@ type SnackbarPropsM  = (
   open :: Boolean)
 
 snackbar :: forall a. IsTSEq (Record a) (OptionRecord (SnackbarPropsO SnackbarPropsM) SnackbarPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-snackbar = unsafeCreateElementDynamic classSnackbar
+snackbar = unsafeCreateElement classSnackbar
 
 snackbar_ :: Function (Array ReactElement) ReactElement
-snackbar_ = unsafeCreateElementDynamic classSnackbar {}
+snackbar_ = unsafeCreateElement classSnackbar {}
 
 snackbar' :: forall a. IsTSEq (Record a) (OptionRecord (SnackbarPropsO SnackbarPropsM) SnackbarPropsM) => Function (Record a) ReactElement
 snackbar' = unsafeCreateLeafElement classSnackbar

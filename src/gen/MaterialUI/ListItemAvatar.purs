@@ -1,7 +1,7 @@
 module MaterialUI.ListItemAvatar where
 import Data.TSCompat (Any, OneOf, OptionRecord)
 import Data.TSCompat.Class (class IsTSEq)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 
 foreign import classListItemAvatar :: forall a. ReactClass a
 
@@ -21,10 +21,10 @@ type ListItemAvatarPropsM  = (
 )
 
 listItemAvatar :: forall a. IsTSEq (Record a) (OptionRecord (ListItemAvatarPropsO ListItemAvatarPropsM) ListItemAvatarPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-listItemAvatar = unsafeCreateElementDynamic classListItemAvatar
+listItemAvatar = unsafeCreateElement classListItemAvatar
 
 listItemAvatar_ :: Function (Array ReactElement) ReactElement
-listItemAvatar_ = unsafeCreateElementDynamic classListItemAvatar {}
+listItemAvatar_ = unsafeCreateElement classListItemAvatar {}
 
 listItemAvatar' :: forall a. IsTSEq (Record a) (OptionRecord (ListItemAvatarPropsO ListItemAvatarPropsM) ListItemAvatarPropsM) => Function (Record a) ReactElement
 listItemAvatar' = unsafeCreateLeafElement classListItemAvatar

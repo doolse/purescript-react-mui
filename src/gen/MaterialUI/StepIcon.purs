@@ -4,7 +4,7 @@ import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classStepIcon :: forall a. ReactClass a
@@ -231,10 +231,10 @@ type StepIconPropsM  = (
   icon :: ReactNode)
 
 stepIcon :: forall a. IsTSEq (Record a) (OptionRecord (StepIconPropsO StepIconPropsM) StepIconPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-stepIcon = unsafeCreateElementDynamic classStepIcon
+stepIcon = unsafeCreateElement classStepIcon
 
 stepIcon_ :: Function (Array ReactElement) ReactElement
-stepIcon_ = unsafeCreateElementDynamic classStepIcon {}
+stepIcon_ = unsafeCreateElement classStepIcon {}
 
 stepIcon' :: forall a. IsTSEq (Record a) (OptionRecord (StepIconPropsO StepIconPropsM) StepIconPropsM) => Function (Record a) ReactElement
 stepIcon' = unsafeCreateLeafElement classStepIcon

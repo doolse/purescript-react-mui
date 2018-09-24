@@ -4,7 +4,7 @@ import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classTooltip :: forall a. ReactClass a
@@ -256,10 +256,10 @@ type TooltipPropsM  = (
   title :: ReactNode)
 
 tooltip :: forall a. IsTSEq (Record a) (OptionRecord (TooltipPropsO TooltipPropsM) TooltipPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-tooltip = unsafeCreateElementDynamic classTooltip
+tooltip = unsafeCreateElement classTooltip
 
 tooltip_ :: Function (Array ReactElement) ReactElement
-tooltip_ = unsafeCreateElementDynamic classTooltip {}
+tooltip_ = unsafeCreateElement classTooltip {}
 
 tooltip' :: forall a. IsTSEq (Record a) (OptionRecord (TooltipPropsO TooltipPropsM) TooltipPropsM) => Function (Record a) ReactElement
 tooltip' = unsafeCreateLeafElement classTooltip

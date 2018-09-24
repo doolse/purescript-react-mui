@@ -4,7 +4,7 @@ import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classTab :: forall a. ReactClass a
@@ -270,10 +270,10 @@ type TabPropsM  = (
 )
 
 tab :: forall a. IsTSEq (Record a) (OptionRecord (TabPropsO TabPropsM) TabPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-tab = unsafeCreateElementDynamic classTab
+tab = unsafeCreateElement classTab
 
 tab_ :: Function (Array ReactElement) ReactElement
-tab_ = unsafeCreateElementDynamic classTab {}
+tab_ = unsafeCreateElement classTab {}
 
 tab' :: forall a. IsTSEq (Record a) (OptionRecord (TabPropsO TabPropsM) TabPropsM) => Function (Record a) ReactElement
 tab' = unsafeCreateLeafElement classTab

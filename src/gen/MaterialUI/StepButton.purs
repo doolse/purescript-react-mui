@@ -4,7 +4,7 @@ import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classStepButton :: forall a. ReactClass a
@@ -278,10 +278,10 @@ type StepButtonPropsM  = (
 )
 
 stepButton :: forall a. IsTSEq (Record a) (OptionRecord (StepButtonPropsO StepButtonPropsM) StepButtonPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-stepButton = unsafeCreateElementDynamic classStepButton
+stepButton = unsafeCreateElement classStepButton
 
 stepButton_ :: Function (Array ReactElement) ReactElement
-stepButton_ = unsafeCreateElementDynamic classStepButton {}
+stepButton_ = unsafeCreateElement classStepButton {}
 
 stepButton' :: forall a. IsTSEq (Record a) (OptionRecord (StepButtonPropsO StepButtonPropsM) StepButtonPropsM) => Function (Record a) ReactElement
 stepButton' = unsafeCreateLeafElement classStepButton

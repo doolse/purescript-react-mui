@@ -1,7 +1,7 @@
 module MaterialUI.HiddenJs where
 import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 
 foreign import classHiddenJs :: forall a. ReactClass a
 
@@ -37,10 +37,10 @@ type HiddenJsPropsM  = (
 )
 
 hiddenJs :: forall a. IsTSEq (Record a) (OptionRecord (HiddenJsPropsO HiddenJsPropsM) HiddenJsPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-hiddenJs = unsafeCreateElementDynamic classHiddenJs
+hiddenJs = unsafeCreateElement classHiddenJs
 
 hiddenJs_ :: Function (Array ReactElement) ReactElement
-hiddenJs_ = unsafeCreateElementDynamic classHiddenJs {}
+hiddenJs_ = unsafeCreateElement classHiddenJs {}
 
 hiddenJs' :: forall a. IsTSEq (Record a) (OptionRecord (HiddenJsPropsO HiddenJsPropsM) HiddenJsPropsM) => Function (Record a) ReactElement
 hiddenJs' = unsafeCreateLeafElement classHiddenJs

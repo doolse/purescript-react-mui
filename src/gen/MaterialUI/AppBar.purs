@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classAppBar :: forall a. ReactClass a
@@ -243,10 +243,10 @@ type AppBarPropsM  = (
 )
 
 appBar :: forall a. IsTSEq (Record a) (OptionRecord (AppBarPropsO AppBarPropsM) AppBarPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-appBar = unsafeCreateElementDynamic classAppBar
+appBar = unsafeCreateElement classAppBar
 
 appBar_ :: Function (Array ReactElement) ReactElement
-appBar_ = unsafeCreateElementDynamic classAppBar {}
+appBar_ = unsafeCreateElement classAppBar {}
 
 appBar' :: forall a. IsTSEq (Record a) (OptionRecord (AppBarPropsO AppBarPropsM) AppBarPropsM) => Function (Record a) ReactElement
 appBar' = unsafeCreateLeafElement classAppBar

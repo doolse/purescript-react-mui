@@ -2,7 +2,7 @@ module MaterialUI.GridListTileBar where
 import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 
 foreign import classGridListTileBar :: forall a. ReactClass a
 
@@ -31,10 +31,10 @@ type GridListTileBarPropsM  = (
 )
 
 gridListTileBar :: forall a. IsTSEq (Record a) (OptionRecord (GridListTileBarPropsO GridListTileBarPropsM) GridListTileBarPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-gridListTileBar = unsafeCreateElementDynamic classGridListTileBar
+gridListTileBar = unsafeCreateElement classGridListTileBar
 
 gridListTileBar_ :: Function (Array ReactElement) ReactElement
-gridListTileBar_ = unsafeCreateElementDynamic classGridListTileBar {}
+gridListTileBar_ = unsafeCreateElement classGridListTileBar {}
 
 gridListTileBar' :: forall a. IsTSEq (Record a) (OptionRecord (GridListTileBarPropsO GridListTileBarPropsM) GridListTileBarPropsM) => Function (Record a) ReactElement
 gridListTileBar' = unsafeCreateLeafElement classGridListTileBar

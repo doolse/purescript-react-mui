@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classDivider :: forall a. ReactClass a
@@ -234,10 +234,10 @@ type DividerPropsM  = (
 )
 
 divider :: forall a. IsTSEq (Record a) (OptionRecord (DividerPropsO DividerPropsM) DividerPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-divider = unsafeCreateElementDynamic classDivider
+divider = unsafeCreateElement classDivider
 
 divider_ :: Function (Array ReactElement) ReactElement
-divider_ = unsafeCreateElementDynamic classDivider {}
+divider_ = unsafeCreateElement classDivider {}
 
 divider' :: forall a. IsTSEq (Record a) (OptionRecord (DividerPropsO DividerPropsM) DividerPropsM) => Function (Record a) ReactElement
 divider' = unsafeCreateLeafElement classDivider

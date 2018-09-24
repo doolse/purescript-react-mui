@@ -1,7 +1,7 @@
 module MaterialUI.ListItemSecondaryAction where
 import Data.TSCompat (Any, OneOf, OptionRecord)
 import Data.TSCompat.Class (class IsTSEq)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 
 foreign import classListItemSecondaryAction :: forall a. ReactClass a
 
@@ -21,10 +21,10 @@ type ListItemSecondaryActionPropsM  = (
 )
 
 listItemSecondaryAction :: forall a. IsTSEq (Record a) (OptionRecord (ListItemSecondaryActionPropsO ListItemSecondaryActionPropsM) ListItemSecondaryActionPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-listItemSecondaryAction = unsafeCreateElementDynamic classListItemSecondaryAction
+listItemSecondaryAction = unsafeCreateElement classListItemSecondaryAction
 
 listItemSecondaryAction_ :: Function (Array ReactElement) ReactElement
-listItemSecondaryAction_ = unsafeCreateElementDynamic classListItemSecondaryAction {}
+listItemSecondaryAction_ = unsafeCreateElement classListItemSecondaryAction {}
 
 listItemSecondaryAction' :: forall a. IsTSEq (Record a) (OptionRecord (ListItemSecondaryActionPropsO ListItemSecondaryActionPropsM) ListItemSecondaryActionPropsM) => Function (Record a) ReactElement
 listItemSecondaryAction' = unsafeCreateLeafElement classListItemSecondaryAction

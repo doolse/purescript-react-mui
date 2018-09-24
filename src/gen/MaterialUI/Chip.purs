@@ -4,7 +4,7 @@ import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classChip :: forall a. ReactClass a
@@ -245,10 +245,10 @@ type ChipPropsM  = (
 )
 
 chip :: forall a. IsTSEq (Record a) (OptionRecord (ChipPropsO ChipPropsM) ChipPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-chip = unsafeCreateElementDynamic classChip
+chip = unsafeCreateElement classChip
 
 chip_ :: Function (Array ReactElement) ReactElement
-chip_ = unsafeCreateElementDynamic classChip {}
+chip_ = unsafeCreateElement classChip {}
 
 chip' :: forall a. IsTSEq (Record a) (OptionRecord (ChipPropsO ChipPropsM) ChipPropsM) => Function (Record a) ReactElement
 chip' = unsafeCreateLeafElement classChip

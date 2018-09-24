@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 
 foreign import classFade :: forall a. ReactClass a
 
@@ -47,10 +47,10 @@ type FadePropsM  = (
 )
 
 fade :: forall a. IsTSEq (Record a) (OptionRecord (FadePropsO FadePropsM) FadePropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-fade = unsafeCreateElementDynamic classFade
+fade = unsafeCreateElement classFade
 
 fade_ :: Function (Array ReactElement) ReactElement
-fade_ = unsafeCreateElementDynamic classFade {}
+fade_ = unsafeCreateElement classFade {}
 
 fade' :: forall a. IsTSEq (Record a) (OptionRecord (FadePropsO FadePropsM) FadePropsM) => Function (Record a) ReactElement
 fade' = unsafeCreateLeafElement classFade

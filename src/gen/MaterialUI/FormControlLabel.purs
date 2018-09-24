@@ -4,7 +4,7 @@ import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classFormControlLabel :: forall a. ReactClass a
@@ -246,10 +246,10 @@ type FormControlLabelPropsM  = (
   label :: ReactNode)
 
 formControlLabel :: forall a. IsTSEq (Record a) (OptionRecord (FormControlLabelPropsO FormControlLabelPropsM) FormControlLabelPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-formControlLabel = unsafeCreateElementDynamic classFormControlLabel
+formControlLabel = unsafeCreateElement classFormControlLabel
 
 formControlLabel_ :: Function (Array ReactElement) ReactElement
-formControlLabel_ = unsafeCreateElementDynamic classFormControlLabel {}
+formControlLabel_ = unsafeCreateElement classFormControlLabel {}
 
 formControlLabel' :: forall a. IsTSEq (Record a) (OptionRecord (FormControlLabelPropsO FormControlLabelPropsM) FormControlLabelPropsM) => Function (Record a) ReactElement
 formControlLabel' = unsafeCreateLeafElement classFormControlLabel

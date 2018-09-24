@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classFormHelperText :: forall a. ReactClass a
@@ -241,10 +241,10 @@ type FormHelperTextPropsM  = (
 )
 
 formHelperText :: forall a. IsTSEq (Record a) (OptionRecord (FormHelperTextPropsO FormHelperTextPropsM) FormHelperTextPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-formHelperText = unsafeCreateElementDynamic classFormHelperText
+formHelperText = unsafeCreateElement classFormHelperText
 
 formHelperText_ :: Function (Array ReactElement) ReactElement
-formHelperText_ = unsafeCreateElementDynamic classFormHelperText {}
+formHelperText_ = unsafeCreateElement classFormHelperText {}
 
 formHelperText' :: forall a. IsTSEq (Record a) (OptionRecord (FormHelperTextPropsO FormHelperTextPropsM) FormHelperTextPropsM) => Function (Record a) ReactElement
 formHelperText' = unsafeCreateLeafElement classFormHelperText

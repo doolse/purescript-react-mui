@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classStepContent :: forall a. ReactClass a
@@ -250,10 +250,10 @@ type StepContentPropsM  = (
 )
 
 stepContent :: forall a. IsTSEq (Record a) (OptionRecord (StepContentPropsO StepContentPropsM) StepContentPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-stepContent = unsafeCreateElementDynamic classStepContent
+stepContent = unsafeCreateElement classStepContent
 
 stepContent_ :: Function (Array ReactElement) ReactElement
-stepContent_ = unsafeCreateElementDynamic classStepContent {}
+stepContent_ = unsafeCreateElement classStepContent {}
 
 stepContent' :: forall a. IsTSEq (Record a) (OptionRecord (StepContentPropsO StepContentPropsM) StepContentPropsM) => Function (Record a) ReactElement
 stepContent' = unsafeCreateLeafElement classStepContent

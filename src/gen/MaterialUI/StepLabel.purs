@@ -4,7 +4,7 @@ import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classStepLabel :: forall a. ReactClass a
@@ -243,10 +243,10 @@ type StepLabelPropsM  = (
 )
 
 stepLabel :: forall a. IsTSEq (Record a) (OptionRecord (StepLabelPropsO StepLabelPropsM) StepLabelPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-stepLabel = unsafeCreateElementDynamic classStepLabel
+stepLabel = unsafeCreateElement classStepLabel
 
 stepLabel_ :: Function (Array ReactElement) ReactElement
-stepLabel_ = unsafeCreateElementDynamic classStepLabel {}
+stepLabel_ = unsafeCreateElement classStepLabel {}
 
 stepLabel' :: forall a. IsTSEq (Record a) (OptionRecord (StepLabelPropsO StepLabelPropsM) StepLabelPropsM) => Function (Record a) ReactElement
 stepLabel' = unsafeCreateLeafElement classStepLabel

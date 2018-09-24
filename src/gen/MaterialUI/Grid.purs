@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classGrid :: forall a. ReactClass a
@@ -344,10 +344,10 @@ type GridPropsM  = (
 )
 
 grid :: forall a. IsTSEq (Record a) (OptionRecord (GridPropsO GridPropsM) GridPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-grid = unsafeCreateElementDynamic classGrid
+grid = unsafeCreateElement classGrid
 
 grid_ :: Function (Array ReactElement) ReactElement
-grid_ = unsafeCreateElementDynamic classGrid {}
+grid_ = unsafeCreateElement classGrid {}
 
 grid' :: forall a. IsTSEq (Record a) (OptionRecord (GridPropsO GridPropsM) GridPropsM) => Function (Record a) ReactElement
 grid' = unsafeCreateLeafElement classGrid

@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classStepConnector :: forall a. ReactClass a
@@ -231,10 +231,10 @@ type StepConnectorPropsM  = (
 )
 
 stepConnector :: forall a. IsTSEq (Record a) (OptionRecord (StepConnectorPropsO StepConnectorPropsM) StepConnectorPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-stepConnector = unsafeCreateElementDynamic classStepConnector
+stepConnector = unsafeCreateElement classStepConnector
 
 stepConnector_ :: Function (Array ReactElement) ReactElement
-stepConnector_ = unsafeCreateElementDynamic classStepConnector {}
+stepConnector_ = unsafeCreateElement classStepConnector {}
 
 stepConnector' :: forall a. IsTSEq (Record a) (OptionRecord (StepConnectorPropsO StepConnectorPropsM) StepConnectorPropsM) => Function (Record a) ReactElement
 stepConnector' = unsafeCreateLeafElement classStepConnector

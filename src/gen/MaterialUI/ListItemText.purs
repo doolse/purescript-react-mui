@@ -4,7 +4,7 @@ import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classListItemText :: forall a. ReactClass a
@@ -234,10 +234,10 @@ type ListItemTextPropsM  = (
 )
 
 listItemText :: forall a. IsTSEq (Record a) (OptionRecord (ListItemTextPropsO ListItemTextPropsM) ListItemTextPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-listItemText = unsafeCreateElementDynamic classListItemText
+listItemText = unsafeCreateElement classListItemText
 
 listItemText_ :: Function (Array ReactElement) ReactElement
-listItemText_ = unsafeCreateElementDynamic classListItemText {}
+listItemText_ = unsafeCreateElement classListItemText {}
 
 listItemText' :: forall a. IsTSEq (Record a) (OptionRecord (ListItemTextPropsO ListItemTextPropsM) ListItemTextPropsM) => Function (Record a) ReactElement
 listItemText' = unsafeCreateLeafElement classListItemText

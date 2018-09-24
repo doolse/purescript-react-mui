@@ -4,7 +4,7 @@ import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classOutlinedInput :: forall a. ReactClass a
@@ -267,10 +267,10 @@ type OutlinedInputPropsM  = (
   labelWidth :: Number)
 
 outlinedInput :: forall a. IsTSEq (Record a) (OptionRecord (OutlinedInputPropsO OutlinedInputPropsM) OutlinedInputPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-outlinedInput = unsafeCreateElementDynamic classOutlinedInput
+outlinedInput = unsafeCreateElement classOutlinedInput
 
 outlinedInput_ :: Function (Array ReactElement) ReactElement
-outlinedInput_ = unsafeCreateElementDynamic classOutlinedInput {}
+outlinedInput_ = unsafeCreateElement classOutlinedInput {}
 
 outlinedInput' :: forall a. IsTSEq (Record a) (OptionRecord (OutlinedInputPropsO OutlinedInputPropsM) OutlinedInputPropsM) => Function (Record a) ReactElement
 outlinedInput' = unsafeCreateLeafElement classOutlinedInput

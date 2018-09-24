@@ -4,7 +4,7 @@ import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classSwitch :: forall a. ReactClass a
@@ -280,10 +280,10 @@ type SwitchPropsM  = (
 )
 
 switch :: forall a. IsTSEq (Record a) (OptionRecord (SwitchPropsO SwitchPropsM) SwitchPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-switch = unsafeCreateElementDynamic classSwitch
+switch = unsafeCreateElement classSwitch
 
 switch_ :: Function (Array ReactElement) ReactElement
-switch_ = unsafeCreateElementDynamic classSwitch {}
+switch_ = unsafeCreateElement classSwitch {}
 
 switch' :: forall a. IsTSEq (Record a) (OptionRecord (SwitchPropsO SwitchPropsM) SwitchPropsM) => Function (Record a) ReactElement
 switch' = unsafeCreateLeafElement classSwitch

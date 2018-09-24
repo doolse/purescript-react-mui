@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classTypography :: forall a. ReactClass a
@@ -262,10 +262,10 @@ type TypographyPropsM  = (
 )
 
 typography :: forall a. IsTSEq (Record a) (OptionRecord (TypographyPropsO TypographyPropsM) TypographyPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-typography = unsafeCreateElementDynamic classTypography
+typography = unsafeCreateElement classTypography
 
 typography_ :: Function (Array ReactElement) ReactElement
-typography_ = unsafeCreateElementDynamic classTypography {}
+typography_ = unsafeCreateElement classTypography {}
 
 typography' :: forall a. IsTSEq (Record a) (OptionRecord (TypographyPropsO TypographyPropsM) TypographyPropsM) => Function (Record a) ReactElement
 typography' = unsafeCreateLeafElement classTypography

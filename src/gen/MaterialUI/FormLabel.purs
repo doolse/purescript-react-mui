@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classFormLabel :: forall a. ReactClass a
@@ -238,10 +238,10 @@ type FormLabelPropsM  = (
 )
 
 formLabel :: forall a. IsTSEq (Record a) (OptionRecord (FormLabelPropsO FormLabelPropsM) FormLabelPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-formLabel = unsafeCreateElementDynamic classFormLabel
+formLabel = unsafeCreateElement classFormLabel
 
 formLabel_ :: Function (Array ReactElement) ReactElement
-formLabel_ = unsafeCreateElementDynamic classFormLabel {}
+formLabel_ = unsafeCreateElement classFormLabel {}
 
 formLabel' :: forall a. IsTSEq (Record a) (OptionRecord (FormLabelPropsO FormLabelPropsM) FormLabelPropsM) => Function (Record a) ReactElement
 formLabel' = unsafeCreateLeafElement classFormLabel

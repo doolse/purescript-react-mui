@@ -1,7 +1,7 @@
 module MaterialUI.MuiThemeProvider where
 import Data.TSCompat (Any, OneOf, OptionRecord)
 import Data.TSCompat.Class (class IsTSEq)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 
 foreign import classMuiThemeProvider :: forall a. ReactClass a
 
@@ -20,10 +20,10 @@ type MuiThemeProviderPropsM  = (
       typed :: Any {--interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/createMuiTheme".Theme--}))) (Any {--interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/createMuiTheme".Theme--}))))
 
 muiThemeProvider :: forall a. IsTSEq (Record a) (OptionRecord (MuiThemeProviderPropsO MuiThemeProviderPropsM) MuiThemeProviderPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-muiThemeProvider = unsafeCreateElementDynamic classMuiThemeProvider
+muiThemeProvider = unsafeCreateElement classMuiThemeProvider
 
 muiThemeProvider_ :: Function (Array ReactElement) ReactElement
-muiThemeProvider_ = unsafeCreateElementDynamic classMuiThemeProvider {}
+muiThemeProvider_ = unsafeCreateElement classMuiThemeProvider {}
 
 muiThemeProvider' :: forall a. IsTSEq (Record a) (OptionRecord (MuiThemeProviderPropsO MuiThemeProviderPropsM) MuiThemeProviderPropsM) => Function (Record a) ReactElement
 muiThemeProvider' = unsafeCreateLeafElement classMuiThemeProvider

@@ -4,7 +4,7 @@ import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classTextField :: forall a. ReactClass a
@@ -277,10 +277,10 @@ type TextFieldPropsM  = (
 )
 
 textField :: forall a. IsTSEq (Record a) (OptionRecord (TextFieldPropsO TextFieldPropsM) TextFieldPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-textField = unsafeCreateElementDynamic classTextField
+textField = unsafeCreateElement classTextField
 
 textField_ :: Function (Array ReactElement) ReactElement
-textField_ = unsafeCreateElementDynamic classTextField {}
+textField_ = unsafeCreateElement classTextField {}
 
 textField' :: forall a. IsTSEq (Record a) (OptionRecord (TextFieldPropsO TextFieldPropsM) TextFieldPropsM) => Function (Record a) ReactElement
 textField' = unsafeCreateLeafElement classTextField

@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 
 foreign import classClickAwayListener :: forall a. ReactClass a
 
@@ -25,10 +25,10 @@ type ClickAwayListenerPropsM  = (
   onClickAway :: EffectFn1 (Any {--React.ChangeEvent<{}>--}) Unit)
 
 clickAwayListener :: forall a. IsTSEq (Record a) (OptionRecord (ClickAwayListenerPropsO ClickAwayListenerPropsM) ClickAwayListenerPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-clickAwayListener = unsafeCreateElementDynamic classClickAwayListener
+clickAwayListener = unsafeCreateElement classClickAwayListener
 
 clickAwayListener_ :: Function (Array ReactElement) ReactElement
-clickAwayListener_ = unsafeCreateElementDynamic classClickAwayListener {}
+clickAwayListener_ = unsafeCreateElement classClickAwayListener {}
 
 clickAwayListener' :: forall a. IsTSEq (Record a) (OptionRecord (ClickAwayListenerPropsO ClickAwayListenerPropsM) ClickAwayListenerPropsM) => Function (Record a) ReactElement
 clickAwayListener' = unsafeCreateLeafElement classClickAwayListener

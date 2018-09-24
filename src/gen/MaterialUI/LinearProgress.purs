@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classLinearProgress :: forall a. ReactClass a
@@ -236,10 +236,10 @@ type LinearProgressPropsM  = (
 )
 
 linearProgress :: forall a. IsTSEq (Record a) (OptionRecord (LinearProgressPropsO LinearProgressPropsM) LinearProgressPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-linearProgress = unsafeCreateElementDynamic classLinearProgress
+linearProgress = unsafeCreateElement classLinearProgress
 
 linearProgress_ :: Function (Array ReactElement) ReactElement
-linearProgress_ = unsafeCreateElementDynamic classLinearProgress {}
+linearProgress_ = unsafeCreateElement classLinearProgress {}
 
 linearProgress' :: forall a. IsTSEq (Record a) (OptionRecord (LinearProgressPropsO LinearProgressPropsM) LinearProgressPropsM) => Function (Record a) ReactElement
 linearProgress' = unsafeCreateLeafElement classLinearProgress

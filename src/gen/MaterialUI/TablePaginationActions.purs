@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classTablePaginationActions :: forall a. ReactClass a
@@ -229,10 +229,10 @@ type TablePaginationActionsPropsM  = (
   rowsPerPage :: Number)
 
 tablePaginationActions :: forall a. IsTSEq (Record a) (OptionRecord (TablePaginationActionsPropsO TablePaginationActionsPropsM) TablePaginationActionsPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-tablePaginationActions = unsafeCreateElementDynamic classTablePaginationActions
+tablePaginationActions = unsafeCreateElement classTablePaginationActions
 
 tablePaginationActions_ :: Function (Array ReactElement) ReactElement
-tablePaginationActions_ = unsafeCreateElementDynamic classTablePaginationActions {}
+tablePaginationActions_ = unsafeCreateElement classTablePaginationActions {}
 
 tablePaginationActions' :: forall a. IsTSEq (Record a) (OptionRecord (TablePaginationActionsPropsO TablePaginationActionsPropsM) TablePaginationActionsPropsM) => Function (Record a) ReactElement
 tablePaginationActions' = unsafeCreateLeafElement classTablePaginationActions

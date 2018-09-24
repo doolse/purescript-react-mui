@@ -1,7 +1,7 @@
 module MaterialUI.Hidden where
 import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 
 foreign import classHidden :: forall a. ReactClass a
 
@@ -47,10 +47,10 @@ type HiddenPropsM  = (
 )
 
 hidden :: forall a. IsTSEq (Record a) (OptionRecord (HiddenPropsO HiddenPropsM) HiddenPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-hidden = unsafeCreateElementDynamic classHidden
+hidden = unsafeCreateElement classHidden
 
 hidden_ :: Function (Array ReactElement) ReactElement
-hidden_ = unsafeCreateElementDynamic classHidden {}
+hidden_ = unsafeCreateElement classHidden {}
 
 hidden' :: forall a. IsTSEq (Record a) (OptionRecord (HiddenPropsO HiddenPropsM) HiddenPropsM) => Function (Record a) ReactElement
 hidden' = unsafeCreateLeafElement classHidden

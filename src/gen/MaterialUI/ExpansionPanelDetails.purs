@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classExpansionPanelDetails :: forall a. ReactClass a
@@ -227,10 +227,10 @@ type ExpansionPanelDetailsPropsM  = (
 )
 
 expansionPanelDetails :: forall a. IsTSEq (Record a) (OptionRecord (ExpansionPanelDetailsPropsO ExpansionPanelDetailsPropsM) ExpansionPanelDetailsPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-expansionPanelDetails = unsafeCreateElementDynamic classExpansionPanelDetails
+expansionPanelDetails = unsafeCreateElement classExpansionPanelDetails
 
 expansionPanelDetails_ :: Function (Array ReactElement) ReactElement
-expansionPanelDetails_ = unsafeCreateElementDynamic classExpansionPanelDetails {}
+expansionPanelDetails_ = unsafeCreateElement classExpansionPanelDetails {}
 
 expansionPanelDetails' :: forall a. IsTSEq (Record a) (OptionRecord (ExpansionPanelDetailsPropsO ExpansionPanelDetailsPropsM) ExpansionPanelDetailsPropsM) => Function (Record a) ReactElement
 expansionPanelDetails' = unsafeCreateLeafElement classExpansionPanelDetails

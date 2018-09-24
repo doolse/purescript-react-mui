@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classPopper :: forall a. ReactClass a
@@ -248,10 +248,10 @@ type PopperPropsM  = (
   open :: Boolean)
 
 popper :: forall a. IsTSEq (Record a) (OptionRecord (PopperPropsO PopperPropsM) PopperPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-popper = unsafeCreateElementDynamic classPopper
+popper = unsafeCreateElement classPopper
 
 popper_ :: Function (Array ReactElement) ReactElement
-popper_ = unsafeCreateElementDynamic classPopper {}
+popper_ = unsafeCreateElement classPopper {}
 
 popper' :: forall a. IsTSEq (Record a) (OptionRecord (PopperPropsO PopperPropsM) PopperPropsM) => Function (Record a) ReactElement
 popper' = unsafeCreateLeafElement classPopper

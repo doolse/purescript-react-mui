@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classSwipeableDrawer :: forall a. ReactClass a
@@ -293,10 +293,10 @@ type SwipeableDrawerPropsM  = (
   open :: Boolean)
 
 swipeableDrawer :: forall a. IsTSEq (Record a) (OptionRecord (SwipeableDrawerPropsO SwipeableDrawerPropsM) SwipeableDrawerPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-swipeableDrawer = unsafeCreateElementDynamic classSwipeableDrawer
+swipeableDrawer = unsafeCreateElement classSwipeableDrawer
 
 swipeableDrawer_ :: Function (Array ReactElement) ReactElement
-swipeableDrawer_ = unsafeCreateElementDynamic classSwipeableDrawer {}
+swipeableDrawer_ = unsafeCreateElement classSwipeableDrawer {}
 
 swipeableDrawer' :: forall a. IsTSEq (Record a) (OptionRecord (SwipeableDrawerPropsO SwipeableDrawerPropsM) SwipeableDrawerPropsM) => Function (Record a) ReactElement
 swipeableDrawer' = unsafeCreateLeafElement classSwipeableDrawer

@@ -4,7 +4,7 @@ import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (ReactNode)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classCardHeader :: forall a. ReactClass a
@@ -238,10 +238,10 @@ type CardHeaderPropsM  = (
 )
 
 cardHeader :: forall a. IsTSEq (Record a) (OptionRecord (CardHeaderPropsO CardHeaderPropsM) CardHeaderPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-cardHeader = unsafeCreateElementDynamic classCardHeader
+cardHeader = unsafeCreateElement classCardHeader
 
 cardHeader_ :: Function (Array ReactElement) ReactElement
-cardHeader_ = unsafeCreateElementDynamic classCardHeader {}
+cardHeader_ = unsafeCreateElement classCardHeader {}
 
 cardHeader' :: forall a. IsTSEq (Record a) (OptionRecord (CardHeaderPropsO CardHeaderPropsM) CardHeaderPropsM) => Function (Record a) ReactElement
 cardHeader' = unsafeCreateLeafElement classCardHeader

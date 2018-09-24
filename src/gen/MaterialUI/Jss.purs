@@ -1,7 +1,7 @@
 module MaterialUI.Jss where
 import Data.TSCompat (Any, OneOf, OptionRecord)
 import Data.TSCompat.Class (class IsTSEq)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 
 foreign import classJss :: forall a. ReactClass a
 
@@ -19,10 +19,10 @@ type JssPropsM  = (
 )
 
 jss :: forall a. IsTSEq (Record a) (OptionRecord (JssPropsO JssPropsM) JssPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-jss = unsafeCreateElementDynamic classJss
+jss = unsafeCreateElement classJss
 
 jss_ :: Function (Array ReactElement) ReactElement
-jss_ = unsafeCreateElementDynamic classJss {}
+jss_ = unsafeCreateElement classJss {}
 
 jss' :: forall a. IsTSEq (Record a) (OptionRecord (JssPropsO JssPropsM) JssPropsM) => Function (Record a) ReactElement
 jss' = unsafeCreateLeafElement classJss

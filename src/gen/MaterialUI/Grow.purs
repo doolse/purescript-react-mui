@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1, EffectFn2)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 
 foreign import classGrow :: forall a. ReactClass a
 
@@ -48,10 +48,10 @@ type GrowPropsM  = (
 )
 
 grow :: forall a. IsTSEq (Record a) (OptionRecord (GrowPropsO GrowPropsM) GrowPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-grow = unsafeCreateElementDynamic classGrow
+grow = unsafeCreateElement classGrow
 
 grow_ :: Function (Array ReactElement) ReactElement
-grow_ = unsafeCreateElementDynamic classGrow {}
+grow_ = unsafeCreateElement classGrow {}
 
 grow' :: forall a. IsTSEq (Record a) (OptionRecord (GrowPropsO GrowPropsM) GrowPropsM) => Function (Record a) ReactElement
 grow' = unsafeCreateLeafElement classGrow

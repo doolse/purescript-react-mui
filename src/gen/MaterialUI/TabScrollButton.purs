@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classTabScrollButton :: forall a. ReactClass a
@@ -269,10 +269,10 @@ type TabScrollButtonPropsM  = (
 )
 
 tabScrollButton :: forall a. IsTSEq (Record a) (OptionRecord (TabScrollButtonPropsO TabScrollButtonPropsM) TabScrollButtonPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-tabScrollButton = unsafeCreateElementDynamic classTabScrollButton
+tabScrollButton = unsafeCreateElement classTabScrollButton
 
 tabScrollButton_ :: Function (Array ReactElement) ReactElement
-tabScrollButton_ = unsafeCreateElementDynamic classTabScrollButton {}
+tabScrollButton_ = unsafeCreateElement classTabScrollButton {}
 
 tabScrollButton' :: forall a. IsTSEq (Record a) (OptionRecord (TabScrollButtonPropsO TabScrollButtonPropsM) TabScrollButtonPropsM) => Function (Record a) ReactElement
 tabScrollButton' = unsafeCreateLeafElement classTabScrollButton

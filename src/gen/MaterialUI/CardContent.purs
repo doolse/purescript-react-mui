@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classCardContent :: forall a. ReactClass a
@@ -231,10 +231,10 @@ type CardContentPropsM  = (
 )
 
 cardContent :: forall a. IsTSEq (Record a) (OptionRecord (CardContentPropsO CardContentPropsM) CardContentPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-cardContent = unsafeCreateElementDynamic classCardContent
+cardContent = unsafeCreateElement classCardContent
 
 cardContent_ :: Function (Array ReactElement) ReactElement
-cardContent_ = unsafeCreateElementDynamic classCardContent {}
+cardContent_ = unsafeCreateElement classCardContent {}
 
 cardContent' :: forall a. IsTSEq (Record a) (OptionRecord (CardContentPropsO CardContentPropsM) CardContentPropsM) => Function (Record a) ReactElement
 cardContent' = unsafeCreateLeafElement classCardContent

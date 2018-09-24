@@ -3,7 +3,7 @@ import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
-import React (unsafeCreateElementDynamic, unsafeCreateLeafElement, ReactClass, ReactElement)
+import React (unsafeCreateElement, unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
 foreign import classMenuItem :: forall a. ReactClass a
@@ -275,10 +275,10 @@ type MenuItemPropsM  = (
 )
 
 menuItem :: forall a. IsTSEq (Record a) (OptionRecord (MenuItemPropsO MenuItemPropsM) MenuItemPropsM) => Function (Record a) (Function (Array ReactElement) ReactElement)
-menuItem = unsafeCreateElementDynamic classMenuItem
+menuItem = unsafeCreateElement classMenuItem
 
 menuItem_ :: Function (Array ReactElement) ReactElement
-menuItem_ = unsafeCreateElementDynamic classMenuItem {}
+menuItem_ = unsafeCreateElement classMenuItem {}
 
 menuItem' :: forall a. IsTSEq (Record a) (OptionRecord (MenuItemPropsO MenuItemPropsM) MenuItemPropsM) => Function (Record a) ReactElement
 menuItem' = unsafeCreateLeafElement classMenuItem
