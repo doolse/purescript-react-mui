@@ -8,8 +8,17 @@ absolute = unsafeCoerce "absolute"
 action :: StringConst "action"
 action = unsafeCoerce "action"
 
+additions :: StringConst "additions"
+additions = unsafeCoerce "additions"
+
+additions_text :: StringConst "additions text"
+additions_text = unsafeCoerce "additions text"
+
 afterEdge :: StringConst "after-edge"
 afterEdge = unsafeCoerce "after-edge"
+
+all :: StringConst "all"
+all = unsafeCoerce "all"
 
 alphabetic :: StringConst "alphabetic"
 alphabetic = unsafeCoerce "alphabetic"
@@ -22,6 +31,12 @@ anchorPosition = unsafeCoerce "anchorPosition"
 
 asc :: StringConst "asc"
 asc = unsafeCoerce "asc"
+
+ascending :: StringConst "ascending"
+ascending = unsafeCoerce "ascending"
+
+assertive :: StringConst "assertive"
+assertive = unsafeCoerce "assertive"
 
 auto :: StringConst "auto"
 auto = unsafeCoerce "auto"
@@ -43,6 +58,9 @@ body1 = unsafeCoerce "body1"
 
 body2 :: StringConst "body2"
 body2 = unsafeCoerce "body2"
+
+both :: StringConst "both"
+both = unsafeCoerce "both"
 
 bottom :: StringConst "bottom"
 bottom = unsafeCoerce "bottom"
@@ -83,8 +101,14 @@ columnReverse = unsafeCoerce "column-reverse"
 contained :: StringConst "contained"
 contained = unsafeCoerce "contained"
 
+copy :: StringConst "copy"
+copy = unsafeCoerce "copy"
+
 css :: StringConst "css"
 css = unsafeCoerce "css"
+
+date :: StringConst "date"
+date = unsafeCoerce "date"
 
 default :: StringConst "default"
 default = unsafeCoerce "default"
@@ -95,8 +119,14 @@ dense = unsafeCoerce "dense"
 desc :: StringConst "desc"
 desc = unsafeCoerce "desc"
 
+descending :: StringConst "descending"
+descending = unsafeCoerce "descending"
+
 determinate :: StringConst "determinate"
 determinate = unsafeCoerce "determinate"
+
+dialog :: StringConst "dialog"
+dialog = unsafeCoerce "dialog"
 
 disabled :: StringConst "disabled"
 disabled = unsafeCoerce "disabled"
@@ -128,11 +158,17 @@ error = unsafeCoerce "error"
 evenodd :: StringConst "evenodd"
 evenodd = unsafeCoerce "evenodd"
 
+execute :: StringConst "execute"
+execute = unsafeCoerce "execute"
+
 extendedFab :: StringConst "extendedFab"
 extendedFab = unsafeCoerce "extendedFab"
 
 fab :: StringConst "fab"
 fab = unsafeCoerce "fab"
+
+false_ :: StringConst "false"
+false_ = unsafeCoerce "false"
 
 filled :: StringConst "filled"
 filled = unsafeCoerce "filled"
@@ -151,6 +187,12 @@ flexStart = unsafeCoerce "flex-start"
 
 footer :: StringConst "footer"
 footer = unsafeCoerce "footer"
+
+grammar :: StringConst "grammar"
+grammar = unsafeCoerce "grammar"
+
+grid :: StringConst "grid"
+grid = unsafeCoerce "grid"
 
 hanging :: StringConst "hanging"
 hanging = unsafeCoerce "hanging"
@@ -175,6 +217,9 @@ inherit = unsafeCoerce "inherit"
 
 initial :: StringConst "initial"
 initial = unsafeCoerce "initial"
+
+inline :: StringConst "inline"
+inline = unsafeCoerce "inline"
 
 isolated :: StringConst "isolated"
 isolated = unsafeCoerce "isolated"
@@ -203,6 +248,18 @@ lg = unsafeCoerce "lg"
 linearRGB :: StringConst "linearRGB"
 linearRGB = unsafeCoerce "linearRGB"
 
+link :: StringConst "link"
+link = unsafeCoerce "link"
+
+list :: StringConst "list"
+list = unsafeCoerce "list"
+
+listbox :: StringConst "listbox"
+listbox = unsafeCoerce "listbox"
+
+location :: StringConst "location"
+location = unsafeCoerce "location"
+
 mathematical :: StringConst "mathematical"
 mathematical = unsafeCoerce "mathematical"
 
@@ -215,11 +272,20 @@ medial = unsafeCoerce "medial"
 medium :: StringConst "medium"
 medium = unsafeCoerce "medium"
 
+menu :: StringConst "menu"
+menu = unsafeCoerce "menu"
+
 middle :: StringConst "middle"
 middle = unsafeCoerce "middle"
 
 miter :: StringConst "miter"
 miter = unsafeCoerce "miter"
+
+mixed :: StringConst "mixed"
+mixed = unsafeCoerce "mixed"
+
+move :: StringConst "move"
+move = unsafeCoerce "move"
 
 no :: StringConst "no"
 no = unsafeCoerce "no"
@@ -257,8 +323,14 @@ onTouchEnd = unsafeCoerce "onTouchEnd"
 onTouchStart :: StringConst "onTouchStart"
 onTouchStart = unsafeCoerce "onTouchStart"
 
+other :: StringConst "other"
+other = unsafeCoerce "other"
+
 outlined :: StringConst "outlined"
 outlined = unsafeCoerce "outlined"
+
+page :: StringConst "page"
+page = unsafeCoerce "page"
 
 paper :: StringConst "paper"
 paper = unsafeCoerce "paper"
@@ -268,6 +340,12 @@ permanent = unsafeCoerce "permanent"
 
 persistent :: StringConst "persistent"
 persistent = unsafeCoerce "persistent"
+
+polite :: StringConst "polite"
+polite = unsafeCoerce "polite"
+
+popup :: StringConst "popup"
+popup = unsafeCoerce "popup"
 
 primary :: StringConst "primary"
 primary = unsafeCoerce "primary"
@@ -286,6 +364,9 @@ regular = unsafeCoerce "regular"
 
 relative :: StringConst "relative"
 relative = unsafeCoerce "relative"
+
+removals :: StringConst "removals"
+removals = unsafeCoerce "removals"
 
 replace :: StringConst "replace"
 replace = unsafeCoerce "replace"
@@ -329,6 +410,9 @@ spaceBetween = unsafeCoerce "space-between"
 spaceEvenly :: StringConst "space-evenly"
 spaceEvenly = unsafeCoerce "space-evenly"
 
+spelling :: StringConst "spelling"
+spelling = unsafeCoerce "spelling"
+
 square :: StringConst "square"
 square = unsafeCoerce "square"
 
@@ -343,6 +427,9 @@ start = unsafeCoerce "start"
 
 static :: StringConst "static"
 static = unsafeCoerce "static"
+
+step :: StringConst "step"
+step = unsafeCoerce "step"
 
 sticky :: StringConst "sticky"
 sticky = unsafeCoerce "sticky"
@@ -377,6 +464,9 @@ textPrimary = unsafeCoerce "textPrimary"
 textSecondary :: StringConst "textSecondary"
 textSecondary = unsafeCoerce "textSecondary"
 
+time :: StringConst "time"
+time = unsafeCoerce "time"
+
 title :: StringConst "title"
 title = unsafeCoerce "title"
 
@@ -388,6 +478,12 @@ topEnd = unsafeCoerce "top-end"
 
 topStart :: StringConst "top-start"
 topStart = unsafeCoerce "top-start"
+
+tree :: StringConst "tree"
+tree = unsafeCoerce "tree"
+
+true_ :: StringConst "true"
+true_ = unsafeCoerce "true"
 
 up :: StringConst "up"
 up = unsafeCoerce "up"

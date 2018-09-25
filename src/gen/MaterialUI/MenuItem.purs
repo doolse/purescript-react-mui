@@ -71,6 +71,166 @@ type MenuItemPropsO r = (
     typed :: StringConst "on", 
     typed :: StringConst "off"
   ), 
+  "aria-activedescendant" :: String, 
+  "aria-atomic" :: OneOf (
+    typed :: Boolean, 
+    typed :: StringConst "false", 
+    typed :: StringConst "true"
+  ), 
+  "aria-autocomplete" :: OneOf (
+    typed :: StringConst "both", 
+    typed :: StringConst "none", 
+    typed :: StringConst "inline", 
+    typed :: StringConst "list"
+  ), 
+  "aria-busy" :: OneOf (
+    typed :: Boolean, 
+    typed :: StringConst "false", 
+    typed :: StringConst "true"
+  ), 
+  "aria-checked" :: OneOf (
+    typed :: Boolean, 
+    typed :: StringConst "mixed", 
+    typed :: StringConst "false", 
+    typed :: StringConst "true"
+  ), 
+  "aria-colcount" :: Number, 
+  "aria-colindex" :: Number, 
+  "aria-colspan" :: Number, 
+  "aria-controls" :: String, 
+  "aria-current" :: OneOf (
+    typed :: Boolean, 
+    typed :: StringConst "page", 
+    typed :: StringConst "false", 
+    typed :: StringConst "true", 
+    typed :: StringConst "step", 
+    typed :: StringConst "location", 
+    typed :: StringConst "date", 
+    typed :: StringConst "time"
+  ), 
+  "aria-describedby" :: String, 
+  "aria-details" :: String, 
+  "aria-disabled" :: OneOf (
+    typed :: Boolean, 
+    typed :: StringConst "false", 
+    typed :: StringConst "true"
+  ), 
+  "aria-dropeffect" :: OneOf (
+    typed :: StringConst "none", 
+    typed :: StringConst "copy", 
+    typed :: StringConst "move", 
+    typed :: StringConst "execute", 
+    typed :: StringConst "link", 
+    typed :: StringConst "popup"
+  ), 
+  "aria-errormessage" :: String, 
+  "aria-expanded" :: OneOf (
+    typed :: Boolean, 
+    typed :: StringConst "false", 
+    typed :: StringConst "true"
+  ), 
+  "aria-flowto" :: String, 
+  "aria-grabbed" :: OneOf (
+    typed :: Boolean, 
+    typed :: StringConst "false", 
+    typed :: StringConst "true"
+  ), 
+  "aria-haspopup" :: OneOf (
+    typed :: Boolean, 
+    typed :: StringConst "grid", 
+    typed :: StringConst "menu", 
+    typed :: StringConst "listbox", 
+    typed :: StringConst "false", 
+    typed :: StringConst "true", 
+    typed :: StringConst "tree", 
+    typed :: StringConst "dialog"
+  ), 
+  "aria-hidden" :: OneOf (
+    typed :: Boolean, 
+    typed :: StringConst "false", 
+    typed :: StringConst "true"
+  ), 
+  "aria-invalid" :: OneOf (
+    typed :: Boolean, 
+    typed :: StringConst "false", 
+    typed :: StringConst "true", 
+    typed :: StringConst "grammar", 
+    typed :: StringConst "spelling"
+  ), 
+  "aria-keyshortcuts" :: String, 
+  "aria-label" :: String, 
+  "aria-labelledby" :: String, 
+  "aria-level" :: Number, 
+  "aria-live" :: OneOf (
+    typed :: StringConst "off", 
+    typed :: StringConst "assertive", 
+    typed :: StringConst "polite"
+  ), 
+  "aria-modal" :: OneOf (
+    typed :: Boolean, 
+    typed :: StringConst "false", 
+    typed :: StringConst "true"
+  ), 
+  "aria-multiline" :: OneOf (
+    typed :: Boolean, 
+    typed :: StringConst "false", 
+    typed :: StringConst "true"
+  ), 
+  "aria-multiselectable" :: OneOf (
+    typed :: Boolean, 
+    typed :: StringConst "false", 
+    typed :: StringConst "true"
+  ), 
+  "aria-orientation" :: OneOf (
+    typed :: StringConst "horizontal", 
+    typed :: StringConst "vertical"
+  ), 
+  "aria-owns" :: String, 
+  "aria-placeholder" :: String, 
+  "aria-posinset" :: Number, 
+  "aria-pressed" :: OneOf (
+    typed :: Boolean, 
+    typed :: StringConst "mixed", 
+    typed :: StringConst "false", 
+    typed :: StringConst "true"
+  ), 
+  "aria-readonly" :: OneOf (
+    typed :: Boolean, 
+    typed :: StringConst "false", 
+    typed :: StringConst "true"
+  ), 
+  "aria-relevant" :: OneOf (
+    typed :: StringConst "all", 
+    typed :: StringConst "text", 
+    typed :: StringConst "additions", 
+    typed :: StringConst "additions text", 
+    typed :: StringConst "removals"
+  ), 
+  "aria-required" :: OneOf (
+    typed :: Boolean, 
+    typed :: StringConst "false", 
+    typed :: StringConst "true"
+  ), 
+  "aria-roledescription" :: String, 
+  "aria-rowcount" :: Number, 
+  "aria-rowindex" :: Number, 
+  "aria-rowspan" :: Number, 
+  "aria-selected" :: OneOf (
+    typed :: Boolean, 
+    typed :: StringConst "false", 
+    typed :: StringConst "true"
+  ), 
+  "aria-setsize" :: Number, 
+  "aria-sort" :: OneOf (
+    typed :: StringConst "none", 
+    typed :: StringConst "ascending", 
+    typed :: StringConst "descending", 
+    typed :: StringConst "other"
+  ), 
+  "aria-valuemax" :: Number, 
+  "aria-valuemin" :: Number, 
+  "aria-valuenow" :: Number, 
+  "aria-valuetext" :: String, 
   dangerouslySetInnerHTML :: Record (
     "__html" :: String
   ), 

@@ -22,7 +22,7 @@ convertComponent = case _ of
   Interface {name,members} | Just componentName <- String.stripSuffix (Pattern "Props") name -> 
     let 
       doConvert = convertProperty $ reactComponentMapper reactRefMapping
-      propertyConvert p | startsWithAny ["aria"] p.name = Nothing 
+      -- propertyConvert p | startsWithAny ["aria"] p.name = Nothing 
       propertyConvert p = Just $ doConvert p
       props = [keyProperty] <> (mapMaybe propertyConvert members)
       detected = detectComponentType props
