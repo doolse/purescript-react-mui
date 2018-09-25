@@ -7,16 +7,16 @@ import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 foreign import classJss :: forall a. ReactClass a
 
 type JssPropsO r = (
-  composes :: OneOf (
-    typed :: Array String, 
-    typed :: String
-  ), 
   key :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
-  "@global" :: Any {-- "\"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@types/jss/css\".CSSProperties"--}, 
-  extend :: String
+  "@global" :: Any {-- "\"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@types/jss/css\".CSSProperties"--}, 
+  extend :: String, 
+  composes :: OneOf (
+    typed :: String, 
+    typed :: Array String
+  )
  | r)
 
 type JssPropsM  = (

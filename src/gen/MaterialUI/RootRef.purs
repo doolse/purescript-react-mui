@@ -9,16 +9,16 @@ import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 foreign import classRootRef :: forall a. ReactClass a
 
 type RootRefPropsO r = (
-  rootRef :: OneOf (
-    typed :: Any {-- React.RefObject<<T>>--}, 
-    typed :: EffectFn1 (OneOf (
-      typed :: Any {-- <T>--}, 
-      typed :: Any {-- null--}
-    )) Unit
-  ), 
   key :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
+  ), 
+  rootRef :: OneOf (
+    typed :: EffectFn1 (OneOf (
+      typed :: Any {-- null--}, 
+      typed :: Any {-- <T>--}
+    )) Unit, 
+    typed :: Any {-- React.RefObject<<T>>--}
   )
  | r)
 

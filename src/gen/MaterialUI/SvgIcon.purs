@@ -10,161 +10,155 @@ import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, S
 foreign import classSvgIcon :: forall a. ReactClass a
 
 type SvgIconPropsO r = (
-  innerRef :: OneOf (
-    typed :: Any {-- React.RefObject<any>--}, 
-    typed :: String, 
-    typed :: Any -> Any
-  ), 
   key :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   color :: OneOf (
-    typed :: StringConst "action", 
     typed :: StringConst "inherit", 
     typed :: StringConst "default", 
     typed :: StringConst "disabled", 
     typed :: StringConst "primary", 
     typed :: StringConst "secondary", 
-    typed :: StringConst "error"
+    typed :: StringConst "error", 
+    typed :: StringConst "action"
   ), 
   component :: OneOf (
-    typed :: Any {-- (props: "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/SvgIcon/SvgIcon".SvgIconProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}, 
     typed :: String, 
-    typed :: Any {-- React.ComponentClass<"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/SvgIcon/SvgIcon".SvgIconProps<>, any>--}
+    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/SvgIcon/SvgIcon".SvgIconProps<>, any>--}, 
+    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/SvgIcon/SvgIcon".SvgIconProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
   ), 
   fontSize :: OneOf (
-    typed :: StringConst "small", 
     typed :: StringConst "inherit", 
     typed :: StringConst "default", 
-    typed :: StringConst "large"
+    typed :: StringConst "large", 
+    typed :: StringConst "small"
   ), 
   nativeColor :: String, 
   titleAccess :: String, 
   viewBox :: String, 
   string :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   clipPath :: String, 
   cursor :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   direction :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   display :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   filter :: String, 
   fontFamily :: String, 
   fontSizeAdjust :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   fontStretch :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   fontStyle :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   fontVariant :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   fontWeight :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   height :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   imageRendering :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   letterSpacing :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   opacity :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   order :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   overflow :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   paintOrder :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   pointerEvents :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   rotate :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   scale :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   textRendering :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   transform :: String, 
   unicodeBidi :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   visibility :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   width :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   wordSpacing :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   writingMode :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   mask :: String, 
   offset :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   textDecoration :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   azimuth :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   clip :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   alignmentBaseline :: OneOf (
-    typed :: StringConst "text-before-edge", 
     typed :: StringConst "inherit", 
     typed :: StringConst "baseline", 
     typed :: StringConst "auto", 
@@ -176,128 +170,129 @@ type SvgIconPropsO r = (
     typed :: StringConst "hanging", 
     typed :: StringConst "ideographic", 
     typed :: StringConst "mathematical", 
-    typed :: StringConst "text-after-edge"
+    typed :: StringConst "text-after-edge", 
+    typed :: StringConst "text-before-edge"
   ), 
   baselineShift :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   clipRule :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   colorInterpolation :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   colorRendering :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   dominantBaseline :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   fill :: String, 
   fillOpacity :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   fillRule :: OneOf (
-    typed :: StringConst "nonzero", 
     typed :: StringConst "inherit", 
-    typed :: StringConst "evenodd"
+    typed :: StringConst "evenodd", 
+    typed :: StringConst "nonzero"
   ), 
   floodColor :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   floodOpacity :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   glyphOrientationVertical :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   lightingColor :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   markerEnd :: String, 
   markerMid :: String, 
   markerStart :: String, 
   shapeRendering :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   stopColor :: String, 
   stopOpacity :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   stroke :: String, 
   strokeDasharray :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   strokeDashoffset :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   strokeLinecap :: OneOf (
-    typed :: StringConst "square", 
     typed :: StringConst "inherit", 
     typed :: StringConst "round", 
-    typed :: StringConst "butt"
+    typed :: StringConst "butt", 
+    typed :: StringConst "square"
   ), 
   strokeLinejoin :: OneOf (
-    typed :: StringConst "miter", 
     typed :: StringConst "inherit", 
     typed :: StringConst "round", 
-    typed :: StringConst "bevel"
+    typed :: StringConst "bevel", 
+    typed :: StringConst "miter"
   ), 
   strokeMiterlimit :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   strokeOpacity :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   strokeWidth :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   textAnchor :: String, 
   vectorEffect :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   end :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   local :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   style :: Any {-- React.CSSProperties<>--}, 
   alphabetic :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   hanging :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   ideographic :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   mathematical :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   className :: String, 
   id :: String, 
@@ -431,26 +426,26 @@ type SvgIconPropsO r = (
   onTouchMoveCapture :: EffectFn1 SyntheticTouchEvent Unit, 
   onTouchStart :: EffectFn1 SyntheticTouchEvent Unit, 
   onTouchStartCapture :: EffectFn1 SyntheticTouchEvent Unit, 
-  onPointerDown :: EffectFn1 Any {-- React.PointerEvent<interface SVGSVGElement>--} Unit, 
-  onPointerDownCapture :: EffectFn1 Any {-- React.PointerEvent<interface SVGSVGElement>--} Unit, 
-  onPointerMove :: EffectFn1 Any {-- React.PointerEvent<interface SVGSVGElement>--} Unit, 
-  onPointerMoveCapture :: EffectFn1 Any {-- React.PointerEvent<interface SVGSVGElement>--} Unit, 
-  onPointerUp :: EffectFn1 Any {-- React.PointerEvent<interface SVGSVGElement>--} Unit, 
-  onPointerUpCapture :: EffectFn1 Any {-- React.PointerEvent<interface SVGSVGElement>--} Unit, 
-  onPointerCancel :: EffectFn1 Any {-- React.PointerEvent<interface SVGSVGElement>--} Unit, 
-  onPointerCancelCapture :: EffectFn1 Any {-- React.PointerEvent<interface SVGSVGElement>--} Unit, 
-  onPointerEnter :: EffectFn1 Any {-- React.PointerEvent<interface SVGSVGElement>--} Unit, 
-  onPointerEnterCapture :: EffectFn1 Any {-- React.PointerEvent<interface SVGSVGElement>--} Unit, 
-  onPointerLeave :: EffectFn1 Any {-- React.PointerEvent<interface SVGSVGElement>--} Unit, 
-  onPointerLeaveCapture :: EffectFn1 Any {-- React.PointerEvent<interface SVGSVGElement>--} Unit, 
-  onPointerOver :: EffectFn1 Any {-- React.PointerEvent<interface SVGSVGElement>--} Unit, 
-  onPointerOverCapture :: EffectFn1 Any {-- React.PointerEvent<interface SVGSVGElement>--} Unit, 
-  onPointerOut :: EffectFn1 Any {-- React.PointerEvent<interface SVGSVGElement>--} Unit, 
-  onPointerOutCapture :: EffectFn1 Any {-- React.PointerEvent<interface SVGSVGElement>--} Unit, 
-  onGotPointerCapture :: EffectFn1 Any {-- React.PointerEvent<interface SVGSVGElement>--} Unit, 
-  onGotPointerCaptureCapture :: EffectFn1 Any {-- React.PointerEvent<interface SVGSVGElement>--} Unit, 
-  onLostPointerCapture :: EffectFn1 Any {-- React.PointerEvent<interface SVGSVGElement>--} Unit, 
-  onLostPointerCaptureCapture :: EffectFn1 Any {-- React.PointerEvent<interface SVGSVGElement>--} Unit, 
+  onPointerDown :: EffectFn1 SyntheticEvent Unit, 
+  onPointerDownCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerMove :: EffectFn1 SyntheticEvent Unit, 
+  onPointerMoveCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerUp :: EffectFn1 SyntheticEvent Unit, 
+  onPointerUpCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerCancel :: EffectFn1 SyntheticEvent Unit, 
+  onPointerCancelCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerEnter :: EffectFn1 SyntheticEvent Unit, 
+  onPointerEnterCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerLeave :: EffectFn1 SyntheticEvent Unit, 
+  onPointerLeaveCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerOver :: EffectFn1 SyntheticEvent Unit, 
+  onPointerOverCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerOut :: EffectFn1 SyntheticEvent Unit, 
+  onPointerOutCapture :: EffectFn1 SyntheticEvent Unit, 
+  onGotPointerCapture :: EffectFn1 SyntheticEvent Unit, 
+  onGotPointerCaptureCapture :: EffectFn1 SyntheticEvent Unit, 
+  onLostPointerCapture :: EffectFn1 SyntheticEvent Unit, 
+  onLostPointerCaptureCapture :: EffectFn1 SyntheticEvent Unit, 
   onScroll :: EffectFn1 SyntheticUIEvent Unit, 
   onScrollCapture :: EffectFn1 SyntheticUIEvent Unit, 
   onWheel :: EffectFn1 SyntheticWheelEvent Unit, 
@@ -464,8 +459,8 @@ type SvgIconPropsO r = (
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit, 
   onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit, 
   elevation :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   in :: String, 
   href :: String, 
@@ -474,587 +469,587 @@ type SvgIconPropsO r = (
   type :: String, 
   name :: String, 
   ref :: OneOf (
-    typed :: Any {-- React.RefObject<interface SVGSVGElement>--}, 
     typed :: String, 
     typed :: OneOf (
-      typed :: Any {-- interface SVGSVGElement--}, 
-      typed :: Any {-- null--}
-    ) -> Any
+      typed :: Any {-- null--}, 
+      typed :: Any {-- interface SVGSVGElement--}
+    ) -> Any, 
+    typed :: Any {-- React.RefObject<interface SVGSVGElement>--}
   ), 
   key :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   spacing :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   max :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   method :: String, 
   min :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   accentHeight :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   accumulate :: OneOf (
-    typed :: StringConst "sum", 
-    typed :: StringConst "none"
-  ), 
-  additive :: OneOf (
-    typed :: StringConst "replace", 
+    typed :: StringConst "none", 
     typed :: StringConst "sum"
   ), 
+  additive :: OneOf (
+    typed :: StringConst "sum", 
+    typed :: StringConst "replace"
+  ), 
   allowReorder :: OneOf (
-    typed :: StringConst "yes", 
-    typed :: StringConst "no"
+    typed :: StringConst "no", 
+    typed :: StringConst "yes"
   ), 
   amplitude :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   arabicForm :: OneOf (
-    typed :: StringConst "isolated", 
     typed :: StringConst "initial", 
     typed :: StringConst "medial", 
-    typed :: StringConst "terminal"
+    typed :: StringConst "terminal", 
+    typed :: StringConst "isolated"
   ), 
   ascent :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   attributeName :: String, 
   attributeType :: String, 
   autoReverse :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   baseFrequency :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   baseProfile :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   bbox :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   begin :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   bias :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   by :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   calcMode :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   capHeight :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   clipPathUnits :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   colorInterpolationFilters :: OneOf (
-    typed :: StringConst "sRGB", 
     typed :: StringConst "inherit", 
     typed :: StringConst "auto", 
-    typed :: StringConst "linearRGB"
+    typed :: StringConst "linearRGB", 
+    typed :: StringConst "sRGB"
   ), 
   colorProfile :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   contentScriptType :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   contentStyleType :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   cx :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   cy :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   d :: String, 
   decelerate :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   descent :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   diffuseConstant :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   divisor :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   dur :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   dx :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   dy :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   edgeMode :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   enableBackground :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   exponent :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   externalResourcesRequired :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   filterRes :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   filterUnits :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   focusable :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   format :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   from :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   fx :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   fy :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   g1 :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   g2 :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   glyphName :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   glyphOrientationHorizontal :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   glyphRef :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   gradientTransform :: String, 
   gradientUnits :: String, 
   horizAdvX :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   horizOriginX :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   in2 :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   intercept :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   k1 :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   k2 :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   k3 :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   k4 :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   k :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   kernelMatrix :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   kernelUnitLength :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   kerning :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   keyPoints :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   keySplines :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   keyTimes :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   lengthAdjust :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   limitingConeAngle :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   markerHeight :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   markerUnits :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   markerWidth :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   maskContentUnits :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   maskUnits :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   mode :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   numOctaves :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   operator :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   orient :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   orientation :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   origin :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   overlinePosition :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   overlineThickness :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   panose1 :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   pathLength :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   patternContentUnits :: String, 
   patternTransform :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   patternUnits :: String, 
   points :: String, 
   pointsAtX :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   pointsAtY :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   pointsAtZ :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   preserveAlpha :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   preserveAspectRatio :: String, 
   primitiveUnits :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   r :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   radius :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   refX :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   refY :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   renderingIntent :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   repeatCount :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   repeatDur :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   requiredExtensions :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   requiredFeatures :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   restart :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   result :: String, 
   rx :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   ry :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   seed :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   slope :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   specularConstant :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   specularExponent :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   speed :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   spreadMethod :: String, 
   startOffset :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   stdDeviation :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   stemh :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   stemv :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   stitchTiles :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   strikethroughPosition :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   strikethroughThickness :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   surfaceScale :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   systemLanguage :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   tableValues :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   targetX :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   targetY :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   textLength :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   to :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   u1 :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   u2 :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   underlinePosition :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   underlineThickness :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   unicode :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   unicodeRange :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   unitsPerEm :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   vAlphabetic :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   values :: String, 
   version :: String, 
   vertAdvY :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   vertOriginX :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   vertOriginY :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   vHanging :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   vIdeographic :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   viewTarget :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   vMathematical :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   widths :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   x1 :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   x2 :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   x :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   xChannelSelector :: String, 
   xHeight :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   xlinkActuate :: String, 
   xlinkArcrole :: String, 
@@ -1069,24 +1064,29 @@ type SvgIconPropsO r = (
   xmlnsXlink :: String, 
   xmlSpace :: String, 
   y1 :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   y2 :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   y :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   yChannelSelector :: String, 
   z :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   zoomAndPan :: String, 
-  classes :: Any {-- unknown--}
+  classes :: Any {-- unknown--}, 
+  innerRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  )
  | r)
 
 type SvgIconPropsM  = (

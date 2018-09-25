@@ -10,39 +10,34 @@ import React.SyntheticEvent (SyntheticEvent, SyntheticFocusEvent)
 foreign import classSelectInput :: forall a. ReactClass a
 
 type SelectInputPropsO r = (
-  variant :: OneOf (
-    typed :: StringConst "standard", 
-    typed :: StringConst "filled", 
-    typed :: StringConst "outlined"
-  ), 
   key :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   autoFocus :: Boolean, 
   disabled :: Boolean, 
   "IconComponent" :: OneOf (
-    typed :: Any {-- (props: any, context: any => null | React.ReactElement<any>)--}, 
     typed :: String, 
-    typed :: Any {-- React.ComponentClass<any, any>--}
+    typed :: Any {-- React.ComponentClass<any, any>--}, 
+    typed :: Any {-- (props: any, context: any => null | React.ReactElement<any>)--}
   ), 
   inputRef :: EffectFn1 (OneOf (
+    typed :: Any {-- interface HTMLSelectElement--}, 
     typed :: Record (
+      node :: Any {-- interface HTMLInputElement--}, 
       value :: OneOf (
-        typed :: Array (OneOf (
-          typed :: Any {-- true--}, 
-          typed :: String, 
-          typed :: Number, 
-          typed :: Any {-- false--}
-        )), 
         typed :: Boolean, 
         typed :: Any {-- undefined--}, 
         typed :: String, 
-        typed :: Number
-      ), 
-      node :: Any {-- interface HTMLInputElement--}
-    ), 
-    typed :: Any {-- interface HTMLSelectElement--}
+        typed :: Number, 
+        typed :: Array (OneOf (
+          typed :: String, 
+          typed :: Number, 
+          typed :: Any {-- false--}, 
+          typed :: Any {-- true--}
+        ))
+      )
+    )
   )) Unit, 
   "MenuProps" :: Any {-- unknown--}, 
   name :: String, 
@@ -54,36 +49,41 @@ type SelectInputPropsO r = (
   open :: Boolean, 
   readOnly :: Boolean, 
   renderValue :: OneOf (
-    typed :: Array (OneOf (
-      typed :: Any {-- true--}, 
-      typed :: String, 
-      typed :: Number, 
-      typed :: Any {-- false--}
-    )), 
     typed :: Boolean, 
     typed :: Any {-- undefined--}, 
     typed :: String, 
-    typed :: Number
+    typed :: Number, 
+    typed :: Array (OneOf (
+      typed :: String, 
+      typed :: Number, 
+      typed :: Any {-- false--}, 
+      typed :: Any {-- true--}
+    ))
   ) -> ReactNode, 
   "SelectDisplayProps" :: Any {-- React.HTMLAttributes<interface HTMLDivElement>--}, 
   tabIndex :: Number, 
   value :: OneOf (
-    typed :: Array (OneOf (
-      typed :: Any {-- true--}, 
-      typed :: String, 
-      typed :: Number, 
-      typed :: Any {-- false--}
-    )), 
     typed :: Boolean, 
     typed :: String, 
-    typed :: Number
+    typed :: Number, 
+    typed :: Array (OneOf (
+      typed :: String, 
+      typed :: Number, 
+      typed :: Any {-- false--}, 
+      typed :: Any {-- true--}
+    ))
+  ), 
+  variant :: OneOf (
+    typed :: StringConst "filled", 
+    typed :: StringConst "outlined", 
+    typed :: StringConst "standard"
   )
  | r)
 
 type SelectInputPropsM  = (
-  native :: Boolean, 
   autoWidth :: Boolean, 
-  multiple :: Boolean
+  multiple :: Boolean, 
+  native :: Boolean
 )
 
 selectInput :: forall a. IsTSEq (Record a) (OptionRecord (SelectInputPropsO SelectInputPropsM) SelectInputPropsM) => Record a -> Array ReactElement -> ReactElement

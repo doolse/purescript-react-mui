@@ -9,32 +9,31 @@ import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 foreign import classCollapse :: forall a. ReactClass a
 
 type CollapsePropsO r = (
-  className :: String, 
   key :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   collapsedHeight :: String, 
   component :: OneOf (
-    typed :: Any {-- (props: "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Collapse/Collapse".CollapseProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}, 
     typed :: String, 
-    typed :: Any {-- React.ComponentClass<"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Collapse/Collapse".CollapseProps<>, any>--}
+    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Collapse/Collapse".CollapseProps<>, any>--}, 
+    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Collapse/Collapse".CollapseProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
   ), 
-  theme :: Any {-- interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/createMuiTheme".Theme--}, 
+  theme :: Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/createMuiTheme".Theme--}, 
   timeout :: OneOf (
+    typed :: Number, 
+    typed :: StringConst "auto", 
     typed :: OptionRecord (
-      exit :: OneOf (
-        typed :: Number, 
-        typed :: Any {-- undefined--}
-      ), 
       enter :: OneOf (
-        typed :: Number, 
-        typed :: Any {-- undefined--}
+        typed :: Any {-- undefined--}, 
+        typed :: Number
+      ), 
+      exit :: OneOf (
+        typed :: Any {-- undefined--}, 
+        typed :: Number
       )
     ) (
-    ), 
-    typed :: Number, 
-    typed :: StringConst "auto"
+    )
   ), 
   style :: Any {-- React.CSSProperties<>--}, 
   in :: Boolean, 
@@ -52,10 +51,11 @@ type CollapsePropsO r = (
   exit :: Boolean, 
   classes :: Any {-- unknown--}, 
   innerRef :: OneOf (
-    typed :: Any {-- React.RefObject<any>--}, 
     typed :: String, 
-    typed :: Any -> Any
-  )
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  ), 
+  className :: String
  | r)
 
 type CollapsePropsM  = (

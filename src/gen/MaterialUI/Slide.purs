@@ -9,12 +9,11 @@ import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 foreign import classSlide :: forall a. ReactClass a
 
 type SlidePropsO r = (
-  onExited :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
   key :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
-  theme :: Any {-- interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/createMuiTheme".Theme--}, 
+  theme :: Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/createMuiTheme".Theme--}, 
   style :: Any {-- React.CSSProperties<>--}, 
   appear :: Boolean, 
   enter :: Boolean, 
@@ -23,33 +22,34 @@ type SlidePropsO r = (
   mountOnEnter :: Boolean, 
   unmountOnExit :: Boolean, 
   timeout :: OneOf (
+    typed :: Number, 
     typed :: OptionRecord (
-      exit :: OneOf (
-        typed :: Number, 
-        typed :: Any {-- undefined--}
-      ), 
       enter :: OneOf (
-        typed :: Number, 
-        typed :: Any {-- undefined--}
+        typed :: Any {-- undefined--}, 
+        typed :: Number
+      ), 
+      exit :: OneOf (
+        typed :: Any {-- undefined--}, 
+        typed :: Number
       )
     ) (
-    ), 
-    typed :: Number
+    )
   ), 
   addEndListener :: EffectFn2 Any {-- interface HTMLElement--} Any {-- ( => void)--} Unit, 
   onEnter :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
   onEntering :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
   onEntered :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
   onExit :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
-  onExiting :: EffectFn1 Any {-- interface HTMLElement--} Unit
+  onExiting :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
+  onExited :: EffectFn1 Any {-- interface HTMLElement--} Unit
  | r)
 
 type SlidePropsM  = (
   direction :: OneOf (
-    typed :: StringConst "down", 
     typed :: StringConst "left", 
     typed :: StringConst "right", 
-    typed :: StringConst "up"
+    typed :: StringConst "up", 
+    typed :: StringConst "down"
   )
 )
 

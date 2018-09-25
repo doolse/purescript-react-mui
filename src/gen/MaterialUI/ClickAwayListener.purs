@@ -10,20 +10,20 @@ import React.SyntheticEvent (SyntheticEvent)
 foreign import classClickAwayListener :: forall a. ReactClass a
 
 type ClickAwayListenerPropsO r = (
-  touchEvent :: OneOf (
-    typed :: StringConst "onTouchStart", 
-    typed :: Any {-- false--}, 
-    typed :: StringConst "onTouchEnd"
-  ), 
   key :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   mouseEvent :: OneOf (
-    typed :: StringConst "onMouseUp", 
     typed :: Any {-- false--}, 
     typed :: StringConst "onClick", 
-    typed :: StringConst "onMouseDown"
+    typed :: StringConst "onMouseDown", 
+    typed :: StringConst "onMouseUp"
+  ), 
+  touchEvent :: OneOf (
+    typed :: Any {-- false--}, 
+    typed :: StringConst "onTouchEnd", 
+    typed :: StringConst "onTouchStart"
   )
  | r)
 

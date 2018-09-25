@@ -9,10 +9,9 @@ import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 foreign import classTransition :: forall a. ReactClass a
 
 type TransitionPropsO r = (
-  onExited :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
   key :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   style :: Any {-- React.CSSProperties<>--}, 
   appear :: Boolean, 
@@ -22,25 +21,26 @@ type TransitionPropsO r = (
   mountOnEnter :: Boolean, 
   unmountOnExit :: Boolean, 
   timeout :: OneOf (
+    typed :: Number, 
     typed :: OptionRecord (
-      exit :: OneOf (
-        typed :: Number, 
-        typed :: Any {-- undefined--}
-      ), 
       enter :: OneOf (
-        typed :: Number, 
-        typed :: Any {-- undefined--}
+        typed :: Any {-- undefined--}, 
+        typed :: Number
+      ), 
+      exit :: OneOf (
+        typed :: Any {-- undefined--}, 
+        typed :: Number
       )
     ) (
-    ), 
-    typed :: Number
+    )
   ), 
   addEndListener :: EffectFn2 Any {-- interface HTMLElement--} Any {-- ( => void)--} Unit, 
   onEnter :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
   onEntering :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
   onEntered :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
   onExit :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
-  onExiting :: EffectFn1 Any {-- interface HTMLElement--} Unit
+  onExiting :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
+  onExited :: EffectFn1 Any {-- interface HTMLElement--} Unit
  | r)
 
 type TransitionPropsM  = (

@@ -7,29 +7,29 @@ import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 foreign import classGridListTileBar :: forall a. ReactClass a
 
 type GridListTileBarPropsO r = (
-  style :: Any {-- React.CSSProperties<>--}, 
   key :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   actionIcon :: ReactNode, 
   actionPosition :: OneOf (
-    typed :: StringConst "right", 
-    typed :: StringConst "left"
+    typed :: StringConst "left", 
+    typed :: StringConst "right"
   ), 
   subtitle :: ReactNode, 
   title :: ReactNode, 
   titlePosition :: OneOf (
-    typed :: StringConst "top", 
-    typed :: StringConst "bottom"
+    typed :: StringConst "bottom", 
+    typed :: StringConst "top"
   ), 
   classes :: Any {-- unknown--}, 
   innerRef :: OneOf (
-    typed :: Any {-- React.RefObject<any>--}, 
     typed :: String, 
-    typed :: Any -> Any
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
   ), 
-  className :: String
+  className :: String, 
+  style :: Any {-- React.CSSProperties<>--}
  | r)
 
 type GridListTileBarPropsM  = (

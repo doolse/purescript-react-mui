@@ -10,20 +10,15 @@ import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, S
 foreign import classInputBaseComponent :: forall a. ReactClass a
 
 type InputBaseComponentPropsO r = (
-  innerRef :: OneOf (
-    typed :: Any {-- React.RefObject<any>--}, 
-    typed :: String, 
-    typed :: Any -> Any
-  ), 
   key :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   autoComplete :: String, 
   autoFocus :: Boolean, 
   defaultValue :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   disabled :: Boolean, 
   disableUnderline :: Boolean, 
@@ -32,15 +27,15 @@ type InputBaseComponentPropsO r = (
   fullWidth :: Boolean, 
   id :: String, 
   inputComponent :: OneOf (
-    typed :: Any {-- (props: "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}, 
     typed :: String, 
-    typed :: Any {-- React.ComponentClass<"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<>, any>--}
+    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<>, any>--}, 
+    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
   ), 
-  inputProps :: Any {-- "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<>--}, 
+  inputProps :: Any {-- "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<>--}, 
   inputRef :: OneOf (
-    typed :: Any {-- React.RefObject<any>--}, 
     typed :: String, 
-    typed :: Any -> Any
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
   ), 
   margin :: StringConst "dense", 
   multiline :: Boolean, 
@@ -49,25 +44,25 @@ type InputBaseComponentPropsO r = (
   readOnly :: Boolean, 
   required :: Boolean, 
   rows :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   rowsMax :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   startAdornment :: ReactNode, 
   type :: String, 
   value :: OneOf (
-    typed :: Array (OneOf (
-      typed :: Any {-- true--}, 
-      typed :: String, 
-      typed :: Number, 
-      typed :: Any {-- false--}
-    )), 
     typed :: Boolean, 
     typed :: String, 
-    typed :: Number
+    typed :: Number, 
+    typed :: Array (OneOf (
+      typed :: String, 
+      typed :: Number, 
+      typed :: Any {-- false--}, 
+      typed :: Any {-- true--}
+    ))
   ), 
   onChange :: EffectFn1 SyntheticEvent Unit, 
   onKeyUp :: EffectFn1 SyntheticKeyboardEvent Unit, 
@@ -112,8 +107,8 @@ type InputBaseComponentPropsO r = (
   results :: Number, 
   security :: String, 
   unselectable :: OneOf (
-    typed :: StringConst "off", 
-    typed :: StringConst "on"
+    typed :: StringConst "on", 
+    typed :: StringConst "off"
   ), 
   dangerouslySetInnerHTML :: Record (
     "__html" :: String
@@ -239,26 +234,26 @@ type InputBaseComponentPropsO r = (
   onTouchMoveCapture :: EffectFn1 SyntheticTouchEvent Unit, 
   onTouchStart :: EffectFn1 SyntheticTouchEvent Unit, 
   onTouchStartCapture :: EffectFn1 SyntheticTouchEvent Unit, 
-  onPointerDown :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerDownCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerMove :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerMoveCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerUp :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerUpCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerCancel :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerCancelCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerEnter :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerEnterCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerLeave :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerLeaveCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerOver :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerOverCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerOut :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerOutCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onGotPointerCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onGotPointerCaptureCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onLostPointerCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onLostPointerCaptureCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
+  onPointerDown :: EffectFn1 SyntheticEvent Unit, 
+  onPointerDownCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerMove :: EffectFn1 SyntheticEvent Unit, 
+  onPointerMoveCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerUp :: EffectFn1 SyntheticEvent Unit, 
+  onPointerUpCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerCancel :: EffectFn1 SyntheticEvent Unit, 
+  onPointerCancelCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerEnter :: EffectFn1 SyntheticEvent Unit, 
+  onPointerEnterCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerLeave :: EffectFn1 SyntheticEvent Unit, 
+  onPointerLeaveCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerOver :: EffectFn1 SyntheticEvent Unit, 
+  onPointerOverCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerOut :: EffectFn1 SyntheticEvent Unit, 
+  onPointerOutCapture :: EffectFn1 SyntheticEvent Unit, 
+  onGotPointerCapture :: EffectFn1 SyntheticEvent Unit, 
+  onGotPointerCaptureCapture :: EffectFn1 SyntheticEvent Unit, 
+  onLostPointerCapture :: EffectFn1 SyntheticEvent Unit, 
+  onLostPointerCaptureCapture :: EffectFn1 SyntheticEvent Unit, 
   onScroll :: EffectFn1 SyntheticUIEvent Unit, 
   onScrollCapture :: EffectFn1 SyntheticUIEvent Unit, 
   onWheel :: EffectFn1 SyntheticWheelEvent Unit, 
@@ -271,7 +266,12 @@ type InputBaseComponentPropsO r = (
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit, 
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit, 
   onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit, 
-  classes :: Any {-- unknown--}
+  classes :: Any {-- unknown--}, 
+  innerRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  )
  | r)
 
 type InputBaseComponentPropsM  = (

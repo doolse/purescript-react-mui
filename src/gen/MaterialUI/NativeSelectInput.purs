@@ -10,39 +10,39 @@ import React.SyntheticEvent (SyntheticEvent)
 foreign import classNativeSelectInput :: forall a. ReactClass a
 
 type NativeSelectInputPropsO r = (
-  variant :: OneOf (
-    typed :: StringConst "standard", 
-    typed :: StringConst "filled", 
-    typed :: StringConst "outlined"
-  ), 
   key :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   disabled :: Boolean, 
   "IconComponent" :: OneOf (
-    typed :: Any {-- (props: any, context: any => null | React.ReactElement<any>)--}, 
     typed :: String, 
-    typed :: Any {-- React.ComponentClass<any, any>--}
+    typed :: Any {-- React.ComponentClass<any, any>--}, 
+    typed :: Any {-- (props: any, context: any => null | React.ReactElement<any>)--}
   ), 
   inputRef :: EffectFn1 (OneOf (
+    typed :: Any {-- interface HTMLSelectElement--}, 
     typed :: Record (
+      node :: Any {-- interface HTMLInputElement--}, 
       value :: OneOf (
-        typed :: Number, 
         typed :: Boolean, 
         typed :: Any {-- undefined--}, 
-        typed :: String
-      ), 
-      node :: Any {-- interface HTMLInputElement--}
-    ), 
-    typed :: Any {-- interface HTMLSelectElement--}
+        typed :: String, 
+        typed :: Number
+      )
+    )
   )) Unit, 
   name :: String, 
   onChange :: EffectFn2 SyntheticEvent ReactNode Unit, 
   value :: OneOf (
-    typed :: Number, 
     typed :: Boolean, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
+  ), 
+  variant :: OneOf (
+    typed :: StringConst "filled", 
+    typed :: StringConst "outlined", 
+    typed :: StringConst "standard"
   )
  | r)
 

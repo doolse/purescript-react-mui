@@ -10,14 +10,9 @@ import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, S
 foreign import classNotchedOutline :: forall a. ReactClass a
 
 type NotchedOutlinePropsO r = (
-  innerRef :: OneOf (
-    typed :: Any {-- React.RefObject<any>--}, 
-    typed :: String, 
-    typed :: Any -> Any
-  ), 
   key :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   disabled :: Boolean, 
   error :: Boolean, 
@@ -27,8 +22,8 @@ type NotchedOutlinePropsO r = (
   style :: Any {-- React.CSSProperties<>--}, 
   defaultChecked :: Boolean, 
   defaultValue :: OneOf (
-    typed :: Array String, 
-    typed :: String
+    typed :: String, 
+    typed :: Array String
   ), 
   suppressContentEditableWarning :: Boolean, 
   suppressHydrationWarning :: Boolean, 
@@ -68,8 +63,8 @@ type NotchedOutlinePropsO r = (
   results :: Number, 
   security :: String, 
   unselectable :: OneOf (
-    typed :: StringConst "off", 
-    typed :: StringConst "on"
+    typed :: StringConst "on", 
+    typed :: StringConst "off"
   ), 
   dangerouslySetInnerHTML :: Record (
     "__html" :: String
@@ -198,26 +193,26 @@ type NotchedOutlinePropsO r = (
   onTouchMoveCapture :: EffectFn1 SyntheticTouchEvent Unit, 
   onTouchStart :: EffectFn1 SyntheticTouchEvent Unit, 
   onTouchStartCapture :: EffectFn1 SyntheticTouchEvent Unit, 
-  onPointerDown :: EffectFn1 Any {-- React.PointerEvent<interface HTMLFieldSetElement>--} Unit, 
-  onPointerDownCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLFieldSetElement>--} Unit, 
-  onPointerMove :: EffectFn1 Any {-- React.PointerEvent<interface HTMLFieldSetElement>--} Unit, 
-  onPointerMoveCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLFieldSetElement>--} Unit, 
-  onPointerUp :: EffectFn1 Any {-- React.PointerEvent<interface HTMLFieldSetElement>--} Unit, 
-  onPointerUpCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLFieldSetElement>--} Unit, 
-  onPointerCancel :: EffectFn1 Any {-- React.PointerEvent<interface HTMLFieldSetElement>--} Unit, 
-  onPointerCancelCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLFieldSetElement>--} Unit, 
-  onPointerEnter :: EffectFn1 Any {-- React.PointerEvent<interface HTMLFieldSetElement>--} Unit, 
-  onPointerEnterCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLFieldSetElement>--} Unit, 
-  onPointerLeave :: EffectFn1 Any {-- React.PointerEvent<interface HTMLFieldSetElement>--} Unit, 
-  onPointerLeaveCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLFieldSetElement>--} Unit, 
-  onPointerOver :: EffectFn1 Any {-- React.PointerEvent<interface HTMLFieldSetElement>--} Unit, 
-  onPointerOverCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLFieldSetElement>--} Unit, 
-  onPointerOut :: EffectFn1 Any {-- React.PointerEvent<interface HTMLFieldSetElement>--} Unit, 
-  onPointerOutCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLFieldSetElement>--} Unit, 
-  onGotPointerCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLFieldSetElement>--} Unit, 
-  onGotPointerCaptureCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLFieldSetElement>--} Unit, 
-  onLostPointerCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLFieldSetElement>--} Unit, 
-  onLostPointerCaptureCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLFieldSetElement>--} Unit, 
+  onPointerDown :: EffectFn1 SyntheticEvent Unit, 
+  onPointerDownCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerMove :: EffectFn1 SyntheticEvent Unit, 
+  onPointerMoveCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerUp :: EffectFn1 SyntheticEvent Unit, 
+  onPointerUpCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerCancel :: EffectFn1 SyntheticEvent Unit, 
+  onPointerCancelCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerEnter :: EffectFn1 SyntheticEvent Unit, 
+  onPointerEnterCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerLeave :: EffectFn1 SyntheticEvent Unit, 
+  onPointerLeaveCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerOver :: EffectFn1 SyntheticEvent Unit, 
+  onPointerOverCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerOut :: EffectFn1 SyntheticEvent Unit, 
+  onPointerOutCapture :: EffectFn1 SyntheticEvent Unit, 
+  onGotPointerCapture :: EffectFn1 SyntheticEvent Unit, 
+  onGotPointerCaptureCapture :: EffectFn1 SyntheticEvent Unit, 
+  onLostPointerCapture :: EffectFn1 SyntheticEvent Unit, 
+  onLostPointerCaptureCapture :: EffectFn1 SyntheticEvent Unit, 
   onScroll :: EffectFn1 SyntheticUIEvent Unit, 
   onScrollCapture :: EffectFn1 SyntheticUIEvent Unit, 
   onWheel :: EffectFn1 SyntheticWheelEvent Unit, 
@@ -232,12 +227,17 @@ type NotchedOutlinePropsO r = (
   onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit, 
   form :: String, 
   name :: String, 
-  classes :: Any {-- unknown--}
+  classes :: Any {-- unknown--}, 
+  innerRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  )
  | r)
 
 type NotchedOutlinePropsM  = (
-  notched :: Boolean, 
-  labelWidth :: Number
+  labelWidth :: Number, 
+  notched :: Boolean
 )
 
 notchedOutline :: forall a. IsTSEq (Record a) (OptionRecord (NotchedOutlinePropsO NotchedOutlinePropsM) NotchedOutlinePropsM) => Record a -> Array ReactElement -> ReactElement

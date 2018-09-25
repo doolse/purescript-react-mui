@@ -8,8 +8,8 @@ foreign import classCssBaseline :: forall a. ReactClass a
 
 type CssBaselinePropsO r = (
   key :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   )
  | r)
 

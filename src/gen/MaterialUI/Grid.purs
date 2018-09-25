@@ -10,71 +10,66 @@ import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, S
 foreign import classGrid :: forall a. ReactClass a
 
 type GridPropsO r = (
-  innerRef :: OneOf (
-    typed :: Any {-- React.RefObject<any>--}, 
-    typed :: String, 
-    typed :: Any -> Any
-  ), 
   key :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   alignContent :: OneOf (
-    typed :: StringConst "flex-start", 
     typed :: StringConst "space-around", 
     typed :: StringConst "space-between", 
-    typed :: StringConst "stretch", 
-    typed :: StringConst "center", 
-    typed :: StringConst "flex-end"
-  ), 
-  alignItems :: OneOf (
-    typed :: StringConst "baseline", 
     typed :: StringConst "stretch", 
     typed :: StringConst "center", 
     typed :: StringConst "flex-end", 
     typed :: StringConst "flex-start"
   ), 
+  alignItems :: OneOf (
+    typed :: StringConst "stretch", 
+    typed :: StringConst "center", 
+    typed :: StringConst "flex-end", 
+    typed :: StringConst "flex-start", 
+    typed :: StringConst "baseline"
+  ), 
   component :: OneOf (
-    typed :: Any {-- (props: unknown | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}, 
     typed :: String, 
-    typed :: Any {-- React.ComponentClass<unknown, any>--}
+    typed :: Any {-- React.ComponentClass<unknown, any>--}, 
+    typed :: Any {-- (props: unknown | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
   ), 
   container :: Boolean, 
   direction :: OneOf (
-    typed :: StringConst "row-reverse", 
     typed :: StringConst "column", 
     typed :: StringConst "column-reverse", 
-    typed :: StringConst "row"
+    typed :: StringConst "row", 
+    typed :: StringConst "row-reverse"
   ), 
   item :: Boolean, 
   justify :: OneOf (
-    typed :: StringConst "flex-start", 
     typed :: StringConst "space-around", 
     typed :: StringConst "space-between", 
     typed :: StringConst "space-evenly", 
     typed :: StringConst "center", 
-    typed :: StringConst "flex-end"
+    typed :: StringConst "flex-end", 
+    typed :: StringConst "flex-start"
   ), 
   spacing :: OneOf (
-    typed :: Any {-- 40.0--}, 
     typed :: Any {-- 0.0--}, 
     typed :: Any {-- 8.0--}, 
     typed :: Any {-- 16.0--}, 
     typed :: Any {-- 24.0--}, 
-    typed :: Any {-- 32.0--}
+    typed :: Any {-- 32.0--}, 
+    typed :: Any {-- 40.0--}
   ), 
   wrap :: OneOf (
-    typed :: StringConst "wrap-reverse", 
     typed :: StringConst "nowrap", 
-    typed :: StringConst "wrap"
+    typed :: StringConst "wrap", 
+    typed :: StringConst "wrap-reverse"
   ), 
   zeroMinWidth :: Boolean, 
   color :: String, 
   style :: Any {-- React.CSSProperties<>--}, 
   defaultChecked :: Boolean, 
   defaultValue :: OneOf (
-    typed :: Array String, 
-    typed :: String
+    typed :: String, 
+    typed :: Array String
   ), 
   suppressContentEditableWarning :: Boolean, 
   suppressHydrationWarning :: Boolean, 
@@ -114,8 +109,8 @@ type GridPropsO r = (
   results :: Number, 
   security :: String, 
   unselectable :: OneOf (
-    typed :: StringConst "off", 
-    typed :: StringConst "on"
+    typed :: StringConst "on", 
+    typed :: StringConst "off"
   ), 
   dangerouslySetInnerHTML :: Record (
     "__html" :: String
@@ -244,26 +239,26 @@ type GridPropsO r = (
   onTouchMoveCapture :: EffectFn1 SyntheticTouchEvent Unit, 
   onTouchStart :: EffectFn1 SyntheticTouchEvent Unit, 
   onTouchStartCapture :: EffectFn1 SyntheticTouchEvent Unit, 
-  onPointerDown :: EffectFn1 Any {-- React.PointerEvent<interface HTMLElement>--} Unit, 
-  onPointerDownCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLElement>--} Unit, 
-  onPointerMove :: EffectFn1 Any {-- React.PointerEvent<interface HTMLElement>--} Unit, 
-  onPointerMoveCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLElement>--} Unit, 
-  onPointerUp :: EffectFn1 Any {-- React.PointerEvent<interface HTMLElement>--} Unit, 
-  onPointerUpCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLElement>--} Unit, 
-  onPointerCancel :: EffectFn1 Any {-- React.PointerEvent<interface HTMLElement>--} Unit, 
-  onPointerCancelCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLElement>--} Unit, 
-  onPointerEnter :: EffectFn1 Any {-- React.PointerEvent<interface HTMLElement>--} Unit, 
-  onPointerEnterCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLElement>--} Unit, 
-  onPointerLeave :: EffectFn1 Any {-- React.PointerEvent<interface HTMLElement>--} Unit, 
-  onPointerLeaveCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLElement>--} Unit, 
-  onPointerOver :: EffectFn1 Any {-- React.PointerEvent<interface HTMLElement>--} Unit, 
-  onPointerOverCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLElement>--} Unit, 
-  onPointerOut :: EffectFn1 Any {-- React.PointerEvent<interface HTMLElement>--} Unit, 
-  onPointerOutCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLElement>--} Unit, 
-  onGotPointerCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLElement>--} Unit, 
-  onGotPointerCaptureCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLElement>--} Unit, 
-  onLostPointerCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLElement>--} Unit, 
-  onLostPointerCaptureCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLElement>--} Unit, 
+  onPointerDown :: EffectFn1 SyntheticEvent Unit, 
+  onPointerDownCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerMove :: EffectFn1 SyntheticEvent Unit, 
+  onPointerMoveCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerUp :: EffectFn1 SyntheticEvent Unit, 
+  onPointerUpCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerCancel :: EffectFn1 SyntheticEvent Unit, 
+  onPointerCancelCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerEnter :: EffectFn1 SyntheticEvent Unit, 
+  onPointerEnterCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerLeave :: EffectFn1 SyntheticEvent Unit, 
+  onPointerLeaveCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerOver :: EffectFn1 SyntheticEvent Unit, 
+  onPointerOverCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerOut :: EffectFn1 SyntheticEvent Unit, 
+  onPointerOutCapture :: EffectFn1 SyntheticEvent Unit, 
+  onGotPointerCapture :: EffectFn1 SyntheticEvent Unit, 
+  onGotPointerCaptureCapture :: EffectFn1 SyntheticEvent Unit, 
+  onLostPointerCapture :: EffectFn1 SyntheticEvent Unit, 
+  onLostPointerCaptureCapture :: EffectFn1 SyntheticEvent Unit, 
   onScroll :: EffectFn1 SyntheticUIEvent Unit, 
   onScrollCapture :: EffectFn1 SyntheticUIEvent Unit, 
   onWheel :: EffectFn1 SyntheticWheelEvent Unit, 
@@ -277,7 +272,6 @@ type GridPropsO r = (
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit, 
   onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit, 
   xs :: OneOf (
-    typed :: Any {-- 12.0--}, 
     typed :: Boolean, 
     typed :: StringConst "auto", 
     typed :: Any {-- 1.0--}, 
@@ -290,10 +284,10 @@ type GridPropsO r = (
     typed :: Any {-- 8.0--}, 
     typed :: Any {-- 9.0--}, 
     typed :: Any {-- 10.0--}, 
-    typed :: Any {-- 11.0--}
+    typed :: Any {-- 11.0--}, 
+    typed :: Any {-- 12.0--}
   ), 
   sm :: OneOf (
-    typed :: Any {-- 12.0--}, 
     typed :: Boolean, 
     typed :: StringConst "auto", 
     typed :: Any {-- 1.0--}, 
@@ -306,10 +300,10 @@ type GridPropsO r = (
     typed :: Any {-- 8.0--}, 
     typed :: Any {-- 9.0--}, 
     typed :: Any {-- 10.0--}, 
-    typed :: Any {-- 11.0--}
+    typed :: Any {-- 11.0--}, 
+    typed :: Any {-- 12.0--}
   ), 
   md :: OneOf (
-    typed :: Any {-- 12.0--}, 
     typed :: Boolean, 
     typed :: StringConst "auto", 
     typed :: Any {-- 1.0--}, 
@@ -322,10 +316,10 @@ type GridPropsO r = (
     typed :: Any {-- 8.0--}, 
     typed :: Any {-- 9.0--}, 
     typed :: Any {-- 10.0--}, 
-    typed :: Any {-- 11.0--}
+    typed :: Any {-- 11.0--}, 
+    typed :: Any {-- 12.0--}
   ), 
   lg :: OneOf (
-    typed :: Any {-- 12.0--}, 
     typed :: Boolean, 
     typed :: StringConst "auto", 
     typed :: Any {-- 1.0--}, 
@@ -338,10 +332,10 @@ type GridPropsO r = (
     typed :: Any {-- 8.0--}, 
     typed :: Any {-- 9.0--}, 
     typed :: Any {-- 10.0--}, 
-    typed :: Any {-- 11.0--}
+    typed :: Any {-- 11.0--}, 
+    typed :: Any {-- 12.0--}
   ), 
   xl :: OneOf (
-    typed :: Any {-- 12.0--}, 
     typed :: Boolean, 
     typed :: StringConst "auto", 
     typed :: Any {-- 1.0--}, 
@@ -354,9 +348,15 @@ type GridPropsO r = (
     typed :: Any {-- 8.0--}, 
     typed :: Any {-- 9.0--}, 
     typed :: Any {-- 10.0--}, 
-    typed :: Any {-- 11.0--}
+    typed :: Any {-- 11.0--}, 
+    typed :: Any {-- 12.0--}
   ), 
-  classes :: Any {-- unknown--}
+  classes :: Any {-- unknown--}, 
+  innerRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  )
  | r)
 
 type GridPropsM  = (

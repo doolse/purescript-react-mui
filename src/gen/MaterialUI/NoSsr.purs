@@ -7,11 +7,11 @@ import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 foreign import classNoSsr :: forall a. ReactClass a
 
 type NoSsrPropsO r = (
-  fallback :: ReactNode, 
   key :: OneOf (
-    typed :: Number, 
-    typed :: String
-  )
+    typed :: String, 
+    typed :: Number
+  ), 
+  fallback :: ReactNode
  | r)
 
 type NoSsrPropsM  = (

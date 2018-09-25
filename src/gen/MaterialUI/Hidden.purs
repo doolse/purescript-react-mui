@@ -7,33 +7,32 @@ import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 foreign import classHidden :: forall a. ReactClass a
 
 type HiddenPropsO r = (
-  style :: Any {-- React.CSSProperties<>--}, 
   key :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   implementation :: OneOf (
-    typed :: StringConst "css", 
-    typed :: StringConst "js"
+    typed :: StringConst "js", 
+    typed :: StringConst "css"
   ), 
   initialWidth :: OneOf (
-    typed :: StringConst "xl", 
     typed :: StringConst "xs", 
     typed :: StringConst "sm", 
     typed :: StringConst "md", 
-    typed :: StringConst "lg"
+    typed :: StringConst "lg", 
+    typed :: StringConst "xl"
   ), 
   lgDown :: Boolean, 
   lgUp :: Boolean, 
   mdDown :: Boolean, 
   mdUp :: Boolean, 
   only :: OneOf (
-    typed :: Array Any {-- "\"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/styles/createBreakpoints\".Breakpoint"--}, 
     typed :: StringConst "xs", 
     typed :: StringConst "sm", 
     typed :: StringConst "md", 
     typed :: StringConst "lg", 
-    typed :: StringConst "xl"
+    typed :: StringConst "xl", 
+    typed :: Array Any {-- "\"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/styles/createBreakpoints\".Breakpoint"--}
   ), 
   smDown :: Boolean, 
   smUp :: Boolean, 
@@ -43,11 +42,12 @@ type HiddenPropsO r = (
   xsUp :: Boolean, 
   classes :: Any {-- unknown--}, 
   innerRef :: OneOf (
-    typed :: Any {-- React.RefObject<any>--}, 
     typed :: String, 
-    typed :: Any -> Any
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
   ), 
-  className :: String
+  className :: String, 
+  style :: Any {-- React.CSSProperties<>--}
  | r)
 
 type HiddenPropsM  = (

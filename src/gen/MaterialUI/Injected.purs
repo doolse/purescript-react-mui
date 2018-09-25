@@ -7,11 +7,11 @@ import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 foreign import classInjected :: forall a. ReactClass a
 
 type InjectedPropsO r = (
-  fullScreen :: Boolean, 
   key :: OneOf (
-    typed :: Number, 
-    typed :: String
-  )
+    typed :: String, 
+    typed :: Number
+  ), 
+  fullScreen :: Boolean
  | r)
 
 type InjectedPropsM  = (

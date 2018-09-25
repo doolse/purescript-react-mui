@@ -10,10 +10,9 @@ import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, S
 foreign import classSwipeableDrawer :: forall a. ReactClass a
 
 type SwipeableDrawerPropsO r = (
-  "SlideProps" :: Any {-- unknown--}, 
   key :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   disableBackdropTransition :: Boolean, 
   disableDiscovery :: Boolean, 
@@ -23,26 +22,26 @@ type SwipeableDrawerPropsO r = (
   swipeAreaWidth :: Number, 
   color :: String, 
   transitionDuration :: OneOf (
+    typed :: Number, 
     typed :: OptionRecord (
-      exit :: OneOf (
-        typed :: Number, 
-        typed :: Any {-- undefined--}
-      ), 
       enter :: OneOf (
-        typed :: Number, 
-        typed :: Any {-- undefined--}
+        typed :: Any {-- undefined--}, 
+        typed :: Number
+      ), 
+      exit :: OneOf (
+        typed :: Any {-- undefined--}, 
+        typed :: Number
       )
     ) (
-    ), 
-    typed :: Number
+    )
   ), 
   hidden :: Boolean, 
   style :: Any {-- React.CSSProperties<>--}, 
   classes :: Any {-- unknown--}, 
   defaultChecked :: Boolean, 
   defaultValue :: OneOf (
-    typed :: Array String, 
-    typed :: String
+    typed :: String, 
+    typed :: Array String
   ), 
   suppressContentEditableWarning :: Boolean, 
   suppressHydrationWarning :: Boolean, 
@@ -82,8 +81,8 @@ type SwipeableDrawerPropsO r = (
   results :: Number, 
   security :: String, 
   unselectable :: OneOf (
-    typed :: StringConst "off", 
-    typed :: StringConst "on"
+    typed :: StringConst "on", 
+    typed :: StringConst "off"
   ), 
   dangerouslySetInnerHTML :: Record (
     "__html" :: String
@@ -212,26 +211,26 @@ type SwipeableDrawerPropsO r = (
   onTouchMoveCapture :: EffectFn1 SyntheticTouchEvent Unit, 
   onTouchStart :: EffectFn1 SyntheticTouchEvent Unit, 
   onTouchStartCapture :: EffectFn1 SyntheticTouchEvent Unit, 
-  onPointerDown :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerDownCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerMove :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerMoveCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerUp :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerUpCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerCancel :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerCancelCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerEnter :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerEnterCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerLeave :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerLeaveCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerOver :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerOverCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerOut :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerOutCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onGotPointerCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onGotPointerCaptureCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onLostPointerCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onLostPointerCaptureCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
+  onPointerDown :: EffectFn1 SyntheticEvent Unit, 
+  onPointerDownCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerMove :: EffectFn1 SyntheticEvent Unit, 
+  onPointerMoveCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerUp :: EffectFn1 SyntheticEvent Unit, 
+  onPointerUpCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerCancel :: EffectFn1 SyntheticEvent Unit, 
+  onPointerCancelCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerEnter :: EffectFn1 SyntheticEvent Unit, 
+  onPointerEnterCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerLeave :: EffectFn1 SyntheticEvent Unit, 
+  onPointerLeaveCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerOver :: EffectFn1 SyntheticEvent Unit, 
+  onPointerOverCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerOut :: EffectFn1 SyntheticEvent Unit, 
+  onPointerOutCapture :: EffectFn1 SyntheticEvent Unit, 
+  onGotPointerCapture :: EffectFn1 SyntheticEvent Unit, 
+  onGotPointerCaptureCapture :: EffectFn1 SyntheticEvent Unit, 
+  onLostPointerCapture :: EffectFn1 SyntheticEvent Unit, 
+  onLostPointerCaptureCapture :: EffectFn1 SyntheticEvent Unit, 
   onScroll :: EffectFn1 SyntheticUIEvent Unit, 
   onScrollCapture :: EffectFn1 SyntheticUIEvent Unit, 
   onWheel :: EffectFn1 SyntheticWheelEvent Unit, 
@@ -246,9 +245,9 @@ type SwipeableDrawerPropsO r = (
   onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit, 
   elevation :: Number, 
   innerRef :: OneOf (
-    typed :: Any {-- React.RefObject<any>--}, 
     typed :: String, 
-    typed :: Any -> Any
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
   ), 
   onEnter :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
   onEntering :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
@@ -256,24 +255,24 @@ type SwipeableDrawerPropsO r = (
   onExit :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
   onExiting :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
   onExited :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
-  theme :: Any {-- interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/createMuiTheme".Theme--}, 
+  theme :: Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/createMuiTheme".Theme--}, 
   variant :: OneOf (
-    typed :: StringConst "temporary", 
     typed :: StringConst "permanent", 
-    typed :: StringConst "persistent"
+    typed :: StringConst "persistent", 
+    typed :: StringConst "temporary"
   ), 
   container :: OneOf (
-    typed :: Any {-- ( => interface Element | React.Component<any, {}, any>)--}, 
     typed :: Any {-- interface Element--}, 
-    typed :: Any {-- React.Component<any, {}, any>--}
+    typed :: Any {-- React.Component<any, {}, any>--}, 
+    typed :: Any {-- ( => interface Element | React.Component<any, {}, any>)--}
   ), 
   manifest :: String, 
   disablePortal :: Boolean, 
   onRendered :: Any {-- ( => void)--}, 
   "BackdropComponent" :: OneOf (
-    typed :: Any {-- (props: "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Backdrop/Backdrop".BackdropProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}, 
     typed :: String, 
-    typed :: Any {-- React.ComponentClass<"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Backdrop/Backdrop".BackdropProps<>, any>--}
+    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Backdrop/Backdrop".BackdropProps<>, any>--}, 
+    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Backdrop/Backdrop".BackdropProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
   ), 
   "BackdropProps" :: Any {-- unknown--}, 
   disableAutoFocus :: Boolean, 
@@ -288,18 +287,19 @@ type SwipeableDrawerPropsO r = (
   onEscapeKeyDown :: EffectFn1 SyntheticEvent Unit, 
   "PaperProps" :: Any {-- unknown--}, 
   anchor :: OneOf (
-    typed :: StringConst "top", 
     typed :: StringConst "bottom", 
     typed :: StringConst "left", 
-    typed :: StringConst "right"
+    typed :: StringConst "right", 
+    typed :: StringConst "top"
   ), 
-  "ModalProps" :: Any {-- unknown--}
+  "ModalProps" :: Any {-- unknown--}, 
+  "SlideProps" :: Any {-- unknown--}
  | r)
 
 type SwipeableDrawerPropsM  = (
-  open :: Boolean, 
   onClose :: EffectFn1 SyntheticEvent Unit, 
-  onOpen :: EffectFn1 SyntheticEvent Unit
+  onOpen :: EffectFn1 SyntheticEvent Unit, 
+  open :: Boolean
 )
 
 swipeableDrawer :: forall a. IsTSEq (Record a) (OptionRecord (SwipeableDrawerPropsO SwipeableDrawerPropsM) SwipeableDrawerPropsM) => Record a -> Array ReactElement -> ReactElement

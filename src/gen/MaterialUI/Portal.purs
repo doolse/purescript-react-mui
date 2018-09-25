@@ -7,17 +7,17 @@ import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 foreign import classPortal :: forall a. ReactClass a
 
 type PortalPropsO r = (
-  onRendered :: Any {-- ( => void)--}, 
   key :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   container :: OneOf (
-    typed :: Any {-- ( => interface Element | React.Component<any, {}, any>)--}, 
     typed :: Any {-- interface Element--}, 
-    typed :: Any {-- React.Component<any, {}, any>--}
+    typed :: Any {-- React.Component<any, {}, any>--}, 
+    typed :: Any {-- ( => interface Element | React.Component<any, {}, any>)--}
   ), 
-  disablePortal :: Boolean
+  disablePortal :: Boolean, 
+  onRendered :: Any {-- ( => void)--}
  | r)
 
 type PortalPropsM  = (

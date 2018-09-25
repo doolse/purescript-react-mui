@@ -7,35 +7,35 @@ import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 foreign import classHiddenJs :: forall a. ReactClass a
 
 type HiddenJsPropsO r = (
-  xsUp :: Boolean, 
   key :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   initialWidth :: OneOf (
-    typed :: StringConst "xl", 
-    typed :: StringConst "xs", 
-    typed :: StringConst "sm", 
-    typed :: StringConst "md", 
-    typed :: StringConst "lg"
-  ), 
-  lgDown :: Boolean, 
-  lgUp :: Boolean, 
-  mdDown :: Boolean, 
-  mdUp :: Boolean, 
-  only :: OneOf (
-    typed :: Array Any {-- "\"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/styles/createBreakpoints\".Breakpoint"--}, 
     typed :: StringConst "xs", 
     typed :: StringConst "sm", 
     typed :: StringConst "md", 
     typed :: StringConst "lg", 
     typed :: StringConst "xl"
   ), 
+  lgDown :: Boolean, 
+  lgUp :: Boolean, 
+  mdDown :: Boolean, 
+  mdUp :: Boolean, 
+  only :: OneOf (
+    typed :: StringConst "xs", 
+    typed :: StringConst "sm", 
+    typed :: StringConst "md", 
+    typed :: StringConst "lg", 
+    typed :: StringConst "xl", 
+    typed :: Array Any {-- "\"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/styles/createBreakpoints\".Breakpoint"--}
+  ), 
   smDown :: Boolean, 
   smUp :: Boolean, 
   xlDown :: Boolean, 
   xlUp :: Boolean, 
-  xsDown :: Boolean
+  xsDown :: Boolean, 
+  xsUp :: Boolean
  | r)
 
 type HiddenJsPropsM  = (

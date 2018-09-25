@@ -7,18 +7,18 @@ import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 foreign import classListItemIcon :: forall a. ReactClass a
 
 type ListItemIconPropsO r = (
-  style :: Any {-- React.CSSProperties<>--}, 
   key :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   classes :: Any {-- unknown--}, 
   innerRef :: OneOf (
-    typed :: Any {-- React.RefObject<any>--}, 
     typed :: String, 
-    typed :: Any -> Any
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
   ), 
-  className :: String
+  className :: String, 
+  style :: Any {-- React.CSSProperties<>--}
  | r)
 
 type ListItemIconPropsM  = (

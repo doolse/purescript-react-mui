@@ -10,38 +10,37 @@ import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, S
 foreign import classMenu :: forall a. ReactClass a
 
 type MenuPropsO r = (
-  classes :: Any {-- unknown--}, 
   key :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   disableAutoFocusItem :: Boolean, 
   "MenuListProps" :: Any {-- unknown--}, 
   "PaperProps" :: Any {-- unknown--}, 
   "PopoverClasses" :: Any {-- unknown--}, 
   transitionDuration :: OneOf (
+    typed :: Number, 
+    typed :: StringConst "auto", 
     typed :: OptionRecord (
-      exit :: OneOf (
-        typed :: Number, 
-        typed :: Any {-- undefined--}
-      ), 
       enter :: OneOf (
-        typed :: Number, 
-        typed :: Any {-- undefined--}
+        typed :: Any {-- undefined--}, 
+        typed :: Number
+      ), 
+      exit :: OneOf (
+        typed :: Any {-- undefined--}, 
+        typed :: Number
       )
     ) (
-    ), 
-    typed :: Number, 
-    typed :: StringConst "auto"
+    )
   ), 
   color :: String, 
-  transformOrigin :: Any {-- interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Popover/Popover".PopoverOrigin--}, 
+  transformOrigin :: Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Popover/Popover".PopoverOrigin--}, 
   hidden :: Boolean, 
   style :: Any {-- React.CSSProperties<>--}, 
   defaultChecked :: Boolean, 
   defaultValue :: OneOf (
-    typed :: Array String, 
-    typed :: String
+    typed :: String, 
+    typed :: Array String
   ), 
   suppressContentEditableWarning :: Boolean, 
   suppressHydrationWarning :: Boolean, 
@@ -81,8 +80,8 @@ type MenuPropsO r = (
   results :: Number, 
   security :: String, 
   unselectable :: OneOf (
-    typed :: StringConst "off", 
-    typed :: StringConst "on"
+    typed :: StringConst "on", 
+    typed :: StringConst "off"
   ), 
   dangerouslySetInnerHTML :: Record (
     "__html" :: String
@@ -211,26 +210,26 @@ type MenuPropsO r = (
   onTouchMoveCapture :: EffectFn1 SyntheticTouchEvent Unit, 
   onTouchStart :: EffectFn1 SyntheticTouchEvent Unit, 
   onTouchStartCapture :: EffectFn1 SyntheticTouchEvent Unit, 
-  onPointerDown :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerDownCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerMove :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerMoveCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerUp :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerUpCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerCancel :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerCancelCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerEnter :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerEnterCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerLeave :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerLeaveCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerOver :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerOverCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerOut :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onPointerOutCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onGotPointerCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onGotPointerCaptureCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onLostPointerCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
-  onLostPointerCaptureCapture :: EffectFn1 Any {-- React.PointerEvent<interface HTMLDivElement>--} Unit, 
+  onPointerDown :: EffectFn1 SyntheticEvent Unit, 
+  onPointerDownCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerMove :: EffectFn1 SyntheticEvent Unit, 
+  onPointerMoveCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerUp :: EffectFn1 SyntheticEvent Unit, 
+  onPointerUpCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerCancel :: EffectFn1 SyntheticEvent Unit, 
+  onPointerCancelCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerEnter :: EffectFn1 SyntheticEvent Unit, 
+  onPointerEnterCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerLeave :: EffectFn1 SyntheticEvent Unit, 
+  onPointerLeaveCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerOver :: EffectFn1 SyntheticEvent Unit, 
+  onPointerOverCapture :: EffectFn1 SyntheticEvent Unit, 
+  onPointerOut :: EffectFn1 SyntheticEvent Unit, 
+  onPointerOutCapture :: EffectFn1 SyntheticEvent Unit, 
+  onGotPointerCapture :: EffectFn1 SyntheticEvent Unit, 
+  onGotPointerCaptureCapture :: EffectFn1 SyntheticEvent Unit, 
+  onLostPointerCapture :: EffectFn1 SyntheticEvent Unit, 
+  onLostPointerCaptureCapture :: EffectFn1 SyntheticEvent Unit, 
   onScroll :: EffectFn1 SyntheticUIEvent Unit, 
   onScrollCapture :: EffectFn1 SyntheticUIEvent Unit, 
   onWheel :: EffectFn1 SyntheticWheelEvent Unit, 
@@ -245,9 +244,9 @@ type MenuPropsO r = (
   onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit, 
   elevation :: Number, 
   innerRef :: OneOf (
-    typed :: Any {-- React.RefObject<any>--}, 
     typed :: String, 
-    typed :: Any -> Any
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
   ), 
   onEnter :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
   onEntering :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
@@ -255,19 +254,19 @@ type MenuPropsO r = (
   onExit :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
   onExiting :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
   onExited :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
-  action :: EffectFn1 Any {-- interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Popover/Popover".PopoverActions--} Unit, 
+  action :: EffectFn1 Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Popover/Popover".PopoverActions--} Unit, 
   container :: OneOf (
-    typed :: Any {-- ( => interface Element | React.Component<any, {}, any>)--}, 
     typed :: Any {-- interface Element--}, 
-    typed :: Any {-- React.Component<any, {}, any>--}
+    typed :: Any {-- React.Component<any, {}, any>--}, 
+    typed :: Any {-- ( => interface Element | React.Component<any, {}, any>)--}
   ), 
   manifest :: String, 
   disablePortal :: Boolean, 
   onRendered :: Any {-- ( => void)--}, 
   "BackdropComponent" :: OneOf (
-    typed :: Any {-- (props: "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Backdrop/Backdrop".BackdropProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}, 
     typed :: String, 
-    typed :: Any {-- React.ComponentClass<"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Backdrop/Backdrop".BackdropProps<>, any>--}
+    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Backdrop/Backdrop".BackdropProps<>, any>--}, 
+    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Backdrop/Backdrop".BackdropProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
   ), 
   "BackdropProps" :: Any {-- unknown--}, 
   disableAutoFocus :: Boolean, 
@@ -283,25 +282,26 @@ type MenuPropsO r = (
   onEscapeKeyDown :: EffectFn1 SyntheticEvent Unit, 
   modal :: Boolean, 
   anchorEl :: OneOf (
-    typed :: Any {-- interface HTMLElement--} -> Any {-- interface HTMLElement--}, 
-    typed :: Any {-- interface HTMLElement--}
+    typed :: Any {-- interface HTMLElement--}, 
+    typed :: Any {-- interface HTMLElement--} -> Any {-- interface HTMLElement--}
   ), 
-  anchorPosition :: Any {-- interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Popover/Popover".PopoverPosition--}, 
-  anchorOrigin :: Any {-- interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Popover/Popover".PopoverOrigin--}, 
+  anchorPosition :: Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Popover/Popover".PopoverPosition--}, 
+  anchorOrigin :: Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Popover/Popover".PopoverOrigin--}, 
   anchorReference :: OneOf (
-    typed :: StringConst "anchorPosition", 
     typed :: StringConst "none", 
-    typed :: StringConst "anchorEl"
+    typed :: StringConst "anchorEl", 
+    typed :: StringConst "anchorPosition"
   ), 
   getContentAnchorEl :: Any {-- interface HTMLElement--} -> Any {-- interface HTMLElement--}, 
   marginThreshold :: Number, 
   "ModalClasses" :: Any {-- unknown--}, 
   "TransitionComponent" :: OneOf (
-    typed :: Any {-- (props: any, context: any => null | React.ReactElement<any>)--}, 
     typed :: String, 
-    typed :: Any {-- React.ComponentClass<any, any>--}
+    typed :: Any {-- React.ComponentClass<any, any>--}, 
+    typed :: Any {-- (props: any, context: any => null | React.ReactElement<any>)--}
   ), 
-  "TransitionProps" :: Any {-- "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/transitions/transition".TransitionProps<>--}
+  "TransitionProps" :: Any {-- "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/transitions/transition".TransitionProps<>--}, 
+  classes :: Any {-- unknown--}
  | r)
 
 type MenuPropsM  = (

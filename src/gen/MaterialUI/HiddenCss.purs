@@ -7,28 +7,28 @@ import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 foreign import classHiddenCss :: forall a. ReactClass a
 
 type HiddenCssPropsO r = (
-  xsUp :: Boolean, 
   key :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
   lgDown :: Boolean, 
   lgUp :: Boolean, 
   mdDown :: Boolean, 
   mdUp :: Boolean, 
   only :: OneOf (
-    typed :: Array Any {-- "\"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/styles/createBreakpoints\".Breakpoint"--}, 
     typed :: StringConst "xs", 
     typed :: StringConst "sm", 
     typed :: StringConst "md", 
     typed :: StringConst "lg", 
-    typed :: StringConst "xl"
+    typed :: StringConst "xl", 
+    typed :: Array Any {-- "\"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/styles/createBreakpoints\".Breakpoint"--}
   ), 
   smDown :: Boolean, 
   smUp :: Boolean, 
   xlDown :: Boolean, 
   xlUp :: Boolean, 
-  xsDown :: Boolean
+  xsDown :: Boolean, 
+  xsUp :: Boolean
  | r)
 
 type HiddenCssPropsM  = (

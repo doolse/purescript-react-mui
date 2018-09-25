@@ -9,26 +9,25 @@ import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 foreign import classGrow :: forall a. ReactClass a
 
 type GrowPropsO r = (
-  exit :: Boolean, 
   key :: OneOf (
-    typed :: Number, 
-    typed :: String
+    typed :: String, 
+    typed :: Number
   ), 
-  theme :: Any {-- interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/createMuiTheme".Theme--}, 
+  theme :: Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/createMuiTheme".Theme--}, 
   timeout :: OneOf (
+    typed :: Number, 
+    typed :: StringConst "auto", 
     typed :: OptionRecord (
-      exit :: OneOf (
-        typed :: Number, 
-        typed :: Any {-- undefined--}
-      ), 
       enter :: OneOf (
-        typed :: Number, 
-        typed :: Any {-- undefined--}
+        typed :: Any {-- undefined--}, 
+        typed :: Number
+      ), 
+      exit :: OneOf (
+        typed :: Any {-- undefined--}, 
+        typed :: Number
       )
     ) (
-    ), 
-    typed :: Number, 
-    typed :: StringConst "auto"
+    )
   ), 
   style :: Any {-- React.CSSProperties<>--}, 
   in :: Boolean, 
@@ -42,7 +41,8 @@ type GrowPropsO r = (
   onExiting :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
   onExited :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
   appear :: Boolean, 
-  enter :: Boolean
+  enter :: Boolean, 
+  exit :: Boolean
  | r)
 
 type GrowPropsM  = (
