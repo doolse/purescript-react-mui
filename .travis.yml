@@ -5,5 +5,6 @@ node_js:
 install:
   - npm install purescript@0.12.0 pulp bower -g
   - bower install
+  - npm install
 script:
   - npm run build
