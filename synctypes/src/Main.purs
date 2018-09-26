@@ -12,18 +12,25 @@ import Effect (Effect)
 import ReadTS (TSType(..), readInterfaceTypes)
 import ReadTS.CommonPS (numberType, stringType)
 import ReadTS.Convert (startsWithAny, unionType)
-import ReadTS.Convert.React (ComponentModule, Property, convertProperty, detectComponentType, propertiesToModule, reactComponentMapper, reactRefMapping, writeComponent, writeEnumModule)
+import ReadTS.Convert.React (ComponentModule, Property, PropertyType(..), convertProperty, detectComponentType, propertiesToModule, reactComponentMapper, reactRefMapping, writeComponent, writeEnumModule)
 
 keyProperty :: Property
-keyProperty = {name:"key", optional: true, t: unionType [stringType, numberType], stringEnums: Set.empty }
+keyProperty = {name:"key", propType: Optional, t: unionType [stringType, numberType], stringEnums: Set.empty }
+
+commonOverride :: Set.Set String 
+commonOverride = Set.fromFoldable ["onClick", "onChange", "onClose", "onDelete", "aria-label"]
 
 convertComponent :: TSType -> Maybe ComponentModule
 convertComponent = case _ of
   Interface {name,members} | Just componentName <- String.stripSuffix (Pattern "Props") name -> 
-    let 
-      doConvert = convertProperty $ reactComponentMapper reactRefMapping
-      -- propertyConvert p | startsWithAny ["aria"] p.name = Nothing 
-      propertyConvert p = Just $ doConvert p
+    let  
+      doConvert = reactComponentMapper reactRefMapping
+      -- -- propertyConvert p | startsWithAny ["aria"] p.name = Nothing 
+      propertyConvert p = let converted = convertProperty doConvert p 
+          in case converted.name, converted.propType of 
+          n, Optional | startsWithAny ["aria", "on"] n && (not $ Set.member n commonOverride) -> Just $ converted {propType = Extended}
+          _, _ -> Just converted
+
       props = [keyProperty] <> (mapMaybe propertyConvert members)
       detected = detectComponentType props
       componentType = detected.componentType

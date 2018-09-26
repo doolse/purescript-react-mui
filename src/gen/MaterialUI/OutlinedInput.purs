@@ -66,6 +66,67 @@ type OutlinedInputPropsO r = (
     typed :: StringConst "on", 
     typed :: StringConst "off"
   ), 
+  "aria-label" :: String, 
+  dangerouslySetInnerHTML :: Record (
+    "__html" :: String
+  ), 
+  onChange :: EffectFn1 SyntheticEvent Unit, 
+  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
+  innerRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  ), 
+  error :: Boolean, 
+  type :: String, 
+  autoFocus :: Boolean, 
+  name :: String, 
+  value :: OneOf (
+    typed :: Boolean, 
+    typed :: String, 
+    typed :: Number, 
+    typed :: Array (OneOf (
+      typed :: String, 
+      typed :: Number, 
+      typed :: Any {-- false--}, 
+      typed :: Any {-- true--}
+    ))
+  ), 
+  fullWidth :: Boolean, 
+  inputProps :: Any {-- "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<>--}, 
+  inputRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  ), 
+  readOnly :: Boolean, 
+  required :: Boolean, 
+  multiline :: Boolean, 
+  autoComplete :: String, 
+  disableUnderline :: Boolean, 
+  endAdornment :: ReactNode, 
+  inputComponent :: OneOf (
+    typed :: String, 
+    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<>, any>--}, 
+    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
+  ), 
+  rows :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  rowsMax :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  startAdornment :: ReactNode, 
+  classes :: Any {-- unknown--}
+ | r)
+
+type OutlinedInputPropsM  = (
+  labelWidth :: Number
+)
+
+type OutlinedInputPropsE r = (
   "aria-activedescendant" :: String, 
   "aria-atomic" :: OneOf (
     typed :: Boolean, 
@@ -153,7 +214,6 @@ type OutlinedInputPropsO r = (
     typed :: StringConst "spelling"
   ), 
   "aria-keyshortcuts" :: String, 
-  "aria-label" :: String, 
   "aria-labelledby" :: String, 
   "aria-level" :: Number, 
   "aria-live" :: OneOf (
@@ -226,9 +286,6 @@ type OutlinedInputPropsO r = (
   "aria-valuemin" :: Number, 
   "aria-valuenow" :: Number, 
   "aria-valuetext" :: String, 
-  dangerouslySetInnerHTML :: Record (
-    "__html" :: String
-  ), 
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCut :: EffectFn1 SyntheticClipboardEvent Unit, 
@@ -245,7 +302,6 @@ type OutlinedInputPropsO r = (
   onFocusCapture :: EffectFn1 SyntheticFocusEvent Unit, 
   onBlur :: EffectFn1 SyntheticFocusEvent Unit, 
   onBlurCapture :: EffectFn1 SyntheticFocusEvent Unit, 
-  onChange :: EffectFn1 SyntheticEvent Unit, 
   onChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onInput :: EffectFn1 SyntheticEvent Unit, 
   onInputCapture :: EffectFn1 SyntheticEvent Unit, 
@@ -309,7 +365,6 @@ type OutlinedInputPropsO r = (
   onVolumeChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onWaiting :: EffectFn1 SyntheticEvent Unit, 
   onWaitingCapture :: EffectFn1 SyntheticEvent Unit, 
-  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
   onClickCapture :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenu :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenuCapture :: EffectFn1 SyntheticMouseEvent Unit, 
@@ -384,60 +439,8 @@ type OutlinedInputPropsO r = (
   onAnimationIteration :: EffectFn1 SyntheticAnimationEvent Unit, 
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit, 
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit, 
-  onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit, 
-  innerRef :: OneOf (
-    typed :: String, 
-    typed :: Any -> Any, 
-    typed :: Any {-- React.RefObject<any>--}
-  ), 
-  error :: Boolean, 
-  type :: String, 
-  autoFocus :: Boolean, 
-  name :: String, 
-  value :: OneOf (
-    typed :: Boolean, 
-    typed :: String, 
-    typed :: Number, 
-    typed :: Array (OneOf (
-      typed :: String, 
-      typed :: Number, 
-      typed :: Any {-- false--}, 
-      typed :: Any {-- true--}
-    ))
-  ), 
-  fullWidth :: Boolean, 
-  inputProps :: Any {-- "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<>--}, 
-  inputRef :: OneOf (
-    typed :: String, 
-    typed :: Any -> Any, 
-    typed :: Any {-- React.RefObject<any>--}
-  ), 
-  readOnly :: Boolean, 
-  required :: Boolean, 
-  multiline :: Boolean, 
-  autoComplete :: String, 
-  disableUnderline :: Boolean, 
-  endAdornment :: ReactNode, 
-  inputComponent :: OneOf (
-    typed :: String, 
-    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<>, any>--}, 
-    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
-  ), 
-  rows :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  rowsMax :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  startAdornment :: ReactNode, 
-  classes :: Any {-- unknown--}
+  onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit
  | r)
-
-type OutlinedInputPropsM  = (
-  labelWidth :: Number
-)
 
 outlinedInput :: forall a. IsTSEq (Record a) (OptionRecord (OutlinedInputPropsO OutlinedInputPropsM) OutlinedInputPropsM) => Record a -> Array ReactElement -> ReactElement
 outlinedInput = unsafeCreateElement classOutlinedInput
@@ -447,3 +450,6 @@ outlinedInput_ = unsafeCreateElement classOutlinedInput {}
 
 outlinedInput' :: forall a. IsTSEq (Record a) (OptionRecord (OutlinedInputPropsO OutlinedInputPropsM) OutlinedInputPropsM) => Record a -> ReactElement
 outlinedInput' = unsafeCreateLeafElement classOutlinedInput
+
+outlinedInput'' :: forall a. IsTSEq (Record a) (OptionRecord (OutlinedInputPropsO (OutlinedInputPropsE OutlinedInputPropsM)) OutlinedInputPropsM) => Record a -> Array ReactElement -> ReactElement
+outlinedInput'' = unsafeCreateElement classOutlinedInput

@@ -1,4 +1,4 @@
-module Main where
+module Test.Main where
 
 import Prelude
 
@@ -31,7 +31,7 @@ main :: Effect Unit
 main = void (elm' >>= render ui)
   where
   ui :: ReactElement
-  ui = D.div' [
+  ui = D.div' [ 
         appBar {position: static} [
             toolbar_ [ typography {variant: display3, color: inherit} [ D.text "EQUELLA"] ]
         ],

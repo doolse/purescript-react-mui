@@ -35,7 +35,13 @@ type ZoomPropsO r = (
     ) (
     )
   ), 
-  addEndListener :: EffectFn2 Any {-- interface HTMLElement--} Any {-- ( => void)--} Unit, 
+  addEndListener :: EffectFn2 Any {-- interface HTMLElement--} Any {-- ( => void)--} Unit
+ | r)
+
+type ZoomPropsM  = (
+)
+
+type ZoomPropsE r = (
   onEnter :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
   onEntering :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
   onEntered :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
@@ -43,9 +49,6 @@ type ZoomPropsO r = (
   onExiting :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
   onExited :: EffectFn1 Any {-- interface HTMLElement--} Unit
  | r)
-
-type ZoomPropsM  = (
-)
 
 zoom :: forall a. IsTSEq (Record a) (OptionRecord (ZoomPropsO ZoomPropsM) ZoomPropsM) => Record a -> Array ReactElement -> ReactElement
 zoom = unsafeCreateElement classZoom
@@ -55,3 +58,6 @@ zoom_ = unsafeCreateElement classZoom {}
 
 zoom' :: forall a. IsTSEq (Record a) (OptionRecord (ZoomPropsO ZoomPropsM) ZoomPropsM) => Record a -> ReactElement
 zoom' = unsafeCreateLeafElement classZoom
+
+zoom'' :: forall a. IsTSEq (Record a) (OptionRecord (ZoomPropsO (ZoomPropsE ZoomPropsM)) ZoomPropsM) => Record a -> Array ReactElement -> ReactElement
+zoom'' = unsafeCreateElement classZoom

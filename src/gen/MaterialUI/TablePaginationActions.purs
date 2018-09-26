@@ -65,6 +65,25 @@ type TablePaginationActionsPropsO r = (
     typed :: StringConst "on", 
     typed :: StringConst "off"
   ), 
+  "aria-label" :: String, 
+  dangerouslySetInnerHTML :: Record (
+    "__html" :: String
+  ), 
+  onChange :: EffectFn1 SyntheticEvent Unit, 
+  onClick :: EffectFn1 SyntheticMouseEvent Unit
+ | r)
+
+type TablePaginationActionsPropsM  = (
+  count :: Number, 
+  onChangePage :: EffectFn2 (OneOf (
+    typed :: Any {-- null--}, 
+    typed :: SyntheticMouseEvent
+  )) Number Unit, 
+  page :: Number, 
+  rowsPerPage :: Number
+)
+
+type TablePaginationActionsPropsE r = (
   "aria-activedescendant" :: String, 
   "aria-atomic" :: OneOf (
     typed :: Boolean, 
@@ -152,7 +171,6 @@ type TablePaginationActionsPropsO r = (
     typed :: StringConst "spelling"
   ), 
   "aria-keyshortcuts" :: String, 
-  "aria-label" :: String, 
   "aria-labelledby" :: String, 
   "aria-level" :: Number, 
   "aria-live" :: OneOf (
@@ -225,9 +243,6 @@ type TablePaginationActionsPropsO r = (
   "aria-valuemin" :: Number, 
   "aria-valuenow" :: Number, 
   "aria-valuetext" :: String, 
-  dangerouslySetInnerHTML :: Record (
-    "__html" :: String
-  ), 
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCut :: EffectFn1 SyntheticClipboardEvent Unit, 
@@ -244,7 +259,6 @@ type TablePaginationActionsPropsO r = (
   onFocusCapture :: EffectFn1 SyntheticFocusEvent Unit, 
   onBlur :: EffectFn1 SyntheticFocusEvent Unit, 
   onBlurCapture :: EffectFn1 SyntheticFocusEvent Unit, 
-  onChange :: EffectFn1 SyntheticEvent Unit, 
   onChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onInput :: EffectFn1 SyntheticEvent Unit, 
   onInputCapture :: EffectFn1 SyntheticEvent Unit, 
@@ -308,7 +322,6 @@ type TablePaginationActionsPropsO r = (
   onVolumeChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onWaiting :: EffectFn1 SyntheticEvent Unit, 
   onWaitingCapture :: EffectFn1 SyntheticEvent Unit, 
-  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
   onClickCapture :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenu :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenuCapture :: EffectFn1 SyntheticMouseEvent Unit, 
@@ -386,16 +399,6 @@ type TablePaginationActionsPropsO r = (
   onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit
  | r)
 
-type TablePaginationActionsPropsM  = (
-  count :: Number, 
-  onChangePage :: EffectFn2 (OneOf (
-    typed :: Any {-- null--}, 
-    typed :: SyntheticMouseEvent
-  )) Number Unit, 
-  page :: Number, 
-  rowsPerPage :: Number
-)
-
 tablePaginationActions :: forall a. IsTSEq (Record a) (OptionRecord (TablePaginationActionsPropsO TablePaginationActionsPropsM) TablePaginationActionsPropsM) => Record a -> Array ReactElement -> ReactElement
 tablePaginationActions = unsafeCreateElement classTablePaginationActions
 
@@ -404,3 +407,6 @@ tablePaginationActions_ = unsafeCreateElement classTablePaginationActions {}
 
 tablePaginationActions' :: forall a. IsTSEq (Record a) (OptionRecord (TablePaginationActionsPropsO TablePaginationActionsPropsM) TablePaginationActionsPropsM) => Record a -> ReactElement
 tablePaginationActions' = unsafeCreateLeafElement classTablePaginationActions
+
+tablePaginationActions'' :: forall a. IsTSEq (Record a) (OptionRecord (TablePaginationActionsPropsO (TablePaginationActionsPropsE TablePaginationActionsPropsM)) TablePaginationActionsPropsM) => Record a -> Array ReactElement -> ReactElement
+tablePaginationActions'' = unsafeCreateElement classTablePaginationActions

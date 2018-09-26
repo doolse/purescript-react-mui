@@ -115,6 +115,29 @@ type TextFieldPropsO r = (
     typed :: StringConst "on", 
     typed :: StringConst "off"
   ), 
+  "aria-label" :: String, 
+  dangerouslySetInnerHTML :: Record (
+    "__html" :: String
+  ), 
+  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
+  component :: OneOf (
+    typed :: String, 
+    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/FormControl/FormControl".FormControlProps<>, any>--}, 
+    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/FormControl/FormControl".FormControlProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
+  ), 
+  innerRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  ), 
+  manifest :: String, 
+  classes :: Any {-- unknown--}
+ | r)
+
+type TextFieldPropsM  = (
+)
+
+type TextFieldPropsE r = (
   "aria-activedescendant" :: String, 
   "aria-atomic" :: OneOf (
     typed :: Boolean, 
@@ -202,7 +225,6 @@ type TextFieldPropsO r = (
     typed :: StringConst "spelling"
   ), 
   "aria-keyshortcuts" :: String, 
-  "aria-label" :: String, 
   "aria-labelledby" :: String, 
   "aria-level" :: Number, 
   "aria-live" :: OneOf (
@@ -275,9 +297,6 @@ type TextFieldPropsO r = (
   "aria-valuemin" :: Number, 
   "aria-valuenow" :: Number, 
   "aria-valuetext" :: String, 
-  dangerouslySetInnerHTML :: Record (
-    "__html" :: String
-  ), 
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCut :: EffectFn1 SyntheticClipboardEvent Unit, 
@@ -357,7 +376,6 @@ type TextFieldPropsO r = (
   onVolumeChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onWaiting :: EffectFn1 SyntheticEvent Unit, 
   onWaitingCapture :: EffectFn1 SyntheticEvent Unit, 
-  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
   onClickCapture :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenu :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenuCapture :: EffectFn1 SyntheticMouseEvent Unit, 
@@ -432,23 +450,8 @@ type TextFieldPropsO r = (
   onAnimationIteration :: EffectFn1 SyntheticAnimationEvent Unit, 
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit, 
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit, 
-  onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit, 
-  component :: OneOf (
-    typed :: String, 
-    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/FormControl/FormControl".FormControlProps<>, any>--}, 
-    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/FormControl/FormControl".FormControlProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
-  ), 
-  innerRef :: OneOf (
-    typed :: String, 
-    typed :: Any -> Any, 
-    typed :: Any {-- React.RefObject<any>--}
-  ), 
-  manifest :: String, 
-  classes :: Any {-- unknown--}
+  onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit
  | r)
-
-type TextFieldPropsM  = (
-)
 
 textField :: forall a. IsTSEq (Record a) (OptionRecord (TextFieldPropsO TextFieldPropsM) TextFieldPropsM) => Record a -> Array ReactElement -> ReactElement
 textField = unsafeCreateElement classTextField
@@ -458,3 +461,6 @@ textField_ = unsafeCreateElement classTextField {}
 
 textField' :: forall a. IsTSEq (Record a) (OptionRecord (TextFieldPropsO TextFieldPropsM) TextFieldPropsM) => Record a -> ReactElement
 textField' = unsafeCreateLeafElement classTextField
+
+textField'' :: forall a. IsTSEq (Record a) (OptionRecord (TextFieldPropsO (TextFieldPropsE TextFieldPropsM)) TextFieldPropsM) => Record a -> Array ReactElement -> ReactElement
+textField'' = unsafeCreateElement classTextField

@@ -41,11 +41,8 @@ type SelectInputPropsO r = (
   )) Unit, 
   "MenuProps" :: Any {-- unknown--}, 
   name :: String, 
-  onBlur :: EffectFn1 SyntheticFocusEvent Unit, 
   onChange :: EffectFn2 SyntheticEvent ReactNode Unit, 
   onClose :: EffectFn1 SyntheticEvent Unit, 
-  onFocus :: EffectFn1 SyntheticFocusEvent Unit, 
-  onOpen :: EffectFn1 SyntheticEvent Unit, 
   open :: Boolean, 
   readOnly :: Boolean, 
   renderValue :: OneOf (
@@ -86,6 +83,12 @@ type SelectInputPropsM  = (
   native :: Boolean
 )
 
+type SelectInputPropsE r = (
+  onBlur :: EffectFn1 SyntheticFocusEvent Unit, 
+  onFocus :: EffectFn1 SyntheticFocusEvent Unit, 
+  onOpen :: EffectFn1 SyntheticEvent Unit
+ | r)
+
 selectInput :: forall a. IsTSEq (Record a) (OptionRecord (SelectInputPropsO SelectInputPropsM) SelectInputPropsM) => Record a -> Array ReactElement -> ReactElement
 selectInput = unsafeCreateElement classSelectInput
 
@@ -94,3 +97,6 @@ selectInput_ = unsafeCreateElement classSelectInput {}
 
 selectInput' :: forall a. IsTSEq (Record a) (OptionRecord (SelectInputPropsO SelectInputPropsM) SelectInputPropsM) => Record a -> ReactElement
 selectInput' = unsafeCreateLeafElement classSelectInput
+
+selectInput'' :: forall a. IsTSEq (Record a) (OptionRecord (SelectInputPropsO (SelectInputPropsE SelectInputPropsM)) SelectInputPropsM) => Record a -> Array ReactElement -> ReactElement
+selectInput'' = unsafeCreateElement classSelectInput

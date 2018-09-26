@@ -81,6 +81,58 @@ type ListItemPropsO r = (
     typed :: StringConst "on", 
     typed :: StringConst "off"
   ), 
+  "aria-label" :: String, 
+  dangerouslySetInnerHTML :: Record (
+    "__html" :: String
+  ), 
+  onChange :: EffectFn1 SyntheticEvent Unit, 
+  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
+  innerRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  ), 
+  download :: Any, 
+  href :: String, 
+  hrefLang :: String, 
+  media :: String, 
+  rel :: String, 
+  target :: String, 
+  type :: String, 
+  autoFocus :: Boolean, 
+  form :: String, 
+  formAction :: String, 
+  formEncType :: String, 
+  formMethod :: String, 
+  formNoValidate :: Boolean, 
+  formTarget :: String, 
+  name :: String, 
+  value :: OneOf (
+    typed :: String, 
+    typed :: Number, 
+    typed :: Array String
+  ), 
+  action :: EffectFn1 Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/ButtonBase/ButtonBase".ButtonBaseActions--} Unit, 
+  buttonRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  ), 
+  centerRipple :: Boolean, 
+  disableRipple :: Boolean, 
+  disableTouchRipple :: Boolean, 
+  focusRipple :: Boolean, 
+  "TouchRippleProps" :: OneOf (
+    typed :: Any {-- unknown--}, 
+    typed :: Any {-- unknown--}
+  ), 
+  classes :: Any {-- unknown--}
+ | r)
+
+type ListItemPropsM  = (
+)
+
+type ListItemPropsE r = (
   "aria-activedescendant" :: String, 
   "aria-atomic" :: OneOf (
     typed :: Boolean, 
@@ -168,7 +220,6 @@ type ListItemPropsO r = (
     typed :: StringConst "spelling"
   ), 
   "aria-keyshortcuts" :: String, 
-  "aria-label" :: String, 
   "aria-labelledby" :: String, 
   "aria-level" :: Number, 
   "aria-live" :: OneOf (
@@ -241,9 +292,6 @@ type ListItemPropsO r = (
   "aria-valuemin" :: Number, 
   "aria-valuenow" :: Number, 
   "aria-valuetext" :: String, 
-  dangerouslySetInnerHTML :: Record (
-    "__html" :: String
-  ), 
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCut :: EffectFn1 SyntheticClipboardEvent Unit, 
@@ -260,7 +308,6 @@ type ListItemPropsO r = (
   onFocusCapture :: EffectFn1 SyntheticFocusEvent Unit, 
   onBlur :: EffectFn1 SyntheticFocusEvent Unit, 
   onBlurCapture :: EffectFn1 SyntheticFocusEvent Unit, 
-  onChange :: EffectFn1 SyntheticEvent Unit, 
   onChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onInput :: EffectFn1 SyntheticEvent Unit, 
   onInputCapture :: EffectFn1 SyntheticEvent Unit, 
@@ -324,7 +371,6 @@ type ListItemPropsO r = (
   onVolumeChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onWaiting :: EffectFn1 SyntheticEvent Unit, 
   onWaitingCapture :: EffectFn1 SyntheticEvent Unit, 
-  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
   onClickCapture :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenu :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenuCapture :: EffectFn1 SyntheticMouseEvent Unit, 
@@ -400,51 +446,8 @@ type ListItemPropsO r = (
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit, 
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit, 
   onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit, 
-  innerRef :: OneOf (
-    typed :: String, 
-    typed :: Any -> Any, 
-    typed :: Any {-- React.RefObject<any>--}
-  ), 
-  download :: Any, 
-  href :: String, 
-  hrefLang :: String, 
-  media :: String, 
-  rel :: String, 
-  target :: String, 
-  type :: String, 
-  autoFocus :: Boolean, 
-  form :: String, 
-  formAction :: String, 
-  formEncType :: String, 
-  formMethod :: String, 
-  formNoValidate :: Boolean, 
-  formTarget :: String, 
-  name :: String, 
-  value :: OneOf (
-    typed :: String, 
-    typed :: Number, 
-    typed :: Array String
-  ), 
-  action :: EffectFn1 Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/ButtonBase/ButtonBase".ButtonBaseActions--} Unit, 
-  buttonRef :: OneOf (
-    typed :: String, 
-    typed :: Any -> Any, 
-    typed :: Any {-- React.RefObject<any>--}
-  ), 
-  centerRipple :: Boolean, 
-  disableRipple :: Boolean, 
-  disableTouchRipple :: Boolean, 
-  focusRipple :: Boolean, 
-  onFocusVisible :: EffectFn1 SyntheticFocusEvent Unit, 
-  "TouchRippleProps" :: OneOf (
-    typed :: Any {-- unknown--}, 
-    typed :: Any {-- unknown--}
-  ), 
-  classes :: Any {-- unknown--}
+  onFocusVisible :: EffectFn1 SyntheticFocusEvent Unit
  | r)
-
-type ListItemPropsM  = (
-)
 
 listItem :: forall a. IsTSEq (Record a) (OptionRecord (ListItemPropsO ListItemPropsM) ListItemPropsM) => Record a -> Array ReactElement -> ReactElement
 listItem = unsafeCreateElement classListItem
@@ -454,3 +457,6 @@ listItem_ = unsafeCreateElement classListItem {}
 
 listItem' :: forall a. IsTSEq (Record a) (OptionRecord (ListItemPropsO ListItemPropsM) ListItemPropsM) => Record a -> ReactElement
 listItem' = unsafeCreateLeafElement classListItem
+
+listItem'' :: forall a. IsTSEq (Record a) (OptionRecord (ListItemPropsO (ListItemPropsE ListItemPropsM)) ListItemPropsM) => Record a -> Array ReactElement -> ReactElement
+listItem'' = unsafeCreateElement classListItem

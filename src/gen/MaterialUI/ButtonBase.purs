@@ -30,7 +30,6 @@ type ButtonBasePropsO r = (
   disableTouchRipple :: Boolean, 
   focusRipple :: Boolean, 
   focusVisibleClassName :: String, 
-  onFocusVisible :: EffectFn1 SyntheticFocusEvent Unit, 
   "TouchRippleProps" :: OneOf (
     typed :: Any {-- unknown--}, 
     typed :: Any {-- unknown--}
@@ -85,6 +84,45 @@ type ButtonBasePropsO r = (
     typed :: StringConst "on", 
     typed :: StringConst "off"
   ), 
+  "aria-label" :: String, 
+  dangerouslySetInnerHTML :: Record (
+    "__html" :: String
+  ), 
+  onChange :: EffectFn1 SyntheticEvent Unit, 
+  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
+  download :: Any, 
+  href :: String, 
+  hrefLang :: String, 
+  media :: String, 
+  rel :: String, 
+  target :: String, 
+  type :: String, 
+  autoFocus :: Boolean, 
+  form :: String, 
+  formAction :: String, 
+  formEncType :: String, 
+  formMethod :: String, 
+  formNoValidate :: Boolean, 
+  formTarget :: String, 
+  name :: String, 
+  value :: OneOf (
+    typed :: String, 
+    typed :: Number, 
+    typed :: Array String
+  ), 
+  classes :: Any {-- unknown--}, 
+  innerRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  )
+ | r)
+
+type ButtonBasePropsM  = (
+)
+
+type ButtonBasePropsE r = (
+  onFocusVisible :: EffectFn1 SyntheticFocusEvent Unit, 
   "aria-activedescendant" :: String, 
   "aria-atomic" :: OneOf (
     typed :: Boolean, 
@@ -172,7 +210,6 @@ type ButtonBasePropsO r = (
     typed :: StringConst "spelling"
   ), 
   "aria-keyshortcuts" :: String, 
-  "aria-label" :: String, 
   "aria-labelledby" :: String, 
   "aria-level" :: Number, 
   "aria-live" :: OneOf (
@@ -245,9 +282,6 @@ type ButtonBasePropsO r = (
   "aria-valuemin" :: Number, 
   "aria-valuenow" :: Number, 
   "aria-valuetext" :: String, 
-  dangerouslySetInnerHTML :: Record (
-    "__html" :: String
-  ), 
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCut :: EffectFn1 SyntheticClipboardEvent Unit, 
@@ -264,7 +298,6 @@ type ButtonBasePropsO r = (
   onFocusCapture :: EffectFn1 SyntheticFocusEvent Unit, 
   onBlur :: EffectFn1 SyntheticFocusEvent Unit, 
   onBlurCapture :: EffectFn1 SyntheticFocusEvent Unit, 
-  onChange :: EffectFn1 SyntheticEvent Unit, 
   onChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onInput :: EffectFn1 SyntheticEvent Unit, 
   onInputCapture :: EffectFn1 SyntheticEvent Unit, 
@@ -328,7 +361,6 @@ type ButtonBasePropsO r = (
   onVolumeChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onWaiting :: EffectFn1 SyntheticEvent Unit, 
   onWaitingCapture :: EffectFn1 SyntheticEvent Unit, 
-  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
   onClickCapture :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenu :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenuCapture :: EffectFn1 SyntheticMouseEvent Unit, 
@@ -403,37 +435,8 @@ type ButtonBasePropsO r = (
   onAnimationIteration :: EffectFn1 SyntheticAnimationEvent Unit, 
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit, 
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit, 
-  onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit, 
-  download :: Any, 
-  href :: String, 
-  hrefLang :: String, 
-  media :: String, 
-  rel :: String, 
-  target :: String, 
-  type :: String, 
-  autoFocus :: Boolean, 
-  form :: String, 
-  formAction :: String, 
-  formEncType :: String, 
-  formMethod :: String, 
-  formNoValidate :: Boolean, 
-  formTarget :: String, 
-  name :: String, 
-  value :: OneOf (
-    typed :: String, 
-    typed :: Number, 
-    typed :: Array String
-  ), 
-  classes :: Any {-- unknown--}, 
-  innerRef :: OneOf (
-    typed :: String, 
-    typed :: Any -> Any, 
-    typed :: Any {-- React.RefObject<any>--}
-  )
+  onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit
  | r)
-
-type ButtonBasePropsM  = (
-)
 
 buttonBase :: forall a. IsTSEq (Record a) (OptionRecord (ButtonBasePropsO ButtonBasePropsM) ButtonBasePropsM) => Record a -> Array ReactElement -> ReactElement
 buttonBase = unsafeCreateElement classButtonBase
@@ -443,3 +446,6 @@ buttonBase_ = unsafeCreateElement classButtonBase {}
 
 buttonBase' :: forall a. IsTSEq (Record a) (OptionRecord (ButtonBasePropsO ButtonBasePropsM) ButtonBasePropsM) => Record a -> ReactElement
 buttonBase' = unsafeCreateLeafElement classButtonBase
+
+buttonBase'' :: forall a. IsTSEq (Record a) (OptionRecord (ButtonBasePropsO (ButtonBasePropsE ButtonBasePropsM)) ButtonBasePropsM) => Record a -> Array ReactElement -> ReactElement
+buttonBase'' = unsafeCreateElement classButtonBase

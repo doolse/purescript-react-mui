@@ -35,13 +35,7 @@ type SlidePropsO r = (
     ) (
     )
   ), 
-  addEndListener :: EffectFn2 Any {-- interface HTMLElement--} Any {-- ( => void)--} Unit, 
-  onEnter :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
-  onEntering :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
-  onEntered :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
-  onExit :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
-  onExiting :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
-  onExited :: EffectFn1 Any {-- interface HTMLElement--} Unit
+  addEndListener :: EffectFn2 Any {-- interface HTMLElement--} Any {-- ( => void)--} Unit
  | r)
 
 type SlidePropsM  = (
@@ -53,6 +47,15 @@ type SlidePropsM  = (
   )
 )
 
+type SlidePropsE r = (
+  onEnter :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
+  onEntering :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
+  onEntered :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
+  onExit :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
+  onExiting :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
+  onExited :: EffectFn1 Any {-- interface HTMLElement--} Unit
+ | r)
+
 slide :: forall a. IsTSEq (Record a) (OptionRecord (SlidePropsO SlidePropsM) SlidePropsM) => Record a -> Array ReactElement -> ReactElement
 slide = unsafeCreateElement classSlide
 
@@ -61,3 +64,6 @@ slide_ = unsafeCreateElement classSlide {}
 
 slide' :: forall a. IsTSEq (Record a) (OptionRecord (SlidePropsO SlidePropsM) SlidePropsM) => Record a -> ReactElement
 slide' = unsafeCreateLeafElement classSlide
+
+slide'' :: forall a. IsTSEq (Record a) (OptionRecord (SlidePropsO (SlidePropsE SlidePropsM)) SlidePropsM) => Record a -> Array ReactElement -> ReactElement
+slide'' = unsafeCreateElement classSlide

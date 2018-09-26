@@ -71,6 +71,55 @@ type DialogContentTextPropsO r = (
     typed :: StringConst "on", 
     typed :: StringConst "off"
   ), 
+  "aria-label" :: String, 
+  dangerouslySetInnerHTML :: Record (
+    "__html" :: String
+  ), 
+  onChange :: EffectFn1 SyntheticEvent Unit, 
+  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
+  component :: OneOf (
+    typed :: String, 
+    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Typography/Typography".TypographyProps<>, any>--}, 
+    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Typography/Typography".TypographyProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
+  ), 
+  innerRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  ), 
+  noWrap :: Boolean, 
+  gutterBottom :: Boolean, 
+  paragraph :: Boolean, 
+  align :: OneOf (
+    typed :: StringConst "left", 
+    typed :: StringConst "right", 
+    typed :: StringConst "inherit", 
+    typed :: StringConst "center", 
+    typed :: StringConst "justify"
+  ), 
+  headlineMapping :: Any {-- unknown--}, 
+  variant :: OneOf (
+    typed :: StringConst "inherit", 
+    typed :: StringConst "caption", 
+    typed :: StringConst "button", 
+    typed :: StringConst "title", 
+    typed :: StringConst "display4", 
+    typed :: StringConst "display3", 
+    typed :: StringConst "display2", 
+    typed :: StringConst "display1", 
+    typed :: StringConst "headline", 
+    typed :: StringConst "subheading", 
+    typed :: StringConst "body2", 
+    typed :: StringConst "body1", 
+    typed :: StringConst "srOnly"
+  ), 
+  classes :: Any {-- unknown--}
+ | r)
+
+type DialogContentTextPropsM  = (
+)
+
+type DialogContentTextPropsE r = (
   "aria-activedescendant" :: String, 
   "aria-atomic" :: OneOf (
     typed :: Boolean, 
@@ -158,7 +207,6 @@ type DialogContentTextPropsO r = (
     typed :: StringConst "spelling"
   ), 
   "aria-keyshortcuts" :: String, 
-  "aria-label" :: String, 
   "aria-labelledby" :: String, 
   "aria-level" :: Number, 
   "aria-live" :: OneOf (
@@ -231,9 +279,6 @@ type DialogContentTextPropsO r = (
   "aria-valuemin" :: Number, 
   "aria-valuenow" :: Number, 
   "aria-valuetext" :: String, 
-  dangerouslySetInnerHTML :: Record (
-    "__html" :: String
-  ), 
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCut :: EffectFn1 SyntheticClipboardEvent Unit, 
@@ -250,7 +295,6 @@ type DialogContentTextPropsO r = (
   onFocusCapture :: EffectFn1 SyntheticFocusEvent Unit, 
   onBlur :: EffectFn1 SyntheticFocusEvent Unit, 
   onBlurCapture :: EffectFn1 SyntheticFocusEvent Unit, 
-  onChange :: EffectFn1 SyntheticEvent Unit, 
   onChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onInput :: EffectFn1 SyntheticEvent Unit, 
   onInputCapture :: EffectFn1 SyntheticEvent Unit, 
@@ -314,7 +358,6 @@ type DialogContentTextPropsO r = (
   onVolumeChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onWaiting :: EffectFn1 SyntheticEvent Unit, 
   onWaitingCapture :: EffectFn1 SyntheticEvent Unit, 
-  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
   onClickCapture :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenu :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenuCapture :: EffectFn1 SyntheticMouseEvent Unit, 
@@ -389,48 +432,8 @@ type DialogContentTextPropsO r = (
   onAnimationIteration :: EffectFn1 SyntheticAnimationEvent Unit, 
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit, 
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit, 
-  onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit, 
-  component :: OneOf (
-    typed :: String, 
-    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Typography/Typography".TypographyProps<>, any>--}, 
-    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Typography/Typography".TypographyProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
-  ), 
-  innerRef :: OneOf (
-    typed :: String, 
-    typed :: Any -> Any, 
-    typed :: Any {-- React.RefObject<any>--}
-  ), 
-  noWrap :: Boolean, 
-  gutterBottom :: Boolean, 
-  paragraph :: Boolean, 
-  align :: OneOf (
-    typed :: StringConst "left", 
-    typed :: StringConst "right", 
-    typed :: StringConst "inherit", 
-    typed :: StringConst "center", 
-    typed :: StringConst "justify"
-  ), 
-  headlineMapping :: Any {-- unknown--}, 
-  variant :: OneOf (
-    typed :: StringConst "inherit", 
-    typed :: StringConst "caption", 
-    typed :: StringConst "button", 
-    typed :: StringConst "title", 
-    typed :: StringConst "display4", 
-    typed :: StringConst "display3", 
-    typed :: StringConst "display2", 
-    typed :: StringConst "display1", 
-    typed :: StringConst "headline", 
-    typed :: StringConst "subheading", 
-    typed :: StringConst "body2", 
-    typed :: StringConst "body1", 
-    typed :: StringConst "srOnly"
-  ), 
-  classes :: Any {-- unknown--}
+  onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit
  | r)
-
-type DialogContentTextPropsM  = (
-)
 
 dialogContentText :: forall a. IsTSEq (Record a) (OptionRecord (DialogContentTextPropsO DialogContentTextPropsM) DialogContentTextPropsM) => Record a -> Array ReactElement -> ReactElement
 dialogContentText = unsafeCreateElement classDialogContentText
@@ -440,3 +443,6 @@ dialogContentText_ = unsafeCreateElement classDialogContentText {}
 
 dialogContentText' :: forall a. IsTSEq (Record a) (OptionRecord (DialogContentTextPropsO DialogContentTextPropsM) DialogContentTextPropsM) => Record a -> ReactElement
 dialogContentText' = unsafeCreateLeafElement classDialogContentText
+
+dialogContentText'' :: forall a. IsTSEq (Record a) (OptionRecord (DialogContentTextPropsO (DialogContentTextPropsE DialogContentTextPropsM)) DialogContentTextPropsM) => Record a -> Array ReactElement -> ReactElement
+dialogContentText'' = unsafeCreateElement classDialogContentText

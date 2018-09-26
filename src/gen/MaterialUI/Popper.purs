@@ -92,6 +92,19 @@ type PopperPropsO r = (
     typed :: StringConst "on", 
     typed :: StringConst "off"
   ), 
+  "aria-label" :: String, 
+  dangerouslySetInnerHTML :: Record (
+    "__html" :: String
+  ), 
+  onChange :: EffectFn1 SyntheticEvent Unit, 
+  onClick :: EffectFn1 SyntheticMouseEvent Unit
+ | r)
+
+type PopperPropsM  = (
+  open :: Boolean
+)
+
+type PopperPropsE r = (
   "aria-activedescendant" :: String, 
   "aria-atomic" :: OneOf (
     typed :: Boolean, 
@@ -179,7 +192,6 @@ type PopperPropsO r = (
     typed :: StringConst "spelling"
   ), 
   "aria-keyshortcuts" :: String, 
-  "aria-label" :: String, 
   "aria-labelledby" :: String, 
   "aria-level" :: Number, 
   "aria-live" :: OneOf (
@@ -252,9 +264,6 @@ type PopperPropsO r = (
   "aria-valuemin" :: Number, 
   "aria-valuenow" :: Number, 
   "aria-valuetext" :: String, 
-  dangerouslySetInnerHTML :: Record (
-    "__html" :: String
-  ), 
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCut :: EffectFn1 SyntheticClipboardEvent Unit, 
@@ -271,7 +280,6 @@ type PopperPropsO r = (
   onFocusCapture :: EffectFn1 SyntheticFocusEvent Unit, 
   onBlur :: EffectFn1 SyntheticFocusEvent Unit, 
   onBlurCapture :: EffectFn1 SyntheticFocusEvent Unit, 
-  onChange :: EffectFn1 SyntheticEvent Unit, 
   onChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onInput :: EffectFn1 SyntheticEvent Unit, 
   onInputCapture :: EffectFn1 SyntheticEvent Unit, 
@@ -335,7 +343,6 @@ type PopperPropsO r = (
   onVolumeChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onWaiting :: EffectFn1 SyntheticEvent Unit, 
   onWaitingCapture :: EffectFn1 SyntheticEvent Unit, 
-  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
   onClickCapture :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenu :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenuCapture :: EffectFn1 SyntheticMouseEvent Unit, 
@@ -413,10 +420,6 @@ type PopperPropsO r = (
   onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit
  | r)
 
-type PopperPropsM  = (
-  open :: Boolean
-)
-
 popper :: forall a. IsTSEq (Record a) (OptionRecord (PopperPropsO PopperPropsM) PopperPropsM) => Record a -> Array ReactElement -> ReactElement
 popper = unsafeCreateElement classPopper
 
@@ -425,3 +428,6 @@ popper_ = unsafeCreateElement classPopper {}
 
 popper' :: forall a. IsTSEq (Record a) (OptionRecord (PopperPropsO PopperPropsM) PopperPropsM) => Record a -> ReactElement
 popper' = unsafeCreateLeafElement classPopper
+
+popper'' :: forall a. IsTSEq (Record a) (OptionRecord (PopperPropsO (PopperPropsE PopperPropsM)) PopperPropsM) => Record a -> Array ReactElement -> ReactElement
+popper'' = unsafeCreateElement classPopper

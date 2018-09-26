@@ -74,6 +74,25 @@ type BadgePropsO r = (
     typed :: StringConst "on", 
     typed :: StringConst "off"
   ), 
+  "aria-label" :: String, 
+  dangerouslySetInnerHTML :: Record (
+    "__html" :: String
+  ), 
+  onChange :: EffectFn1 SyntheticEvent Unit, 
+  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
+  classes :: Any {-- unknown--}, 
+  innerRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  )
+ | r)
+
+type BadgePropsM  = (
+  badgeContent :: ReactNode
+)
+
+type BadgePropsE r = (
   "aria-activedescendant" :: String, 
   "aria-atomic" :: OneOf (
     typed :: Boolean, 
@@ -161,7 +180,6 @@ type BadgePropsO r = (
     typed :: StringConst "spelling"
   ), 
   "aria-keyshortcuts" :: String, 
-  "aria-label" :: String, 
   "aria-labelledby" :: String, 
   "aria-level" :: Number, 
   "aria-live" :: OneOf (
@@ -234,9 +252,6 @@ type BadgePropsO r = (
   "aria-valuemin" :: Number, 
   "aria-valuenow" :: Number, 
   "aria-valuetext" :: String, 
-  dangerouslySetInnerHTML :: Record (
-    "__html" :: String
-  ), 
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCut :: EffectFn1 SyntheticClipboardEvent Unit, 
@@ -253,7 +268,6 @@ type BadgePropsO r = (
   onFocusCapture :: EffectFn1 SyntheticFocusEvent Unit, 
   onBlur :: EffectFn1 SyntheticFocusEvent Unit, 
   onBlurCapture :: EffectFn1 SyntheticFocusEvent Unit, 
-  onChange :: EffectFn1 SyntheticEvent Unit, 
   onChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onInput :: EffectFn1 SyntheticEvent Unit, 
   onInputCapture :: EffectFn1 SyntheticEvent Unit, 
@@ -317,7 +331,6 @@ type BadgePropsO r = (
   onVolumeChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onWaiting :: EffectFn1 SyntheticEvent Unit, 
   onWaitingCapture :: EffectFn1 SyntheticEvent Unit, 
-  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
   onClickCapture :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenu :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenuCapture :: EffectFn1 SyntheticMouseEvent Unit, 
@@ -392,18 +405,8 @@ type BadgePropsO r = (
   onAnimationIteration :: EffectFn1 SyntheticAnimationEvent Unit, 
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit, 
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit, 
-  onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit, 
-  classes :: Any {-- unknown--}, 
-  innerRef :: OneOf (
-    typed :: String, 
-    typed :: Any -> Any, 
-    typed :: Any {-- React.RefObject<any>--}
-  )
+  onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit
  | r)
-
-type BadgePropsM  = (
-  badgeContent :: ReactNode
-)
 
 badge :: forall a. IsTSEq (Record a) (OptionRecord (BadgePropsO BadgePropsM) BadgePropsM) => Record a -> Array ReactElement -> ReactElement
 badge = unsafeCreateElement classBadge
@@ -413,3 +416,6 @@ badge_ = unsafeCreateElement classBadge {}
 
 badge' :: forall a. IsTSEq (Record a) (OptionRecord (BadgePropsO BadgePropsM) BadgePropsM) => Record a -> ReactElement
 badge' = unsafeCreateLeafElement classBadge
+
+badge'' :: forall a. IsTSEq (Record a) (OptionRecord (BadgePropsO (BadgePropsE BadgePropsM)) BadgePropsM) => Record a -> Array ReactElement -> ReactElement
+badge'' = unsafeCreateElement classBadge

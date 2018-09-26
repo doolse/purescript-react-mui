@@ -34,12 +34,6 @@ type GrowPropsO r = (
   mountOnEnter :: Boolean, 
   unmountOnExit :: Boolean, 
   addEndListener :: EffectFn2 Any {-- interface HTMLElement--} Any {-- ( => void)--} Unit, 
-  onEnter :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
-  onEntering :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
-  onEntered :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
-  onExit :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
-  onExiting :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
-  onExited :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
   appear :: Boolean, 
   enter :: Boolean, 
   exit :: Boolean
@@ -47,6 +41,15 @@ type GrowPropsO r = (
 
 type GrowPropsM  = (
 )
+
+type GrowPropsE r = (
+  onEnter :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
+  onEntering :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
+  onEntered :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
+  onExit :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
+  onExiting :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
+  onExited :: EffectFn1 Any {-- interface HTMLElement--} Unit
+ | r)
 
 grow :: forall a. IsTSEq (Record a) (OptionRecord (GrowPropsO GrowPropsM) GrowPropsM) => Record a -> Array ReactElement -> ReactElement
 grow = unsafeCreateElement classGrow
@@ -56,3 +59,6 @@ grow_ = unsafeCreateElement classGrow {}
 
 grow' :: forall a. IsTSEq (Record a) (OptionRecord (GrowPropsO GrowPropsM) GrowPropsM) => Record a -> ReactElement
 grow' = unsafeCreateLeafElement classGrow
+
+grow'' :: forall a. IsTSEq (Record a) (OptionRecord (GrowPropsO (GrowPropsE GrowPropsM)) GrowPropsM) => Record a -> Array ReactElement -> ReactElement
+grow'' = unsafeCreateElement classGrow

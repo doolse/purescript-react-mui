@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "build": "pulp browserify --to dist/bundle.js",
-    "watch": "pulp -w browserify --to dist/bundle.js"
+    "build": "pulp browserify -I test -m Test.Main --to dist/bundle.js",
+    "watch": "pulp -w browserify -I test -m Test.Main --to dist/bundle.js"
   },
   "license": "MIT",
   "dependencies": {

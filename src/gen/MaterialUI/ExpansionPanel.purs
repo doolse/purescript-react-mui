@@ -69,6 +69,29 @@ type ExpansionPanelPropsO r = (
     typed :: StringConst "on", 
     typed :: StringConst "off"
   ), 
+  "aria-label" :: String, 
+  dangerouslySetInnerHTML :: Record (
+    "__html" :: String
+  ), 
+  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
+  component :: OneOf (
+    typed :: String, 
+    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Paper/Paper".PaperProps<>, any>--}, 
+    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Paper/Paper".PaperProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
+  ), 
+  elevation :: Number, 
+  innerRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  ), 
+  classes :: Any {-- unknown--}
+ | r)
+
+type ExpansionPanelPropsM  = (
+)
+
+type ExpansionPanelPropsE r = (
   "aria-activedescendant" :: String, 
   "aria-atomic" :: OneOf (
     typed :: Boolean, 
@@ -156,7 +179,6 @@ type ExpansionPanelPropsO r = (
     typed :: StringConst "spelling"
   ), 
   "aria-keyshortcuts" :: String, 
-  "aria-label" :: String, 
   "aria-labelledby" :: String, 
   "aria-level" :: Number, 
   "aria-live" :: OneOf (
@@ -229,9 +251,6 @@ type ExpansionPanelPropsO r = (
   "aria-valuemin" :: Number, 
   "aria-valuenow" :: Number, 
   "aria-valuetext" :: String, 
-  dangerouslySetInnerHTML :: Record (
-    "__html" :: String
-  ), 
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCut :: EffectFn1 SyntheticClipboardEvent Unit, 
@@ -311,7 +330,6 @@ type ExpansionPanelPropsO r = (
   onVolumeChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onWaiting :: EffectFn1 SyntheticEvent Unit, 
   onWaitingCapture :: EffectFn1 SyntheticEvent Unit, 
-  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
   onClickCapture :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenu :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenuCapture :: EffectFn1 SyntheticMouseEvent Unit, 
@@ -386,23 +404,8 @@ type ExpansionPanelPropsO r = (
   onAnimationIteration :: EffectFn1 SyntheticAnimationEvent Unit, 
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit, 
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit, 
-  onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit, 
-  component :: OneOf (
-    typed :: String, 
-    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Paper/Paper".PaperProps<>, any>--}, 
-    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Paper/Paper".PaperProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
-  ), 
-  elevation :: Number, 
-  innerRef :: OneOf (
-    typed :: String, 
-    typed :: Any -> Any, 
-    typed :: Any {-- React.RefObject<any>--}
-  ), 
-  classes :: Any {-- unknown--}
+  onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit
  | r)
-
-type ExpansionPanelPropsM  = (
-)
 
 expansionPanel :: forall a. IsTSEq (Record a) (OptionRecord (ExpansionPanelPropsO ExpansionPanelPropsM) ExpansionPanelPropsM) => Record a -> Array ReactElement -> ReactElement
 expansionPanel = unsafeCreateElement classExpansionPanel
@@ -412,3 +415,6 @@ expansionPanel_ = unsafeCreateElement classExpansionPanel {}
 
 expansionPanel' :: forall a. IsTSEq (Record a) (OptionRecord (ExpansionPanelPropsO ExpansionPanelPropsM) ExpansionPanelPropsM) => Record a -> ReactElement
 expansionPanel' = unsafeCreateLeafElement classExpansionPanel
+
+expansionPanel'' :: forall a. IsTSEq (Record a) (OptionRecord (ExpansionPanelPropsO (ExpansionPanelPropsE ExpansionPanelPropsM)) ExpansionPanelPropsM) => Record a -> Array ReactElement -> ReactElement
+expansionPanel'' = unsafeCreateElement classExpansionPanel

@@ -71,6 +71,31 @@ type InputLabelPropsO r = (
     typed :: StringConst "on", 
     typed :: StringConst "off"
   ), 
+  "aria-label" :: String, 
+  dangerouslySetInnerHTML :: Record (
+    "__html" :: String
+  ), 
+  onChange :: EffectFn1 SyntheticEvent Unit, 
+  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
+  component :: OneOf (
+    typed :: String, 
+    typed :: Any {-- React.ComponentClass<React.LabelHTMLAttributes<interface HTMLLabelElement>, any>--}, 
+    typed :: Any {-- (props: React.LabelHTMLAttributes<interface HTMLLabelElement> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
+  ), 
+  innerRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  ), 
+  form :: String, 
+  htmlFor :: String, 
+  classes :: Any {-- unknown--}
+ | r)
+
+type InputLabelPropsM  = (
+)
+
+type InputLabelPropsE r = (
   "aria-activedescendant" :: String, 
   "aria-atomic" :: OneOf (
     typed :: Boolean, 
@@ -158,7 +183,6 @@ type InputLabelPropsO r = (
     typed :: StringConst "spelling"
   ), 
   "aria-keyshortcuts" :: String, 
-  "aria-label" :: String, 
   "aria-labelledby" :: String, 
   "aria-level" :: Number, 
   "aria-live" :: OneOf (
@@ -231,9 +255,6 @@ type InputLabelPropsO r = (
   "aria-valuemin" :: Number, 
   "aria-valuenow" :: Number, 
   "aria-valuetext" :: String, 
-  dangerouslySetInnerHTML :: Record (
-    "__html" :: String
-  ), 
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCut :: EffectFn1 SyntheticClipboardEvent Unit, 
@@ -250,7 +271,6 @@ type InputLabelPropsO r = (
   onFocusCapture :: EffectFn1 SyntheticFocusEvent Unit, 
   onBlur :: EffectFn1 SyntheticFocusEvent Unit, 
   onBlurCapture :: EffectFn1 SyntheticFocusEvent Unit, 
-  onChange :: EffectFn1 SyntheticEvent Unit, 
   onChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onInput :: EffectFn1 SyntheticEvent Unit, 
   onInputCapture :: EffectFn1 SyntheticEvent Unit, 
@@ -314,7 +334,6 @@ type InputLabelPropsO r = (
   onVolumeChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onWaiting :: EffectFn1 SyntheticEvent Unit, 
   onWaitingCapture :: EffectFn1 SyntheticEvent Unit, 
-  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
   onClickCapture :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenu :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenuCapture :: EffectFn1 SyntheticMouseEvent Unit, 
@@ -389,24 +408,8 @@ type InputLabelPropsO r = (
   onAnimationIteration :: EffectFn1 SyntheticAnimationEvent Unit, 
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit, 
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit, 
-  onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit, 
-  component :: OneOf (
-    typed :: String, 
-    typed :: Any {-- React.ComponentClass<React.LabelHTMLAttributes<interface HTMLLabelElement>, any>--}, 
-    typed :: Any {-- (props: React.LabelHTMLAttributes<interface HTMLLabelElement> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
-  ), 
-  innerRef :: OneOf (
-    typed :: String, 
-    typed :: Any -> Any, 
-    typed :: Any {-- React.RefObject<any>--}
-  ), 
-  form :: String, 
-  htmlFor :: String, 
-  classes :: Any {-- unknown--}
+  onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit
  | r)
-
-type InputLabelPropsM  = (
-)
 
 inputLabel :: forall a. IsTSEq (Record a) (OptionRecord (InputLabelPropsO InputLabelPropsM) InputLabelPropsM) => Record a -> Array ReactElement -> ReactElement
 inputLabel = unsafeCreateElement classInputLabel
@@ -416,3 +419,6 @@ inputLabel_ = unsafeCreateElement classInputLabel {}
 
 inputLabel' :: forall a. IsTSEq (Record a) (OptionRecord (InputLabelPropsO InputLabelPropsM) InputLabelPropsM) => Record a -> ReactElement
 inputLabel' = unsafeCreateLeafElement classInputLabel
+
+inputLabel'' :: forall a. IsTSEq (Record a) (OptionRecord (InputLabelPropsO (InputLabelPropsE InputLabelPropsM)) InputLabelPropsM) => Record a -> Array ReactElement -> ReactElement
+inputLabel'' = unsafeCreateElement classInputLabel

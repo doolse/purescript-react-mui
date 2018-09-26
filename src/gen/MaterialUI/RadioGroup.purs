@@ -67,6 +67,24 @@ type RadioGroupPropsO r = (
     typed :: StringConst "on", 
     typed :: StringConst "off"
   ), 
+  "aria-label" :: String, 
+  dangerouslySetInnerHTML :: Record (
+    "__html" :: String
+  ), 
+  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
+  innerRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  ), 
+  manifest :: String, 
+  classes :: Any {-- unknown--}
+ | r)
+
+type RadioGroupPropsM  = (
+)
+
+type RadioGroupPropsE r = (
   "aria-activedescendant" :: String, 
   "aria-atomic" :: OneOf (
     typed :: Boolean, 
@@ -154,7 +172,6 @@ type RadioGroupPropsO r = (
     typed :: StringConst "spelling"
   ), 
   "aria-keyshortcuts" :: String, 
-  "aria-label" :: String, 
   "aria-labelledby" :: String, 
   "aria-level" :: Number, 
   "aria-live" :: OneOf (
@@ -227,9 +244,6 @@ type RadioGroupPropsO r = (
   "aria-valuemin" :: Number, 
   "aria-valuenow" :: Number, 
   "aria-valuetext" :: String, 
-  dangerouslySetInnerHTML :: Record (
-    "__html" :: String
-  ), 
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCut :: EffectFn1 SyntheticClipboardEvent Unit, 
@@ -309,7 +323,6 @@ type RadioGroupPropsO r = (
   onVolumeChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onWaiting :: EffectFn1 SyntheticEvent Unit, 
   onWaitingCapture :: EffectFn1 SyntheticEvent Unit, 
-  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
   onClickCapture :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenu :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenuCapture :: EffectFn1 SyntheticMouseEvent Unit, 
@@ -384,18 +397,8 @@ type RadioGroupPropsO r = (
   onAnimationIteration :: EffectFn1 SyntheticAnimationEvent Unit, 
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit, 
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit, 
-  onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit, 
-  innerRef :: OneOf (
-    typed :: String, 
-    typed :: Any -> Any, 
-    typed :: Any {-- React.RefObject<any>--}
-  ), 
-  manifest :: String, 
-  classes :: Any {-- unknown--}
+  onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit
  | r)
-
-type RadioGroupPropsM  = (
-)
 
 radioGroup :: forall a. IsTSEq (Record a) (OptionRecord (RadioGroupPropsO RadioGroupPropsM) RadioGroupPropsM) => Record a -> Array ReactElement -> ReactElement
 radioGroup = unsafeCreateElement classRadioGroup
@@ -405,3 +408,6 @@ radioGroup_ = unsafeCreateElement classRadioGroup {}
 
 radioGroup' :: forall a. IsTSEq (Record a) (OptionRecord (RadioGroupPropsO RadioGroupPropsM) RadioGroupPropsM) => Record a -> ReactElement
 radioGroup' = unsafeCreateLeafElement classRadioGroup
+
+radioGroup'' :: forall a. IsTSEq (Record a) (OptionRecord (RadioGroupPropsO (RadioGroupPropsE RadioGroupPropsM)) RadioGroupPropsM) => Record a -> Array ReactElement -> ReactElement
+radioGroup'' = unsafeCreateElement classRadioGroup

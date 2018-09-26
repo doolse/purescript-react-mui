@@ -79,6 +79,46 @@ type BackdropPropsO r = (
     typed :: StringConst "on", 
     typed :: StringConst "off"
   ), 
+  "aria-label" :: String, 
+  dangerouslySetInnerHTML :: Record (
+    "__html" :: String
+  ), 
+  onChange :: EffectFn1 SyntheticEvent Unit, 
+  in :: Boolean, 
+  mountOnEnter :: Boolean, 
+  unmountOnExit :: Boolean, 
+  timeout :: OneOf (
+    typed :: Number, 
+    typed :: OptionRecord (
+      enter :: OneOf (
+        typed :: Any {-- undefined--}, 
+        typed :: Number
+      ), 
+      exit :: OneOf (
+        typed :: Any {-- undefined--}, 
+        typed :: Number
+      )
+    ) (
+    )
+  ), 
+  addEndListener :: EffectFn2 Any {-- interface HTMLElement--} Any {-- ( => void)--} Unit, 
+  theme :: Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/createMuiTheme".Theme--}, 
+  appear :: Boolean, 
+  enter :: Boolean, 
+  exit :: Boolean, 
+  classes :: Any {-- unknown--}, 
+  innerRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  )
+ | r)
+
+type BackdropPropsM  = (
+  open :: Boolean
+)
+
+type BackdropPropsE r = (
   "aria-activedescendant" :: String, 
   "aria-atomic" :: OneOf (
     typed :: Boolean, 
@@ -166,7 +206,6 @@ type BackdropPropsO r = (
     typed :: StringConst "spelling"
   ), 
   "aria-keyshortcuts" :: String, 
-  "aria-label" :: String, 
   "aria-labelledby" :: String, 
   "aria-level" :: Number, 
   "aria-live" :: OneOf (
@@ -239,9 +278,6 @@ type BackdropPropsO r = (
   "aria-valuemin" :: Number, 
   "aria-valuenow" :: Number, 
   "aria-valuetext" :: String, 
-  dangerouslySetInnerHTML :: Record (
-    "__html" :: String
-  ), 
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCut :: EffectFn1 SyntheticClipboardEvent Unit, 
@@ -258,7 +294,6 @@ type BackdropPropsO r = (
   onFocusCapture :: EffectFn1 SyntheticFocusEvent Unit, 
   onBlur :: EffectFn1 SyntheticFocusEvent Unit, 
   onBlurCapture :: EffectFn1 SyntheticFocusEvent Unit, 
-  onChange :: EffectFn1 SyntheticEvent Unit, 
   onChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onInput :: EffectFn1 SyntheticEvent Unit, 
   onInputCapture :: EffectFn1 SyntheticEvent Unit, 
@@ -397,45 +432,13 @@ type BackdropPropsO r = (
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit, 
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit, 
   onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit, 
-  in :: Boolean, 
-  mountOnEnter :: Boolean, 
-  unmountOnExit :: Boolean, 
-  timeout :: OneOf (
-    typed :: Number, 
-    typed :: OptionRecord (
-      enter :: OneOf (
-        typed :: Any {-- undefined--}, 
-        typed :: Number
-      ), 
-      exit :: OneOf (
-        typed :: Any {-- undefined--}, 
-        typed :: Number
-      )
-    ) (
-    )
-  ), 
-  addEndListener :: EffectFn2 Any {-- interface HTMLElement--} Any {-- ( => void)--} Unit, 
   onEnter :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
   onEntering :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
   onEntered :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
   onExit :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
   onExiting :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
-  onExited :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
-  theme :: Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/createMuiTheme".Theme--}, 
-  appear :: Boolean, 
-  enter :: Boolean, 
-  exit :: Boolean, 
-  classes :: Any {-- unknown--}, 
-  innerRef :: OneOf (
-    typed :: String, 
-    typed :: Any -> Any, 
-    typed :: Any {-- React.RefObject<any>--}
-  )
+  onExited :: EffectFn1 Any {-- interface HTMLElement--} Unit
  | r)
-
-type BackdropPropsM  = (
-  open :: Boolean
-)
 
 backdrop :: forall a. IsTSEq (Record a) (OptionRecord (BackdropPropsO BackdropPropsM) BackdropPropsM) => Record a -> Array ReactElement -> ReactElement
 backdrop = unsafeCreateElement classBackdrop
@@ -445,3 +448,6 @@ backdrop_ = unsafeCreateElement classBackdrop {}
 
 backdrop' :: forall a. IsTSEq (Record a) (OptionRecord (BackdropPropsO BackdropPropsM) BackdropPropsM) => Record a -> ReactElement
 backdrop' = unsafeCreateLeafElement classBackdrop
+
+backdrop'' :: forall a. IsTSEq (Record a) (OptionRecord (BackdropPropsO (BackdropPropsE BackdropPropsM)) BackdropPropsM) => Record a -> Array ReactElement -> ReactElement
+backdrop'' = unsafeCreateElement classBackdrop

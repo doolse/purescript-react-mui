@@ -75,6 +75,57 @@ type TabPropsO r = (
     typed :: StringConst "on", 
     typed :: StringConst "off"
   ), 
+  "aria-label" :: String, 
+  dangerouslySetInnerHTML :: Record (
+    "__html" :: String
+  ), 
+  component :: OneOf (
+    typed :: String, 
+    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/ButtonBase/ButtonBase".ButtonBaseProps<>, any>--}, 
+    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/ButtonBase/ButtonBase".ButtonBaseProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
+  ), 
+  innerRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  ), 
+  download :: Any, 
+  href :: String, 
+  hrefLang :: String, 
+  media :: String, 
+  rel :: String, 
+  target :: String, 
+  type :: String, 
+  autoFocus :: Boolean, 
+  form :: String, 
+  formAction :: String, 
+  formEncType :: String, 
+  formMethod :: String, 
+  formNoValidate :: Boolean, 
+  formTarget :: String, 
+  name :: String, 
+  action :: EffectFn1 Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/ButtonBase/ButtonBase".ButtonBaseActions--} Unit, 
+  buttonRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  ), 
+  centerRipple :: Boolean, 
+  disableRipple :: Boolean, 
+  disableTouchRipple :: Boolean, 
+  focusRipple :: Boolean, 
+  focusVisibleClassName :: String, 
+  "TouchRippleProps" :: OneOf (
+    typed :: Any {-- unknown--}, 
+    typed :: Any {-- unknown--}
+  ), 
+  classes :: Any {-- unknown--}
+ | r)
+
+type TabPropsM  = (
+)
+
+type TabPropsE r = (
   "aria-activedescendant" :: String, 
   "aria-atomic" :: OneOf (
     typed :: Boolean, 
@@ -162,7 +213,6 @@ type TabPropsO r = (
     typed :: StringConst "spelling"
   ), 
   "aria-keyshortcuts" :: String, 
-  "aria-label" :: String, 
   "aria-labelledby" :: String, 
   "aria-level" :: Number, 
   "aria-live" :: OneOf (
@@ -235,9 +285,6 @@ type TabPropsO r = (
   "aria-valuemin" :: Number, 
   "aria-valuenow" :: Number, 
   "aria-valuetext" :: String, 
-  dangerouslySetInnerHTML :: Record (
-    "__html" :: String
-  ), 
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCut :: EffectFn1 SyntheticClipboardEvent Unit, 
@@ -392,52 +439,8 @@ type TabPropsO r = (
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit, 
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit, 
   onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit, 
-  component :: OneOf (
-    typed :: String, 
-    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/ButtonBase/ButtonBase".ButtonBaseProps<>, any>--}, 
-    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/ButtonBase/ButtonBase".ButtonBaseProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
-  ), 
-  innerRef :: OneOf (
-    typed :: String, 
-    typed :: Any -> Any, 
-    typed :: Any {-- React.RefObject<any>--}
-  ), 
-  download :: Any, 
-  href :: String, 
-  hrefLang :: String, 
-  media :: String, 
-  rel :: String, 
-  target :: String, 
-  type :: String, 
-  autoFocus :: Boolean, 
-  form :: String, 
-  formAction :: String, 
-  formEncType :: String, 
-  formMethod :: String, 
-  formNoValidate :: Boolean, 
-  formTarget :: String, 
-  name :: String, 
-  action :: EffectFn1 Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/ButtonBase/ButtonBase".ButtonBaseActions--} Unit, 
-  buttonRef :: OneOf (
-    typed :: String, 
-    typed :: Any -> Any, 
-    typed :: Any {-- React.RefObject<any>--}
-  ), 
-  centerRipple :: Boolean, 
-  disableRipple :: Boolean, 
-  disableTouchRipple :: Boolean, 
-  focusRipple :: Boolean, 
-  focusVisibleClassName :: String, 
-  onFocusVisible :: EffectFn1 SyntheticFocusEvent Unit, 
-  "TouchRippleProps" :: OneOf (
-    typed :: Any {-- unknown--}, 
-    typed :: Any {-- unknown--}
-  ), 
-  classes :: Any {-- unknown--}
+  onFocusVisible :: EffectFn1 SyntheticFocusEvent Unit
  | r)
-
-type TabPropsM  = (
-)
 
 tab :: forall a. IsTSEq (Record a) (OptionRecord (TabPropsO TabPropsM) TabPropsM) => Record a -> Array ReactElement -> ReactElement
 tab = unsafeCreateElement classTab
@@ -447,3 +450,6 @@ tab_ = unsafeCreateElement classTab {}
 
 tab' :: forall a. IsTSEq (Record a) (OptionRecord (TabPropsO TabPropsM) TabPropsM) => Record a -> ReactElement
 tab' = unsafeCreateLeafElement classTab
+
+tab'' :: forall a. IsTSEq (Record a) (OptionRecord (TabPropsO (TabPropsE TabPropsM)) TabPropsM) => Record a -> Array ReactElement -> ReactElement
+tab'' = unsafeCreateElement classTab

@@ -16,12 +16,15 @@ type PortalPropsO r = (
     typed :: Any {-- React.Component<any, {}, any>--}, 
     typed :: Any {-- ( => interface Element | React.Component<any, {}, any>)--}
   ), 
-  disablePortal :: Boolean, 
-  onRendered :: Any {-- ( => void)--}
+  disablePortal :: Boolean
  | r)
 
 type PortalPropsM  = (
 )
+
+type PortalPropsE r = (
+  onRendered :: Any {-- ( => void)--}
+ | r)
 
 portal :: forall a. IsTSEq (Record a) (OptionRecord (PortalPropsO PortalPropsM) PortalPropsM) => Record a -> ReactElement -> ReactElement
 portal = unsafeCreateElement classPortal
@@ -31,3 +34,6 @@ portal_ = unsafeCreateElement classPortal {}
 
 portal' :: forall a. IsTSEq (Record a) (OptionRecord (PortalPropsO PortalPropsM) PortalPropsM) => Record a -> ReactElement
 portal' = unsafeCreateLeafElement classPortal
+
+portal'' :: forall a. IsTSEq (Record a) (OptionRecord (PortalPropsO (PortalPropsE PortalPropsM)) PortalPropsM) => Record a -> ReactElement -> ReactElement
+portal'' = unsafeCreateElement classPortal

@@ -35,7 +35,13 @@ type FadePropsO r = (
     ) (
     )
   ), 
-  addEndListener :: EffectFn2 Any {-- interface HTMLElement--} Any {-- ( => void)--} Unit, 
+  addEndListener :: EffectFn2 Any {-- interface HTMLElement--} Any {-- ( => void)--} Unit
+ | r)
+
+type FadePropsM  = (
+)
+
+type FadePropsE r = (
   onEnter :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
   onEntering :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
   onEntered :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
@@ -43,9 +49,6 @@ type FadePropsO r = (
   onExiting :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
   onExited :: EffectFn1 Any {-- interface HTMLElement--} Unit
  | r)
-
-type FadePropsM  = (
-)
 
 fade :: forall a. IsTSEq (Record a) (OptionRecord (FadePropsO FadePropsM) FadePropsM) => Record a -> Array ReactElement -> ReactElement
 fade = unsafeCreateElement classFade
@@ -55,3 +58,6 @@ fade_ = unsafeCreateElement classFade {}
 
 fade' :: forall a. IsTSEq (Record a) (OptionRecord (FadePropsO FadePropsM) FadePropsM) => Record a -> ReactElement
 fade' = unsafeCreateLeafElement classFade
+
+fade'' :: forall a. IsTSEq (Record a) (OptionRecord (FadePropsO (FadePropsE FadePropsM)) FadePropsM) => Record a -> Array ReactElement -> ReactElement
+fade'' = unsafeCreateElement classFade

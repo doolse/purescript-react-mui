@@ -15,14 +15,6 @@ type HiddenCssPropsO r = (
   lgUp :: Boolean, 
   mdDown :: Boolean, 
   mdUp :: Boolean, 
-  only :: OneOf (
-    typed :: StringConst "xs", 
-    typed :: StringConst "sm", 
-    typed :: StringConst "md", 
-    typed :: StringConst "lg", 
-    typed :: StringConst "xl", 
-    typed :: Array Any {-- "\"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/styles/createBreakpoints\".Breakpoint"--}
-  ), 
   smDown :: Boolean, 
   smUp :: Boolean, 
   xlDown :: Boolean, 
@@ -34,6 +26,17 @@ type HiddenCssPropsO r = (
 type HiddenCssPropsM  = (
 )
 
+type HiddenCssPropsE r = (
+  only :: OneOf (
+    typed :: StringConst "xs", 
+    typed :: StringConst "sm", 
+    typed :: StringConst "md", 
+    typed :: StringConst "lg", 
+    typed :: StringConst "xl", 
+    typed :: Array Any {-- "\"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/styles/createBreakpoints\".Breakpoint"--}
+  )
+ | r)
+
 hiddenCss :: forall a. IsTSEq (Record a) (OptionRecord (HiddenCssPropsO HiddenCssPropsM) HiddenCssPropsM) => Record a -> Array ReactElement -> ReactElement
 hiddenCss = unsafeCreateElement classHiddenCss
 
@@ -42,3 +45,6 @@ hiddenCss_ = unsafeCreateElement classHiddenCss {}
 
 hiddenCss' :: forall a. IsTSEq (Record a) (OptionRecord (HiddenCssPropsO HiddenCssPropsM) HiddenCssPropsM) => Record a -> ReactElement
 hiddenCss' = unsafeCreateLeafElement classHiddenCss
+
+hiddenCss'' :: forall a. IsTSEq (Record a) (OptionRecord (HiddenCssPropsO (HiddenCssPropsE HiddenCssPropsM)) HiddenCssPropsM) => Record a -> Array ReactElement -> ReactElement
+hiddenCss'' = unsafeCreateElement classHiddenCss

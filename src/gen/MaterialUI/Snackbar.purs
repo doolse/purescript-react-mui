@@ -22,8 +22,6 @@ type SnackbarPropsO r = (
   disableWindowBlurListener :: Boolean, 
   message :: ReactNode, 
   onClose :: EffectFn2 SyntheticEvent String Unit, 
-  onMouseEnter :: EffectFn1 SyntheticMouseEvent Unit, 
-  onMouseLeave :: EffectFn1 SyntheticMouseEvent Unit, 
   resumeHideDuration :: Number, 
   "TransitionComponent" :: OneOf (
     typed :: String, 
@@ -94,6 +92,27 @@ type SnackbarPropsO r = (
     typed :: StringConst "on", 
     typed :: StringConst "off"
   ), 
+  "aria-label" :: String, 
+  dangerouslySetInnerHTML :: Record (
+    "__html" :: String
+  ), 
+  onChange :: EffectFn1 SyntheticEvent Unit, 
+  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
+  classes :: Any {-- unknown--}, 
+  innerRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  )
+ | r)
+
+type SnackbarPropsM  = (
+  open :: Boolean
+)
+
+type SnackbarPropsE r = (
+  onMouseEnter :: EffectFn1 SyntheticMouseEvent Unit, 
+  onMouseLeave :: EffectFn1 SyntheticMouseEvent Unit, 
   "aria-activedescendant" :: String, 
   "aria-atomic" :: OneOf (
     typed :: Boolean, 
@@ -181,7 +200,6 @@ type SnackbarPropsO r = (
     typed :: StringConst "spelling"
   ), 
   "aria-keyshortcuts" :: String, 
-  "aria-label" :: String, 
   "aria-labelledby" :: String, 
   "aria-level" :: Number, 
   "aria-live" :: OneOf (
@@ -254,9 +272,6 @@ type SnackbarPropsO r = (
   "aria-valuemin" :: Number, 
   "aria-valuenow" :: Number, 
   "aria-valuetext" :: String, 
-  dangerouslySetInnerHTML :: Record (
-    "__html" :: String
-  ), 
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCut :: EffectFn1 SyntheticClipboardEvent Unit, 
@@ -273,7 +288,6 @@ type SnackbarPropsO r = (
   onFocusCapture :: EffectFn1 SyntheticFocusEvent Unit, 
   onBlur :: EffectFn1 SyntheticFocusEvent Unit, 
   onBlurCapture :: EffectFn1 SyntheticFocusEvent Unit, 
-  onChange :: EffectFn1 SyntheticEvent Unit, 
   onChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onInput :: EffectFn1 SyntheticEvent Unit, 
   onInputCapture :: EffectFn1 SyntheticEvent Unit, 
@@ -337,7 +351,6 @@ type SnackbarPropsO r = (
   onVolumeChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onWaiting :: EffectFn1 SyntheticEvent Unit, 
   onWaitingCapture :: EffectFn1 SyntheticEvent Unit, 
-  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
   onClickCapture :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenu :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenuCapture :: EffectFn1 SyntheticMouseEvent Unit, 
@@ -416,18 +429,8 @@ type SnackbarPropsO r = (
   onEntered :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
   onExit :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
   onExiting :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
-  onExited :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
-  classes :: Any {-- unknown--}, 
-  innerRef :: OneOf (
-    typed :: String, 
-    typed :: Any -> Any, 
-    typed :: Any {-- React.RefObject<any>--}
-  )
+  onExited :: EffectFn1 Any {-- interface HTMLElement--} Unit
  | r)
-
-type SnackbarPropsM  = (
-  open :: Boolean
-)
 
 snackbar :: forall a. IsTSEq (Record a) (OptionRecord (SnackbarPropsO SnackbarPropsM) SnackbarPropsM) => Record a -> Array ReactElement -> ReactElement
 snackbar = unsafeCreateElement classSnackbar
@@ -437,3 +440,6 @@ snackbar_ = unsafeCreateElement classSnackbar {}
 
 snackbar' :: forall a. IsTSEq (Record a) (OptionRecord (SnackbarPropsO SnackbarPropsM) SnackbarPropsM) => Record a -> ReactElement
 snackbar' = unsafeCreateLeafElement classSnackbar
+
+snackbar'' :: forall a. IsTSEq (Record a) (OptionRecord (SnackbarPropsO (SnackbarPropsE SnackbarPropsM)) SnackbarPropsM) => Record a -> Array ReactElement -> ReactElement
+snackbar'' = unsafeCreateElement classSnackbar

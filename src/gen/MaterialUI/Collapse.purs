@@ -40,12 +40,6 @@ type CollapsePropsO r = (
   mountOnEnter :: Boolean, 
   unmountOnExit :: Boolean, 
   addEndListener :: EffectFn2 Any {-- interface HTMLElement--} Any {-- ( => void)--} Unit, 
-  onEnter :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
-  onEntering :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
-  onEntered :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
-  onExit :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
-  onExiting :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
-  onExited :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
   appear :: Boolean, 
   enter :: Boolean, 
   exit :: Boolean, 
@@ -61,6 +55,15 @@ type CollapsePropsO r = (
 type CollapsePropsM  = (
 )
 
+type CollapsePropsE r = (
+  onEnter :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
+  onEntering :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
+  onEntered :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
+  onExit :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
+  onExiting :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
+  onExited :: EffectFn1 Any {-- interface HTMLElement--} Unit
+ | r)
+
 collapse :: forall a. IsTSEq (Record a) (OptionRecord (CollapsePropsO CollapsePropsM) CollapsePropsM) => Record a -> Array ReactElement -> ReactElement
 collapse = unsafeCreateElement classCollapse
 
@@ -69,3 +72,6 @@ collapse_ = unsafeCreateElement classCollapse {}
 
 collapse' :: forall a. IsTSEq (Record a) (OptionRecord (CollapsePropsO CollapsePropsM) CollapsePropsM) => Record a -> ReactElement
 collapse' = unsafeCreateLeafElement classCollapse
+
+collapse'' :: forall a. IsTSEq (Record a) (OptionRecord (CollapsePropsO (CollapsePropsE CollapsePropsM)) CollapsePropsM) => Record a -> Array ReactElement -> ReactElement
+collapse'' = unsafeCreateElement classCollapse

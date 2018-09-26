@@ -72,6 +72,72 @@ type CheckboxPropsO r = (
     typed :: StringConst "on", 
     typed :: StringConst "off"
   ), 
+  "aria-label" :: String, 
+  dangerouslySetInnerHTML :: Record (
+    "__html" :: String
+  ), 
+  onChange :: EffectFn2 SyntheticEvent Boolean Unit, 
+  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
+  component :: OneOf (
+    typed :: String, 
+    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/ButtonBase/ButtonBase".ButtonBaseProps<>, any>--}, 
+    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/ButtonBase/ButtonBase".ButtonBaseProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
+  ), 
+  innerRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  ), 
+  download :: Any, 
+  href :: String, 
+  hrefLang :: String, 
+  media :: String, 
+  rel :: String, 
+  target :: String, 
+  type :: String, 
+  autoFocus :: Boolean, 
+  form :: String, 
+  formAction :: String, 
+  formEncType :: String, 
+  formMethod :: String, 
+  formNoValidate :: Boolean, 
+  formTarget :: String, 
+  name :: String, 
+  value :: String, 
+  action :: EffectFn1 Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/ButtonBase/ButtonBase".ButtonBaseActions--} Unit, 
+  buttonRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  ), 
+  centerRipple :: Boolean, 
+  disableRipple :: Boolean, 
+  disableTouchRipple :: Boolean, 
+  focusRipple :: Boolean, 
+  focusVisibleClassName :: String, 
+  "TouchRippleProps" :: OneOf (
+    typed :: Any {-- unknown--}, 
+    typed :: Any {-- unknown--}
+  ), 
+  checked :: OneOf (
+    typed :: Boolean, 
+    typed :: String
+  ), 
+  inputProps :: Any {-- React.InputHTMLAttributes<interface HTMLInputElement>--}, 
+  inputRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  ), 
+  readOnly :: Boolean, 
+  required :: Boolean, 
+  classes :: Any {-- unknown--}
+ | r)
+
+type CheckboxPropsM  = (
+)
+
+type CheckboxPropsE r = (
   "aria-activedescendant" :: String, 
   "aria-atomic" :: OneOf (
     typed :: Boolean, 
@@ -159,7 +225,6 @@ type CheckboxPropsO r = (
     typed :: StringConst "spelling"
   ), 
   "aria-keyshortcuts" :: String, 
-  "aria-label" :: String, 
   "aria-labelledby" :: String, 
   "aria-level" :: Number, 
   "aria-live" :: OneOf (
@@ -232,9 +297,6 @@ type CheckboxPropsO r = (
   "aria-valuemin" :: Number, 
   "aria-valuenow" :: Number, 
   "aria-valuetext" :: String, 
-  dangerouslySetInnerHTML :: Record (
-    "__html" :: String
-  ), 
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCut :: EffectFn1 SyntheticClipboardEvent Unit, 
@@ -251,7 +313,6 @@ type CheckboxPropsO r = (
   onFocusCapture :: EffectFn1 SyntheticFocusEvent Unit, 
   onBlur :: EffectFn1 SyntheticFocusEvent Unit, 
   onBlurCapture :: EffectFn1 SyntheticFocusEvent Unit, 
-  onChange :: EffectFn2 SyntheticEvent Boolean Unit, 
   onChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onInput :: EffectFn1 SyntheticEvent Unit, 
   onInputCapture :: EffectFn1 SyntheticEvent Unit, 
@@ -315,7 +376,6 @@ type CheckboxPropsO r = (
   onVolumeChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onWaiting :: EffectFn1 SyntheticEvent Unit, 
   onWaitingCapture :: EffectFn1 SyntheticEvent Unit, 
-  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
   onClickCapture :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenu :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenuCapture :: EffectFn1 SyntheticMouseEvent Unit, 
@@ -391,65 +451,8 @@ type CheckboxPropsO r = (
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit, 
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit, 
   onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit, 
-  component :: OneOf (
-    typed :: String, 
-    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/ButtonBase/ButtonBase".ButtonBaseProps<>, any>--}, 
-    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/ButtonBase/ButtonBase".ButtonBaseProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
-  ), 
-  innerRef :: OneOf (
-    typed :: String, 
-    typed :: Any -> Any, 
-    typed :: Any {-- React.RefObject<any>--}
-  ), 
-  download :: Any, 
-  href :: String, 
-  hrefLang :: String, 
-  media :: String, 
-  rel :: String, 
-  target :: String, 
-  type :: String, 
-  autoFocus :: Boolean, 
-  form :: String, 
-  formAction :: String, 
-  formEncType :: String, 
-  formMethod :: String, 
-  formNoValidate :: Boolean, 
-  formTarget :: String, 
-  name :: String, 
-  value :: String, 
-  action :: EffectFn1 Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/ButtonBase/ButtonBase".ButtonBaseActions--} Unit, 
-  buttonRef :: OneOf (
-    typed :: String, 
-    typed :: Any -> Any, 
-    typed :: Any {-- React.RefObject<any>--}
-  ), 
-  centerRipple :: Boolean, 
-  disableRipple :: Boolean, 
-  disableTouchRipple :: Boolean, 
-  focusRipple :: Boolean, 
-  focusVisibleClassName :: String, 
-  onFocusVisible :: EffectFn1 SyntheticFocusEvent Unit, 
-  "TouchRippleProps" :: OneOf (
-    typed :: Any {-- unknown--}, 
-    typed :: Any {-- unknown--}
-  ), 
-  checked :: OneOf (
-    typed :: Boolean, 
-    typed :: String
-  ), 
-  inputProps :: Any {-- React.InputHTMLAttributes<interface HTMLInputElement>--}, 
-  inputRef :: OneOf (
-    typed :: String, 
-    typed :: Any -> Any, 
-    typed :: Any {-- React.RefObject<any>--}
-  ), 
-  readOnly :: Boolean, 
-  required :: Boolean, 
-  classes :: Any {-- unknown--}
+  onFocusVisible :: EffectFn1 SyntheticFocusEvent Unit
  | r)
-
-type CheckboxPropsM  = (
-)
 
 checkbox :: forall a. IsTSEq (Record a) (OptionRecord (CheckboxPropsO CheckboxPropsM) CheckboxPropsM) => Record a -> Array ReactElement -> ReactElement
 checkbox = unsafeCreateElement classCheckbox
@@ -459,3 +462,6 @@ checkbox_ = unsafeCreateElement classCheckbox {}
 
 checkbox' :: forall a. IsTSEq (Record a) (OptionRecord (CheckboxPropsO CheckboxPropsM) CheckboxPropsM) => Record a -> ReactElement
 checkbox' = unsafeCreateLeafElement classCheckbox
+
+checkbox'' :: forall a. IsTSEq (Record a) (OptionRecord (CheckboxPropsO (CheckboxPropsE CheckboxPropsM)) CheckboxPropsM) => Record a -> Array ReactElement -> ReactElement
+checkbox'' = unsafeCreateElement classCheckbox

@@ -65,8 +65,6 @@ type InputBasePropsO r = (
     ))
   ), 
   onChange :: EffectFn1 SyntheticEvent Unit, 
-  onKeyUp :: EffectFn1 SyntheticKeyboardEvent Unit, 
-  onKeyDown :: EffectFn1 SyntheticKeyboardEvent Unit, 
   color :: String, 
   hidden :: Boolean, 
   style :: Any {-- React.CSSProperties<>--}, 
@@ -110,6 +108,25 @@ type InputBasePropsO r = (
     typed :: StringConst "on", 
     typed :: StringConst "off"
   ), 
+  "aria-label" :: String, 
+  dangerouslySetInnerHTML :: Record (
+    "__html" :: String
+  ), 
+  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
+  classes :: Any {-- unknown--}, 
+  innerRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  )
+ | r)
+
+type InputBasePropsM  = (
+)
+
+type InputBasePropsE r = (
+  onKeyUp :: EffectFn1 SyntheticKeyboardEvent Unit, 
+  onKeyDown :: EffectFn1 SyntheticKeyboardEvent Unit, 
   "aria-activedescendant" :: String, 
   "aria-atomic" :: OneOf (
     typed :: Boolean, 
@@ -197,7 +214,6 @@ type InputBasePropsO r = (
     typed :: StringConst "spelling"
   ), 
   "aria-keyshortcuts" :: String, 
-  "aria-label" :: String, 
   "aria-labelledby" :: String, 
   "aria-level" :: Number, 
   "aria-live" :: OneOf (
@@ -270,9 +286,6 @@ type InputBasePropsO r = (
   "aria-valuemin" :: Number, 
   "aria-valuenow" :: Number, 
   "aria-valuetext" :: String, 
-  dangerouslySetInnerHTML :: Record (
-    "__html" :: String
-  ), 
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCut :: EffectFn1 SyntheticClipboardEvent Unit, 
@@ -350,7 +363,6 @@ type InputBasePropsO r = (
   onVolumeChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onWaiting :: EffectFn1 SyntheticEvent Unit, 
   onWaitingCapture :: EffectFn1 SyntheticEvent Unit, 
-  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
   onClickCapture :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenu :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenuCapture :: EffectFn1 SyntheticMouseEvent Unit, 
@@ -425,17 +437,8 @@ type InputBasePropsO r = (
   onAnimationIteration :: EffectFn1 SyntheticAnimationEvent Unit, 
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit, 
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit, 
-  onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit, 
-  classes :: Any {-- unknown--}, 
-  innerRef :: OneOf (
-    typed :: String, 
-    typed :: Any -> Any, 
-    typed :: Any {-- React.RefObject<any>--}
-  )
+  onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit
  | r)
-
-type InputBasePropsM  = (
-)
 
 inputBase :: forall a. IsTSEq (Record a) (OptionRecord (InputBasePropsO InputBasePropsM) InputBasePropsM) => Record a -> Array ReactElement -> ReactElement
 inputBase = unsafeCreateElement classInputBase
@@ -445,3 +448,6 @@ inputBase_ = unsafeCreateElement classInputBase {}
 
 inputBase' :: forall a. IsTSEq (Record a) (OptionRecord (InputBasePropsO InputBasePropsM) InputBasePropsM) => Record a -> ReactElement
 inputBase' = unsafeCreateLeafElement classInputBase
+
+inputBase'' :: forall a. IsTSEq (Record a) (OptionRecord (InputBasePropsO (InputBasePropsE InputBasePropsM)) InputBasePropsM) => Record a -> Array ReactElement -> ReactElement
+inputBase'' = unsafeCreateElement classInputBase

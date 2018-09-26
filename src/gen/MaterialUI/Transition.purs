@@ -34,7 +34,13 @@ type TransitionPropsO r = (
     ) (
     )
   ), 
-  addEndListener :: EffectFn2 Any {-- interface HTMLElement--} Any {-- ( => void)--} Unit, 
+  addEndListener :: EffectFn2 Any {-- interface HTMLElement--} Any {-- ( => void)--} Unit
+ | r)
+
+type TransitionPropsM  = (
+)
+
+type TransitionPropsE r = (
   onEnter :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
   onEntering :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
   onEntered :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
@@ -42,9 +48,6 @@ type TransitionPropsO r = (
   onExiting :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
   onExited :: EffectFn1 Any {-- interface HTMLElement--} Unit
  | r)
-
-type TransitionPropsM  = (
-)
 
 transition :: forall a. IsTSEq (Record a) (OptionRecord (TransitionPropsO TransitionPropsM) TransitionPropsM) => Record a -> Array ReactElement -> ReactElement
 transition = unsafeCreateElement classTransition
@@ -54,3 +57,6 @@ transition_ = unsafeCreateElement classTransition {}
 
 transition' :: forall a. IsTSEq (Record a) (OptionRecord (TransitionPropsO TransitionPropsM) TransitionPropsM) => Record a -> ReactElement
 transition' = unsafeCreateLeafElement classTransition
+
+transition'' :: forall a. IsTSEq (Record a) (OptionRecord (TransitionPropsO (TransitionPropsE TransitionPropsM)) TransitionPropsM) => Record a -> Array ReactElement -> ReactElement
+transition'' = unsafeCreateElement classTransition

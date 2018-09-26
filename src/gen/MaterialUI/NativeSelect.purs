@@ -81,6 +81,55 @@ type NativeSelectPropsO r = (
     typed :: StringConst "on", 
     typed :: StringConst "off"
   ), 
+  "aria-label" :: String, 
+  dangerouslySetInnerHTML :: Record (
+    "__html" :: String
+  ), 
+  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
+  innerRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  ), 
+  error :: Boolean, 
+  type :: String, 
+  autoFocus :: Boolean, 
+  name :: String, 
+  fullWidth :: Boolean, 
+  inputProps :: Any {-- "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<>--}, 
+  inputRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  ), 
+  readOnly :: Boolean, 
+  required :: Boolean, 
+  multiline :: Boolean, 
+  autoComplete :: String, 
+  disableUnderline :: Boolean, 
+  endAdornment :: ReactNode, 
+  inputComponent :: OneOf (
+    typed :: String, 
+    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<>, any>--}, 
+    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
+  ), 
+  rows :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  rowsMax :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  startAdornment :: ReactNode, 
+  classes :: Any {-- unknown--}, 
+  onChange :: EffectFn2 SyntheticEvent ReactNode Unit
+ | r)
+
+type NativeSelectPropsM  = (
+)
+
+type NativeSelectPropsE r = (
   "aria-activedescendant" :: String, 
   "aria-atomic" :: OneOf (
     typed :: Boolean, 
@@ -168,7 +217,6 @@ type NativeSelectPropsO r = (
     typed :: StringConst "spelling"
   ), 
   "aria-keyshortcuts" :: String, 
-  "aria-label" :: String, 
   "aria-labelledby" :: String, 
   "aria-level" :: Number, 
   "aria-live" :: OneOf (
@@ -241,9 +289,6 @@ type NativeSelectPropsO r = (
   "aria-valuemin" :: Number, 
   "aria-valuenow" :: Number, 
   "aria-valuetext" :: String, 
-  dangerouslySetInnerHTML :: Record (
-    "__html" :: String
-  ), 
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCut :: EffectFn1 SyntheticClipboardEvent Unit, 
@@ -323,7 +368,6 @@ type NativeSelectPropsO r = (
   onVolumeChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onWaiting :: EffectFn1 SyntheticEvent Unit, 
   onWaitingCapture :: EffectFn1 SyntheticEvent Unit, 
-  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
   onClickCapture :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenu :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenuCapture :: EffectFn1 SyntheticMouseEvent Unit, 
@@ -398,49 +442,8 @@ type NativeSelectPropsO r = (
   onAnimationIteration :: EffectFn1 SyntheticAnimationEvent Unit, 
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit, 
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit, 
-  onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit, 
-  innerRef :: OneOf (
-    typed :: String, 
-    typed :: Any -> Any, 
-    typed :: Any {-- React.RefObject<any>--}
-  ), 
-  error :: Boolean, 
-  type :: String, 
-  autoFocus :: Boolean, 
-  name :: String, 
-  fullWidth :: Boolean, 
-  inputProps :: Any {-- "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<>--}, 
-  inputRef :: OneOf (
-    typed :: String, 
-    typed :: Any -> Any, 
-    typed :: Any {-- React.RefObject<any>--}
-  ), 
-  readOnly :: Boolean, 
-  required :: Boolean, 
-  multiline :: Boolean, 
-  autoComplete :: String, 
-  disableUnderline :: Boolean, 
-  endAdornment :: ReactNode, 
-  inputComponent :: OneOf (
-    typed :: String, 
-    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<>, any>--}, 
-    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
-  ), 
-  rows :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  rowsMax :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  startAdornment :: ReactNode, 
-  classes :: Any {-- unknown--}, 
-  onChange :: EffectFn2 SyntheticEvent ReactNode Unit
+  onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit
  | r)
-
-type NativeSelectPropsM  = (
-)
 
 nativeSelect :: forall a. IsTSEq (Record a) (OptionRecord (NativeSelectPropsO NativeSelectPropsM) NativeSelectPropsM) => Record a -> Array ReactElement -> ReactElement
 nativeSelect = unsafeCreateElement classNativeSelect
@@ -450,3 +453,6 @@ nativeSelect_ = unsafeCreateElement classNativeSelect {}
 
 nativeSelect' :: forall a. IsTSEq (Record a) (OptionRecord (NativeSelectPropsO NativeSelectPropsM) NativeSelectPropsM) => Record a -> ReactElement
 nativeSelect' = unsafeCreateLeafElement classNativeSelect
+
+nativeSelect'' :: forall a. IsTSEq (Record a) (OptionRecord (NativeSelectPropsO (NativeSelectPropsE NativeSelectPropsM)) NativeSelectPropsM) => Record a -> Array ReactElement -> ReactElement
+nativeSelect'' = unsafeCreateElement classNativeSelect

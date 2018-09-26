@@ -28,7 +28,6 @@ type TablePaginationPropsO r = (
   labelDisplayedRows :: Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/TablePagination/TablePagination".LabelDisplayedRowsArgs--} -> ReactNode, 
   labelRowsPerPage :: ReactNode, 
   nextIconButtonProps :: Any {-- unknown--}, 
-  onChangeRowsPerPage :: EffectFn1 SyntheticEvent Unit, 
   rowsPerPageOptions :: Array Number, 
   "SelectProps" :: Any {-- unknown--}, 
   color :: String, 
@@ -86,6 +85,47 @@ type TablePaginationPropsO r = (
     typed :: StringConst "on", 
     typed :: StringConst "off"
   ), 
+  "aria-label" :: String, 
+  dangerouslySetInnerHTML :: Record (
+    "__html" :: String
+  ), 
+  onChange :: EffectFn1 SyntheticEvent Unit, 
+  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
+  innerRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  ), 
+  variant :: OneOf (
+    typed :: StringConst "body", 
+    typed :: StringConst "head", 
+    typed :: StringConst "footer"
+  ), 
+  numeric :: Boolean, 
+  colSpan :: Number, 
+  headers :: String, 
+  rowSpan :: Number, 
+  scope :: String, 
+  sortDirection :: OneOf (
+    typed :: Any {-- false--}, 
+    typed :: StringConst "asc", 
+    typed :: StringConst "desc"
+  ), 
+  classes :: Any {-- unknown--}
+ | r)
+
+type TablePaginationPropsM  = (
+  count :: Number, 
+  onChangePage :: EffectFn2 (OneOf (
+    typed :: Any {-- null--}, 
+    typed :: SyntheticMouseEvent
+  )) Number Unit, 
+  page :: Number, 
+  rowsPerPage :: Number
+)
+
+type TablePaginationPropsE r = (
+  onChangeRowsPerPage :: EffectFn1 SyntheticEvent Unit, 
   "aria-activedescendant" :: String, 
   "aria-atomic" :: OneOf (
     typed :: Boolean, 
@@ -173,7 +213,6 @@ type TablePaginationPropsO r = (
     typed :: StringConst "spelling"
   ), 
   "aria-keyshortcuts" :: String, 
-  "aria-label" :: String, 
   "aria-labelledby" :: String, 
   "aria-level" :: Number, 
   "aria-live" :: OneOf (
@@ -246,9 +285,6 @@ type TablePaginationPropsO r = (
   "aria-valuemin" :: Number, 
   "aria-valuenow" :: Number, 
   "aria-valuetext" :: String, 
-  dangerouslySetInnerHTML :: Record (
-    "__html" :: String
-  ), 
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCut :: EffectFn1 SyntheticClipboardEvent Unit, 
@@ -265,7 +301,6 @@ type TablePaginationPropsO r = (
   onFocusCapture :: EffectFn1 SyntheticFocusEvent Unit, 
   onBlur :: EffectFn1 SyntheticFocusEvent Unit, 
   onBlurCapture :: EffectFn1 SyntheticFocusEvent Unit, 
-  onChange :: EffectFn1 SyntheticEvent Unit, 
   onChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onInput :: EffectFn1 SyntheticEvent Unit, 
   onInputCapture :: EffectFn1 SyntheticEvent Unit, 
@@ -329,7 +364,6 @@ type TablePaginationPropsO r = (
   onVolumeChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onWaiting :: EffectFn1 SyntheticEvent Unit, 
   onWaitingCapture :: EffectFn1 SyntheticEvent Unit, 
-  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
   onClickCapture :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenu :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenuCapture :: EffectFn1 SyntheticMouseEvent Unit, 
@@ -404,39 +438,8 @@ type TablePaginationPropsO r = (
   onAnimationIteration :: EffectFn1 SyntheticAnimationEvent Unit, 
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit, 
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit, 
-  onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit, 
-  innerRef :: OneOf (
-    typed :: String, 
-    typed :: Any -> Any, 
-    typed :: Any {-- React.RefObject<any>--}
-  ), 
-  variant :: OneOf (
-    typed :: StringConst "body", 
-    typed :: StringConst "head", 
-    typed :: StringConst "footer"
-  ), 
-  numeric :: Boolean, 
-  colSpan :: Number, 
-  headers :: String, 
-  rowSpan :: Number, 
-  scope :: String, 
-  sortDirection :: OneOf (
-    typed :: Any {-- false--}, 
-    typed :: StringConst "asc", 
-    typed :: StringConst "desc"
-  ), 
-  classes :: Any {-- unknown--}
+  onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit
  | r)
-
-type TablePaginationPropsM  = (
-  count :: Number, 
-  onChangePage :: EffectFn2 (OneOf (
-    typed :: Any {-- null--}, 
-    typed :: SyntheticMouseEvent
-  )) Number Unit, 
-  page :: Number, 
-  rowsPerPage :: Number
-)
 
 tablePagination :: forall a. IsTSEq (Record a) (OptionRecord (TablePaginationPropsO TablePaginationPropsM) TablePaginationPropsM) => Record a -> Array ReactElement -> ReactElement
 tablePagination = unsafeCreateElement classTablePagination
@@ -446,3 +449,6 @@ tablePagination_ = unsafeCreateElement classTablePagination {}
 
 tablePagination' :: forall a. IsTSEq (Record a) (OptionRecord (TablePaginationPropsO TablePaginationPropsM) TablePaginationPropsM) => Record a -> ReactElement
 tablePagination' = unsafeCreateLeafElement classTablePagination
+
+tablePagination'' :: forall a. IsTSEq (Record a) (OptionRecord (TablePaginationPropsO (TablePaginationPropsE TablePaginationPropsM)) TablePaginationPropsM) => Record a -> Array ReactElement -> ReactElement
+tablePagination'' = unsafeCreateElement classTablePagination

@@ -88,6 +88,53 @@ type TabsPropsO r = (
     typed :: StringConst "on", 
     typed :: StringConst "off"
   ), 
+  "aria-label" :: String, 
+  dangerouslySetInnerHTML :: Record (
+    "__html" :: String
+  ), 
+  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
+  innerRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  ), 
+  download :: Any, 
+  href :: String, 
+  hrefLang :: String, 
+  media :: String, 
+  rel :: String, 
+  target :: String, 
+  type :: String, 
+  autoFocus :: Boolean, 
+  form :: String, 
+  formAction :: String, 
+  formEncType :: String, 
+  formMethod :: String, 
+  formNoValidate :: Boolean, 
+  formTarget :: String, 
+  name :: String, 
+  buttonRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  ), 
+  centerRipple :: Boolean, 
+  disableRipple :: Boolean, 
+  disableTouchRipple :: Boolean, 
+  focusRipple :: Boolean, 
+  focusVisibleClassName :: String, 
+  "TouchRippleProps" :: OneOf (
+    typed :: Any {-- unknown--}, 
+    typed :: Any {-- unknown--}
+  ), 
+  classes :: Any {-- unknown--}
+ | r)
+
+type TabsPropsM  = (
+  value :: Any
+)
+
+type TabsPropsE r = (
   "aria-activedescendant" :: String, 
   "aria-atomic" :: OneOf (
     typed :: Boolean, 
@@ -175,7 +222,6 @@ type TabsPropsO r = (
     typed :: StringConst "spelling"
   ), 
   "aria-keyshortcuts" :: String, 
-  "aria-label" :: String, 
   "aria-labelledby" :: String, 
   "aria-level" :: Number, 
   "aria-live" :: OneOf (
@@ -248,9 +294,6 @@ type TabsPropsO r = (
   "aria-valuemin" :: Number, 
   "aria-valuenow" :: Number, 
   "aria-valuetext" :: String, 
-  dangerouslySetInnerHTML :: Record (
-    "__html" :: String
-  ), 
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCut :: EffectFn1 SyntheticClipboardEvent Unit, 
@@ -330,7 +373,6 @@ type TabsPropsO r = (
   onVolumeChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onWaiting :: EffectFn1 SyntheticEvent Unit, 
   onWaitingCapture :: EffectFn1 SyntheticEvent Unit, 
-  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
   onClickCapture :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenu :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenuCapture :: EffectFn1 SyntheticMouseEvent Unit, 
@@ -406,47 +448,8 @@ type TabsPropsO r = (
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit, 
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit, 
   onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit, 
-  innerRef :: OneOf (
-    typed :: String, 
-    typed :: Any -> Any, 
-    typed :: Any {-- React.RefObject<any>--}
-  ), 
-  download :: Any, 
-  href :: String, 
-  hrefLang :: String, 
-  media :: String, 
-  rel :: String, 
-  target :: String, 
-  type :: String, 
-  autoFocus :: Boolean, 
-  form :: String, 
-  formAction :: String, 
-  formEncType :: String, 
-  formMethod :: String, 
-  formNoValidate :: Boolean, 
-  formTarget :: String, 
-  name :: String, 
-  buttonRef :: OneOf (
-    typed :: String, 
-    typed :: Any -> Any, 
-    typed :: Any {-- React.RefObject<any>--}
-  ), 
-  centerRipple :: Boolean, 
-  disableRipple :: Boolean, 
-  disableTouchRipple :: Boolean, 
-  focusRipple :: Boolean, 
-  focusVisibleClassName :: String, 
-  onFocusVisible :: EffectFn1 SyntheticFocusEvent Unit, 
-  "TouchRippleProps" :: OneOf (
-    typed :: Any {-- unknown--}, 
-    typed :: Any {-- unknown--}
-  ), 
-  classes :: Any {-- unknown--}
+  onFocusVisible :: EffectFn1 SyntheticFocusEvent Unit
  | r)
-
-type TabsPropsM  = (
-  value :: Any
-)
 
 tabs :: forall a. IsTSEq (Record a) (OptionRecord (TabsPropsO TabsPropsM) TabsPropsM) => Record a -> Array ReactElement -> ReactElement
 tabs = unsafeCreateElement classTabs
@@ -456,3 +459,6 @@ tabs_ = unsafeCreateElement classTabs {}
 
 tabs' :: forall a. IsTSEq (Record a) (OptionRecord (TabsPropsO TabsPropsM) TabsPropsM) => Record a -> ReactElement
 tabs' = unsafeCreateLeafElement classTabs
+
+tabs'' :: forall a. IsTSEq (Record a) (OptionRecord (TabsPropsO (TabsPropsE TabsPropsM)) TabsPropsM) => Record a -> Array ReactElement -> ReactElement
+tabs'' = unsafeCreateElement classTabs

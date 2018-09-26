@@ -94,6 +94,46 @@ type DrawerPropsO r = (
     typed :: StringConst "on", 
     typed :: StringConst "off"
   ), 
+  "aria-label" :: String, 
+  dangerouslySetInnerHTML :: Record (
+    "__html" :: String
+  ), 
+  onChange :: EffectFn1 SyntheticEvent Unit, 
+  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
+  innerRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  ), 
+  container :: OneOf (
+    typed :: Any {-- interface Element--}, 
+    typed :: Any {-- React.Component<any, {}, any>--}, 
+    typed :: Any {-- ( => interface Element | React.Component<any, {}, any>)--}
+  ), 
+  manifest :: String, 
+  disablePortal :: Boolean, 
+  "BackdropComponent" :: OneOf (
+    typed :: String, 
+    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Backdrop/Backdrop".BackdropProps<>, any>--}, 
+    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Backdrop/Backdrop".BackdropProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
+  ), 
+  "BackdropProps" :: Any {-- unknown--}, 
+  disableAutoFocus :: Boolean, 
+  disableBackdropClick :: Boolean, 
+  disableEnforceFocus :: Boolean, 
+  disableEscapeKeyDown :: Boolean, 
+  disableRestoreFocus :: Boolean, 
+  hideBackdrop :: Boolean, 
+  keepMounted :: Boolean, 
+  manager :: Any {-- ModalManager<>--}, 
+  onClose :: EffectFn1 SyntheticEvent Unit, 
+  classes :: Any {-- unknown--}
+ | r)
+
+type DrawerPropsM  = (
+)
+
+type DrawerPropsE r = (
   "aria-activedescendant" :: String, 
   "aria-atomic" :: OneOf (
     typed :: Boolean, 
@@ -181,7 +221,6 @@ type DrawerPropsO r = (
     typed :: StringConst "spelling"
   ), 
   "aria-keyshortcuts" :: String, 
-  "aria-label" :: String, 
   "aria-labelledby" :: String, 
   "aria-level" :: Number, 
   "aria-live" :: OneOf (
@@ -254,9 +293,6 @@ type DrawerPropsO r = (
   "aria-valuemin" :: Number, 
   "aria-valuenow" :: Number, 
   "aria-valuetext" :: String, 
-  dangerouslySetInnerHTML :: Record (
-    "__html" :: String
-  ), 
   onCopy :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCopyCapture :: EffectFn1 SyntheticClipboardEvent Unit, 
   onCut :: EffectFn1 SyntheticClipboardEvent Unit, 
@@ -273,7 +309,6 @@ type DrawerPropsO r = (
   onFocusCapture :: EffectFn1 SyntheticFocusEvent Unit, 
   onBlur :: EffectFn1 SyntheticFocusEvent Unit, 
   onBlurCapture :: EffectFn1 SyntheticFocusEvent Unit, 
-  onChange :: EffectFn1 SyntheticEvent Unit, 
   onChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onInput :: EffectFn1 SyntheticEvent Unit, 
   onInputCapture :: EffectFn1 SyntheticEvent Unit, 
@@ -337,7 +372,6 @@ type DrawerPropsO r = (
   onVolumeChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onWaiting :: EffectFn1 SyntheticEvent Unit, 
   onWaitingCapture :: EffectFn1 SyntheticEvent Unit, 
-  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
   onClickCapture :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenu :: EffectFn1 SyntheticMouseEvent Unit, 
   onContextMenuCapture :: EffectFn1 SyntheticMouseEvent Unit, 
@@ -413,47 +447,16 @@ type DrawerPropsO r = (
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit, 
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit, 
   onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit, 
-  innerRef :: OneOf (
-    typed :: String, 
-    typed :: Any -> Any, 
-    typed :: Any {-- React.RefObject<any>--}
-  ), 
   onEnter :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
   onEntering :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
   onEntered :: EffectFn2 Any {-- interface HTMLElement--} Boolean Unit, 
   onExit :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
   onExiting :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
   onExited :: EffectFn1 Any {-- interface HTMLElement--} Unit, 
-  container :: OneOf (
-    typed :: Any {-- interface Element--}, 
-    typed :: Any {-- React.Component<any, {}, any>--}, 
-    typed :: Any {-- ( => interface Element | React.Component<any, {}, any>)--}
-  ), 
-  manifest :: String, 
-  disablePortal :: Boolean, 
   onRendered :: Any {-- ( => void)--}, 
-  "BackdropComponent" :: OneOf (
-    typed :: String, 
-    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Backdrop/Backdrop".BackdropProps<>, any>--}, 
-    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Backdrop/Backdrop".BackdropProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
-  ), 
-  "BackdropProps" :: Any {-- unknown--}, 
-  disableAutoFocus :: Boolean, 
-  disableBackdropClick :: Boolean, 
-  disableEnforceFocus :: Boolean, 
-  disableEscapeKeyDown :: Boolean, 
-  disableRestoreFocus :: Boolean, 
-  hideBackdrop :: Boolean, 
-  keepMounted :: Boolean, 
-  manager :: Any {-- ModalManager<>--}, 
   onBackdropClick :: EffectFn1 SyntheticEvent Unit, 
-  onClose :: EffectFn1 SyntheticEvent Unit, 
-  onEscapeKeyDown :: EffectFn1 SyntheticEvent Unit, 
-  classes :: Any {-- unknown--}
+  onEscapeKeyDown :: EffectFn1 SyntheticEvent Unit
  | r)
-
-type DrawerPropsM  = (
-)
 
 drawer :: forall a. IsTSEq (Record a) (OptionRecord (DrawerPropsO DrawerPropsM) DrawerPropsM) => Record a -> Array ReactElement -> ReactElement
 drawer = unsafeCreateElement classDrawer
@@ -463,3 +466,6 @@ drawer_ = unsafeCreateElement classDrawer {}
 
 drawer' :: forall a. IsTSEq (Record a) (OptionRecord (DrawerPropsO DrawerPropsM) DrawerPropsM) => Record a -> ReactElement
 drawer' = unsafeCreateLeafElement classDrawer
+
+drawer'' :: forall a. IsTSEq (Record a) (OptionRecord (DrawerPropsO (DrawerPropsE DrawerPropsM)) DrawerPropsM) => Record a -> Array ReactElement -> ReactElement
+drawer'' = unsafeCreateElement classDrawer

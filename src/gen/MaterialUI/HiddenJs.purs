@@ -22,14 +22,6 @@ type HiddenJsPropsO r = (
   lgUp :: Boolean, 
   mdDown :: Boolean, 
   mdUp :: Boolean, 
-  only :: OneOf (
-    typed :: StringConst "xs", 
-    typed :: StringConst "sm", 
-    typed :: StringConst "md", 
-    typed :: StringConst "lg", 
-    typed :: StringConst "xl", 
-    typed :: Array Any {-- "\"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/styles/createBreakpoints\".Breakpoint"--}
-  ), 
   smDown :: Boolean, 
   smUp :: Boolean, 
   xlDown :: Boolean, 
@@ -41,6 +33,17 @@ type HiddenJsPropsO r = (
 type HiddenJsPropsM  = (
 )
 
+type HiddenJsPropsE r = (
+  only :: OneOf (
+    typed :: StringConst "xs", 
+    typed :: StringConst "sm", 
+    typed :: StringConst "md", 
+    typed :: StringConst "lg", 
+    typed :: StringConst "xl", 
+    typed :: Array Any {-- "\"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/styles/createBreakpoints\".Breakpoint"--}
+  )
+ | r)
+
 hiddenJs :: forall a. IsTSEq (Record a) (OptionRecord (HiddenJsPropsO HiddenJsPropsM) HiddenJsPropsM) => Record a -> Array ReactElement -> ReactElement
 hiddenJs = unsafeCreateElement classHiddenJs
 
@@ -49,3 +52,6 @@ hiddenJs_ = unsafeCreateElement classHiddenJs {}
 
 hiddenJs' :: forall a. IsTSEq (Record a) (OptionRecord (HiddenJsPropsO HiddenJsPropsM) HiddenJsPropsM) => Record a -> ReactElement
 hiddenJs' = unsafeCreateLeafElement classHiddenJs
+
+hiddenJs'' :: forall a. IsTSEq (Record a) (OptionRecord (HiddenJsPropsO (HiddenJsPropsE HiddenJsPropsM)) HiddenJsPropsM) => Record a -> Array ReactElement -> ReactElement
+hiddenJs'' = unsafeCreateElement classHiddenJs
