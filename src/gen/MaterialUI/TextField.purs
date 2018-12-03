@@ -14,6 +14,13 @@ type TextFieldPropsO r = (
     typed :: String, 
     typed :: Number
   ), 
+  variant :: OneOf (
+    typed :: StringConst "filled", 
+    typed :: StringConst "outlined", 
+    typed :: StringConst "standard"
+  ), 
+  "InputProps" :: Any {-- unknown--}, 
+  inputProps :: Any {-- "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<>--}, 
   autoComplete :: String, 
   autoFocus :: Boolean, 
   defaultValue :: OneOf (
@@ -27,8 +34,6 @@ type TextFieldPropsO r = (
   helperText :: ReactNode, 
   id :: String, 
   "InputLabelProps" :: Any {-- unknown--}, 
-  "InputProps" :: Any {-- unknown--}, 
-  inputProps :: Any {-- "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<>--}, 
   inputRef :: OneOf (
     typed :: String, 
     typed :: Any -> Any, 
@@ -66,11 +71,6 @@ type TextFieldPropsO r = (
       typed :: Any {-- false--}, 
       typed :: Any {-- true--}
     ))
-  ), 
-  variant :: OneOf (
-    typed :: StringConst "filled", 
-    typed :: StringConst "outlined", 
-    typed :: StringConst "standard"
   ), 
   color :: String, 
   hidden :: Boolean, 

@@ -11,24 +11,34 @@ import Data.Traversable (traverse_)
 import Effect (Effect)
 import ReadTS (TSType(..), readInterfaceTypes)
 import ReadTS.CommonPS (numberType, stringType)
-import ReadTS.Convert (startsWithAny, unionType)
+import ReadTS.Convert (startsWithAny, stringConstType, unionType)
 import ReadTS.Convert.React (ComponentModule, Property, PropertyType(..), convertProperty, detectComponentType, propertiesToModule, reactComponentMapper, reactRefMapping, writeComponent, writeEnumModule)
 
 keyProperty :: Property
 keyProperty = {name:"key", propType: Optional, t: unionType [stringType, numberType], stringEnums: Set.empty }
 
+nonComponentProps :: Set.Set String 
+nonComponentProps = Set.fromFoldable ["Props", "ComponentProps", "ComponentsPropsList", 
+  "SwitchBaseProps", "StyledComponentProps", "FilledTextFieldProps", "OutlinedTextFieldProps" ]
+
 commonOverride :: Set.Set String 
 commonOverride = Set.fromFoldable ["onClick", "onChange", "onClose", "onDelete", "aria-label"]
 
+convertName :: String -> String 
+convertName "StandardTextField" = "TextField"
+convertName a = a
+
 convertComponent :: TSType -> Maybe ComponentModule
 convertComponent = case _ of
-  Interface {name,members} | Just componentName <- String.stripSuffix (Pattern "Props") name -> 
+  Interface {name,members} | Just componentName <- convertName <$> String.stripSuffix (Pattern "Props") name -> 
     let  
       doConvert = reactComponentMapper reactRefMapping
       -- -- propertyConvert p | startsWithAny ["aria"] p.name = Nothing 
       propertyConvert p = let converted = convertProperty doConvert p 
           in case converted.name, converted.propType of 
           n, Optional | startsWithAny ["aria", "on"] n && (not $ Set.member n commonOverride) -> Just $ converted {propType = Extended}
+          "variant", _ | componentName == "TextField" -> Just $ 
+            converted { t = unionType $ stringConstType <$> ["filled", "outlined", "standard"]}
           _, _ -> Just converted
 
       props = [keyProperty] <> (mapMaybe propertyConvert members)
@@ -43,12 +53,8 @@ convertComponent = case _ of
 
 includedInterface :: String -> Boolean 
 includedInterface = case _ of 
-  "Props" -> false
-  "ComponentProps" -> false 
-  "ComponentsPropsList" -> false
-  "SwitchBaseProps" -> false
+  p | Set.member p nonComponentProps -> false
   o -> isJust $ indexOf (Pattern "Props") o
-
 
 main :: Effect Unit  
 main = do 
