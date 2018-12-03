@@ -20,6 +20,11 @@ type InputAdornmentPropsO r = (
     typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputAdornment/InputAdornment".InputAdornmentProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
   ), 
   disableTypography :: Boolean, 
+  variant :: OneOf (
+    typed :: StringConst "filled", 
+    typed :: StringConst "outlined", 
+    typed :: StringConst "standard"
+  ), 
   color :: String, 
   hidden :: Boolean, 
   style :: Any {-- React.CSSProperties<>--}, 

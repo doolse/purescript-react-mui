@@ -21,7 +21,8 @@ type DialogPropsO r = (
     typed :: StringConst "xs", 
     typed :: StringConst "sm", 
     typed :: StringConst "md", 
-    typed :: StringConst "lg"
+    typed :: StringConst "lg", 
+    typed :: StringConst "xl"
   ), 
   "PaperProps" :: Any {-- unknown--}, 
   scroll :: OneOf (

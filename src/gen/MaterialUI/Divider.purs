@@ -22,6 +22,11 @@ type DividerPropsO r = (
   ), 
   inset :: Boolean, 
   light :: Boolean, 
+  variant :: OneOf (
+    typed :: StringConst "inset", 
+    typed :: StringConst "middle", 
+    typed :: StringConst "fullWidth"
+  ), 
   color :: String, 
   hidden :: Boolean, 
   style :: Any {-- React.CSSProperties<>--}, 

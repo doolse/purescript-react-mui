@@ -1,4 +1,4 @@
-module MaterialUI.Badge where
+module MaterialUI.FilledTextField where
 import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
 import Data.TSCompat.React (unsafeCreateElement, ReactNode)
@@ -7,33 +7,70 @@ import Effect.Uncurried (EffectFn1)
 import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
-foreign import classBadge :: forall a. ReactClass a
+foreign import classFilledTextField :: forall a. ReactClass a
 
-type BadgePropsO r = (
+type FilledTextFieldPropsO r = (
   key :: OneOf (
     typed :: String, 
     typed :: Number
   ), 
-  color :: OneOf (
-    typed :: StringConst "inherit", 
-    typed :: StringConst "default", 
-    typed :: StringConst "primary", 
-    typed :: StringConst "secondary", 
-    typed :: StringConst "error"
-  ), 
-  component :: OneOf (
+  "InputProps" :: Any {-- unknown--}, 
+  inputProps :: Any {-- "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<>--}, 
+  autoComplete :: String, 
+  autoFocus :: Boolean, 
+  defaultValue :: OneOf (
     typed :: String, 
-    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Badge/Badge".BadgeProps<>, any>--}, 
-    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Badge/Badge".BadgeProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
+    typed :: Number
   ), 
-  invisible :: Boolean, 
+  disabled :: Boolean, 
+  error :: Boolean, 
+  "FormHelperTextProps" :: Any {-- unknown--}, 
+  fullWidth :: Boolean, 
+  helperText :: ReactNode, 
+  id :: String, 
+  "InputLabelProps" :: Any {-- unknown--}, 
+  inputRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  ), 
+  label :: ReactNode, 
+  margin :: OneOf (
+    typed :: StringConst "normal", 
+    typed :: StringConst "none", 
+    typed :: StringConst "dense"
+  ), 
+  multiline :: Boolean, 
+  name :: String, 
+  onChange :: EffectFn1 SyntheticEvent Unit, 
+  placeholder :: String, 
+  required :: Boolean, 
+  rows :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  rowsMax :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  select :: Boolean, 
+  "SelectProps" :: Any {-- unknown--}, 
+  type :: String, 
+  value :: OneOf (
+    typed :: Boolean, 
+    typed :: String, 
+    typed :: Number, 
+    typed :: Array (OneOf (
+      typed :: String, 
+      typed :: Number, 
+      typed :: Any {-- false--}, 
+      typed :: Any {-- true--}
+    ))
+  ), 
+  color :: String, 
   hidden :: Boolean, 
   style :: Any {-- React.CSSProperties<>--}, 
   defaultChecked :: Boolean, 
-  defaultValue :: OneOf (
-    typed :: String, 
-    typed :: Array String
-  ), 
   suppressContentEditableWarning :: Boolean, 
   suppressHydrationWarning :: Boolean, 
   accessKey :: String, 
@@ -42,9 +79,7 @@ type BadgePropsO r = (
   contextMenu :: String, 
   dir :: String, 
   draggable :: Boolean, 
-  id :: String, 
   lang :: String, 
-  placeholder :: String, 
   slot :: String, 
   spellCheck :: Boolean, 
   tabIndex :: Number, 
@@ -79,21 +114,26 @@ type BadgePropsO r = (
   dangerouslySetInnerHTML :: Record (
     "__html" :: String
   ), 
-  onChange :: EffectFn1 SyntheticEvent Unit, 
   onClick :: EffectFn1 SyntheticMouseEvent Unit, 
-  classes :: Any {-- unknown--}, 
+  component :: OneOf (
+    typed :: String, 
+    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/FormControl/FormControl".FormControlProps<>, any>--}, 
+    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/FormControl/FormControl".FormControlProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
+  ), 
   innerRef :: OneOf (
     typed :: String, 
     typed :: Any -> Any, 
     typed :: Any {-- React.RefObject<any>--}
-  )
+  ), 
+  manifest :: String, 
+  classes :: Any {-- unknown--}
  | r)
 
-type BadgePropsM  = (
-  badgeContent :: ReactNode
+type FilledTextFieldPropsM  = (
+  variant :: StringConst "filled"
 )
 
-type BadgePropsE r = (
+type FilledTextFieldPropsE r = (
   "aria-activedescendant" :: String, 
   "aria-atomic" :: OneOf (
     typed :: Boolean, 
@@ -265,9 +305,9 @@ type BadgePropsE r = (
   onCompositionStartCapture :: EffectFn1 SyntheticCompositionEvent Unit, 
   onCompositionUpdate :: EffectFn1 SyntheticCompositionEvent Unit, 
   onCompositionUpdateCapture :: EffectFn1 SyntheticCompositionEvent Unit, 
-  onFocus :: EffectFn1 SyntheticFocusEvent Unit, 
+  onFocus :: EffectFn1 Any Unit, 
   onFocusCapture :: EffectFn1 SyntheticFocusEvent Unit, 
-  onBlur :: EffectFn1 SyntheticFocusEvent Unit, 
+  onBlur :: EffectFn1 Any Unit, 
   onBlurCapture :: EffectFn1 SyntheticFocusEvent Unit, 
   onChangeCapture :: EffectFn1 SyntheticEvent Unit, 
   onInput :: EffectFn1 SyntheticEvent Unit, 
@@ -409,14 +449,14 @@ type BadgePropsE r = (
   onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit
  | r)
 
-badge :: forall a. IsTSEq (Record a) (OptionRecord (BadgePropsO BadgePropsM) BadgePropsM) => Record a -> Array ReactElement -> ReactElement
-badge = unsafeCreateElement classBadge
+filledTextField :: forall a. IsTSEq (Record a) (OptionRecord (FilledTextFieldPropsO FilledTextFieldPropsM) FilledTextFieldPropsM) => Record a -> Array ReactElement -> ReactElement
+filledTextField = unsafeCreateElement classFilledTextField
 
-badge_ :: Array ReactElement -> ReactElement
-badge_ = unsafeCreateElement classBadge {}
+filledTextField_ :: Array ReactElement -> ReactElement
+filledTextField_ = unsafeCreateElement classFilledTextField {}
 
-badge' :: forall a. IsTSEq (Record a) (OptionRecord (BadgePropsO BadgePropsM) BadgePropsM) => Record a -> ReactElement
-badge' = unsafeCreateLeafElement classBadge
+filledTextField' :: forall a. IsTSEq (Record a) (OptionRecord (FilledTextFieldPropsO FilledTextFieldPropsM) FilledTextFieldPropsM) => Record a -> ReactElement
+filledTextField' = unsafeCreateLeafElement classFilledTextField
 
-badge'' :: forall a. IsTSEq (Record a) (OptionRecord (BadgePropsO (BadgePropsE BadgePropsM)) BadgePropsM) => Record a -> Array ReactElement -> ReactElement
-badge'' = unsafeCreateElement classBadge
+filledTextField'' :: forall a. IsTSEq (Record a) (OptionRecord (FilledTextFieldPropsO (FilledTextFieldPropsE FilledTextFieldPropsM)) FilledTextFieldPropsM) => Record a -> Array ReactElement -> ReactElement
+filledTextField'' = unsafeCreateElement classFilledTextField

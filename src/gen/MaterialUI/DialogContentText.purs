@@ -100,18 +100,27 @@ type DialogContentTextPropsO r = (
   headlineMapping :: Any {-- unknown--}, 
   variant :: OneOf (
     typed :: StringConst "inherit", 
+    typed :: StringConst "overline", 
     typed :: StringConst "caption", 
     typed :: StringConst "button", 
     typed :: StringConst "title", 
+    typed :: StringConst "h1", 
+    typed :: StringConst "h2", 
+    typed :: StringConst "h3", 
+    typed :: StringConst "h4", 
+    typed :: StringConst "h5", 
+    typed :: StringConst "h6", 
+    typed :: StringConst "subtitle1", 
+    typed :: StringConst "subtitle2", 
+    typed :: StringConst "body1", 
+    typed :: StringConst "body2", 
+    typed :: StringConst "srOnly", 
     typed :: StringConst "display4", 
     typed :: StringConst "display3", 
     typed :: StringConst "display2", 
     typed :: StringConst "display1", 
     typed :: StringConst "headline", 
-    typed :: StringConst "subheading", 
-    typed :: StringConst "body2", 
-    typed :: StringConst "body1", 
-    typed :: StringConst "srOnly"
+    typed :: StringConst "subheading"
   ), 
   classes :: Any {-- unknown--}
  | r)

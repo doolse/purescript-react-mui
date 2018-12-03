@@ -21,6 +21,11 @@ type InputLabelPropsO r = (
   focused :: Boolean, 
   required :: Boolean, 
   shrink :: Boolean, 
+  variant :: OneOf (
+    typed :: StringConst "filled", 
+    typed :: StringConst "outlined", 
+    typed :: StringConst "standard"
+  ), 
   color :: String, 
   hidden :: Boolean, 
   style :: Any {-- React.CSSProperties<>--}, 

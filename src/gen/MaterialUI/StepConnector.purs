@@ -14,7 +14,11 @@ type StepConnectorPropsO r = (
     typed :: String, 
     typed :: Number
   ), 
+  active :: Boolean, 
   alternativeLabel :: Boolean, 
+  completed :: Boolean, 
+  disabled :: Boolean, 
+  index :: Number, 
   orientation :: OneOf (
     typed :: StringConst "horizontal", 
     typed :: StringConst "vertical"

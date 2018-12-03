@@ -20,6 +20,7 @@ type TooltipPropsO r = (
   enterDelay :: Number, 
   enterTouchDelay :: Number, 
   id :: String, 
+  interactive :: Boolean, 
   leaveDelay :: Number, 
   leaveTouchDelay :: Number, 
   onClose :: EffectFn1 SyntheticEvent Unit, 

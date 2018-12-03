@@ -19,6 +19,7 @@ type SwipeableDrawerPropsO r = (
   disableSwipeToOpen :: Boolean, 
   hysteresis :: Number, 
   minFlingVelocity :: Number, 
+  "SwipeAreaProps" :: Any {-- unknown--}, 
   swipeAreaWidth :: Number, 
   color :: String, 
   transitionDuration :: OneOf (

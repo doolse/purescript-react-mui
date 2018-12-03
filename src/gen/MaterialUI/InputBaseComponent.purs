@@ -17,11 +17,19 @@ type InputBaseComponentPropsO r = (
   autoComplete :: String, 
   autoFocus :: Boolean, 
   defaultValue :: OneOf (
+    typed :: Boolean, 
     typed :: String, 
-    typed :: Number
+    typed :: Number, 
+    typed :: Any {-- unknown--}, 
+    typed :: Array (OneOf (
+      typed :: String, 
+      typed :: Number, 
+      typed :: Any {-- false--}, 
+      typed :: Any {-- true--}, 
+      typed :: Any {-- unknown--}
+    ))
   ), 
   disabled :: Boolean, 
-  disableUnderline :: Boolean, 
   endAdornment :: ReactNode, 
   error :: Boolean, 
   fullWidth :: Boolean, 
@@ -37,12 +45,45 @@ type InputBaseComponentPropsO r = (
     typed :: Any -> Any, 
     typed :: Any {-- React.RefObject<any>--}
   ), 
-  margin :: StringConst "dense", 
+  margin :: OneOf (
+    typed :: StringConst "none", 
+    typed :: StringConst "dense"
+  ), 
   multiline :: Boolean, 
   name :: String, 
   placeholder :: String, 
   readOnly :: Boolean, 
   required :: Boolean, 
+  renderPrefix :: OptionRecord (
+    disabled :: OneOf (
+      typed :: Boolean, 
+      typed :: Any {-- undefined--}
+    ), 
+    error :: OneOf (
+      typed :: Boolean, 
+      typed :: Any {-- undefined--}
+    ), 
+    filled :: OneOf (
+      typed :: Boolean, 
+      typed :: Any {-- undefined--}
+    ), 
+    focused :: OneOf (
+      typed :: Boolean, 
+      typed :: Any {-- undefined--}
+    ), 
+    margin :: OneOf (
+      typed :: Any {-- undefined--}, 
+      typed :: StringConst "normal", 
+      typed :: StringConst "none", 
+      typed :: StringConst "dense"
+    ), 
+    required :: OneOf (
+      typed :: Boolean, 
+      typed :: Any {-- undefined--}
+    ), 
+    startAdornment :: ReactNode
+  ) (
+  ) -> ReactNode, 
   rows :: OneOf (
     typed :: String, 
     typed :: Number
@@ -57,11 +98,13 @@ type InputBaseComponentPropsO r = (
     typed :: Boolean, 
     typed :: String, 
     typed :: Number, 
+    typed :: Any {-- unknown--}, 
     typed :: Array (OneOf (
       typed :: String, 
       typed :: Number, 
       typed :: Any {-- false--}, 
-      typed :: Any {-- true--}
+      typed :: Any {-- true--}, 
+      typed :: Any {-- unknown--}
     ))
   ), 
   onChange :: EffectFn1 SyntheticEvent Unit, 
@@ -125,8 +168,9 @@ type InputBaseComponentPropsM  = (
 )
 
 type InputBaseComponentPropsE r = (
-  onKeyUp :: EffectFn1 SyntheticKeyboardEvent Unit, 
+  onFilled :: Any {-- ( => void)--}, 
   onKeyDown :: EffectFn1 SyntheticKeyboardEvent Unit, 
+  onKeyUp :: EffectFn1 SyntheticKeyboardEvent Unit, 
   "aria-activedescendant" :: String, 
   "aria-atomic" :: OneOf (
     typed :: Boolean, 

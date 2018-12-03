@@ -161,6 +161,9 @@ evenodd = unsafeCoerce "evenodd"
 execute :: StringConst "execute"
 execute = unsafeCoerce "execute"
 
+extended :: StringConst "extended"
+extended = unsafeCoerce "extended"
+
 extendedFab :: StringConst "extendedFab"
 extendedFab = unsafeCoerce "extendedFab"
 
@@ -188,11 +191,32 @@ flexStart = unsafeCoerce "flex-start"
 footer :: StringConst "footer"
 footer = unsafeCoerce "footer"
 
+fullWidth :: StringConst "fullWidth"
+fullWidth = unsafeCoerce "fullWidth"
+
 grammar :: StringConst "grammar"
 grammar = unsafeCoerce "grammar"
 
 grid :: StringConst "grid"
 grid = unsafeCoerce "grid"
+
+h1 :: StringConst "h1"
+h1 = unsafeCoerce "h1"
+
+h2 :: StringConst "h2"
+h2 = unsafeCoerce "h2"
+
+h3 :: StringConst "h3"
+h3 = unsafeCoerce "h3"
+
+h4 :: StringConst "h4"
+h4 = unsafeCoerce "h4"
+
+h5 :: StringConst "h5"
+h5 = unsafeCoerce "h5"
+
+h6 :: StringConst "h6"
+h6 = unsafeCoerce "h6"
 
 hanging :: StringConst "hanging"
 hanging = unsafeCoerce "hanging"
@@ -220,6 +244,9 @@ initial = unsafeCoerce "initial"
 
 inline :: StringConst "inline"
 inline = unsafeCoerce "inline"
+
+inset :: StringConst "inset"
+inset = unsafeCoerce "inset"
 
 isolated :: StringConst "isolated"
 isolated = unsafeCoerce "isolated"
@@ -328,6 +355,9 @@ other = unsafeCoerce "other"
 
 outlined :: StringConst "outlined"
 outlined = unsafeCoerce "outlined"
+
+overline :: StringConst "overline"
+overline = unsafeCoerce "overline"
 
 page :: StringConst "page"
 page = unsafeCoerce "page"
@@ -439,6 +469,12 @@ stretch = unsafeCoerce "stretch"
 
 subheading :: StringConst "subheading"
 subheading = unsafeCoerce "subheading"
+
+subtitle1 :: StringConst "subtitle1"
+subtitle1 = unsafeCoerce "subtitle1"
+
+subtitle2 :: StringConst "subtitle2"
+subtitle2 = unsafeCoerce "subtitle2"
 
 sum :: StringConst "sum"
 sum = unsafeCoerce "sum"

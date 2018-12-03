@@ -1,15 +1,15 @@
-module MaterialUI.Badge where
+module MaterialUI.Fab where
 import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
-import Data.TSCompat.React (unsafeCreateElement, ReactNode)
+import Data.TSCompat.React (unsafeCreateElement)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
 import React (unsafeCreateLeafElement, ReactClass, ReactElement)
 import React.SyntheticEvent (SyntheticAnimationEvent, SyntheticClipboardEvent, SyntheticCompositionEvent, SyntheticEvent, SyntheticFocusEvent, SyntheticKeyboardEvent, SyntheticMouseEvent, SyntheticTouchEvent, SyntheticTransitionEvent, SyntheticUIEvent, SyntheticWheelEvent)
 
-foreign import classBadge :: forall a. ReactClass a
+foreign import classFab :: forall a. ReactClass a
 
-type BadgePropsO r = (
+type FabPropsO r = (
   key :: OneOf (
     typed :: String, 
     typed :: Number
@@ -18,15 +18,27 @@ type BadgePropsO r = (
     typed :: StringConst "inherit", 
     typed :: StringConst "default", 
     typed :: StringConst "primary", 
-    typed :: StringConst "secondary", 
-    typed :: StringConst "error"
+    typed :: StringConst "secondary"
   ), 
   component :: OneOf (
     typed :: String, 
-    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Badge/Badge".BadgeProps<>, any>--}, 
-    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Badge/Badge".BadgeProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
+    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Fab/Fab".FabProps<>, any>--}, 
+    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Fab/Fab".FabProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
   ), 
-  invisible :: Boolean, 
+  disabled :: Boolean, 
+  disableFocusRipple :: Boolean, 
+  disableRipple :: Boolean, 
+  href :: String, 
+  size :: OneOf (
+    typed :: StringConst "medium", 
+    typed :: StringConst "large", 
+    typed :: StringConst "small"
+  ), 
+  type :: String, 
+  variant :: OneOf (
+    typed :: StringConst "round", 
+    typed :: StringConst "extended"
+  ), 
   hidden :: Boolean, 
   style :: Any {-- React.CSSProperties<>--}, 
   defaultChecked :: Boolean, 
@@ -81,19 +93,50 @@ type BadgePropsO r = (
   ), 
   onChange :: EffectFn1 SyntheticEvent Unit, 
   onClick :: EffectFn1 SyntheticMouseEvent Unit, 
-  classes :: Any {-- unknown--}, 
   innerRef :: OneOf (
     typed :: String, 
     typed :: Any -> Any, 
     typed :: Any {-- React.RefObject<any>--}
-  )
+  ), 
+  download :: Any, 
+  hrefLang :: String, 
+  media :: String, 
+  rel :: String, 
+  target :: String, 
+  autoFocus :: Boolean, 
+  form :: String, 
+  formAction :: String, 
+  formEncType :: String, 
+  formMethod :: String, 
+  formNoValidate :: Boolean, 
+  formTarget :: String, 
+  name :: String, 
+  value :: OneOf (
+    typed :: String, 
+    typed :: Number, 
+    typed :: Array String
+  ), 
+  action :: EffectFn1 Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/ButtonBase/ButtonBase".ButtonBaseActions--} Unit, 
+  buttonRef :: OneOf (
+    typed :: String, 
+    typed :: Any -> Any, 
+    typed :: Any {-- React.RefObject<any>--}
+  ), 
+  centerRipple :: Boolean, 
+  disableTouchRipple :: Boolean, 
+  focusRipple :: Boolean, 
+  focusVisibleClassName :: String, 
+  "TouchRippleProps" :: OneOf (
+    typed :: Any {-- unknown--}, 
+    typed :: Any {-- unknown--}
+  ), 
+  classes :: Any {-- unknown--}
  | r)
 
-type BadgePropsM  = (
-  badgeContent :: ReactNode
+type FabPropsM  = (
 )
 
-type BadgePropsE r = (
+type FabPropsE r = (
   "aria-activedescendant" :: String, 
   "aria-atomic" :: OneOf (
     typed :: Boolean, 
@@ -406,17 +449,18 @@ type BadgePropsE r = (
   onAnimationIteration :: EffectFn1 SyntheticAnimationEvent Unit, 
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit, 
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit, 
-  onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit
+  onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit, 
+  onFocusVisible :: EffectFn1 SyntheticFocusEvent Unit
  | r)
 
-badge :: forall a. IsTSEq (Record a) (OptionRecord (BadgePropsO BadgePropsM) BadgePropsM) => Record a -> Array ReactElement -> ReactElement
-badge = unsafeCreateElement classBadge
+fab :: forall a. IsTSEq (Record a) (OptionRecord (FabPropsO FabPropsM) FabPropsM) => Record a -> Array ReactElement -> ReactElement
+fab = unsafeCreateElement classFab
 
-badge_ :: Array ReactElement -> ReactElement
-badge_ = unsafeCreateElement classBadge {}
+fab_ :: Array ReactElement -> ReactElement
+fab_ = unsafeCreateElement classFab {}
 
-badge' :: forall a. IsTSEq (Record a) (OptionRecord (BadgePropsO BadgePropsM) BadgePropsM) => Record a -> ReactElement
-badge' = unsafeCreateLeafElement classBadge
+fab' :: forall a. IsTSEq (Record a) (OptionRecord (FabPropsO FabPropsM) FabPropsM) => Record a -> ReactElement
+fab' = unsafeCreateLeafElement classFab
 
-badge'' :: forall a. IsTSEq (Record a) (OptionRecord (BadgePropsO (BadgePropsE BadgePropsM)) BadgePropsM) => Record a -> Array ReactElement -> ReactElement
-badge'' = unsafeCreateElement classBadge
+fab'' :: forall a. IsTSEq (Record a) (OptionRecord (FabPropsO (FabPropsE FabPropsM)) FabPropsM) => Record a -> Array ReactElement -> ReactElement
+fab'' = unsafeCreateElement classFab

@@ -30,6 +30,11 @@ type StepLabelPropsO r = (
     typed :: StringConst "horizontal", 
     typed :: StringConst "vertical"
   ), 
+  "StepIconComponent" :: OneOf (
+    typed :: String, 
+    typed :: Any {-- React.ComponentClass<any, any>--}, 
+    typed :: Any {-- (props: any, context: any => null | React.ReactElement<any>)--}
+  ), 
   "StepIconProps" :: Any {-- unknown--}, 
   color :: String, 
   hidden :: Boolean, 

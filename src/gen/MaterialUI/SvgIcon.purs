@@ -35,6 +35,7 @@ type SvgIconPropsO r = (
     typed :: StringConst "small"
   ), 
   nativeColor :: String, 
+  shapeRendering :: String, 
   titleAccess :: String, 
   viewBox :: String, 
   string :: OneOf (
@@ -222,10 +223,6 @@ type SvgIconPropsO r = (
   markerEnd :: String, 
   markerMid :: String, 
   markerStart :: String, 
-  shapeRendering :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
   stopColor :: String, 
   stopOpacity :: OneOf (
     typed :: String, 

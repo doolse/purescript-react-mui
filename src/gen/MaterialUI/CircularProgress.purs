@@ -19,6 +19,7 @@ type CircularProgressPropsO r = (
     typed :: StringConst "primary", 
     typed :: StringConst "secondary"
   ), 
+  disableShrink :: Boolean, 
   size :: OneOf (
     typed :: String, 
     typed :: Number

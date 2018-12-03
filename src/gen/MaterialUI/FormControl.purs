@@ -28,6 +28,11 @@ type FormControlPropsO r = (
     typed :: StringConst "dense"
   ), 
   required :: Boolean, 
+  variant :: OneOf (
+    typed :: StringConst "filled", 
+    typed :: StringConst "outlined", 
+    typed :: StringConst "standard"
+  ), 
   color :: String, 
   hidden :: Boolean, 
   style :: Any {-- React.CSSProperties<>--}, 

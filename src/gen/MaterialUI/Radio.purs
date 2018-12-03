@@ -101,7 +101,11 @@ type RadioPropsO r = (
   formNoValidate :: Boolean, 
   formTarget :: String, 
   name :: String, 
-  value :: String, 
+  value :: OneOf (
+    typed :: Boolean, 
+    typed :: String, 
+    typed :: Number
+  ), 
   action :: EffectFn1 Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/ButtonBase/ButtonBase".ButtonBaseActions--} Unit, 
   buttonRef :: OneOf (
     typed :: String, 

@@ -27,6 +27,8 @@ type FormControlLabelPropsO r = (
   name :: String, 
   onChange :: EffectFn2 SyntheticEvent Boolean Unit, 
   labelPlacement :: OneOf (
+    typed :: StringConst "bottom", 
+    typed :: StringConst "top", 
     typed :: StringConst "end", 
     typed :: StringConst "start"
   ), 

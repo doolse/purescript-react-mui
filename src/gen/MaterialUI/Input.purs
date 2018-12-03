@@ -14,15 +14,28 @@ type InputPropsO r = (
     typed :: String, 
     typed :: Number
   ), 
+  disableUnderline :: Boolean, 
   color :: String, 
-  margin :: StringConst "dense", 
+  margin :: OneOf (
+    typed :: StringConst "none", 
+    typed :: StringConst "dense"
+  ), 
   hidden :: Boolean, 
   style :: Any {-- React.CSSProperties<>--}, 
   disabled :: Boolean, 
   defaultChecked :: Boolean, 
   defaultValue :: OneOf (
+    typed :: Boolean, 
     typed :: String, 
-    typed :: Number
+    typed :: Number, 
+    typed :: Any {-- unknown--}, 
+    typed :: Array (OneOf (
+      typed :: String, 
+      typed :: Number, 
+      typed :: Any {-- false--}, 
+      typed :: Any {-- true--}, 
+      typed :: Any {-- unknown--}
+    ))
   ), 
   suppressContentEditableWarning :: Boolean, 
   suppressHydrationWarning :: Boolean, 
@@ -84,11 +97,13 @@ type InputPropsO r = (
     typed :: Boolean, 
     typed :: String, 
     typed :: Number, 
+    typed :: Any {-- unknown--}, 
     typed :: Array (OneOf (
       typed :: String, 
       typed :: Number, 
       typed :: Any {-- false--}, 
-      typed :: Any {-- true--}
+      typed :: Any {-- true--}, 
+      typed :: Any {-- unknown--}
     ))
   ), 
   fullWidth :: Boolean, 
@@ -102,13 +117,42 @@ type InputPropsO r = (
   required :: Boolean, 
   multiline :: Boolean, 
   autoComplete :: String, 
-  disableUnderline :: Boolean, 
   endAdornment :: ReactNode, 
   inputComponent :: OneOf (
     typed :: String, 
     typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<>, any>--}, 
     typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
   ), 
+  renderPrefix :: OptionRecord (
+    disabled :: OneOf (
+      typed :: Boolean, 
+      typed :: Any {-- undefined--}
+    ), 
+    error :: OneOf (
+      typed :: Boolean, 
+      typed :: Any {-- undefined--}
+    ), 
+    filled :: OneOf (
+      typed :: Boolean, 
+      typed :: Any {-- undefined--}
+    ), 
+    focused :: OneOf (
+      typed :: Boolean, 
+      typed :: Any {-- undefined--}
+    ), 
+    margin :: OneOf (
+      typed :: Any {-- undefined--}, 
+      typed :: StringConst "normal", 
+      typed :: StringConst "none", 
+      typed :: StringConst "dense"
+    ), 
+    required :: OneOf (
+      typed :: Boolean, 
+      typed :: Any {-- undefined--}
+    ), 
+    startAdornment :: ReactNode
+  ) (
+  ) -> ReactNode, 
   rows :: OneOf (
     typed :: String, 
     typed :: Number
@@ -437,7 +481,8 @@ type InputPropsE r = (
   onAnimationIteration :: EffectFn1 SyntheticAnimationEvent Unit, 
   onAnimationIterationCapture :: EffectFn1 SyntheticAnimationEvent Unit, 
   onTransitionEnd :: EffectFn1 SyntheticTransitionEvent Unit, 
-  onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit
+  onTransitionEndCapture :: EffectFn1 SyntheticTransitionEvent Unit, 
+  onFilled :: Any {-- ( => void)--}
  | r)
 
 input :: forall a. IsTSEq (Record a) (OptionRecord (InputPropsO InputPropsM) InputPropsM) => Record a -> Array ReactElement -> ReactElement
