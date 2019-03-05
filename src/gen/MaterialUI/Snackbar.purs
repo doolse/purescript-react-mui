@@ -15,7 +15,7 @@ type SnackbarPropsO r = (
     typed :: Number
   ), 
   action :: ReactNode, 
-  anchorOrigin :: Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Snackbar/Snackbar".SnackbarOrigin--}, 
+  anchorOrigin :: Any {-- interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Snackbar/Snackbar".SnackbarOrigin--}, 
   autoHideDuration :: Number, 
   "ClickAwayListenerProps" :: Any {-- unknown--}, 
   "ContentProps" :: Any {-- unknown--}, 
@@ -24,9 +24,8 @@ type SnackbarPropsO r = (
   onClose :: EffectFn2 SyntheticEvent String Unit, 
   resumeHideDuration :: Number, 
   "TransitionComponent" :: OneOf (
-    typed :: String, 
-    typed :: Any {-- React.ComponentClass<any, any>--}, 
-    typed :: Any {-- (props: any, context: any => null | React.ReactElement<any>)--}
+    typed :: Any {-- React.ComponentClass<"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/transitions/transition".TransitionProps<>, any>--}, 
+    typed :: Any {-- (props: "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/transitions/transition".TransitionProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
   ), 
   transitionDuration :: OneOf (
     typed :: Number, 
@@ -42,7 +41,7 @@ type SnackbarPropsO r = (
     ) (
     )
   ), 
-  "TransitionProps" :: Any {-- "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/transitions/transition".TransitionProps<>--}, 
+  "TransitionProps" :: Any {-- "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/transitions/transition".TransitionProps<>--}, 
   color :: String, 
   hidden :: Boolean, 
   style :: Any {-- React.CSSProperties<>--}, 

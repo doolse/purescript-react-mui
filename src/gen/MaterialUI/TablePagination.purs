@@ -16,16 +16,16 @@ type TablePaginationPropsO r = (
   ), 
   "ActionsComponent" :: OneOf (
     typed :: String, 
-    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/TablePagination/TablePaginationActions".TablePaginationActionsProps<>, any>--}, 
-    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/TablePagination/TablePaginationActions".TablePaginationActionsProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
+    typed :: Any {-- React.ComponentClass<"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/TablePagination/TablePaginationActions".TablePaginationActionsProps<>, any>--}, 
+    typed :: Any {-- (props: "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/TablePagination/TablePaginationActions".TablePaginationActionsProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
   ), 
   backIconButtonProps :: Any {-- unknown--}, 
   component :: OneOf (
     typed :: String, 
-    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/TableCell/TableCell".TableCellProps<>, any>--}, 
-    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/TableCell/TableCell".TableCellProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
+    typed :: Any {-- React.ComponentClass<"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/TableCell/TableCell".TableCellProps<>, any>--}, 
+    typed :: Any {-- (props: "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/TableCell/TableCell".TableCellProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
   ), 
-  labelDisplayedRows :: Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/TablePagination/TablePagination".LabelDisplayedRowsArgs--} -> ReactNode, 
+  labelDisplayedRows :: Any {-- interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/TablePagination/TablePagination".LabelDisplayedRowsArgs--} -> ReactNode, 
   labelRowsPerPage :: ReactNode, 
   nextIconButtonProps :: Any {-- unknown--}, 
   rowsPerPageOptions :: Array Number, 
@@ -95,6 +95,13 @@ type TablePaginationPropsO r = (
     typed :: String, 
     typed :: Any -> Any, 
     typed :: Any {-- React.RefObject<any>--}
+  ), 
+  align :: OneOf (
+    typed :: StringConst "left", 
+    typed :: StringConst "right", 
+    typed :: StringConst "inherit", 
+    typed :: StringConst "center", 
+    typed :: StringConst "justify"
   ), 
   variant :: OneOf (
     typed :: StringConst "body", 

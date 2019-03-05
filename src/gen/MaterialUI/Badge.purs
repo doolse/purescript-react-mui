@@ -14,6 +14,7 @@ type BadgePropsO r = (
     typed :: String, 
     typed :: Number
   ), 
+  badgeContent :: ReactNode, 
   color :: OneOf (
     typed :: StringConst "inherit", 
     typed :: StringConst "default", 
@@ -23,10 +24,16 @@ type BadgePropsO r = (
   ), 
   component :: OneOf (
     typed :: String, 
-    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Badge/Badge".BadgeProps<>, any>--}, 
-    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Badge/Badge".BadgeProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
+    typed :: Any {-- React.ComponentClass<"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Badge/Badge".BadgeProps<>, any>--}, 
+    typed :: Any {-- (props: "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Badge/Badge".BadgeProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
   ), 
   invisible :: Boolean, 
+  max :: Number, 
+  showZero :: Boolean, 
+  variant :: OneOf (
+    typed :: StringConst "dot", 
+    typed :: StringConst "standard"
+  ), 
   hidden :: Boolean, 
   style :: Any {-- React.CSSProperties<>--}, 
   defaultChecked :: Boolean, 
@@ -90,7 +97,6 @@ type BadgePropsO r = (
  | r)
 
 type BadgePropsM  = (
-  badgeContent :: ReactNode
 )
 
 type BadgePropsE r = (

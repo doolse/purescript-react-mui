@@ -14,12 +14,12 @@ type TabsPropsO r = (
     typed :: String, 
     typed :: Number
   ), 
-  action :: EffectFn1 Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Tabs/Tabs".TabsActions--} Unit, 
+  action :: EffectFn1 Any {-- interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Tabs/Tabs".TabsActions--} Unit, 
   centered :: Boolean, 
   component :: OneOf (
     typed :: String, 
-    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Tabs/Tabs".TabsProps<>, any>--}, 
-    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Tabs/Tabs".TabsProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
+    typed :: Any {-- React.ComponentClass<"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Tabs/Tabs".TabsProps<>, any>--}, 
+    typed :: Any {-- (props: "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Tabs/Tabs".TabsProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
   ), 
   fullWidth :: Boolean, 
   indicatorColor :: String, 
@@ -37,6 +37,11 @@ type TabsPropsO r = (
   ), 
   "TabIndicatorProps" :: Any {-- unknown--}, 
   textColor :: String, 
+  variant :: OneOf (
+    typed :: StringConst "standard", 
+    typed :: StringConst "fullWidth", 
+    typed :: StringConst "scrollable"
+  ), 
   width :: String, 
   color :: String, 
   hidden :: Boolean, 

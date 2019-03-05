@@ -27,7 +27,6 @@ type SelectInputPropsO r = (
       node :: Any {-- interface HTMLInputElement--}, 
       value :: OneOf (
         typed :: Boolean, 
-        typed :: Any {-- undefined--}, 
         typed :: String, 
         typed :: Number, 
         typed :: Array (OneOf (
@@ -47,7 +46,6 @@ type SelectInputPropsO r = (
   readOnly :: Boolean, 
   renderValue :: OneOf (
     typed :: Boolean, 
-    typed :: Any {-- undefined--}, 
     typed :: String, 
     typed :: Number, 
     typed :: Array (OneOf (
@@ -59,6 +57,17 @@ type SelectInputPropsO r = (
   ) -> ReactNode, 
   "SelectDisplayProps" :: Any {-- React.HTMLAttributes<interface HTMLDivElement>--}, 
   tabIndex :: Number, 
+  variant :: OneOf (
+    typed :: StringConst "filled", 
+    typed :: StringConst "standard", 
+    typed :: StringConst "outlined"
+  )
+ | r)
+
+type SelectInputPropsM  = (
+  autoWidth :: Boolean, 
+  multiple :: Boolean, 
+  native :: Boolean, 
   value :: OneOf (
     typed :: Boolean, 
     typed :: String, 
@@ -69,18 +78,7 @@ type SelectInputPropsO r = (
       typed :: Any {-- false--}, 
       typed :: Any {-- true--}
     ))
-  ), 
-  variant :: OneOf (
-    typed :: StringConst "filled", 
-    typed :: StringConst "outlined", 
-    typed :: StringConst "standard"
   )
- | r)
-
-type SelectInputPropsM  = (
-  autoWidth :: Boolean, 
-  multiple :: Boolean, 
-  native :: Boolean
 )
 
 type SelectInputPropsE r = (

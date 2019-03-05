@@ -20,8 +20,8 @@ type FormControlContextPropsO r = (
   error :: Boolean, 
   variant :: OneOf (
     typed :: StringConst "filled", 
-    typed :: StringConst "outlined", 
-    typed :: StringConst "standard"
+    typed :: StringConst "standard", 
+    typed :: StringConst "outlined"
   ), 
   required :: Boolean
  | r)

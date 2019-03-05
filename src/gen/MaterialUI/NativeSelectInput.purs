@@ -28,7 +28,13 @@ type NativeSelectInputPropsO r = (
         typed :: Boolean, 
         typed :: Any {-- undefined--}, 
         typed :: String, 
-        typed :: Number
+        typed :: Number, 
+        typed :: Array (OneOf (
+          typed :: String, 
+          typed :: Number, 
+          typed :: Any {-- false--}, 
+          typed :: Any {-- true--}
+        ))
       )
     )
   )) Unit, 
@@ -37,12 +43,18 @@ type NativeSelectInputPropsO r = (
   value :: OneOf (
     typed :: Boolean, 
     typed :: String, 
-    typed :: Number
+    typed :: Number, 
+    typed :: Array (OneOf (
+      typed :: String, 
+      typed :: Number, 
+      typed :: Any {-- false--}, 
+      typed :: Any {-- true--}
+    ))
   ), 
   variant :: OneOf (
     typed :: StringConst "filled", 
-    typed :: StringConst "outlined", 
-    typed :: StringConst "standard"
+    typed :: StringConst "standard", 
+    typed :: StringConst "outlined"
   )
  | r)
 

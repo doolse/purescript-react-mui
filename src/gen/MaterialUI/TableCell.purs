@@ -14,6 +14,13 @@ type TableCellPropsO r = (
     typed :: String, 
     typed :: Number
   ), 
+  align :: OneOf (
+    typed :: StringConst "left", 
+    typed :: StringConst "right", 
+    typed :: StringConst "inherit", 
+    typed :: StringConst "center", 
+    typed :: StringConst "justify"
+  ), 
   component :: OneOf (
     typed :: String, 
     typed :: Any {-- React.ComponentClass<React.ThHTMLAttributes<interface HTMLTableHeaderCellElement> | React.TdHTMLAttributes<interface HTMLTableDataCellElement>, any>--}, 

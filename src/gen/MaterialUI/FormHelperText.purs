@@ -20,15 +20,15 @@ type FormHelperTextPropsO r = (
   focused :: Boolean, 
   component :: OneOf (
     typed :: String, 
-    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/FormHelperText/FormHelperText".FormHelperTextProps<>, any>--}, 
-    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/FormHelperText/FormHelperText".FormHelperTextProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
+    typed :: Any {-- React.ComponentClass<"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/FormHelperText/FormHelperText".FormHelperTextProps<>, any>--}, 
+    typed :: Any {-- (props: "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/FormHelperText/FormHelperText".FormHelperTextProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
   ), 
   margin :: StringConst "dense", 
   required :: Boolean, 
   variant :: OneOf (
     typed :: StringConst "filled", 
-    typed :: StringConst "outlined", 
-    typed :: StringConst "standard"
+    typed :: StringConst "standard", 
+    typed :: StringConst "outlined"
   ), 
   color :: String, 
   hidden :: Boolean, 

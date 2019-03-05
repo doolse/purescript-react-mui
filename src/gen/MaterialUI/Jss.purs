@@ -11,7 +11,7 @@ type JssPropsO r = (
     typed :: String, 
     typed :: Number
   ), 
-  "@global" :: Any {-- "\"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@types/jss/css\".CSSProperties"--}, 
+  "@global" :: Any {-- "\"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@types/jss/css\".CSSProperties"--}, 
   extend :: String, 
   composes :: OneOf (
     typed :: String, 

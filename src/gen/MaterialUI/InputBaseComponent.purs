@@ -1,7 +1,7 @@
 module MaterialUI.InputBaseComponent where
 import Data.TSCompat (Any, OneOf, OptionRecord, StringConst)
 import Data.TSCompat.Class (class IsTSEq)
-import Data.TSCompat.React (unsafeCreateElement, ReactNode)
+import Data.TSCompat.React (unsafeCreateElement)
 import Data.Unit (Unit)
 import Effect.Uncurried (EffectFn1)
 import React (unsafeCreateLeafElement, ReactClass, ReactElement)
@@ -14,104 +14,11 @@ type InputBaseComponentPropsO r = (
     typed :: String, 
     typed :: Number
   ), 
-  autoComplete :: String, 
-  autoFocus :: Boolean, 
-  defaultValue :: OneOf (
-    typed :: Boolean, 
-    typed :: String, 
-    typed :: Number, 
-    typed :: Any {-- unknown--}, 
-    typed :: Array (OneOf (
-      typed :: String, 
-      typed :: Number, 
-      typed :: Any {-- false--}, 
-      typed :: Any {-- true--}, 
-      typed :: Any {-- unknown--}
-    ))
-  ), 
-  disabled :: Boolean, 
-  endAdornment :: ReactNode, 
-  error :: Boolean, 
-  fullWidth :: Boolean, 
-  id :: String, 
-  inputComponent :: OneOf (
-    typed :: String, 
-    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<>, any>--}, 
-    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
-  ), 
-  inputProps :: Any {-- "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/InputBase/InputBase".InputBaseComponentProps<>--}, 
-  inputRef :: OneOf (
-    typed :: String, 
-    typed :: Any -> Any, 
-    typed :: Any {-- React.RefObject<any>--}
-  ), 
-  margin :: OneOf (
-    typed :: StringConst "none", 
-    typed :: StringConst "dense"
-  ), 
-  multiline :: Boolean, 
-  name :: String, 
-  placeholder :: String, 
-  readOnly :: Boolean, 
-  required :: Boolean, 
-  renderPrefix :: OptionRecord (
-    disabled :: OneOf (
-      typed :: Boolean, 
-      typed :: Any {-- undefined--}
-    ), 
-    error :: OneOf (
-      typed :: Boolean, 
-      typed :: Any {-- undefined--}
-    ), 
-    filled :: OneOf (
-      typed :: Boolean, 
-      typed :: Any {-- undefined--}
-    ), 
-    focused :: OneOf (
-      typed :: Boolean, 
-      typed :: Any {-- undefined--}
-    ), 
-    margin :: OneOf (
-      typed :: Any {-- undefined--}, 
-      typed :: StringConst "normal", 
-      typed :: StringConst "none", 
-      typed :: StringConst "dense"
-    ), 
-    required :: OneOf (
-      typed :: Boolean, 
-      typed :: Any {-- undefined--}
-    ), 
-    startAdornment :: ReactNode
-  ) (
-  ) -> ReactNode, 
-  rows :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  rowsMax :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  startAdornment :: ReactNode, 
-  type :: String, 
-  value :: OneOf (
-    typed :: Boolean, 
-    typed :: String, 
-    typed :: Number, 
-    typed :: Any {-- unknown--}, 
-    typed :: Array (OneOf (
-      typed :: String, 
-      typed :: Number, 
-      typed :: Any {-- false--}, 
-      typed :: Any {-- true--}, 
-      typed :: Any {-- unknown--}
-    ))
-  ), 
-  onChange :: EffectFn1 SyntheticEvent Unit, 
-  color :: String, 
-  hidden :: Boolean, 
-  style :: Any {-- React.CSSProperties<>--}, 
   defaultChecked :: Boolean, 
+  defaultValue :: OneOf (
+    typed :: String, 
+    typed :: Array String
+  ), 
   suppressContentEditableWarning :: Boolean, 
   suppressHydrationWarning :: Boolean, 
   accessKey :: String, 
@@ -120,9 +27,13 @@ type InputBaseComponentPropsO r = (
   contextMenu :: String, 
   dir :: String, 
   draggable :: Boolean, 
+  hidden :: Boolean, 
+  id :: String, 
   lang :: String, 
+  placeholder :: String, 
   slot :: String, 
   spellCheck :: Boolean, 
+  style :: Any {-- React.CSSProperties<>--}, 
   tabIndex :: Number, 
   title :: String, 
   inputMode :: String, 
@@ -140,6 +51,7 @@ type InputBaseComponentPropsO r = (
   autoCapitalize :: String, 
   autoCorrect :: String, 
   autoSave :: String, 
+  color :: String, 
   itemProp :: String, 
   itemScope :: Boolean, 
   itemType :: String, 
@@ -155,22 +67,14 @@ type InputBaseComponentPropsO r = (
   dangerouslySetInnerHTML :: Record (
     "__html" :: String
   ), 
-  onClick :: EffectFn1 SyntheticMouseEvent Unit, 
-  classes :: Any {-- unknown--}, 
-  innerRef :: OneOf (
-    typed :: String, 
-    typed :: Any -> Any, 
-    typed :: Any {-- React.RefObject<any>--}
-  )
+  onChange :: EffectFn1 SyntheticEvent Unit, 
+  onClick :: EffectFn1 SyntheticMouseEvent Unit
  | r)
 
 type InputBaseComponentPropsM  = (
 )
 
 type InputBaseComponentPropsE r = (
-  onFilled :: Any {-- ( => void)--}, 
-  onKeyDown :: EffectFn1 SyntheticKeyboardEvent Unit, 
-  onKeyUp :: EffectFn1 SyntheticKeyboardEvent Unit, 
   "aria-activedescendant" :: String, 
   "aria-atomic" :: OneOf (
     typed :: Boolean, 
@@ -359,9 +263,11 @@ type InputBaseComponentPropsE r = (
   onLoadCapture :: EffectFn1 SyntheticEvent Unit, 
   onError :: EffectFn1 SyntheticEvent Unit, 
   onErrorCapture :: EffectFn1 SyntheticEvent Unit, 
+  onKeyDown :: EffectFn1 SyntheticKeyboardEvent Unit, 
   onKeyDownCapture :: EffectFn1 SyntheticKeyboardEvent Unit, 
   onKeyPress :: EffectFn1 SyntheticKeyboardEvent Unit, 
   onKeyPressCapture :: EffectFn1 SyntheticKeyboardEvent Unit, 
+  onKeyUp :: EffectFn1 SyntheticKeyboardEvent Unit, 
   onKeyUpCapture :: EffectFn1 SyntheticKeyboardEvent Unit, 
   onAbort :: EffectFn1 SyntheticEvent Unit, 
   onAbortCapture :: EffectFn1 SyntheticEvent Unit, 

@@ -65,6 +65,7 @@ type GridPropsO r = (
   ), 
   zeroMinWidth :: Boolean, 
   color :: String, 
+  hidden :: Boolean, 
   style :: Any {-- React.CSSProperties<>--}, 
   defaultChecked :: Boolean, 
   defaultValue :: OneOf (

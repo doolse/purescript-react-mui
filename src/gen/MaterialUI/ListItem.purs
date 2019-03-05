@@ -14,11 +14,15 @@ type ListItemPropsO r = (
     typed :: String, 
     typed :: Number
   ), 
+  alignItems :: OneOf (
+    typed :: StringConst "center", 
+    typed :: StringConst "flex-start"
+  ), 
   button :: Boolean, 
   component :: OneOf (
     typed :: String, 
-    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/ListItem/ListItem".ListItemProps<>, any>--}, 
-    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/ListItem/ListItem".ListItemProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
+    typed :: Any {-- React.ComponentClass<"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/ListItem/ListItem".ListItemProps<>, any>--}, 
+    typed :: Any {-- (props: "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/ListItem/ListItem".ListItemProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
   ), 
   "ContainerComponent" :: OneOf (
     typed :: String, 
@@ -112,7 +116,7 @@ type ListItemPropsO r = (
     typed :: Number, 
     typed :: Array String
   ), 
-  action :: EffectFn1 Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/ButtonBase/ButtonBase".ButtonBaseActions--} Unit, 
+  action :: EffectFn1 Any {-- interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/ButtonBase/ButtonBase".ButtonBaseActions--} Unit, 
   buttonRef :: OneOf (
     typed :: String, 
     typed :: Any -> Any, 

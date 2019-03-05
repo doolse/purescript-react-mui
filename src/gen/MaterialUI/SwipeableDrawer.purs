@@ -97,7 +97,7 @@ type SwipeableDrawerPropsO r = (
     typed :: Any -> Any, 
     typed :: Any {-- React.RefObject<any>--}
   ), 
-  theme :: Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/createMuiTheme".Theme--}, 
+  theme :: Any {-- interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/createMuiTheme".Theme--}, 
   variant :: OneOf (
     typed :: StringConst "permanent", 
     typed :: StringConst "persistent", 
@@ -112,10 +112,11 @@ type SwipeableDrawerPropsO r = (
   disablePortal :: Boolean, 
   "BackdropComponent" :: OneOf (
     typed :: String, 
-    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Backdrop/Backdrop".BackdropProps<>, any>--}, 
-    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Backdrop/Backdrop".BackdropProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
+    typed :: Any {-- React.ComponentClass<"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Backdrop/Backdrop".BackdropProps<>, any>--}, 
+    typed :: Any {-- (props: "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Backdrop/Backdrop".BackdropProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
   ), 
   "BackdropProps" :: Any {-- unknown--}, 
+  closeAfterTransition :: Boolean, 
   disableAutoFocus :: Boolean, 
   disableBackdropClick :: Boolean, 
   disableEnforceFocus :: Boolean, 

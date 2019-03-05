@@ -23,6 +23,9 @@ all = unsafeCoerce "all"
 alphabetic :: StringConst "alphabetic"
 alphabetic = unsafeCoerce "alphabetic"
 
+always :: StringConst "always"
+always = unsafeCoerce "always"
+
 anchorEl :: StringConst "anchorEl"
 anchorEl = unsafeCoerce "anchorEl"
 
@@ -143,6 +146,9 @@ display3 = unsafeCoerce "display3"
 display4 :: StringConst "display4"
 display4 = unsafeCoerce "display4"
 
+dot :: StringConst "dot"
+dot = unsafeCoerce "dot"
+
 dots :: StringConst "dots"
 dots = unsafeCoerce "dots"
 
@@ -229,6 +235,9 @@ headline = unsafeCoerce "headline"
 
 horizontal :: StringConst "horizontal"
 horizontal = unsafeCoerce "horizontal"
+
+hover :: StringConst "hover"
+hover = unsafeCoerce "hover"
 
 ideographic :: StringConst "ideographic"
 ideographic = unsafeCoerce "ideographic"
@@ -421,6 +430,9 @@ rowReverse = unsafeCoerce "row-reverse"
 
 sRGB :: StringConst "sRGB"
 sRGB = unsafeCoerce "sRGB"
+
+scrollable :: StringConst "scrollable"
+scrollable = unsafeCoerce "scrollable"
 
 secondary :: StringConst "secondary"
 secondary = unsafeCoerce "secondary"

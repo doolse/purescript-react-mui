@@ -14,13 +14,13 @@ type PopoverPropsO r = (
     typed :: String, 
     typed :: Number
   ), 
-  action :: EffectFn1 Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Popover/Popover".PopoverActions--} Unit, 
+  action :: EffectFn1 Any {-- interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Popover/Popover".PopoverActions--} Unit, 
   anchorEl :: OneOf (
     typed :: Any {-- interface HTMLElement--}, 
     typed :: Any {-- interface HTMLElement--} -> Any {-- interface HTMLElement--}
   ), 
-  anchorOrigin :: Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Popover/Popover".PopoverOrigin--}, 
-  anchorPosition :: Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Popover/Popover".PopoverPosition--}, 
+  anchorOrigin :: Any {-- interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Popover/Popover".PopoverOrigin--}, 
+  anchorPosition :: Any {-- interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Popover/Popover".PopoverPosition--}, 
   anchorReference :: OneOf (
     typed :: StringConst "none", 
     typed :: StringConst "anchorEl", 
@@ -33,11 +33,10 @@ type PopoverPropsO r = (
   "ModalClasses" :: Any {-- unknown--}, 
   "PaperProps" :: Any {-- unknown--}, 
   role :: String, 
-  transformOrigin :: Any {-- interface "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Popover/Popover".PopoverOrigin--}, 
+  transformOrigin :: Any {-- interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Popover/Popover".PopoverOrigin--}, 
   "TransitionComponent" :: OneOf (
-    typed :: String, 
-    typed :: Any {-- React.ComponentClass<any, any>--}, 
-    typed :: Any {-- (props: any, context: any => null | React.ReactElement<any>)--}
+    typed :: Any {-- React.ComponentClass<"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/transitions/transition".TransitionProps<>, any>--}, 
+    typed :: Any {-- (props: "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/transitions/transition".TransitionProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
   ), 
   transitionDuration :: OneOf (
     typed :: Number, 
@@ -54,7 +53,7 @@ type PopoverPropsO r = (
     ) (
     )
   ), 
-  "TransitionProps" :: Any {-- "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/transitions/transition".TransitionProps<>--}, 
+  "TransitionProps" :: Any {-- "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/transitions/transition".TransitionProps<>--}, 
   color :: String, 
   hidden :: Boolean, 
   style :: Any {-- React.CSSProperties<>--}, 
@@ -123,10 +122,11 @@ type PopoverPropsO r = (
   disablePortal :: Boolean, 
   "BackdropComponent" :: OneOf (
     typed :: String, 
-    typed :: Any {-- React.ComponentClass<"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Backdrop/Backdrop".BackdropProps<>, any>--}, 
-    typed :: Any {-- (props: "/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Backdrop/Backdrop".BackdropProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
+    typed :: Any {-- React.ComponentClass<"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Backdrop/Backdrop".BackdropProps<>, any>--}, 
+    typed :: Any {-- (props: "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Backdrop/Backdrop".BackdropProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
   ), 
   "BackdropProps" :: Any {-- unknown--}, 
+  closeAfterTransition :: Boolean, 
   disableAutoFocus :: Boolean, 
   disableBackdropClick :: Boolean, 
   disableEnforceFocus :: Boolean, 

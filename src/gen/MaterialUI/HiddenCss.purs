@@ -33,7 +33,7 @@ type HiddenCssPropsE r = (
     typed :: StringConst "md", 
     typed :: StringConst "lg", 
     typed :: StringConst "xl", 
-    typed :: Array Any {-- "\"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/styles/createBreakpoints\".Breakpoint"--}
+    typed :: Array Any {-- "\"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/styles/createBreakpoints\".Breakpoint"--}
   )
  | r)
 

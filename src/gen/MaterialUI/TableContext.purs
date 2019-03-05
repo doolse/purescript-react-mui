@@ -14,7 +14,7 @@ type TableContextPropsO r = (
  | r)
 
 type TableContextPropsM  = (
-  padding :: Any {-- "\"/home/jolz/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/Table/Table\".Padding"--}
+  padding :: Any {-- "\"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/Table/Table\".Padding"--}
 )
 
 tableContext :: forall a. IsTSEq (Record a) (OptionRecord (TableContextPropsO TableContextPropsM) TableContextPropsM) => Record a -> Array ReactElement -> ReactElement
