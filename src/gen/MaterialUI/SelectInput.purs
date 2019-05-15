@@ -58,9 +58,9 @@ type SelectInputPropsO r = (
   "SelectDisplayProps" :: Any {-- React.HTMLAttributes<interface HTMLDivElement>--}, 
   tabIndex :: Number, 
   variant :: OneOf (
-    typed :: StringConst "filled", 
     typed :: StringConst "standard", 
-    typed :: StringConst "outlined"
+    typed :: StringConst "outlined", 
+    typed :: StringConst "filled"
   )
  | r)
 

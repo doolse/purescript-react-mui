@@ -16,14 +16,11 @@ type RadioPropsO r = (
   ), 
   checkedIcon :: ReactNode, 
   color :: OneOf (
-    typed :: StringConst "default", 
     typed :: StringConst "primary", 
-    typed :: StringConst "secondary"
+    typed :: StringConst "secondary", 
+    typed :: StringConst "default"
   ), 
   icon :: ReactNode, 
-  hidden :: Boolean, 
-  style :: Any {-- React.CSSProperties<>--}, 
-  disabled :: Boolean, 
   defaultChecked :: Boolean, 
   defaultValue :: OneOf (
     typed :: String, 
@@ -37,11 +34,13 @@ type RadioPropsO r = (
   contextMenu :: String, 
   dir :: String, 
   draggable :: Boolean, 
+  hidden :: Boolean, 
   id :: String, 
   lang :: String, 
   placeholder :: String, 
   slot :: String, 
   spellCheck :: Boolean, 
+  style :: Any {-- React.CSSProperties<>--}, 
   tabIndex :: Number, 
   title :: String, 
   inputMode :: String, 
@@ -86,6 +85,7 @@ type RadioPropsO r = (
     typed :: Any -> Any, 
     typed :: Any {-- React.RefObject<any>--}
   ), 
+  disabled :: Boolean, 
   download :: Any, 
   href :: String, 
   hrefLang :: String, 
@@ -147,10 +147,10 @@ type RadioPropsE r = (
     typed :: StringConst "true"
   ), 
   "aria-autocomplete" :: OneOf (
-    typed :: StringConst "both", 
     typed :: StringConst "none", 
     typed :: StringConst "inline", 
-    typed :: StringConst "list"
+    typed :: StringConst "list", 
+    typed :: StringConst "both"
   ), 
   "aria-busy" :: OneOf (
     typed :: Boolean, 
@@ -159,9 +159,9 @@ type RadioPropsE r = (
   ), 
   "aria-checked" :: OneOf (
     typed :: Boolean, 
-    typed :: StringConst "mixed", 
     typed :: StringConst "false", 
-    typed :: StringConst "true"
+    typed :: StringConst "true", 
+    typed :: StringConst "mixed"
   ), 
   "aria-colcount" :: Number, 
   "aria-colindex" :: Number, 
@@ -169,9 +169,9 @@ type RadioPropsE r = (
   "aria-controls" :: String, 
   "aria-current" :: OneOf (
     typed :: Boolean, 
-    typed :: StringConst "page", 
     typed :: StringConst "false", 
     typed :: StringConst "true", 
+    typed :: StringConst "page", 
     typed :: StringConst "step", 
     typed :: StringConst "location", 
     typed :: StringConst "date", 
@@ -187,9 +187,9 @@ type RadioPropsE r = (
   "aria-dropeffect" :: OneOf (
     typed :: StringConst "none", 
     typed :: StringConst "copy", 
-    typed :: StringConst "move", 
     typed :: StringConst "execute", 
     typed :: StringConst "link", 
+    typed :: StringConst "move", 
     typed :: StringConst "popup"
   ), 
   "aria-errormessage" :: String, 
@@ -206,12 +206,12 @@ type RadioPropsE r = (
   ), 
   "aria-haspopup" :: OneOf (
     typed :: Boolean, 
-    typed :: StringConst "grid", 
-    typed :: StringConst "menu", 
-    typed :: StringConst "listbox", 
     typed :: StringConst "false", 
     typed :: StringConst "true", 
+    typed :: StringConst "menu", 
+    typed :: StringConst "listbox", 
     typed :: StringConst "tree", 
+    typed :: StringConst "grid", 
     typed :: StringConst "dialog"
   ), 
   "aria-hidden" :: OneOf (
@@ -258,9 +258,9 @@ type RadioPropsE r = (
   "aria-posinset" :: Number, 
   "aria-pressed" :: OneOf (
     typed :: Boolean, 
-    typed :: StringConst "mixed", 
     typed :: StringConst "false", 
-    typed :: StringConst "true"
+    typed :: StringConst "true", 
+    typed :: StringConst "mixed"
   ), 
   "aria-readonly" :: OneOf (
     typed :: Boolean, 
@@ -268,11 +268,11 @@ type RadioPropsE r = (
     typed :: StringConst "true"
   ), 
   "aria-relevant" :: OneOf (
-    typed :: StringConst "all", 
-    typed :: StringConst "text", 
     typed :: StringConst "additions", 
     typed :: StringConst "additions text", 
-    typed :: StringConst "removals"
+    typed :: StringConst "all", 
+    typed :: StringConst "removals", 
+    typed :: StringConst "text"
   ), 
   "aria-required" :: OneOf (
     typed :: Boolean, 

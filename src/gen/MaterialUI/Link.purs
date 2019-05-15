@@ -17,9 +17,9 @@ type LinkPropsO r = (
   block :: Boolean, 
   color :: OneOf (
     typed :: StringConst "inherit", 
-    typed :: StringConst "default", 
     typed :: StringConst "primary", 
-    typed :: StringConst "secondary"
+    typed :: StringConst "secondary", 
+    typed :: StringConst "default"
   ), 
   component :: OneOf (
     typed :: String, 
@@ -29,12 +29,9 @@ type LinkPropsO r = (
   "TypographyClasses" :: Any {-- unknown--}, 
   underline :: OneOf (
     typed :: StringConst "none", 
-    typed :: StringConst "always", 
-    typed :: StringConst "hover"
+    typed :: StringConst "hover", 
+    typed :: StringConst "always"
   ), 
-  hidden :: Boolean, 
-  style :: Any {-- React.CSSProperties<>--}, 
-  inline :: Boolean, 
   defaultChecked :: Boolean, 
   defaultValue :: OneOf (
     typed :: String, 
@@ -48,11 +45,13 @@ type LinkPropsO r = (
   contextMenu :: String, 
   dir :: String, 
   draggable :: Boolean, 
+  hidden :: Boolean, 
   id :: String, 
   lang :: String, 
   placeholder :: String, 
   slot :: String, 
   spellCheck :: Boolean, 
+  style :: Any {-- React.CSSProperties<>--}, 
   tabIndex :: Number, 
   title :: String, 
   inputMode :: String, 
@@ -93,6 +92,7 @@ type LinkPropsO r = (
     typed :: EffectFn1 SyntheticMouseEvent Unit, 
     typed :: EffectFn1 SyntheticMouseEvent Unit
   ), 
+  inline :: Boolean, 
   innerRef :: OneOf (
     typed :: String, 
     typed :: Any -> Any, 
@@ -109,19 +109,17 @@ type LinkPropsO r = (
   gutterBottom :: Boolean, 
   paragraph :: Boolean, 
   align :: OneOf (
-    typed :: StringConst "left", 
-    typed :: StringConst "right", 
     typed :: StringConst "inherit", 
     typed :: StringConst "center", 
+    typed :: StringConst "left", 
+    typed :: StringConst "right", 
     typed :: StringConst "justify"
   ), 
   headlineMapping :: Any {-- unknown--}, 
   variant :: OneOf (
-    typed :: StringConst "inherit", 
-    typed :: StringConst "overline", 
-    typed :: StringConst "caption", 
-    typed :: StringConst "button", 
     typed :: StringConst "title", 
+    typed :: StringConst "inherit", 
+    typed :: StringConst "button", 
     typed :: StringConst "h1", 
     typed :: StringConst "h2", 
     typed :: StringConst "h3", 
@@ -132,6 +130,8 @@ type LinkPropsO r = (
     typed :: StringConst "subtitle2", 
     typed :: StringConst "body1", 
     typed :: StringConst "body2", 
+    typed :: StringConst "caption", 
+    typed :: StringConst "overline", 
     typed :: StringConst "srOnly", 
     typed :: StringConst "display4", 
     typed :: StringConst "display3", 
@@ -154,10 +154,10 @@ type LinkPropsE r = (
     typed :: StringConst "true"
   ), 
   "aria-autocomplete" :: OneOf (
-    typed :: StringConst "both", 
     typed :: StringConst "none", 
     typed :: StringConst "inline", 
-    typed :: StringConst "list"
+    typed :: StringConst "list", 
+    typed :: StringConst "both"
   ), 
   "aria-busy" :: OneOf (
     typed :: Boolean, 
@@ -166,9 +166,9 @@ type LinkPropsE r = (
   ), 
   "aria-checked" :: OneOf (
     typed :: Boolean, 
-    typed :: StringConst "mixed", 
     typed :: StringConst "false", 
-    typed :: StringConst "true"
+    typed :: StringConst "true", 
+    typed :: StringConst "mixed"
   ), 
   "aria-colcount" :: Number, 
   "aria-colindex" :: Number, 
@@ -176,9 +176,9 @@ type LinkPropsE r = (
   "aria-controls" :: String, 
   "aria-current" :: OneOf (
     typed :: Boolean, 
-    typed :: StringConst "page", 
     typed :: StringConst "false", 
     typed :: StringConst "true", 
+    typed :: StringConst "page", 
     typed :: StringConst "step", 
     typed :: StringConst "location", 
     typed :: StringConst "date", 
@@ -194,9 +194,9 @@ type LinkPropsE r = (
   "aria-dropeffect" :: OneOf (
     typed :: StringConst "none", 
     typed :: StringConst "copy", 
-    typed :: StringConst "move", 
     typed :: StringConst "execute", 
     typed :: StringConst "link", 
+    typed :: StringConst "move", 
     typed :: StringConst "popup"
   ), 
   "aria-errormessage" :: String, 
@@ -213,12 +213,12 @@ type LinkPropsE r = (
   ), 
   "aria-haspopup" :: OneOf (
     typed :: Boolean, 
-    typed :: StringConst "grid", 
-    typed :: StringConst "menu", 
-    typed :: StringConst "listbox", 
     typed :: StringConst "false", 
     typed :: StringConst "true", 
+    typed :: StringConst "menu", 
+    typed :: StringConst "listbox", 
     typed :: StringConst "tree", 
+    typed :: StringConst "grid", 
     typed :: StringConst "dialog"
   ), 
   "aria-hidden" :: OneOf (
@@ -265,9 +265,9 @@ type LinkPropsE r = (
   "aria-posinset" :: Number, 
   "aria-pressed" :: OneOf (
     typed :: Boolean, 
-    typed :: StringConst "mixed", 
     typed :: StringConst "false", 
-    typed :: StringConst "true"
+    typed :: StringConst "true", 
+    typed :: StringConst "mixed"
   ), 
   "aria-readonly" :: OneOf (
     typed :: Boolean, 
@@ -275,11 +275,11 @@ type LinkPropsE r = (
     typed :: StringConst "true"
   ), 
   "aria-relevant" :: OneOf (
-    typed :: StringConst "all", 
-    typed :: StringConst "text", 
     typed :: StringConst "additions", 
     typed :: StringConst "additions text", 
-    typed :: StringConst "removals"
+    typed :: StringConst "all", 
+    typed :: StringConst "removals", 
+    typed :: StringConst "text"
   ), 
   "aria-required" :: OneOf (
     typed :: Boolean, 

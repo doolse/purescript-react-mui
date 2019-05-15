@@ -410,6 +410,9 @@ removals = unsafeCoerce "removals"
 replace :: StringConst "replace"
 replace = unsafeCoerce "replace"
 
+reset :: StringConst "reset"
+reset = unsafeCoerce "reset"
+
 right :: StringConst "right"
 right = unsafeCoerce "right"
 
@@ -481,6 +484,9 @@ stretch = unsafeCoerce "stretch"
 
 subheading :: StringConst "subheading"
 subheading = unsafeCoerce "subheading"
+
+submit :: StringConst "submit"
+submit = unsafeCoerce "submit"
 
 subtitle1 :: StringConst "subtitle1"
 subtitle1 = unsafeCoerce "subtitle1"

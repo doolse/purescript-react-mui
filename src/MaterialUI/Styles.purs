@@ -30,5 +30,10 @@ foreign import createMuiTheme :: forall r. {|r} -> Theme
 
 foreign import muiThemeProviderClass :: forall r. ReactClass r
 
+foreign import themeProviderClass :: forall r. ReactClass r
+
 muiThemeProvider :: {theme::Theme} -> Array ReactElement -> ReactElement
 muiThemeProvider = unsafeCreateElement muiThemeProviderClass
+
+themeProvider :: {theme::Theme} -> Array ReactElement -> ReactElement
+themeProvider = unsafeCreateElement themeProviderClass

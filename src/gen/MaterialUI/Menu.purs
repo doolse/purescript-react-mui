@@ -20,7 +20,6 @@ type MenuPropsO r = (
   "PopoverClasses" :: Any {-- unknown--}, 
   transitionDuration :: OneOf (
     typed :: Number, 
-    typed :: StringConst "auto", 
     typed :: OptionRecord (
       enter :: OneOf (
         typed :: Any {-- undefined--}, 
@@ -31,12 +30,9 @@ type MenuPropsO r = (
         typed :: Number
       )
     ) (
-    )
+    ), 
+    typed :: StringConst "auto"
   ), 
-  color :: String, 
-  transformOrigin :: Any {-- interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Popover/Popover".PopoverOrigin--}, 
-  hidden :: Boolean, 
-  style :: Any {-- React.CSSProperties<>--}, 
   defaultChecked :: Boolean, 
   defaultValue :: OneOf (
     typed :: String, 
@@ -50,11 +46,13 @@ type MenuPropsO r = (
   contextMenu :: String, 
   dir :: String, 
   draggable :: Boolean, 
+  hidden :: Boolean, 
   id :: String, 
   lang :: String, 
   placeholder :: String, 
   slot :: String, 
   spellCheck :: Boolean, 
+  style :: Any {-- React.CSSProperties<>--}, 
   tabIndex :: Number, 
   title :: String, 
   inputMode :: String, 
@@ -72,6 +70,7 @@ type MenuPropsO r = (
   autoCapitalize :: String, 
   autoCorrect :: String, 
   autoSave :: String, 
+  color :: String, 
   itemProp :: String, 
   itemScope :: Boolean, 
   itemType :: String, 
@@ -134,6 +133,7 @@ type MenuPropsO r = (
   getContentAnchorEl :: Any {-- interface HTMLElement--} -> Any {-- interface HTMLElement--}, 
   marginThreshold :: Number, 
   "ModalClasses" :: Any {-- unknown--}, 
+  transformOrigin :: Any {-- interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/Popover/Popover".PopoverOrigin--}, 
   "TransitionComponent" :: OneOf (
     typed :: Any {-- React.ComponentClass<"/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/transitions/transition".TransitionProps<>, any>--}, 
     typed :: Any {-- (props: "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/transitions/transition".TransitionProps<> | {children: boolean | undefined | null | string | number | {} | React.ReactElement<any> | React.ReactNodeArray<> | React.ReactPortal<>}, context: any => null | React.ReactElement<any>)--}
@@ -154,10 +154,10 @@ type MenuPropsE r = (
     typed :: StringConst "true"
   ), 
   "aria-autocomplete" :: OneOf (
-    typed :: StringConst "both", 
     typed :: StringConst "none", 
     typed :: StringConst "inline", 
-    typed :: StringConst "list"
+    typed :: StringConst "list", 
+    typed :: StringConst "both"
   ), 
   "aria-busy" :: OneOf (
     typed :: Boolean, 
@@ -166,9 +166,9 @@ type MenuPropsE r = (
   ), 
   "aria-checked" :: OneOf (
     typed :: Boolean, 
-    typed :: StringConst "mixed", 
     typed :: StringConst "false", 
-    typed :: StringConst "true"
+    typed :: StringConst "true", 
+    typed :: StringConst "mixed"
   ), 
   "aria-colcount" :: Number, 
   "aria-colindex" :: Number, 
@@ -176,9 +176,9 @@ type MenuPropsE r = (
   "aria-controls" :: String, 
   "aria-current" :: OneOf (
     typed :: Boolean, 
-    typed :: StringConst "page", 
     typed :: StringConst "false", 
     typed :: StringConst "true", 
+    typed :: StringConst "page", 
     typed :: StringConst "step", 
     typed :: StringConst "location", 
     typed :: StringConst "date", 
@@ -194,9 +194,9 @@ type MenuPropsE r = (
   "aria-dropeffect" :: OneOf (
     typed :: StringConst "none", 
     typed :: StringConst "copy", 
-    typed :: StringConst "move", 
     typed :: StringConst "execute", 
     typed :: StringConst "link", 
+    typed :: StringConst "move", 
     typed :: StringConst "popup"
   ), 
   "aria-errormessage" :: String, 
@@ -213,12 +213,12 @@ type MenuPropsE r = (
   ), 
   "aria-haspopup" :: OneOf (
     typed :: Boolean, 
-    typed :: StringConst "grid", 
-    typed :: StringConst "menu", 
-    typed :: StringConst "listbox", 
     typed :: StringConst "false", 
     typed :: StringConst "true", 
+    typed :: StringConst "menu", 
+    typed :: StringConst "listbox", 
     typed :: StringConst "tree", 
+    typed :: StringConst "grid", 
     typed :: StringConst "dialog"
   ), 
   "aria-hidden" :: OneOf (
@@ -265,9 +265,9 @@ type MenuPropsE r = (
   "aria-posinset" :: Number, 
   "aria-pressed" :: OneOf (
     typed :: Boolean, 
-    typed :: StringConst "mixed", 
     typed :: StringConst "false", 
-    typed :: StringConst "true"
+    typed :: StringConst "true", 
+    typed :: StringConst "mixed"
   ), 
   "aria-readonly" :: OneOf (
     typed :: Boolean, 
@@ -275,11 +275,11 @@ type MenuPropsE r = (
     typed :: StringConst "true"
   ), 
   "aria-relevant" :: OneOf (
-    typed :: StringConst "all", 
-    typed :: StringConst "text", 
     typed :: StringConst "additions", 
     typed :: StringConst "additions text", 
-    typed :: StringConst "removals"
+    typed :: StringConst "all", 
+    typed :: StringConst "removals", 
+    typed :: StringConst "text"
   ), 
   "aria-required" :: OneOf (
     typed :: Boolean, 

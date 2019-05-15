@@ -21,23 +21,6 @@ type SwipeableDrawerPropsO r = (
   minFlingVelocity :: Number, 
   "SwipeAreaProps" :: Any {-- unknown--}, 
   swipeAreaWidth :: Number, 
-  color :: String, 
-  transitionDuration :: OneOf (
-    typed :: Number, 
-    typed :: OptionRecord (
-      enter :: OneOf (
-        typed :: Any {-- undefined--}, 
-        typed :: Number
-      ), 
-      exit :: OneOf (
-        typed :: Any {-- undefined--}, 
-        typed :: Number
-      )
-    ) (
-    )
-  ), 
-  hidden :: Boolean, 
-  style :: Any {-- React.CSSProperties<>--}, 
   classes :: Any {-- unknown--}, 
   defaultChecked :: Boolean, 
   defaultValue :: OneOf (
@@ -52,11 +35,13 @@ type SwipeableDrawerPropsO r = (
   contextMenu :: String, 
   dir :: String, 
   draggable :: Boolean, 
+  hidden :: Boolean, 
   id :: String, 
   lang :: String, 
   placeholder :: String, 
   slot :: String, 
   spellCheck :: Boolean, 
+  style :: Any {-- React.CSSProperties<>--}, 
   tabIndex :: Number, 
   title :: String, 
   inputMode :: String, 
@@ -74,6 +59,7 @@ type SwipeableDrawerPropsO r = (
   autoCapitalize :: String, 
   autoCorrect :: String, 
   autoSave :: String, 
+  color :: String, 
   itemProp :: String, 
   itemScope :: Boolean, 
   itemType :: String, 
@@ -109,6 +95,20 @@ type SwipeableDrawerPropsO r = (
     typed :: Any {-- ( => interface Element | React.Component<any, {}, any>)--}
   ), 
   manifest :: String, 
+  transitionDuration :: OneOf (
+    typed :: Number, 
+    typed :: OptionRecord (
+      enter :: OneOf (
+        typed :: Any {-- undefined--}, 
+        typed :: Number
+      ), 
+      exit :: OneOf (
+        typed :: Any {-- undefined--}, 
+        typed :: Number
+      )
+    ) (
+    )
+  ), 
   disablePortal :: Boolean, 
   "BackdropComponent" :: OneOf (
     typed :: String, 
@@ -127,10 +127,10 @@ type SwipeableDrawerPropsO r = (
   manager :: Any {-- ModalManager<>--}, 
   "PaperProps" :: Any {-- unknown--}, 
   anchor :: OneOf (
-    typed :: StringConst "bottom", 
     typed :: StringConst "left", 
     typed :: StringConst "right", 
-    typed :: StringConst "top"
+    typed :: StringConst "top", 
+    typed :: StringConst "bottom"
   ), 
   "ModalProps" :: Any {-- unknown--}, 
   "SlideProps" :: Any {-- unknown--}
@@ -150,10 +150,10 @@ type SwipeableDrawerPropsE r = (
     typed :: StringConst "true"
   ), 
   "aria-autocomplete" :: OneOf (
-    typed :: StringConst "both", 
     typed :: StringConst "none", 
     typed :: StringConst "inline", 
-    typed :: StringConst "list"
+    typed :: StringConst "list", 
+    typed :: StringConst "both"
   ), 
   "aria-busy" :: OneOf (
     typed :: Boolean, 
@@ -162,9 +162,9 @@ type SwipeableDrawerPropsE r = (
   ), 
   "aria-checked" :: OneOf (
     typed :: Boolean, 
-    typed :: StringConst "mixed", 
     typed :: StringConst "false", 
-    typed :: StringConst "true"
+    typed :: StringConst "true", 
+    typed :: StringConst "mixed"
   ), 
   "aria-colcount" :: Number, 
   "aria-colindex" :: Number, 
@@ -172,9 +172,9 @@ type SwipeableDrawerPropsE r = (
   "aria-controls" :: String, 
   "aria-current" :: OneOf (
     typed :: Boolean, 
-    typed :: StringConst "page", 
     typed :: StringConst "false", 
     typed :: StringConst "true", 
+    typed :: StringConst "page", 
     typed :: StringConst "step", 
     typed :: StringConst "location", 
     typed :: StringConst "date", 
@@ -190,9 +190,9 @@ type SwipeableDrawerPropsE r = (
   "aria-dropeffect" :: OneOf (
     typed :: StringConst "none", 
     typed :: StringConst "copy", 
-    typed :: StringConst "move", 
     typed :: StringConst "execute", 
     typed :: StringConst "link", 
+    typed :: StringConst "move", 
     typed :: StringConst "popup"
   ), 
   "aria-errormessage" :: String, 
@@ -209,12 +209,12 @@ type SwipeableDrawerPropsE r = (
   ), 
   "aria-haspopup" :: OneOf (
     typed :: Boolean, 
-    typed :: StringConst "grid", 
-    typed :: StringConst "menu", 
-    typed :: StringConst "listbox", 
     typed :: StringConst "false", 
     typed :: StringConst "true", 
+    typed :: StringConst "menu", 
+    typed :: StringConst "listbox", 
     typed :: StringConst "tree", 
+    typed :: StringConst "grid", 
     typed :: StringConst "dialog"
   ), 
   "aria-hidden" :: OneOf (
@@ -261,9 +261,9 @@ type SwipeableDrawerPropsE r = (
   "aria-posinset" :: Number, 
   "aria-pressed" :: OneOf (
     typed :: Boolean, 
-    typed :: StringConst "mixed", 
     typed :: StringConst "false", 
-    typed :: StringConst "true"
+    typed :: StringConst "true", 
+    typed :: StringConst "mixed"
   ), 
   "aria-readonly" :: OneOf (
     typed :: Boolean, 
@@ -271,11 +271,11 @@ type SwipeableDrawerPropsE r = (
     typed :: StringConst "true"
   ), 
   "aria-relevant" :: OneOf (
-    typed :: StringConst "all", 
-    typed :: StringConst "text", 
     typed :: StringConst "additions", 
     typed :: StringConst "additions text", 
-    typed :: StringConst "removals"
+    typed :: StringConst "all", 
+    typed :: StringConst "removals", 
+    typed :: StringConst "text"
   ), 
   "aria-required" :: OneOf (
     typed :: Boolean, 

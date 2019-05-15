@@ -16,7 +16,6 @@ type GrowPropsO r = (
   theme :: Any {-- interface "/home/doolse/git/purescript-react-mui/synctypes/node_modules/@material-ui/core/es/styles/createMuiTheme".Theme--}, 
   timeout :: OneOf (
     typed :: Number, 
-    typed :: StringConst "auto", 
     typed :: OptionRecord (
       enter :: OneOf (
         typed :: Any {-- undefined--}, 
@@ -27,7 +26,8 @@ type GrowPropsO r = (
         typed :: Number
       )
     ) (
-    )
+    ), 
+    typed :: StringConst "auto"
   ), 
   style :: Any {-- React.CSSProperties<>--}, 
   in :: Boolean, 

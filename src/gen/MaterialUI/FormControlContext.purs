@@ -11,19 +11,19 @@ type FormControlContextPropsO r = (
     typed :: String, 
     typed :: Number
   ), 
-  margin :: OneOf (
-    typed :: StringConst "normal", 
-    typed :: StringConst "none", 
-    typed :: StringConst "dense"
-  ), 
-  disabled :: Boolean, 
   error :: Boolean, 
+  disabled :: Boolean, 
   variant :: OneOf (
-    typed :: StringConst "filled", 
     typed :: StringConst "standard", 
-    typed :: StringConst "outlined"
+    typed :: StringConst "outlined", 
+    typed :: StringConst "filled"
   ), 
-  required :: Boolean
+  required :: Boolean, 
+  margin :: OneOf (
+    typed :: StringConst "none", 
+    typed :: StringConst "dense", 
+    typed :: StringConst "normal"
+  )
  | r)
 
 type FormControlContextPropsM  = (

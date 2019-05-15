@@ -52,9 +52,9 @@ type NativeSelectInputPropsO r = (
     ))
   ), 
   variant :: OneOf (
-    typed :: StringConst "filled", 
     typed :: StringConst "standard", 
-    typed :: StringConst "outlined"
+    typed :: StringConst "outlined", 
+    typed :: StringConst "filled"
   )
  | r)
 

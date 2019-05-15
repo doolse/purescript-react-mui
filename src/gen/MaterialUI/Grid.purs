@@ -15,18 +15,18 @@ type GridPropsO r = (
     typed :: Number
   ), 
   alignContent :: OneOf (
-    typed :: StringConst "space-around", 
-    typed :: StringConst "space-between", 
-    typed :: StringConst "stretch", 
     typed :: StringConst "center", 
+    typed :: StringConst "stretch", 
+    typed :: StringConst "flex-start", 
     typed :: StringConst "flex-end", 
-    typed :: StringConst "flex-start"
+    typed :: StringConst "space-between", 
+    typed :: StringConst "space-around"
   ), 
   alignItems :: OneOf (
-    typed :: StringConst "stretch", 
     typed :: StringConst "center", 
-    typed :: StringConst "flex-end", 
+    typed :: StringConst "stretch", 
     typed :: StringConst "flex-start", 
+    typed :: StringConst "flex-end", 
     typed :: StringConst "baseline"
   ), 
   component :: OneOf (
@@ -36,19 +36,19 @@ type GridPropsO r = (
   ), 
   container :: Boolean, 
   direction :: OneOf (
-    typed :: StringConst "column", 
-    typed :: StringConst "column-reverse", 
     typed :: StringConst "row", 
-    typed :: StringConst "row-reverse"
+    typed :: StringConst "row-reverse", 
+    typed :: StringConst "column", 
+    typed :: StringConst "column-reverse"
   ), 
   item :: Boolean, 
   justify :: OneOf (
-    typed :: StringConst "space-around", 
-    typed :: StringConst "space-between", 
-    typed :: StringConst "space-evenly", 
     typed :: StringConst "center", 
+    typed :: StringConst "flex-start", 
     typed :: StringConst "flex-end", 
-    typed :: StringConst "flex-start"
+    typed :: StringConst "space-between", 
+    typed :: StringConst "space-around", 
+    typed :: StringConst "space-evenly"
   ), 
   spacing :: OneOf (
     typed :: Any {-- 0.0--}, 
@@ -59,14 +59,11 @@ type GridPropsO r = (
     typed :: Any {-- 40.0--}
   ), 
   wrap :: OneOf (
-    typed :: StringConst "nowrap", 
     typed :: StringConst "wrap", 
+    typed :: StringConst "nowrap", 
     typed :: StringConst "wrap-reverse"
   ), 
   zeroMinWidth :: Boolean, 
-  color :: String, 
-  hidden :: Boolean, 
-  style :: Any {-- React.CSSProperties<>--}, 
   defaultChecked :: Boolean, 
   defaultValue :: OneOf (
     typed :: String, 
@@ -80,11 +77,13 @@ type GridPropsO r = (
   contextMenu :: String, 
   dir :: String, 
   draggable :: Boolean, 
+  hidden :: Boolean, 
   id :: String, 
   lang :: String, 
   placeholder :: String, 
   slot :: String, 
   spellCheck :: Boolean, 
+  style :: Any {-- React.CSSProperties<>--}, 
   tabIndex :: Number, 
   title :: String, 
   inputMode :: String, 
@@ -102,6 +101,7 @@ type GridPropsO r = (
   autoCapitalize :: String, 
   autoCorrect :: String, 
   autoSave :: String, 
+  color :: String, 
   itemProp :: String, 
   itemScope :: Boolean, 
   itemType :: String, 
@@ -218,10 +218,10 @@ type GridPropsE r = (
     typed :: StringConst "true"
   ), 
   "aria-autocomplete" :: OneOf (
-    typed :: StringConst "both", 
     typed :: StringConst "none", 
     typed :: StringConst "inline", 
-    typed :: StringConst "list"
+    typed :: StringConst "list", 
+    typed :: StringConst "both"
   ), 
   "aria-busy" :: OneOf (
     typed :: Boolean, 
@@ -230,9 +230,9 @@ type GridPropsE r = (
   ), 
   "aria-checked" :: OneOf (
     typed :: Boolean, 
-    typed :: StringConst "mixed", 
     typed :: StringConst "false", 
-    typed :: StringConst "true"
+    typed :: StringConst "true", 
+    typed :: StringConst "mixed"
   ), 
   "aria-colcount" :: Number, 
   "aria-colindex" :: Number, 
@@ -240,9 +240,9 @@ type GridPropsE r = (
   "aria-controls" :: String, 
   "aria-current" :: OneOf (
     typed :: Boolean, 
-    typed :: StringConst "page", 
     typed :: StringConst "false", 
     typed :: StringConst "true", 
+    typed :: StringConst "page", 
     typed :: StringConst "step", 
     typed :: StringConst "location", 
     typed :: StringConst "date", 
@@ -258,9 +258,9 @@ type GridPropsE r = (
   "aria-dropeffect" :: OneOf (
     typed :: StringConst "none", 
     typed :: StringConst "copy", 
-    typed :: StringConst "move", 
     typed :: StringConst "execute", 
     typed :: StringConst "link", 
+    typed :: StringConst "move", 
     typed :: StringConst "popup"
   ), 
   "aria-errormessage" :: String, 
@@ -277,12 +277,12 @@ type GridPropsE r = (
   ), 
   "aria-haspopup" :: OneOf (
     typed :: Boolean, 
-    typed :: StringConst "grid", 
-    typed :: StringConst "menu", 
-    typed :: StringConst "listbox", 
     typed :: StringConst "false", 
     typed :: StringConst "true", 
+    typed :: StringConst "menu", 
+    typed :: StringConst "listbox", 
     typed :: StringConst "tree", 
+    typed :: StringConst "grid", 
     typed :: StringConst "dialog"
   ), 
   "aria-hidden" :: OneOf (
@@ -329,9 +329,9 @@ type GridPropsE r = (
   "aria-posinset" :: Number, 
   "aria-pressed" :: OneOf (
     typed :: Boolean, 
-    typed :: StringConst "mixed", 
     typed :: StringConst "false", 
-    typed :: StringConst "true"
+    typed :: StringConst "true", 
+    typed :: StringConst "mixed"
   ), 
   "aria-readonly" :: OneOf (
     typed :: Boolean, 
@@ -339,11 +339,11 @@ type GridPropsE r = (
     typed :: StringConst "true"
   ), 
   "aria-relevant" :: OneOf (
-    typed :: StringConst "all", 
-    typed :: StringConst "text", 
     typed :: StringConst "additions", 
     typed :: StringConst "additions text", 
-    typed :: StringConst "removals"
+    typed :: StringConst "all", 
+    typed :: StringConst "removals", 
+    typed :: StringConst "text"
   ), 
   "aria-required" :: OneOf (
     typed :: Boolean, 

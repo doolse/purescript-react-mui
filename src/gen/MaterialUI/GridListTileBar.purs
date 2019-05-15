@@ -19,8 +19,8 @@ type GridListTileBarPropsO r = (
   subtitle :: ReactNode, 
   title :: ReactNode, 
   titlePosition :: OneOf (
-    typed :: StringConst "bottom", 
-    typed :: StringConst "top"
+    typed :: StringConst "top", 
+    typed :: StringConst "bottom"
   ), 
   classes :: Any {-- unknown--}, 
   innerRef :: OneOf (

@@ -16,11 +16,11 @@ type SvgIconPropsO r = (
   ), 
   color :: OneOf (
     typed :: StringConst "inherit", 
-    typed :: StringConst "default", 
-    typed :: StringConst "disabled", 
     typed :: StringConst "primary", 
     typed :: StringConst "secondary", 
+    typed :: StringConst "default", 
     typed :: StringConst "error", 
+    typed :: StringConst "disabled", 
     typed :: StringConst "action"
   ), 
   component :: OneOf (
@@ -31,8 +31,8 @@ type SvgIconPropsO r = (
   fontSize :: OneOf (
     typed :: StringConst "inherit", 
     typed :: StringConst "default", 
-    typed :: StringConst "large", 
-    typed :: StringConst "small"
+    typed :: StringConst "small", 
+    typed :: StringConst "large"
   ), 
   nativeColor :: String, 
   shapeRendering :: String, 
@@ -42,258 +42,10 @@ type SvgIconPropsO r = (
     typed :: String, 
     typed :: Number
   ), 
-  clipPath :: String, 
-  cursor :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  direction :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  display :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  filter :: String, 
-  fontFamily :: String, 
-  fontSizeAdjust :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  fontStretch :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  fontStyle :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  fontVariant :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  fontWeight :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  height :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  imageRendering :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  letterSpacing :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  opacity :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  order :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  overflow :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  paintOrder :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  pointerEvents :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  rotate :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  scale :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  textRendering :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  transform :: String, 
-  unicodeBidi :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  visibility :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  width :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  wordSpacing :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  writingMode :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  mask :: String, 
-  offset :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  textDecoration :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  azimuth :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  clip :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  alignmentBaseline :: OneOf (
-    typed :: StringConst "inherit", 
-    typed :: StringConst "baseline", 
-    typed :: StringConst "auto", 
-    typed :: StringConst "middle", 
-    typed :: StringConst "after-edge", 
-    typed :: StringConst "alphabetic", 
-    typed :: StringConst "before-edge", 
-    typed :: StringConst "central", 
-    typed :: StringConst "hanging", 
-    typed :: StringConst "ideographic", 
-    typed :: StringConst "mathematical", 
-    typed :: StringConst "text-after-edge", 
-    typed :: StringConst "text-before-edge"
-  ), 
-  baselineShift :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  clipRule :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  colorInterpolation :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  colorRendering :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  dominantBaseline :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  fill :: String, 
-  fillOpacity :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  fillRule :: OneOf (
-    typed :: StringConst "inherit", 
-    typed :: StringConst "evenodd", 
-    typed :: StringConst "nonzero"
-  ), 
-  floodColor :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  floodOpacity :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  glyphOrientationVertical :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  lightingColor :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  markerEnd :: String, 
-  markerMid :: String, 
-  markerStart :: String, 
-  stopColor :: String, 
-  stopOpacity :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  stroke :: String, 
-  strokeDasharray :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  strokeDashoffset :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  strokeLinecap :: OneOf (
-    typed :: StringConst "inherit", 
-    typed :: StringConst "round", 
-    typed :: StringConst "butt", 
-    typed :: StringConst "square"
-  ), 
-  strokeLinejoin :: OneOf (
-    typed :: StringConst "inherit", 
-    typed :: StringConst "round", 
-    typed :: StringConst "bevel", 
-    typed :: StringConst "miter"
-  ), 
-  strokeMiterlimit :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  strokeOpacity :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  strokeWidth :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  textAnchor :: String, 
-  vectorEffect :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  end :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  local :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  style :: Any {-- React.CSSProperties<>--}, 
-  alphabetic :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  hanging :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  ideographic :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
-  mathematical :: OneOf (
-    typed :: String, 
-    typed :: Number
-  ), 
   className :: String, 
   id :: String, 
   lang :: String, 
+  style :: Any {-- React.CSSProperties<>--}, 
   tabIndex :: Number, 
   role :: String, 
   dangerouslySetInnerHTML :: Record (
@@ -323,7 +75,19 @@ type SvgIconPropsO r = (
     typed :: String, 
     typed :: Number
   ), 
+  direction :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  end :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
   spacing :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  height :: OneOf (
     typed :: String, 
     typed :: Number
   ), 
@@ -333,6 +97,10 @@ type SvgIconPropsO r = (
   ), 
   method :: String, 
   min :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  width :: OneOf (
     typed :: String, 
     typed :: Number
   ), 
@@ -348,9 +116,28 @@ type SvgIconPropsO r = (
     typed :: StringConst "sum", 
     typed :: StringConst "replace"
   ), 
+  alignmentBaseline :: OneOf (
+    typed :: StringConst "inherit", 
+    typed :: StringConst "auto", 
+    typed :: StringConst "middle", 
+    typed :: StringConst "baseline", 
+    typed :: StringConst "alphabetic", 
+    typed :: StringConst "hanging", 
+    typed :: StringConst "ideographic", 
+    typed :: StringConst "mathematical", 
+    typed :: StringConst "before-edge", 
+    typed :: StringConst "text-before-edge", 
+    typed :: StringConst "central", 
+    typed :: StringConst "after-edge", 
+    typed :: StringConst "text-after-edge"
+  ), 
   allowReorder :: OneOf (
     typed :: StringConst "no", 
     typed :: StringConst "yes"
+  ), 
+  alphabetic :: OneOf (
+    typed :: String, 
+    typed :: Number
   ), 
   amplitude :: OneOf (
     typed :: String, 
@@ -372,7 +159,15 @@ type SvgIconPropsO r = (
     typed :: String, 
     typed :: Number
   ), 
+  azimuth :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
   baseFrequency :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  baselineShift :: OneOf (
     typed :: String, 
     typed :: Number
   ), 
@@ -404,17 +199,34 @@ type SvgIconPropsO r = (
     typed :: String, 
     typed :: Number
   ), 
+  clip :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  clipPath :: String, 
   clipPathUnits :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  clipRule :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  colorInterpolation :: OneOf (
     typed :: String, 
     typed :: Number
   ), 
   colorInterpolationFilters :: OneOf (
     typed :: StringConst "inherit", 
     typed :: StringConst "auto", 
-    typed :: StringConst "linearRGB", 
-    typed :: StringConst "sRGB"
+    typed :: StringConst "sRGB", 
+    typed :: StringConst "linearRGB"
   ), 
   colorProfile :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  colorRendering :: OneOf (
     typed :: String, 
     typed :: Number
   ), 
@@ -423,6 +235,10 @@ type SvgIconPropsO r = (
     typed :: Number
   ), 
   contentStyleType :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  cursor :: OneOf (
     typed :: String, 
     typed :: Number
   ), 
@@ -447,7 +263,15 @@ type SvgIconPropsO r = (
     typed :: String, 
     typed :: Number
   ), 
+  display :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
   divisor :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  dominantBaseline :: OneOf (
     typed :: String, 
     typed :: Number
   ), 
@@ -479,6 +303,17 @@ type SvgIconPropsO r = (
     typed :: String, 
     typed :: Number
   ), 
+  fill :: String, 
+  fillOpacity :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  fillRule :: OneOf (
+    typed :: StringConst "inherit", 
+    typed :: StringConst "nonzero", 
+    typed :: StringConst "evenodd"
+  ), 
+  filter :: String, 
   filterRes :: OneOf (
     typed :: String, 
     typed :: Number
@@ -487,7 +322,36 @@ type SvgIconPropsO r = (
     typed :: String, 
     typed :: Number
   ), 
+  floodColor :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  floodOpacity :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
   focusable :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  fontFamily :: String, 
+  fontSizeAdjust :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  fontStretch :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  fontStyle :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  fontVariant :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  fontWeight :: OneOf (
     typed :: String, 
     typed :: Number
   ), 
@@ -523,17 +387,33 @@ type SvgIconPropsO r = (
     typed :: String, 
     typed :: Number
   ), 
+  glyphOrientationVertical :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
   glyphRef :: OneOf (
     typed :: String, 
     typed :: Number
   ), 
   gradientTransform :: String, 
   gradientUnits :: String, 
+  hanging :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
   horizAdvX :: OneOf (
     typed :: String, 
     typed :: Number
   ), 
   horizOriginX :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  ideographic :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  imageRendering :: OneOf (
     typed :: String, 
     typed :: Number
   ), 
@@ -593,14 +473,29 @@ type SvgIconPropsO r = (
     typed :: String, 
     typed :: Number
   ), 
+  letterSpacing :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  lightingColor :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
   limitingConeAngle :: OneOf (
     typed :: String, 
     typed :: Number
   ), 
+  local :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  markerEnd :: String, 
   markerHeight :: OneOf (
     typed :: String, 
     typed :: Number
   ), 
+  markerMid :: String, 
+  markerStart :: String, 
   markerUnits :: OneOf (
     typed :: String, 
     typed :: Number
@@ -609,11 +504,16 @@ type SvgIconPropsO r = (
     typed :: String, 
     typed :: Number
   ), 
+  mask :: String, 
   maskContentUnits :: OneOf (
     typed :: String, 
     typed :: Number
   ), 
   maskUnits :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  mathematical :: OneOf (
     typed :: String, 
     typed :: Number
   ), 
@@ -625,7 +525,19 @@ type SvgIconPropsO r = (
     typed :: String, 
     typed :: Number
   ), 
+  offset :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  opacity :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
   operator :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  order :: OneOf (
     typed :: String, 
     typed :: Number
   ), 
@@ -641,11 +553,19 @@ type SvgIconPropsO r = (
     typed :: String, 
     typed :: Number
   ), 
+  overflow :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
   overlinePosition :: OneOf (
     typed :: String, 
     typed :: Number
   ), 
   overlineThickness :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  paintOrder :: OneOf (
     typed :: String, 
     typed :: Number
   ), 
@@ -663,6 +583,10 @@ type SvgIconPropsO r = (
     typed :: Number
   ), 
   patternUnits :: String, 
+  pointerEvents :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
   points :: String, 
   pointsAtX :: OneOf (
     typed :: String, 
@@ -726,11 +650,19 @@ type SvgIconPropsO r = (
     typed :: Number
   ), 
   result :: String, 
+  rotate :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
   rx :: OneOf (
     typed :: String, 
     typed :: Number
   ), 
   ry :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  scale :: OneOf (
     typed :: String, 
     typed :: Number
   ), 
@@ -775,11 +707,49 @@ type SvgIconPropsO r = (
     typed :: String, 
     typed :: Number
   ), 
+  stopColor :: String, 
+  stopOpacity :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
   strikethroughPosition :: OneOf (
     typed :: String, 
     typed :: Number
   ), 
   strikethroughThickness :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  stroke :: String, 
+  strokeDasharray :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  strokeDashoffset :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  strokeLinecap :: OneOf (
+    typed :: StringConst "square", 
+    typed :: StringConst "inherit", 
+    typed :: StringConst "round", 
+    typed :: StringConst "butt"
+  ), 
+  strokeLinejoin :: OneOf (
+    typed :: StringConst "inherit", 
+    typed :: StringConst "round", 
+    typed :: StringConst "miter", 
+    typed :: StringConst "bevel"
+  ), 
+  strokeMiterlimit :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  strokeOpacity :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  strokeWidth :: OneOf (
     typed :: String, 
     typed :: Number
   ), 
@@ -803,7 +773,16 @@ type SvgIconPropsO r = (
     typed :: String, 
     typed :: Number
   ), 
+  textAnchor :: String, 
+  textDecoration :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
   textLength :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  textRendering :: OneOf (
     typed :: String, 
     typed :: Number
   ), 
@@ -811,6 +790,7 @@ type SvgIconPropsO r = (
     typed :: String, 
     typed :: Number
   ), 
+  transform :: String, 
   u1 :: OneOf (
     typed :: String, 
     typed :: Number
@@ -831,6 +811,10 @@ type SvgIconPropsO r = (
     typed :: String, 
     typed :: Number
   ), 
+  unicodeBidi :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
   unicodeRange :: OneOf (
     typed :: String, 
     typed :: Number
@@ -844,6 +828,10 @@ type SvgIconPropsO r = (
     typed :: Number
   ), 
   values :: String, 
+  vectorEffect :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
   version :: String, 
   vertAdvY :: OneOf (
     typed :: String, 
@@ -869,11 +857,23 @@ type SvgIconPropsO r = (
     typed :: String, 
     typed :: Number
   ), 
+  visibility :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
   vMathematical :: OneOf (
     typed :: String, 
     typed :: Number
   ), 
   widths :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  wordSpacing :: OneOf (
+    typed :: String, 
+    typed :: Number
+  ), 
+  writingMode :: OneOf (
     typed :: String, 
     typed :: Number
   ), 
