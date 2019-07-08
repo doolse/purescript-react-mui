@@ -2,7 +2,7 @@ module MaterialUI.Styles where
 
 import MaterialUI.Theme (Theme)
 import React (ReactClass, ReactElement, unsafeCreateElement)
-import Type.Row (class ListToRow, class RowToList, Cons, Nil, kind RowList)
+import Type.RowList (class ListToRow, class RowToList, Cons, Nil, kind RowList)
 import Unsafe.Coerce (unsafeCoerce)
 
 class NamedStyles (classesDef :: # Type) (classes :: # Type)

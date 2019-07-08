@@ -12,16 +12,21 @@
     "url": "https://github.com/doolse/purescript-react-mui.git"
   },
   "dependencies": {
-    "purescript-prelude": "^4.0.1",
-    "purescript-react": "^6.0.0",
-    "purescript-react-dom": "^6.0.0",
-    "purescript-tscompat": "^1.0.1"
+    "purescript-prelude": "^4.1.1",
+    "purescript-react": "^7.0.1",
+    "purescript-react-dom": "^6.1.0",
+    "purescript-tscompat": "^1.0.1",
+    "purescript-typelevel-prelude": "^5.0.0"
   },
   "devDependencies": {
     "purescript-psci-support": "^4.0.0",
     "purescript-console": "^4.1.0",
-    "purescript-web-dom": "^1.0.0",
-    "purescript-web-html": "^1.1.1",
+    "purescript-web-dom": "^2.0.0",
+    "purescript-web-html": "^2.2.1",
     "purescript-debug": "^4.0.0"
+  },
+  "resolutions": {
+    "purescript-typelevel-prelude": ">= 4.0.0 < 6.0.0",
+    "purescript-react": "^7.0.1"
   }
 }
