@@ -3,7 +3,7 @@ sudo: false
 node_js:
   - 8
 install:
-  - npm install purescript@0.12.0 pulp bower -g
+  - npm i -g load-from-cwd-or-npm@3.0.1 purescript@0.13.2 pulp bower
   - bower install
   - npm install
 script:
