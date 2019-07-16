@@ -22,6 +22,14 @@ type IconButtonPropsO r = (
   ), 
   disabled :: Boolean, 
   disableRipple :: Boolean, 
+  edge :: OneOf (
+    typed :: StringConst "start",
+    typed :: StringConst "end"
+  ),
+  size :: OneOf (
+    typed :: StringConst "small",
+    typed :: StringConst "medium"
+  ),
   defaultChecked :: Boolean, 
   defaultValue :: OneOf (
     typed :: String, 
